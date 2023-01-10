@@ -2,7 +2,7 @@
 
 const CurrentPlayer = () => {
   return(
-    <div class='current'>current player icon, name and level</div>
+    <div>current player icon, name and level</div>
 
   )
 };

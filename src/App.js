@@ -11,7 +11,7 @@ import NonFound from './components/pages/NonFound/NonFound';
 const App = () => {
   return (
     <>
-      <header class='header'>
+      <header>
         <Logo />
         <CurrentPlayer />
       </header>

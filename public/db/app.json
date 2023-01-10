@@ -5,7 +5,7 @@
       "name": "Pikachu",
       "icon": "pikachu.png",
       "color": "yellow",
-      "level": "1",
+      "level": 1,
       "title": "",
       "badges": [],
       "xp": 0
@@ -15,7 +15,7 @@
       "name": "George",
       "icon": "curious_george.png",
       "color": "green",
-      "level": "1",
+      "level": 1,
       "title": "",
       "badges": [],
       "xp": 0
