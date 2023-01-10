@@ -1,12 +1,14 @@
 {
-  "users": [
+  "players": [
     {
       "id": "1",
       "name": "Pikachu",
       "icon": "pikachu.png",
       "color": "yellow",
       "level": "1",
-      "xp": 0,
+      "title": "",
+      "badges": [],
+      "xp": 0
     },
     {
       "id": "2",
@@ -14,7 +16,9 @@
       "icon": "curious_george.png",
       "color": "green",
       "level": "1",
-      "xp": 0,
+      "title": "",
+      "badges": [],
+      "xp": 0
     }
   ],
   "syllables": [
@@ -22,14 +26,14 @@
       "id": "1",
       "name": "ba",
       "words": [
-        "baba", "baby", "bada", "baja", "baje", "bawi", "baza",
+        "baba", "baby", "bada", "baja", "baje", "bawi", "baza"
       ]
     },
     {
       "id": "2",
       "name": "be",
       "words": [
-        "beka", "beki", "beza", "bezy",
+        "beka", "beki", "beza", "bezy"
       ]
     },
     {
@@ -43,77 +47,77 @@
       "id": "4",
       "name": "bo",
       "words": [
-        "boja", "boje",   "boki",  "boli", "bolą", "bory", "bosa", "bose",  "boso",   "boty", "boża", "boży",
+        "boja", "boje",   "boki",  "boli", "bolą", "bory", "bosa", "bose",  "boso",   "boty", "boża", "boży"
       ]
     },
     {
       "id": "5",
       "name": "bu",
       "words": [
-        "buda", "budy",   "buja", "bura", "bure", "bury",   "buła", "buły",
+        "buda", "budy",   "buja", "bura", "bure", "bury",   "buła", "buły"
       ]
     },
     {
       "id": "6",
       "name": "by",
       "words": [
-        "byki",  "była", "były",
+        "byki",  "była", "były"
       ]
     },
     {
       "id": "7",
       "name": "bą",
       "words": [
-        "bąki",
+        "bąki"
       ]
     },
     {
       "id": "8",
       "name": "bę",
       "words": [
-        "będą", "będę",
+        "będą", "będę"
       ]
     },
     {
       "id": "9",
       "name": "ca",
       "words": [
-        "cała", "całe",  "cały",
+        "cała", "całe",  "cały"
       ]
     },
     {
       "id": "10",
       "name": "ce",
       "words": [
-        "cela", "cele",   "cena", "ceny",   "cera",
+        "cela", "cele",   "cena", "ceny",   "cera"
       ]
     },
     {
       "id": "11",
       "name": "ci",
       "words": [
-        "cisy",
+        "cisy"
       ]
     },
     {
       "id": "12",
       "name": "co",
       "words": [
-        "cofa",
+        "cofa"
       ]
     },
     {
       "id": "13",
       "name": "cu",
       "words": [
-        "cuda",   "cuma",   "cumy",
+        "cuda",   "cuma",   "cumy"
       ]
     },
     {
       "id": "14",
       "name": "cy",
       "words": [
-        "cyka",
+        "cyka"
       ]
     },
     {
@@ -134,7 +138,7 @@
       "id": "17",
       "name": "da",
       "words": [
-        "daje",   "dama", "damy",   "dane", "dary", "data", "daty",
+        "daje",   "dama", "damy",   "dane", "dary", "data", "daty"
       ]
     },
     {
@@ -155,14 +159,14 @@
       "id": "20",
       "name": "do",
       "words": [
-        "doba", "doby",     "doki",  "domy",  "doły",
+        "doba", "doby",     "doki",  "domy",  "doły"
       ]
     },
     {
       "id": "21",
       "name": "du",
       "words": [
-        "duma",  "duża", "duże", "dużo", "duży",
+        "duma",  "duża", "duże", "dużo", "duży"
       ]
     },
     {
@@ -183,42 +187,42 @@
       "id": "24",
       "name": "dę",
       "words": [
-        "dęby", "dęty",
+        "dęby", "dęty"
       ]
     },
     {
       "id": "25",
       "name": "fa",
       "words": [
-        "fala", "fale",
+        "fala", "fale"
       ]
     },
     {
       "id": "26",
       "name": "fe",
       "words": [
-        "feta",
+        "feta"
       ]
     },
     {
       "id": "27",
       "name": "fi",
       "words": [
-        "figa", "figi",   "fika",
+        "figa", "figi",   "fika"
       ]
     },
     {
       "id": "28",
       "name": "fo",
       "words": [
-        "foka", "foki",   "fosa", "fosy",
+        "foka", "foki",   "fosa", "fosy"
       ]
     },
     {
       "id": "29",
       "name": "fu",
       "words": [
-        "fura", "fury",
+        "fura", "fury"
       ]
     },
     {
@@ -246,7 +250,7 @@
       "id": "33",
       "name": "ga",
       "words": [
-        "gafa", "gafy",      "gama",  "gapa", "gapy",  "gary",
+        "gafa", "gafy",      "gama",  "gapa", "gapy",  "gary"
       ]
     },
     {
@@ -260,21 +264,21 @@
       "id": "35",
       "name": "gi",
       "words": [
-        "gile",
+        "gile"
       ]
     },
     {
       "id": "36",
       "name": "go",
       "words": [
-        "goła", "goły",
+        "goła", "goły"
       ]
     },
     {
       "id": "37",
       "name": "gu",
       "words": [
-        "guma", "gumy",    "guzy",
+        "guma", "gumy",    "guzy"
       ]
     },
     {
@@ -295,14 +299,14 @@
       "id": "40",
       "name": "gę",
       "words": [
-        "gęba", "gęby",   "gęga",
+        "gęba", "gęby",   "gęga"
       ]
     },
     {
       "id": "41",
       "name": "ha",
       "words": [
-        "haki", "hala", "hale",   "hasa",
+        "haki", "hala", "hale",   "hasa"
       ]
     },
     {
@@ -316,7 +320,7 @@
       "id": "43",
       "name": "hi",
       "words": [
-        "hity",
+        "hity"
       ]
     },
     {
@@ -330,7 +334,7 @@
       "id": "45",
       "name": "hu",
       "words": [
-        "huba", "huby",  "huki", "hula",
+        "huba", "huby",  "huki", "hula"
       ]
     },
     {
@@ -358,7 +362,7 @@
       "id": "49",
       "name": "ja",
       "words": [
-        "jaja", "jajo",  "jama", "jamy",
+        "jaja", "jajo",  "jama", "jamy"
       ]
     },
     {
@@ -379,7 +383,7 @@
       "id": "52",
       "name": "jo",
       "words": [
-        "joga",
+        "joga"
       ]
     },
     {
@@ -414,7 +418,7 @@
       "id": "57",
       "name": "ka",
       "words": [
-        "kapa", "kapy",   "kara", "kary",   "kasa", "kasy",   "kawa", "kawy",
+        "kapa", "kapy",   "kara", "kary",   "kasa", "kasy",   "kawa", "kawy"
       ]
     },
     {
@@ -428,21 +432,21 @@
       "id": "59",
       "name": "ki",
       "words": [
-        "kica",  "kije", "kita",   "kity", "kiwa", "kiwi",
+        "kica",  "kije", "kita",   "kity", "kiwa", "kiwi"
       ]
     },
     {
       "id": "60",
       "name": "ko",
       "words": [
-        "koce",     "kora",   "kosa",   "koty", "koza", "kozy",   "koła", "koło",
+        "koce",     "kora",   "kosa",   "koty", "koza", "kozy",   "koła", "koło"
       ]
     },
     {
       "id": "61",
       "name": "ku",
       "words": [
-        "kuca", "kuce", "kuka", "kula", "kule",   "kuna", "kuny",   "kupa", "kupy",   "kura", "kury",
+        "kuca", "kuce", "kuka", "kula", "kule",   "kuna", "kuny",   "kupa", "kupy",   "kura", "kury"
       ]
     },
     {
@@ -456,7 +460,7 @@
       "id": "63",
       "name": "ką",
       "words": [
-        "kąty",
+        "kąty"
       ]
     },
     {
@@ -470,35 +474,35 @@
       "id": "65",
       "name": "la",
       "words": [
-        "lada", "lady",   "lala", "lale",   "lama", "lamy",   "lasy", "lata", "lato", "lawa", "lawy",    "lało",
+        "lada", "lady",   "lala", "lale",   "lama", "lamy",   "lasy", "lata", "lato", "lawa", "lawy",    "lało"
       ]
     },
     {
       "id": "66",
       "name": "le",
       "words": [
-        "leci", "leki", "lewa", "lewy",  "leży",
+        "leci", "leki", "lewa", "lewy",  "leży"
       ]
     },
     {
       "id": "67",
       "name": "li",
       "words": [
-        "liga",    "limo", "lina", "liny",   "lipa", "lipy",   "lisy", "liże",
+        "liga",    "limo", "lina", "liny",   "lipa", "lipy",   "lisy", "liże"
       ]
     },
     {
       "id": "68",
       "name": "lo",
       "words": [
-        "lody", "logo", "loki",
+        "lody", "logo", "loki"
       ]
     },
     {
       "id": "69",
       "name": "lu",
       "words": [
-        "luka",  "luki",  "lula", "lupa", "lupy",   "luty", "luzy",
+        "luka",  "luki",  "lula", "lupa", "lupy",   "luty", "luzy"
       ]
     },
     {
@@ -512,7 +516,7 @@
       "id": "71",
       "name": "lą",
       "words": [
-        "lądy",
+        "lądy"
       ]
     },
     {
@@ -526,7 +530,7 @@
       "id": "73",
       "name": "ła",
       "words": [
-        "łapa", "łapy",   "łata", "łaty",   "ława", "ławy",
+        "łapa", "łapy",   "łata", "łaty",   "ława", "ławy"
       ]
     },
     {
@@ -561,14 +565,14 @@
       "id": "78",
       "name": "ły",
       "words": [
-        "łyki",
+        "łyki"
       ]
     },
     {
       "id": "79",
       "name": "łą",
       "words": [
-        "łąka", "łąki",
+        "łąka", "łąki"
       ]
     },
     {
@@ -582,28 +586,28 @@
       "id": "81",
       "name": "ma",
       "words": [
-        "mama", "mamy",   "mapa", "mapy",   "masa",   "masy", "mata", "maty",   "mała", "mało", "mały",
+        "mama", "mamy",   "mapa", "mapy",   "masa",   "masy", "mata", "maty",   "mała", "mało", "mały"
       ]
     },
     {
       "id": "82",
       "name": "me",
       "words": [
-        "meta",    "mewa", "mewy",
+        "meta",    "mewa", "mewy"
       ]
     },
     {
       "id": "83",
       "name": "mi",
       "words": [
-        "mina", "miny",   "misa", "misy",   "miła", "miłe", "miło", "miły",
+        "mina", "miny",   "misa", "misy",   "miła", "miłe", "miło", "miły"
       ]
     },
     {
       "id": "84",
       "name": "mo",
       "words": [
-        "moda",      "moja", "moje",   "mopy", "mowa",
+        "moda",      "moja", "moje",   "mopy", "mowa"
       ]
     },
     {
@@ -617,21 +621,21 @@
       "id": "86",
       "name": "my",
       "words": [
-        "myje",
+        "myje"
       ]
     },
     {
       "id": "87",
       "name": "mą",
       "words": [
-        "mąka",
+        "mąka"
       ]
     },
     {
       "id": "88",
       "name": "mę",
       "words": [
-        "męka", "męki",
+        "męka", "męki"
       ]
     },
     {
@@ -659,14 +663,14 @@
       "id": "92",
       "name": "no",
       "words": [
-        "noce",   "noga", "nogi",   "nora", "nory",    "nosy", "nowa", "nowe", "nowy",   "noże",
+        "noce",   "noga", "nogi",   "nora", "nory",    "nosy", "nowa", "nowe", "nowy",   "noże"
       ]
     },
     {
       "id": "93",
       "name": "nu",
       "words": [
-        "nuda", "nudy",   "nuta", "nuty",
+        "nuda", "nudy",   "nuta", "nuty"
       ]
     },
     {
@@ -694,7 +698,7 @@
       "id": "97",
       "name": "pa",
       "words": [
-        "pada", "paka", "paki",     "para",
+        "pada", "paka", "paki",     "para"
       ]
     },
     {
@@ -708,21 +712,21 @@
       "id": "99",
       "name": "pi",
       "words": [
-        "pita", "piwo", "piła", "piły",
+        "pita", "piwo", "piła", "piły"
       ]
     },
     {
       "id": "100",
       "name": "po",
       "words": [
-        "pory", "poza", "pozy",
+        "pory", "poza", "pozy"
       ]
     },
     {
       "id": "101",
       "name": "pu",
       "words": [
-        "pufa",   "puma", "pumy",   "pupa", "pupy",
+        "pufa",   "puma", "pumy",   "pupa", "pupy"
       ]
     },
     {
@@ -736,7 +740,7 @@
       "id": "103",
       "name": "pą",
       "words": [
-        "pąki",
+        "pąki"
       ]
     },
     {
@@ -750,7 +754,7 @@
       "id": "105",
       "name": "ra",
       "words": [
-        "raca", "race",   "rada", "rady",   "rafa", "rafy",   "rama", "ramy",   "rana", "rany",   "rasa", "rasy",
+        "raca", "race",   "rada", "rady",   "rafa", "rafy",   "rama", "ramy",   "rana", "rany",   "rasa", "rasy"
       ]
     },
     {
@@ -771,21 +775,21 @@
       "id": "108",
       "name": "ro",
       "words": [
-        "rogi",   "rola", "role",    "ropa",   "rosa",   "rowy",
+        "rogi",   "rola", "role",    "ropa",   "rosa",   "rowy"
       ]
     },
     {
       "id": "109",
       "name": "ru",
       "words": [
-        "ruda", "rudy", "rura", "rury",
+        "ruda", "rudy", "rura", "rury"
       ]
     },
     {
       "id": "110",
       "name": "ry",
       "words": [
-        "ryba", "ryby",   "rymy",
+        "ryba", "ryby",   "rymy"
       ]
     },
     {
@@ -799,21 +803,21 @@
       "id": "112",
       "name": "rę",
       "words": [
-        "ręka",
+        "ręka"
       ]
     },
     {
       "id": "113",
       "name": "sa",
       "words": [
-        "sady", "sala", "sama", "sami", "samo",
+        "sady", "sala", "sama", "sami", "samo"
       ]
     },
     {
       "id": "114",
       "name": "se",
       "words": [
-        "sera", "sery",
+        "sera", "sery"
       ]
     },
     {
@@ -827,14 +831,14 @@
       "id": "116",
       "name": "so",
       "words": [
-        "sofa", "sofy",    "soki",  "sole",   "sowa", "sowy",
+        "sofa", "sofy",    "soki",  "sole",   "sowa", "sowy"
       ]
     },
     {
       "id": "117",
       "name": "su",
       "words": [
-        "suka", "suma", "sumy",
+        "suka", "suma", "sumy"
       ]
     },
     {
@@ -862,7 +866,7 @@
       "id": "121",
       "name": "ta",
       "words": [
-        "taca",    "tama", "tamy",   "tata", "tato",
+        "taca",    "tama", "tamy",   "tata", "tato"
       ]
     },
     {
@@ -890,14 +894,14 @@
       "id": "125",
       "name": "tu",
       "words": [
-        "tuba", "tuby",  "tuli",   "tura", "tury",
+        "tuba", "tuby",  "tuli",   "tura", "tury"
       ]
     },
     {
       "id": "126",
       "name": "ty",
       "words": [
-        "tyka", "tyły",
+        "tyka", "tyły"
       ]
     },
     {
@@ -918,7 +922,7 @@
       "id": "129",
       "name": "wa",
       "words": [
-        "waga", "wagi",   "wata", "waty",   "waza", "wazy",   "wały",
+        "waga", "wagi",   "wata", "waty",   "waza", "wazy",   "wały"
       ]
     },
     {
@@ -939,7 +943,7 @@
       "id": "132",
       "name": "wo",
       "words": [
-        "woda", "wody",   "wory", "wozy",
+        "woda", "wody",   "wory", "wozy"
       ]
     },
     {
@@ -953,14 +957,14 @@
       "id": "134",
       "name": "wy",
       "words": [
-        "wyje",
+        "wyje"
       ]
     },
     {
       "id": "135",
       "name": "wą",
       "words": [
-        "wąsy",
+        "wąsy"
       ]
     },
     {
@@ -981,14 +985,14 @@
       "id": "138",
       "name": "ze",
       "words": [
-        "zera",	"zero",
+        "zera", "zero"
       ]
     },
     {
       "id": "139",
       "name": "zi",
       "words": [
-        "zima",	"zimy",
+        "zima", "zimy"
       ]
     },
     {
@@ -1002,7 +1006,7 @@
       "id": "141",
       "name": "zu",
       "words": [
-        "zupa",	"zupy",
+        "zupa", "zupy"
       ]
     },
     {
@@ -1023,14 +1027,14 @@
       "id": "144",
       "name": "zę",
       "words": [
-        "zęby",
+        "zęby"
       ]
     },
     {
       "id": "145",
       "name": "ża",
       "words": [
-        "żaba",	"żaby",
+        "żaba", "żaby"
       ]
     },
     {
@@ -1051,7 +1055,7 @@
       "id": "148",
       "name": "żo",
       "words": [
-        "żona",	"żony",
+        "żona", "żony"
       ]
     },
     {
@@ -1081,6 +1085,6 @@
       "words": [
         
       ]
-    },
+    }
   ]
 }
