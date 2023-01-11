@@ -10,8 +10,8 @@ const initialState = {
       color: "yellow",
       level: 1,
       title: "",
-      badges: [faFaceSmile, ],
-      xp: 0
+      badges: [faFaceSmile],
+      xp: 4,
     },
     {
       id: "2",
@@ -20,18 +20,23 @@ const initialState = {
       color: "green",
       level: 1,
       title: "",
-      badges: [],
-      xp: 0
+      badges: [faFaceSmile],
+      xp: 0,
     }
   ],
+  currentPlayer: '',
 };
 
 export const playersSlice = createSlice({
   name: 'players',
   initialState,
   reducers: {
+    chooseCurrentPlayer: (state, action) => {
+      state.currentPlayer = action.payload
+    }
 
   }
 });
+export const { chooseCurrentPlayer } = playersSlice.actions;
 
 export default playersSlice.reducer;

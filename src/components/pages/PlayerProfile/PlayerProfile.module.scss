@@ -1,0 +1,9 @@
+@import '/src/styles/settings.scss';
+
+.profile {
+  font-size: calc($base-size * 2);
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  margin: calc($base-size * 3);
+}

@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  players: [
+  levels: [
     {
       id: "1",
-      name: "1",
+      value: 1,
       title: "",
       badge: '<FontAwesomeIcon icon="fa-solid fa-face-smile" />',
-      xpToLvlUp: 0
+      xpToLvlUp: 10
     },
     {
       id: "2",
-      name: "2",
+      value: 2,
       title: "",
-      badges: '<FontAwesomeIcon icon="fa-solid fa-ghost" />',
-      xpToLvlUp: 10
+      badge: '<FontAwesomeIcon icon="fa-solid fa-ghost" />',
+      xpToLvlUp: 25
     },
   ],
 };

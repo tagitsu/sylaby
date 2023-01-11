@@ -1,0 +1,16 @@
+@import '/src/styles/settings.scss';
+
+:root {
+  --player-xp: 0;
+}
+
+.prog {
+  background-color: aqua;
+  height: calc($base-size * 2);
+  width: calc($base-size * 20);
+
+  &__bar {
+    width: var(--player-xp);
+    background-color: blue;
+  }
+}
