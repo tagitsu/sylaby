@@ -1,0 +1,27 @@
+@import '/src/styles/settings.scss';
+
+
+:root {
+  --player-color: #FFC312;
+}
+
+.icon__container {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+}
+
+.icon__background {
+  background: var(--player-color);
+  width: 100%;
+  height: 100%;
+  border: 10px solid white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.icon__image {
+  height: 100%;
+
+}

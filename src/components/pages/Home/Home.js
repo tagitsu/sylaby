@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Home = () => {
-  
+
   const { players } = useSelector(state => state.players);
 
   return(
@@ -12,8 +12,8 @@ const Home = () => {
       <div>{player.icon}</div>
       <p>{player.name}</p>
       <p>LVL: {player.level}</p>
-      <Link to='/player/id'>Karta postaci</Link>
-      <Link to='/player/id/game'>Zacznij grę</Link>
+      <Link to={`/player/${player.id}`}>Karta postaci</Link>
+      <Link to={`/player/${player.id}/game`}>Zacznij grę</Link>
     </div>)}
   </>
 

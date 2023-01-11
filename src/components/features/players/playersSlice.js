@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';
 
 const initialState = {
   players: [
@@ -9,7 +10,7 @@ const initialState = {
       color: "yellow",
       level: 1,
       title: "",
-      badges: [],
+      badges: [faFaceSmile, ],
       xp: 0
     },
     {
