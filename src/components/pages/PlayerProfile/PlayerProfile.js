@@ -9,7 +9,6 @@ import { chooseCurrentPlayer } from '../../features/player/playerSlice';
 const PlayerProfile = () => {
   const dispatch = useDispatch();
   const choosenPlayer = useParams();
-  const all = useSelector(state => state);
   const { players } = useSelector(state => state.player);
   const { levels } = useSelector(state => state.levels);
   const player = players.filter( player => player.id === choosenPlayer.id)

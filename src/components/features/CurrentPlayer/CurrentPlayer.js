@@ -12,7 +12,9 @@ const CurrentPlayer = () => {
   console.log('all of players', players);
   const [player] = players.filter( player => player.id === currentPlayer);
   console.log('player data', player);
-
+  if(!player) {
+    return(null)
+  }
   return(
     <div>
       <PlayerIcon icon={player.icon} name={player.name} />
