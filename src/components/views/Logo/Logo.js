@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCircle} from '@fortawesome/free-solid-svg-icons';
-
+import styles from './Logo.module.scss';
 
 const Logo = () => {
   return(
-    <h1>
+    <h1 className={styles.logo}>
     sy
-    <FontAwesomeIcon icon={faCircle} />
+    <FontAwesomeIcon className={styles.logo__dot} icon={faCircle} />
     la
-    <FontAwesomeIcon icon={faCircle} />
+    <FontAwesomeIcon className={styles.logo__dot} icon={faCircle} />
     by
     </h1>
   );

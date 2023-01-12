@@ -1,0 +1,14 @@
+@import '/src/styles/settings.scss';
+
+.logo {
+  font-size: calc($base-size * 3);
+  color: $color-light;
+  display: flex;
+  align-items: center;
+  
+  &__dot {
+    font-size: calc($base-size * 1.5);
+    margin: 0 $base-size;
+
+  }
+}

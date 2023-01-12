@@ -3,5 +3,10 @@
 .header {
   display: flex;
   justify-content: space-between;
+  height: 20vh;
   margin: $base-size;
+
+  a {
+    text-decoration: none;
+  }
 }

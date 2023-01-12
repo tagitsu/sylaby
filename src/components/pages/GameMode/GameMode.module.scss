@@ -1,0 +1,25 @@
+@import '/src/styles/settings.scss';
+
+.mode {
+  text-align: center;
+
+  &__btns {
+    display: flex;
+    justify-content: space-around;
+    margin-top: calc($base-size * 4);
+  }
+
+  &__btn {
+    border: 4px solid $color-light;
+    border-radius: $radius;
+    padding: $base-size;
+    text-decoration: none;
+    color: $color-light;
+    font-size: calc($base-size * 3);
+    width: 30vw;
+  }
+}
+
+.star {
+  margin: $base-size;
+}
