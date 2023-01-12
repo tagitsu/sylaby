@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
-import { chooseCurrentPlayer } from '../../features/player/playerSlice';
+import { chooseCurrentPlayer } from '../../../redux/player/playerSlice';
 
 const PlayerProfile = () => {
   const dispatch = useDispatch();

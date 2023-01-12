@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import styles from '../Home/Home.module.scss';
-import { chooseCurrentPlayer } from '../../features/player/playerSlice';
+import { chooseCurrentPlayer } from '../../../redux/player/playerSlice';
 
 
 const Home = () => {

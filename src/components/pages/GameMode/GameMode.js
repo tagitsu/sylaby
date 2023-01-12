@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { chooseCurrentPlayer } from '../../features/player/playerSlice';
+import { chooseCurrentPlayer } from '../../../redux/player/playerSlice';
 import styles from './GameMode.module.scss';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
