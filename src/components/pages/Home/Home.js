@@ -9,14 +9,11 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const players = useSelector(state => state.player.players);
-  const currentPlayer = useSelector(state => state.player.currentPlayer);
   
   const choosePlayer = (e, id) => {
     e.preventDefault();
     dispatch(chooseCurrentPlayer(id));
-    console.log(`wybieram garcza nr ${id}`);
   };
-  console.log('current player', currentPlayer);
 
 
   return(
@@ -39,7 +36,6 @@ const Home = () => {
       <Link 
         to={`/player/${player.id}/game`} 
         className={styles.list__btn} 
-        onClick={(e) => choosePlayer(e, player.id)}
         >
         Zacznij grę
       </Link>

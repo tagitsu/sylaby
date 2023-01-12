@@ -18,8 +18,6 @@ const PlayerProfile = () => {
 
   dispatch(chooseCurrentPlayer(choosenPlayer.id));
 
-  console.log('player profile - current player', all, levels, players);
-
   return(
     <div>
       {player.map(player => 
@@ -33,7 +31,7 @@ const PlayerProfile = () => {
           <ProgressBar xp={player.xp} levelUp={levelUp} /> {player.xp}/{levelUp}
         </div>
         <div>Odznaki: 
-          <div>{player.badges.map( badge => <FontAwesomeIcon icon={badge} />)}</div>
+          <div>{player.badges.map( badge => <FontAwesomeIcon key={badge} icon={badge} />)}</div>
         </div>
       </div>
       )}

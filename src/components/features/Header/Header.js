@@ -1,5 +1,5 @@
 import Logo from "../../views/Logo/Logo";
-import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
+import CurrentPlayer from "../CurrentPlayer/CurrentPlayer";
 import styles from '../Header/Header.module.scss';
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
   return(
     <div className={styles.header}>
       <Logo />
-      <PlayerIcon />
+      <CurrentPlayer />
     </div>
   );
 };
