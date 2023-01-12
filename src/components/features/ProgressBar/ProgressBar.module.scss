@@ -5,12 +5,16 @@
 }
 
 .prog {
-  background-color: aqua;
+  background-color: $color-light;
   height: calc($base-size * 2);
   width: calc($base-size * 20);
+  border-radius: $radius;
 
   &__bar {
     width: var(--player-xp);
-    background-color: blue;
+    height: calc($base-size * 2);
+    background-color: $color-success;
+    border-radius: $radius;
+
   }
 }

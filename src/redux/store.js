@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import playersReducer from "../components/features/players/playersSlice";
+import playerReducer from "../components/features/player/playerSlice";
 import levelsReducer from '../components/features/levels/levelsSlice';
 
 const store = configureStore({
   reducer: {
-    players: playersReducer,
+    player: playerReducer,
     levels: levelsReducer
   }
 });

@@ -1,23 +1,24 @@
 import { useParams } from "react-router";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
+import { chooseCurrentPlayer } from '../../features/player/playerSlice';
 
 const PlayerProfile = () => {
+  const dispatch = useDispatch();
   const choosenPlayer = useParams();
-  console.log('Player profile - param id', choosenPlayer.id);
-  const { players } = useSelector(state => state.players);
+  const all = useSelector(state => state);
+  const { players } = useSelector(state => state.player);
   const { levels } = useSelector(state => state.levels);
-  console.log('player profile - players', players);
   const player = players.filter( player => player.id === choosenPlayer.id)
-  console.log('Player Profile - player lvl', player[0].level);
-  console.log('PlPro - levels', levels);
   const playerLevel = levels.filter( level => player[0].level === level.value);
-  console.log('players level', playerLevel);
-  console.log('lvlUp', playerLevel[0].xpToLvlUp);
   const levelUp = playerLevel[0].xpToLvlUp;
+
+  dispatch(chooseCurrentPlayer(choosenPlayer.id));
+
+  console.log('player profile - current player', all, levels, players);
 
   return(
     <div>
