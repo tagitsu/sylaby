@@ -23,11 +23,26 @@ const Home = () => {
   <>
     {players.map( player => 
     <div key={player.id} className={styles.list}>
-      <PlayerIcon icon={player.icon} name={player.name} />
-      <p>{player.name}</p>
-      <p>LVL: {player.level}</p>
-      <Link to={`/player/${player.id}`} >Karta postaci</Link>
-      <Link to={`/player/${player.id}/game`} onClick={(e) => choosePlayer(e, player.id)}>Zacznij grę</Link>
+      <div className={styles.list__icon}>
+        <PlayerIcon icon={player.icon} name={player.name} />
+        <div className={styles.list__level} >
+          <p className={styles.list__levelValue}>{player.level}</p>
+        </div>
+      </div>
+      <p className={styles.list__name} >{player.name}</p>
+      <Link 
+        to={`/player/${player.id}`} 
+        className={styles.list__btn} 
+        >
+        Karta postaci
+      </Link>
+      <Link 
+        to={`/player/${player.id}/game`} 
+        className={styles.list__btn} 
+        onClick={(e) => choosePlayer(e, player.id)}
+        >
+        Zacznij grę
+      </Link>
     </div>)}
   </>
 

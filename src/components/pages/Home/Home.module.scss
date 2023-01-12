@@ -1,6 +1,50 @@
 @import '/src/styles/settings.scss';
 
+
+:root {
+  --player-color: #FFC312;
+}
+
 .list {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: calc($base-size * 2) $base-size;
+  font-size: calc($base-size * 2.2);
+
+  &__icon {
+    display: flex;
+    position: relative;
+  }
+
+  &__name {
+
+  }
+
+  &__level {
+    width: calc($base-size * 5);
+    height: calc($base-size * 5);
+    position: absolute;
+    bottom: 0;
+    right: -18%;
+  }
+
+  &__levelValue {
+    background: var(--player-color);
+    width: 100%;
+    height: 100%;
+    border: 10px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn {
+    border: 4px solid $color-light;
+    border-radius: $radius;
+    padding: $base-size;
+    text-decoration: none;
+    color: $color-light;
+  }
 }

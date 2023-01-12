@@ -1,5 +1,3 @@
-import CurrentPlayer from './components/features/CurrentPlayer/CurrentPlayer';
-import Logo from './components/views/Logo/Logo';
 import Home from './components/pages/Home/Home';
 import { Routes, Route } from 'react-router-dom';
 import PlayerProfile from './components/pages/PlayerProfile/PlayerProfile';
@@ -7,14 +5,12 @@ import GameMode from './components/pages/GameMode/GameMode';
 import GameEasy from './components/pages/GameEasy/GameEasy';
 import GameHard from './components/pages/GameHard/GameHard';
 import NonFound from './components/pages/NonFound/NonFound';
+import Header from './components/features/Header/Header';
 
 const App = () => {
   return (
-    <>
-      <header>
-        <Logo />
-        <CurrentPlayer />
-      </header>
+    <div>
+      <Header />
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -25,8 +21,7 @@ const App = () => {
           <Route path='*' element={<NonFound />} />
         </Routes>
       </main>
-      
-    </>
+    </div>
   );
 };
 

@@ -1,8 +1,11 @@
+import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 
 
 const CurrentPlayer = () => {
   return(
-    <div>current player icon, name and level</div>
+    <div>
+      <PlayerIcon />
+    </div>
 
   )
 };
