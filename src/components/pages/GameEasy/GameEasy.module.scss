@@ -6,13 +6,17 @@
   align-items: center;
 
   &__board{
-    display: grid;
+    display: flex;
     justify-items: center;
     align-items: center;
-    grid-template-columns: 20vw auto 20vw;
+    transition: all .2s ease-in-out;
+  }
+
+  &__task {
+    display: flex;
+    justify-content: space-between;
   }
   
-
   &__syllable, &__word, &__btn {
     border: 4px solid $color-light;
     border-radius: $radius;
@@ -24,12 +28,17 @@
     height: 7vw;
     text-align: center;
     margin: $base-size;
+    background-color: transparent;
   }
 
   &__word{
     width: 30vw;
-    grid-column-start: 2;
-    grid-column-end: 3;
+    
+  }
+
+  &__check {
+    position: absolute;
+    clip: rect(0,0,0,0);
   }
 
   &__btn {
@@ -39,11 +48,12 @@
 }
 
 .first {
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 .last {
-  grid-column-start: 3;
-  grid-column-end: 4;
+  cursor: pointer;
+}
+
+.checked {
+  background-color: $color-success;
 }

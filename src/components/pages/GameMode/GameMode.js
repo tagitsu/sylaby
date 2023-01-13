@@ -18,14 +18,14 @@ const  GameMode = () => {
       <h1 className={styles.mode__title}>Wybierz poziom trudności</h1>
       <div className={styles.mode__btns}>
         <Link 
-          to='/player/:id/game/easy' 
+          to={`/player/${player.id}/game/easy`} 
           className={clsx(styles.mode__btn, styles.mode__btnEasy)}
           >
           <p>łatwy</p>
           <FontAwesomeIcon className={styles.star} icon={faStar} />
         </Link>
         <Link 
-          to='/player/:id/game/hard' 
+          to={`/player/${player.id}/game/hard`} 
           className={clsx(styles.mode__btn, styles.mode__btnHard)}
           >
           <p>trudny</p>
