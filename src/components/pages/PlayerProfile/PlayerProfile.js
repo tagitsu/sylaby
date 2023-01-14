@@ -18,16 +18,9 @@ const PlayerProfile = () => {
   const xpToLevelUp = playerLevelObj.xpToLvlUp;
 
   dispatch(chooseCurrentPlayer(choosenPlayer.id));
-  console.log('xp gracza', playerXp);
   if(playerXp >= xpToLevelUp) {
-    console.log('xp wieksze niż level up');
     dispatch(levelUp(xpToLevelUp));
   }
-  
-
-  console.log('level gracza', playerLevel);
-  console.log('player', player);
-  console.log('xp i level up', player[0].xp, xpToLevelUp);
 
   return(
     <div>

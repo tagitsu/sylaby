@@ -11,7 +11,7 @@ const initialState = {
       level: 1,
       title: "",
       badges: [faFaceSmile],
-      xp: 4,
+      xp: 156,
       isCurrent: false
     },
     {
