@@ -12,9 +12,6 @@ const GameEasy = () => {
   const player = useParams();
   dispatch(chooseCurrentPlayer(player.id));
 
-  const players = useSelector(state => state.player.players);
-  console.log('gracze', players);
-
   const { syllables } = useSelector(state => state.syllables);
 
   const [ randomFirstSyllable, setRandomFirstSyllable ] = useState('');
@@ -29,7 +26,6 @@ const GameEasy = () => {
     const [ randomSyllableObj ] = syllables.filter( syllable => syllable.id == randomSyllableId);
     if(randomSyllableObj.words.length > 0) {
       setRandomFirstSyllable(randomSyllableObj.name);
-      console.log('słowa wylosowanej sylaby', randomSyllableObj.words);
       setFirstSyllableWords(randomSyllableObj.words);
       const wordIndex = Math.floor(Math.random() * randomSyllableObj.words.length);
       const word = randomSyllableObj.words[wordIndex];
@@ -47,8 +43,6 @@ const GameEasy = () => {
   }
 
   const createAnswer = (e) => {
-    console.log('wybór gracza', e.target);
-    console.log('czy checkbox jest wybrany', e.target.checked);
     if(e.target.checked) {
       setAnswers( answers => [...answers, `${randomFirstSyllable}${e.target.value}`]);
     } else {
@@ -59,8 +53,6 @@ const GameEasy = () => {
 
   const submitSolution = (e) => {
     e.preventDefault();
-    console.log('tablica słów sylaby-1', firstSyllableWords);
-    console.log('tablica odpowiedzi gracza', answers);
     answers.map( answer => {if(firstSyllableWords.indexOf(answer) >= 0) {dispatch(addPoints(1))}})
   }
 
@@ -81,7 +73,6 @@ const GameEasy = () => {
               onChange={(e) => createAnswer(e)}
               >
               </input>
-              
               <label 
               htmlFor={lastSyllable} 
               className={clsx(styles.easy__syllable, styles.last)} 
@@ -98,7 +89,6 @@ const GameEasy = () => {
           </button>
         </form>
       </div>
-
     </div>
   );
 };

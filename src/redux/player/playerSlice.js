@@ -37,11 +37,13 @@ export const playerSlice = createSlice({
       state.currentPlayer = action.payload
     },
     addPoints: (state, action) => {
-        state.players.map( player => {if(player.id === state.currentPlayer) player.xp =+ action.payload} )
-      }
+      state.players.map( player => {if(player.id === state.currentPlayer) {player.xp =+ action.payload + player.xp}} )
+    },
+    levelUp: (state) => {
+      state.players.map( player => {if(player.id === state.currentPlayer) {player.level++}} )
     }
   }
-);
-export const { chooseCurrentPlayer, addPoints } = playerSlice.actions;
+});
+export const { chooseCurrentPlayer, addPoints, levelUp } = playerSlice.actions;
 
 export default playerSlice.reducer;
