@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './GameEasy.module.scss';
 import clsx from "clsx";
 import { useParams } from 'react-router-dom';
-import { chooseCurrentPlayer } from '../../../redux/player/playerSlice';
+import { chooseCurrentPlayer, addPoints } from '../../../redux/player/playerSlice';
 
 
 const GameEasy = () => {
@@ -12,6 +12,9 @@ const GameEasy = () => {
   const player = useParams();
   dispatch(chooseCurrentPlayer(player.id));
 
+  const players = useSelector(state => state.player.players);
+  console.log('gracze', players);
+
   const { syllables } = useSelector(state => state.syllables);
 
   const [ randomFirstSyllable, setRandomFirstSyllable ] = useState('');
@@ -19,11 +22,7 @@ const GameEasy = () => {
   const [ randomLastSyllables, setRandomLastSyllables ] = useState([]);
   const [ word, setWord ] = useState('');
   const [ answers, setAnswers ] = useState([]);
-  const [ solution, setSolution ] = useState([]);
-
-
   const [ drawButtonText, setDrawButtonText ] = useState('Losuj sylabę');
-
 
   const getRandomSyllable = () => {
     const randomSyllableId = Math.floor(Math.random() * syllables.length);
@@ -47,7 +46,6 @@ const GameEasy = () => {
     // [TODO] blokuj przycisk
   }
 
-
   const createAnswer = (e) => {
     console.log('wybór gracza', e.target);
     console.log('czy checkbox jest wybrany', e.target.checked);
@@ -58,19 +56,13 @@ const GameEasy = () => {
       setAnswers( answers.filter( el => el !== uncheckedAnswer));
     }
   };
-  console.log('tablica z odpowiedziami', answers);
-
 
   const submitSolution = (e) => {
     e.preventDefault();
     console.log('tablica słów sylaby-1', firstSyllableWords);
     console.log('tablica odpowiedzi gracza', answers);
-    // TODO dla każdego słowa z tablicy-answers sprawdź czy znajduje się w tablicy-firstSyllableWords
-    answers.map( answer => {(firstSyllableWords.indexOf(answer) >= 0) ? console.log('dobra odpowiedź') : console.log('nieprawidłowa odpoweidź')})
-
+    answers.map( answer => {if(firstSyllableWords.indexOf(answer) >= 0) {dispatch(addPoints(1))}})
   }
-
-
 
   return(
     <div className={styles.easy} >

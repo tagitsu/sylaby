@@ -12,6 +12,7 @@ const initialState = {
       title: "",
       badges: [faFaceSmile],
       xp: 4,
+      isCurrent: false
     },
     {
       id: "2",
@@ -22,6 +23,7 @@ const initialState = {
       title: "",
       badges: [faFaceSmile],
       xp: 0,
+      isCurrent: false
     }
   ],
   currentPlayer: '',
@@ -33,10 +35,13 @@ export const playerSlice = createSlice({
   reducers: {
     chooseCurrentPlayer: (state, action) => {
       state.currentPlayer = action.payload
+    },
+    addPoints: (state, action) => {
+        state.players.map( player => {if(player.id === state.currentPlayer) player.xp =+ action.payload} )
+      }
     }
-
   }
-});
-export const { chooseCurrentPlayer } = playerSlice.actions;
+);
+export const { chooseCurrentPlayer, addPoints } = playerSlice.actions;
 
 export default playerSlice.reducer;
