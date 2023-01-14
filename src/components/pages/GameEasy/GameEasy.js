@@ -65,10 +65,9 @@ const GameEasy = () => {
     e.preventDefault();
     console.log('tablica słów sylaby-1', firstSyllableWords);
     console.log('tablica odpowiedzi gracza', answers);
-    // setRandomFirstSyllable('');
-    // setRandomLastSyllables('');
+    // TODO dla każdego słowa z tablicy-answers sprawdź czy znajduje się w tablicy-firstSyllableWords
+    answers.map( answer => {(firstSyllableWords.indexOf(answer) >= 0) ? console.log('dobra odpowiedź') : console.log('nieprawidłowa odpoweidź')})
 
-    console.log(`moja odpowiedź to ${solution}`);
   }
 
 
