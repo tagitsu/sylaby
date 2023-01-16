@@ -10,7 +10,7 @@ const GameEasy = () => {
   const dispatch = useDispatch();
 
   const player = useParams();
-  dispatch(chooseCurrentPlayer(player.id));
+  //dispatch(chooseCurrentPlayer(player.id));
 
   const { syllables } = useSelector(state => state.syllables);
 

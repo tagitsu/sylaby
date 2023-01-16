@@ -5,11 +5,13 @@ import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import { chooseCurrentPlayer, levelUp } from '../../../redux/player/playerSlice';
+import { Link } from 'react-router-dom';
 
 const PlayerProfile = () => {
   const dispatch = useDispatch();
+
   const choosenPlayer = useParams();
-  const { players } = useSelector(state => state.player);
+  const players = useSelector(state => state.player.players);
   const { levels } = useSelector(state => state.levels);
   const player = players.filter( player => player.id === choosenPlayer.id)
   const [ playerLevelObj ] = levels.filter( level => player[0].level === level.value);
@@ -19,7 +21,7 @@ const PlayerProfile = () => {
 
   dispatch(chooseCurrentPlayer(choosenPlayer.id));
   if(playerXp >= xpToLevelUp) {
-    dispatch(levelUp(xpToLevelUp));
+    dispatch(levelUp());
   }
 
   return(
@@ -39,6 +41,10 @@ const PlayerProfile = () => {
         </div>
       </div>
       )}
+      <button>
+        <Link to={`/player/${player.id}/game`} className={styles.list__btn} >Zacznij grę</Link>
+      </button>
+
     </div>
     
   );

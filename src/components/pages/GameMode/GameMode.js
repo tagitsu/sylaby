@@ -8,10 +8,10 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 
 
 const  GameMode = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const player = useParams();
-  dispatch(chooseCurrentPlayer(player.id));
+  // dispatch(chooseCurrentPlayer(player.id));
 
   return(
     <div className={styles.mode}>
