@@ -9,18 +9,15 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const players = useSelector(state => state.player.players);
-  console.log('home - players', players);
   
   const choosePlayer = (e, id) => {
     e.preventDefault();
     dispatch(chooseCurrentPlayer(id));
   };
 
-
   return(
   <>
     {players.map( player => 
-    
     <div key={player.id} className={styles.list}>
       <div className={styles.list__icon}>
         <PlayerIcon icon={player.icon} name={player.name} />
@@ -29,11 +26,11 @@ const Home = () => {
         </div>
       </div>
       <p className={styles.list__name} >{player.name}</p>
-      <button onClick={(e) => choosePlayer(e, player.id)}>
-        <Link to={`/player/${player.id}`} className={styles.list__btn} >Karta postaci</Link>
+      <button className={styles.list__btn} onClick={(e) => choosePlayer(e, player.id)}>
+        <Link to={`/player/${player.id}`}>Karta postaci</Link>
       </button>
-      <button onClick={(e) => choosePlayer(e, player.id)}>
-        <Link to={`/player/${player.id}/game`} className={styles.list__btn} >Zacznij grę</Link>
+      <button className={styles.list__btn} onClick={(e) => choosePlayer(e, player.id)}>
+        <Link to={`/player/${player.id}/game`}>Zacznij grę</Link>
       </button>
     </div>)}
   </>

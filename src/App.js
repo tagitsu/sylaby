@@ -5,7 +5,7 @@ import GameMode from './components/pages/GameMode/GameMode';
 import GameEasy from './components/pages/GameEasy/GameEasy';
 import GameHard from './components/pages/GameHard/GameHard';
 import NonFound from './components/pages/NonFound/NonFound';
-import Header from './components/features/Header/Header';
+import Header from './components/views/Header/Header';
 
 const App = () => {
   return (

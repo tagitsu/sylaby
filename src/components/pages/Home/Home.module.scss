@@ -40,7 +40,11 @@
     border: 4px solid $color-light;
     border-radius: $radius;
     padding: $base-size;
-    text-decoration: none;
-    color: $color-light;
+    background-color: transparent;
+
+    & a {
+      text-decoration: none;
+      color: $color-light;
+    }
   }
 }

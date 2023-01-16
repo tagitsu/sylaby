@@ -10,7 +10,7 @@ const initialState = {
       color: "yellow",
       level: 1,
       title: "",
-      badges: [faFaceSmile],
+      badges: [],
       xp: 8,
       isCurrent: false
     },
@@ -21,7 +21,7 @@ const initialState = {
       color: "green",
       level: 1,
       title: "",
-      badges: [faFaceSmile],
+      badges: [],
       xp: 6,
       isCurrent: false
     }
@@ -39,8 +39,13 @@ export const playerSlice = createSlice({
     addPoints: (state, action) => {
       state.players.map( player => {if(player.id === state.currentPlayer) {player.xp =+ action.payload + player.xp}} )
     },
-    levelUp: (state) => {
-      state.players.map( player => {if(player.id === state.currentPlayer) {player.level++}} )
+    levelUp: (state, action) => {
+      state.players.map( player => 
+        {if(player.id === state.currentPlayer) {
+          player.level++;
+          player.badges.push(action.payload)
+        }
+      } )
     }
   }
 });

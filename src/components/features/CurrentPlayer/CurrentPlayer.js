@@ -1,17 +1,18 @@
-import { useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import styles from '../CurrentPlayer/CurrentPlayer.module.scss';
+import { Link } from 'react-router-dom';
+import { levelUp } from '../../../redux/player/playerSlice';
 
 const CurrentPlayer = () => {
+  const dispatch = useDispatch();
+
   const levels = useSelector(state => state.levels.levels);
   const players = useSelector(state => state.player.players);
-  console.log('players and levels', players, levels);
   const currentPlayerID = useSelector(state => state.player.currentPlayer);
-  console.log('selector current player ID', currentPlayerID);
   const [ activePlayer ] = players.filter(player => player.id === currentPlayerID);
-  console.log('active player', activePlayer);
+
 
   if(!activePlayer) {
     return(
@@ -19,11 +20,24 @@ const CurrentPlayer = () => {
     );
   } else {
     const [ currentLevel ] = levels.filter(levelItem => levelItem.value === activePlayer.level);
-    console.log('current level of active player', currentLevel);
+
+    console.log('odznaka', currentLevel.badge);
+    console.log('current level maxXP', currentLevel.xpToLvlUp);
+    console.log('player xp', activePlayer.xp);
+    console.log('player level', currentLevel.value);
+
+    if(activePlayer.xp >= currentLevel.xpToLvlUp) {
+      console.log('gracz uzyskał następny level');
+      dispatch(levelUp(currentLevel.badge)); // dodaje +1 do wartości level aktywnego gracza
+    }
   
+  
+
     return(
     <div className={styles.current}>
-      <PlayerIcon className={styles.current__item} icon={activePlayer.icon} name={activePlayer.name} />
+      <Link to={`/player/${activePlayer.id}`}>
+        <PlayerIcon className={styles.current__item} icon={activePlayer.icon} name={activePlayer.name} />
+      </Link>
       <div className={styles.current__xpBar}>
         <ProgressBar className={styles.current__item} xp={activePlayer.xp} levelUp={currentLevel.xpToLvlUp} />
         <p className={styles.current__item} >{activePlayer.xp}/{currentLevel.xpToLvlUp}</p>

@@ -3,16 +3,14 @@ import { useState } from 'react';
 import styles from './GameEasy.module.scss';
 import clsx from "clsx";
 import { useParams } from 'react-router-dom';
-import { chooseCurrentPlayer, addPoints } from '../../../redux/player/playerSlice';
+import { addPoints } from '../../../redux/player/playerSlice';
 
 
 const GameEasy = () => {
   const dispatch = useDispatch();
 
   const player = useParams();
-  //dispatch(chooseCurrentPlayer(player.id));
-
-  const { syllables } = useSelector(state => state.syllables);
+  const syllables = useSelector(state => state.syllables.syllables);
 
   const [ randomFirstSyllable, setRandomFirstSyllable ] = useState('');
   const [ firstSyllableWords ,setFirstSyllableWords ] = useState([]);
@@ -53,8 +51,12 @@ const GameEasy = () => {
 
   const submitSolution = (e) => {
     e.preventDefault();
-    answers.map( answer => {if(firstSyllableWords.indexOf(answer) >= 0) {dispatch(addPoints(1))}})
-  }
+    answers.map( answer => {
+      if(firstSyllableWords.indexOf(answer) >= 0) {
+        dispatch(addPoints(1))
+      }
+    })
+  };
 
   return(
     <div className={styles.easy} >
