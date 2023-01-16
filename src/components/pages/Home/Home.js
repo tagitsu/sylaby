@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import styles from '../Home/Home.module.scss';
 import { chooseCurrentPlayer } from '../../../redux/player/playerSlice';
+import AddPlayerForm from '../../features/AddPlayerForm/AddPlayerForm';
 
 
 const Home = () => {
@@ -33,9 +34,10 @@ const Home = () => {
         <Link to={`/player/${player.id}/game`}>Zacznij grę</Link>
       </button>
     </div>)}
+    <AddPlayerForm />
   </>
 
-  )
+  );
 };
 
 export default Home;

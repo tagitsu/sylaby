@@ -1,0 +1,22 @@
+@import '/src/styles/settings.scss';
+
+:root {
+  --radio-color: #FFC312;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    height: calc($base-size * 4);
+  }
+
+  &__color {
+    height: calc($base-size * 4);
+    width: calc($base-size * 4);
+    border-radius: 50%;
+    background-color: var(--radio-color);
+  }
+}

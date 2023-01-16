@@ -6,6 +6,7 @@ import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import { levelUp } from '../../../redux/player/playerSlice';
 import { Link } from 'react-router-dom';
+import Button from '../../common/Button/Button';
 
 const PlayerProfile = () => {
   const dispatch = useDispatch();
@@ -19,14 +20,11 @@ const PlayerProfile = () => {
   const playerXp = player.xp;
   const xpToLevelUp = playerLevelObj.xpToLvlUp;
 
-  console.log('odznaka', playerLevelObj.badge);
+  const startGameLink = <Link to={`/player/${player.id}/game`} className={styles.list__btn}>Zacznij grę</Link>
   
-  // if(playerXp >= xpToLevelUp) {
-  //   dispatch(levelUp()); // dodaje +1 do wartości level aktywnego gracza
-  // }
 
+  
   return(
-    <div> 
       <div key={player.id} className={styles.profile}>
         <PlayerIcon icon={player.icon} name={player.name} />
         <div>Imię gracza:
@@ -36,15 +34,11 @@ const PlayerProfile = () => {
           <p>{player.level}</p>
           <ProgressBar xp={player.xp} levelUp={xpToLevelUp} /> {player.xp}/{xpToLevelUp}
         </div>
-        <div>Odznaki: 
-          <div>{player.badges.map( badge => <FontAwesomeIcon key={badge.iconName} icon={badge} />)}</div>
+        <div className={styles.profile__badges}>Odznaki: 
+          <div className={styles.profile__badge}>{player.badges.map( badge => <FontAwesomeIcon key={badge.iconName} icon={badge} />)}</div>
         </div>
+        <Button content={startGameLink} />
       </div>
-      <button>
-        <Link to={`/player/${player.id}/game`} className={styles.list__btn} >Zacznij grę</Link>
-      </button>
-    </div>
-    
   );
 };
 

@@ -21,7 +21,7 @@ const CurrentPlayer = () => {
   } else {
     const [ currentLevel ] = levels.filter(levelItem => levelItem.value === activePlayer.level);
 
-    console.log('odznaka', currentLevel.badge);
+    console.log('current level badge', currentLevel.badge);
     console.log('current level maxXP', currentLevel.xpToLvlUp);
     console.log('player xp', activePlayer.xp);
     console.log('player level', currentLevel.value);
@@ -31,8 +31,6 @@ const CurrentPlayer = () => {
       dispatch(levelUp(currentLevel.badge)); // dodaje +1 do wartości level aktywnego gracza
     }
   
-  
-
     return(
     <div className={styles.current}>
       <Link to={`/player/${activePlayer.id}`}>
