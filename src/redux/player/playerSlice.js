@@ -45,10 +45,14 @@ export const playerSlice = createSlice({
           player.level++;
           player.badges.push(action.payload)
         }
-      } )
+      })
+    },
+    addNewPlayer: (state, action) => {
+      console.log('reducer - dodaje nowego gracza');
+      state.players.push(action.payload);
     }
   }
 });
-export const { chooseCurrentPlayer, addPoints, levelUp } = playerSlice.actions;
+export const { chooseCurrentPlayer, addPoints, levelUp, addNewPlayer } = playerSlice.actions;
 
 export default playerSlice.reducer;

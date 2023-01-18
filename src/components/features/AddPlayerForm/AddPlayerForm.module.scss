@@ -1,22 +1,46 @@
 @import '/src/styles/settings.scss';
 
 :root {
-  --radio-color: #FFC312;
+  --player-color: #FFC312;
 }
 
 
 .form {
   display: flex;
   flex-direction: column;
+  border: 5px solid $color-light;
+  border-radius: $radius;
+  margin: calc($base-size * 2) calc($base-size * 8);
+
+
+  &__section {
+    display: flex;
+    border: 2px solid $color-light;
+    border-radius: $radius;
+    background-color: transparent;
+    color: $color-light;
+    margin: calc($base-size * 2) calc($base-size * 8);
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    color: $color-light;
+
+  }
 
   &__image {
     height: calc($base-size * 4);
   }
 
-  &__color {
-    height: calc($base-size * 4);
-    width: calc($base-size * 4);
-    border-radius: 50%;
-    background-color: var(--radio-color);
+  &__btn {
+    background-color: transparent;
+    border: none;
+    color: $color-light;
+
+    &--add {
+      font-size: calc($base-size * 5);
+    }
   }
+
 }

@@ -11,6 +11,7 @@ const Home = () => {
 
   const players = useSelector(state => state.player.players);
   
+  
   const choosePlayer = (e, id) => {
     e.preventDefault();
     dispatch(chooseCurrentPlayer(id));
@@ -19,21 +20,22 @@ const Home = () => {
   return(
   <>
     {players.map( player => 
-    <div key={player.id} className={styles.list}>
-      <div className={styles.list__icon}>
-        <PlayerIcon icon={player.icon} name={player.name} />
-        <div className={styles.list__level} >
-          <p className={styles.list__levelValue}>{player.level}</p>
+      <div key={player.id} className={styles.list}>
+        <div className={styles.list__icon}>
+          <PlayerIcon id={player.id} icon={player.icon} name={player.name} color={player.color} />
+          <div className={styles.list__level} >
+            <p className={styles.list__levelValue}>{player.level}</p>
+          </div>
         </div>
+        <p className={styles.list__name} >{player.name}</p>
+        <button className={styles.list__btn} onClick={(e) => choosePlayer(e, player.id)}>
+          <Link to={`/player/${player.id}`}>Karta postaci</Link>
+        </button>
+        <button className={styles.list__btn} onClick={(e) => choosePlayer(e, player.id)}>
+          <Link to={`/player/${player.id}/game`}>Zacznij grę</Link>
+        </button>
       </div>
-      <p className={styles.list__name} >{player.name}</p>
-      <button className={styles.list__btn} onClick={(e) => choosePlayer(e, player.id)}>
-        <Link to={`/player/${player.id}`}>Karta postaci</Link>
-      </button>
-      <button className={styles.list__btn} onClick={(e) => choosePlayer(e, player.id)}>
-        <Link to={`/player/${player.id}/game`}>Zacznij grę</Link>
-      </button>
-    </div>)}
+    )}
     <AddPlayerForm />
   </>
 

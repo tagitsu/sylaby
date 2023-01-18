@@ -18,15 +18,19 @@ const PlayerProfile = () => {
   const [playerLevelObj] = levels.filter( level => player.level === level.value);
   const playerLevel = playerLevelObj.value;
   const playerXp = player.xp;
+  const playerColor = player.color;
   const xpToLevelUp = playerLevelObj.xpToLvlUp;
-
+  console.log('platery color player profile', playerColor);
   const startGameLink = <Link to={`/player/${player.id}/game`} className={styles.list__btn}>Zacznij grę</Link>
   
+  const root = document.querySelector(':root');
+  root.style.setProperty('--player-color', playerColor);
+
 
   
   return(
       <div key={player.id} className={styles.profile}>
-        <PlayerIcon icon={player.icon} name={player.name} />
+        <PlayerIcon icon={player.icon} name={player.name} color={playerColor} />
         <div>Imię gracza:
           <p>{player.name}</p> 
         </div>

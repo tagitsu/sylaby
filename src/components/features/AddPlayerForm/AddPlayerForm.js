@@ -1,16 +1,44 @@
 import styles from './AddPlayerForm.module.scss';
-import { useSelector } from 'react-redux';
-import Button from '../../common/Button/Button';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { addNewPlayer } from '../../../redux/player/playerSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
 
 const AddPlayerForm = () => {
 
-  const characters = useSelector(state => state.characters.characters);
+  const dispatch = useDispatch();
 
-  const colors = ['#FFC312', '#F79F1F', '#EE5A24'];
+  const [ isActive, setIsActive ] = useState(false);
+
+  const characters = [
+      {
+        id: '1',
+        name: 'Pikachu',
+        icon: 'pikachu.png',
+      },
+      {
+        id: '2',
+        name: 'Curious George',
+        icon: 'curious_george.png',
+      },
+      {
+        id: '3',
+        name: 'Sponge Bob',
+        icon: 'spongebob.png',
+      },
+    ];
+  
+  //const colors = ['#FFC312', '#F79F1F', '#EE5A24'];
 
   console.log('characters', characters);
 
+  const playersAmount = useSelector(state => state.player.players.length);
+  console.log('ilość graczy', playersAmount);
+
+  const newPlayerID = playersAmount + 1;
+  console.log('ID nowego garcza', newPlayerID, typeof newPlayerID);
 
   const [ playerName, setPlayerName ] = useState('');
   const [ playerCharacter, setPlayerCharacter ] = useState('');
@@ -30,18 +58,39 @@ const AddPlayerForm = () => {
     setPlayerColor(e.target.value);
   };
 
+  const newPlayer = {
+    id: `${newPlayerID}`,
+    name: playerName,
+    icon: playerCharacter,
+    color: playerColor,
+    level: 1,
+    title: '',
+    badges: [],
+    xp: 0,
+    isCurrent: false
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Dodaję gracza o imieniu ${playerName}, który wybrał postać ${playerCharacter} i kolor ${playerColor}`);
-
+    dispatch(addNewPlayer(newPlayer));
+    setIsActive(!isActive);
   };
 
-
-  return(
+  if(!isActive) {
+    return(
+      <button className={clsx(styles.form__btn, 'styles.form__btn--add')} onClick={() => setIsActive(!isActive)}>
+        <FontAwesomeIcon icon={faPlusCircle} />
+      </button>
+    );
+  } else {
+      return(
     <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-      <label htmlFor='name'>Wpisz swoje imię</label>
-      <input type='text' id='name' value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
-      <fieldset>
+      <fieldset className={styles.form__section}>
+        <legend>Wpisz swoje imię</legend>
+        <input className={styles.form__input} type='text' id='name' name='playerName' value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
+      </fieldset>
+      <fieldset className={styles.form__section}>
         <legend>Wybierz swoją postać</legend>
         {characters.map(
           character => 
@@ -53,9 +102,10 @@ const AddPlayerForm = () => {
           </div>
         )}
       </fieldset>
-      <fieldset>
+      <fieldset className={styles.form__section}>
         <legend>Wybierz swój kolor</legend>
-          {colors.map(
+          <input className={styles.form__input} type='color' name='playerColor' onChange={(e) => handleChangeColor(e)} ></input>
+          {/* {colors.map(
             color => 
             <div key={color}>
               <label htmlFor={color}>
@@ -63,11 +113,13 @@ const AddPlayerForm = () => {
               </label>
               <input type='radio' id={color} name='color' value={color} onChange={(e) => handleChangeColor(e)} ></input>
             </div>
-          )}
+          )} */}
       </fieldset>
-      <Button content='Dodaj nowego gracza' />
+      <button className={styles.form__btn} >Dodaj nowego gracza</button>
     </form>
   );
+
+  }
 };
 
 export default AddPlayerForm;

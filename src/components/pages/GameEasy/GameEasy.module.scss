@@ -1,5 +1,7 @@
 @import '/src/styles/settings.scss';
-
+* {
+  border: 1px solid;
+}
 .easy {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,8 @@
 
   &__board{
     display: flex;
+    flex-direction: column;
+
     justify-items: center;
     align-items: center;
     transition: all .2s ease-in-out;
@@ -14,10 +18,10 @@
 
   &__task {
     display: flex;
-    justify-content: space-between;
+    display: row;
   }
   
-  &__syllable, &__word, &__btn {
+  &__first, &__btn, &__task {
     border: 4px solid $color-light;
     border-radius: $radius;
     padding: $base-size;
@@ -31,29 +35,15 @@
     background-color: transparent;
   }
 
-  &__word{
-    width: 30vw;
-    
+  &__last {
+    cursor: pointer;
+    display: flex;
   }
-
-  // &__check {
-  //   position: absolute;
-  //   clip: rect(0,0,0,0);
-  // }
 
   &__btn {
     background-color: $color-yellow;
     width: 30vw;
+    cursor: pointer;
+    justify-self: center;
   }
-}
-
-.first {
-}
-
-.last {
-  cursor: pointer;
-}
-
-.checked {
-  background-color: $color-success;
 }
