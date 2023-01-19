@@ -5,6 +5,7 @@ import { addNewPlayer } from '../../../redux/player/playerSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
+import { addPlayerAsync } from '../../../redux/player/playerSlice';
 
 const AddPlayerForm = () => {
 
@@ -32,13 +33,10 @@ const AddPlayerForm = () => {
   
   //const colors = ['#FFC312', '#F79F1F', '#EE5A24'];
 
-  console.log('characters', characters);
 
   const playersAmount = useSelector(state => state.player.players.length);
-  console.log('ilość graczy', playersAmount);
 
   const newPlayerID = playersAmount + 1;
-  console.log('ID nowego garcza', newPlayerID, typeof newPlayerID);
 
   const [ playerName, setPlayerName ] = useState('');
   const [ playerCharacter, setPlayerCharacter ] = useState('');
@@ -49,12 +47,10 @@ const AddPlayerForm = () => {
 
 
   const handleChangeCharacter = (e) => {
-    console.log('zmiana w radio', e.target.value);
     setPlayerCharacter(e.target.value);
   };
 
   const handleChangeColor = (e) => {
-    console.log('zmiana koloru', e.target.value);
     setPlayerColor(e.target.value);
   };
 
@@ -73,7 +69,17 @@ const AddPlayerForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Dodaję gracza o imieniu ${playerName}, który wybrał postać ${playerCharacter} i kolor ${playerColor}`);
-    dispatch(addNewPlayer(newPlayer));
+    dispatch(addPlayerAsync({
+      id: `${newPlayerID}`,
+      name: playerName,
+      icon: playerCharacter,
+      color: playerColor,
+      level: 1,
+      title: '',
+      badges: [],
+      xp: 0,
+      isCurrent: false
+    }));
     setIsActive(!isActive);
   };
 

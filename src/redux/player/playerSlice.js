@@ -1,32 +1,47 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const initialState = {
-  players: [
-    {
-      id: "1",
-      name: "Pikachu",
-      icon: "pikachu.png",
-      color: "yellow",
-      level: 1,
-      title: "",
-      badges: [],
-      xp: 8,
-      isCurrent: false
-    },
-    {
-      id: "2",
-      name: "George",
-      icon: "curious_george.png",
-      color: "green",
-      level: 1,
-      title: "",
-      badges: [],
-      xp: 6,
-      isCurrent: false
+export const getPlayersAsync = createAsyncThunk(
+  'players/getPlayerAsync',
+  async () => {
+    const res = await fetch(' http://localhost:3131/players');
+    if (res.ok) {
+      const players = await res.json();
+      return { players }
     }
-  ],
-  currentPlayer: '',
+  }
+);
+
+export const addPlayerAsync = createAsyncThunk(
+  'players/addPlayerAsync',
+  async (payload) => {
+    const res = await fetch(' http://localhost:3131/players', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: payload.id,
+        name: payload.name,
+        icon: payload.icon,
+        color: payload.color,
+        level: 1,
+        title: payload.title,
+        badges: [],
+        xp: 0,
+        isCurrent: false
+      })
+    });
+
+    if (res.ok) {
+      const player = await res.json();
+      return { player };
+    }
+  }
+);
+
+ const initialState = {
+  players: [],
+  currentPlayer: ''
 };
 
 export const playerSlice = createSlice({
@@ -50,6 +65,14 @@ export const playerSlice = createSlice({
     addNewPlayer: (state, action) => {
       console.log('reducer - dodaje nowego gracza');
       state.players.push(action.payload);
+    }
+  },
+  extraReducers: {
+    [getPlayersAsync.fulfilled]: (state, action) => {
+      return action.payload;
+    },
+    [addPlayerAsync.fulfilled]: (state, action) => {
+      state.push(action.payload);
     }
   }
 });

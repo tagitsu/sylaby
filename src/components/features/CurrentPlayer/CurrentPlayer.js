@@ -9,9 +9,12 @@ const CurrentPlayer = () => {
   const dispatch = useDispatch();
 
   const levels = useSelector(state => state.levels.levels);
-  const players = useSelector(state => state.player.players);
+  const { players } = useSelector(state => state.player);
   const currentPlayerID = useSelector(state => state.player.currentPlayer);
   const [ activePlayer ] = players.filter(player => player.id === currentPlayerID);
+  console.log('current - players', players);
+  console.log('current - current player ID', currentPlayerID, typeof currentPlayerID);
+  console.log('current - active player', activePlayer);
 
 
   if(!activePlayer) {
@@ -21,13 +24,7 @@ const CurrentPlayer = () => {
   } else {
     const [ currentLevel ] = levels.filter(levelItem => levelItem.value === activePlayer.level);
 
-    console.log('current level badge', currentLevel.badge);
-    console.log('current level maxXP', currentLevel.xpToLvlUp);
-    console.log('player xp', activePlayer.xp);
-    console.log('player level', currentLevel.value);
-
     if(activePlayer.xp >= currentLevel.xpToLvlUp) {
-      console.log('gracz uzyskał następny level');
       dispatch(levelUp(currentLevel.badge)); // dodaje +1 do wartości level aktywnego gracza
     }
   

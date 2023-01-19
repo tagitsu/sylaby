@@ -4,18 +4,24 @@ import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import styles from '../Home/Home.module.scss';
 import { chooseCurrentPlayer } from '../../../redux/player/playerSlice';
 import AddPlayerForm from '../../features/AddPlayerForm/AddPlayerForm';
-
+import { getPlayersAsync } from '../../../redux/player/playerSlice';
+import { useEffect } from 'react';
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const players = useSelector(state => state.player.players);
   
+  useEffect(() => {
+    dispatch(getPlayersAsync());
+  }, [dispatch]);
   
   const choosePlayer = (e, id) => {
     e.preventDefault();
     dispatch(chooseCurrentPlayer(id));
   };
+
+  const {players} = useSelector(state => state.player);
+  console.log('home players', players);
 
   return(
   <>
