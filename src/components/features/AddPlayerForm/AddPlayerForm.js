@@ -29,6 +29,26 @@ const AddPlayerForm = () => {
         name: 'Sponge Bob',
         icon: 'spongebob.png',
       },
+      {
+        id: '4',
+        name: 'Elsa',
+        icon: 'elsa.png',
+      },
+      {
+        id: '5',
+        name: 'George the Pig',
+        icon: 'george_pig.png',
+      },
+      {
+        id: '6',
+        name: 'C3PO and R2D2',
+        icon: 'r2d2_c3po.png',
+      },
+      {
+        id: '7',
+        name: '341B',
+        icon: 'storybots.png',
+      },
     ];
   
   //const colors = ['#FFC312', '#F79F1F', '#EE5A24'];

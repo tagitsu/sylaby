@@ -30,6 +30,17 @@
       "badges": [],
       "xp": 0,
       "isCurrent": false
+    },
+    {
+      "id": "4",
+      "name": "Elsa",
+      "icon": "elsa.png",
+      "color": "#ddc2ff",
+      "level": 1,
+      "title": "",
+      "badges": [],
+      "xp": 0,
+      "isCurrent": false
     }
   ],
   "syllables": [

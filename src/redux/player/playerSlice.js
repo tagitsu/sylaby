@@ -39,6 +39,11 @@ export const addPlayerAsync = createAsyncThunk(
   }
 );
 
+// TODO - usuwanie gracza
+// TODO - dodawanie punktów xp (zmiana w obiekcie gracza)
+// TODO - levelownie (zmiana w obiekcie gracza)
+
+
  const initialState = {
   players: [],
   currentPlayer: ''
@@ -62,10 +67,10 @@ export const playerSlice = createSlice({
         }
       })
     },
-    addNewPlayer: (state, action) => {
-      console.log('reducer - dodaje nowego gracza');
-      state.players.push(action.payload);
-    }
+    // addNewPlayer: (state, action) => {
+    //   console.log('reducer - dodaje nowego gracza');
+    //   state.players.push(action.payload);
+    // }
   },
   extraReducers: {
     [getPlayersAsync.fulfilled]: (state, action) => {
