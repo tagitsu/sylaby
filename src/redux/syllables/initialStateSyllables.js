@@ -1,1070 +1,1072 @@
-const initialState = { 
-  syllables: [
-    {
-      id: "1",
-      name: "ba",
-      words: [
-        "baba", "baby", "bada", "baja", "baje", "bawi", "baza"
-      ]
-    },
-    {
-      id: "2",
-      name: "be",
-      words: [
-        "beka", "beki", "beza", "bezy"
-      ]
-    },
-    {
-      id: "3",
-      name: "bi",
-      words: [
-        "bije", "bila", "bile"
-      ]
-    },
-    {
-      id: "4",
-      name: "bo",
-      words: [
-        "boja", "boje",   "boki",  "boli", "bolą", "bory", "bosa", "bose",  "boso",   "boty", "boża", "boży"
-      ]
-    },
-    {
-      id: "5",
-      name: "bu",
-      words: [
-        "buda", "budy",   "buja", "bura", "bure", "bury",   "buła", "buły"
-      ]
-    },
-    {
-      id: "6",
-      name: "by",
-      words: [
-        "byki",  "była", "były"
-      ]
-    },
-    {
-      id: "7",
-      name: "bą",
-      words: [
-        "bąki"
-      ]
-    },
-    {
-      id: "8",
-      name: "bę",
-      words: [
-        "będą", "będę"
-      ]
-    },
-    {
-      id: "9",
-      name: "ca",
-      words: [
-        "cała", "całe",  "cały"
-      ]
-    },
-    {
-      id: "10",
-      name: "ce",
-      words: [
-        "cela", "cele",   "cena", "ceny",   "cera"
-      ]
-    },
-    {
-      id: "11",
-      name: "ci",
-      words: [
-        "cisy"
-      ]
-    },
-    {
-      id: "12",
-      name: "co",
-      words: [
-        "cofa"
-      ]
-    },
-    {
-      id: "13",
-      name: "cu",
-      words: [
-        "cuda",   "cuma",   "cumy"
-      ]
-    },
-    {
-      id: "14",
-      name: "cy",
-      words: [
-        "cyka"
-      ]
-    },
-    {
-      id: "15",
-      name: "cą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "16",
-      name: "cę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "17",
-      name: "da",
-      words: [
-        "daje",   "dama", "damy",   "dane", "dary", "data", "daty"
-      ]
-    },
-    {
-      id: "18",
-      name: "de",
-      words: [
-        
-      ]
-    },
-    {
-      id: "19",
-      name: "di",
-      words: [
-        
-      ]
-    },
-    {
-      id: "20",
-      name: "do",
-      words: [
-        "doba", "doby",     "doki",  "domy",  "doły"
-      ]
-    },
-    {
-      id: "21",
-      name: "du",
-      words: [
-        "duma",  "duża", "duże", "dużo", "duży"
-      ]
-    },
-    {
-      id: "22",
-      name: "dy",
-      words: [
-        
-      ]
-    },
-    {
-      id: "23",
-      name: "dą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "24",
-      name: "dę",
-      words: [
-        "dęby", "dęty"
-      ]
-    },
-    {
-      id: "25",
-      name: "fa",
-      words: [
-        "fala", "fale"
-      ]
-    },
-    {
-      id: "26",
-      name: "fe",
-      words: [
-        "feta"
-      ]
-    },
-    {
-      id: "27",
-      name: "fi",
-      words: [
-        "figa", "figi",   "fika"
-      ]
-    },
-    {
-      id: "28",
-      name: "fo",
-      words: [
-        "foka", "foki",   "fosa", "fosy"
-      ]
-    },
-    {
-      id: "29",
-      name: "fu",
-      words: [
-        "fura", "fury"
-      ]
-    },
-    {
-      id: "30",
-      name: "fy",
-      words: [
-        
-      ]
-    },
-    {
-      id: "31",
-      name: "fą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "32",
-      name: "fę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "33",
-      name: "ga",
-      words: [
-        "gafa", "gafy",      "gama",  "gapa", "gapy",  "gary"
-      ]
-    },
-    {
-      id: "34",
-      name: "ge",
-      words: [
-        
-      ]
-    },
-    {
-      id: "35",
-      name: "gi",
-      words: [
-        "gile"
-      ]
-    },
-    {
-      id: "36",
-      name: "go",
-      words: [
-        "goła", "goły"
-      ]
-    },
-    {
-      id: "37",
-      name: "gu",
-      words: [
-        "guma", "gumy",    "guzy"
-      ]
-    },
-    {
-      id: "38",
-      name: "gy",
-      words: [
-        
-      ]
-    },
-    {
-      id: "39",
-      name: "gą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "40",
-      name: "gę",
-      words: [
-        "gęba", "gęby",   "gęga"
-      ]
-    },
-    {
-      id: "41",
-      name: "ha",
-      words: [
-        "haki", "hala", "hale",   "hasa"
-      ]
-    },
-    {
-      id: "42",
-      name: "he",
-      words: [
-        
-      ]
-    },
-    {
-      id: "43",
-      name: "hi",
-      words: [
-        "hity"
-      ]
-    },
-    {
-      id: "44",
-      name: "ho",
-      words: [
-        
-      ]
-    },
-    {
-      id: "45",
-      name: "hu",
-      words: [
-        "huba", "huby",  "huki", "hula"
-      ]
-    },
-    {
-      id: "46",
-      name: "hy",
-      words: [
-        
-      ]
-    },
-    {
-      id: "47",
-      name: "hą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "48",
-      name: "hę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "49",
-      name: "ja",
-      words: [
-        "jaja", "jajo",  "jama", "jamy"
-      ]
-    },
-    {
-      id: "50",
-      name: "je",
-      words: [
-        
-      ]
-    },
-    {
-      id: "51",
-      name: "ji",
-      words: [
-        
-      ]
-    },
-    {
-      id: "52",
-      name: "jo",
-      words: [
-        "joga"
-      ]
-    },
-    {
-      id: "53",
-      name: "ju",
-      words: [
-        
-      ]
-    },
-    {
-      id: "54",
-      name: "jy",
-      words: [
-        
-      ]
-    },
-    {
-      id: "55",
-      name: "ją",
-      words: [
-        
-      ]
-    },
-    {
-      id: "56",
-      name: "ję",
-      words: [
-        
-      ]
-    },
-    {
-      id: "57",
-      name: "ka",
-      words: [
-        "kapa", "kapy",   "kara", "kary",   "kasa", "kasy",   "kawa", "kawy"
-      ]
-    },
-    {
-      id: "58",
-      name: "ke",
-      words: [
-        
-      ]
-    },
-    {
-      id: "59",
-      name: "ki",
-      words: [
-        "kica",  "kije", "kita",   "kity", "kiwa", "kiwi"
-      ]
-    },
-    {
-      id: "60",
-      name: "ko",
-      words: [
-        "koce",     "kora",   "kosa",   "koty", "koza", "kozy",   "koła", "koło"
-      ]
-    },
-    {
-      id: "61",
-      name: "ku",
-      words: [
-        "kuca", "kuce", "kuka", "kula", "kule",   "kuna", "kuny",   "kupa", "kupy",   "kura", "kury"
-      ]
-    },
-    {
-      id: "62",
-      name: "ky",
-      words: [
-        
-      ]
-    },
-    {
-      id: "63",
-      name: "ką",
-      words: [
-        "kąty"
-      ]
-    },
-    {
-      id: "64",
-      name: "kę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "65",
-      name: "la",
-      words: [
-        "lada", "lady",   "lala", "lale",   "lama", "lamy",   "lasy", "lata", "lato", "lawa", "lawy",    "lało"
-      ]
-    },
-    {
-      id: "66",
-      name: "le",
-      words: [
-        "leci", "leki", "lewa", "lewy",  "leży"
-      ]
-    },
-    {
-      id: "67",
-      name: "li",
-      words: [
-        "liga",    "limo", "lina", "liny",   "lipa", "lipy",   "lisy", "liże"
-      ]
-    },
-    {
-      id: "68",
-      name: "lo",
-      words: [
-        "lody", "logo", "loki"
-      ]
-    },
-    {
-      id: "69",
-      name: "lu",
-      words: [
-        "luka",  "luki",  "lula", "lupa", "lupy",   "luty", "luzy"
-      ]
-    },
-    {
-      id: "70",
-      name: "ly",
-      words: [
-        
-      ]
-    },
-    {
-      id: "71",
-      name: "lą",
-      words: [
-        "lądy"
-      ]
-    },
-    {
-      id: "72",
-      name: "lę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "73",
-      name: "ła",
-      words: [
-        "łapa", "łapy",   "łata", "łaty",   "ława", "ławy"
-      ]
-    },
-    {
-      id: "74",
-      name: "łe",
-      words: [
-        
-      ]
-    },
-    {
-      id: "75",
-      name: "łi",
-      words: [
-        
-      ]
-    },
-    {
-      id: "76",
-      name: "ło",
-      words: [
-        
-      ]
-    },
-    {
-      id: "77",
-      name: "łu",
-      words: [
-        
-      ]
-    },
-    {
-      id: "78",
-      name: "ły",
-      words: [
-        "łyki"
-      ]
-    },
-    {
-      id: "79",
-      name: "łą",
-      words: [
-        "łąka", "łąki"
-      ]
-    },
-    {
-      id: "80",
-      name: "łę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "81",
-      name: "ma",
-      words: [
-        "mama", "mamy",   "mapa", "mapy",   "masa",   "masy", "mata", "maty",   "mała", "mało", "mały"
-      ]
-    },
-    {
-      id: "82",
-      name: "me",
-      words: [
-        "meta",    "mewa", "mewy"
-      ]
-    },
-    {
-      id: "83",
-      name: "mi",
-      words: [
-        "mina", "miny",   "misa", "misy",   "miła", "miłe", "miło", "miły"
-      ]
-    },
-    {
-      id: "84",
-      name: "mo",
-      words: [
-        "moda",      "moja", "moje",   "mopy", "mowa"
-      ]
-    },
-    {
-      id: "85",
-      name: "mu",
-      words: [
-        
-      ]
-    },
-    {
-      id: "86",
-      name: "my",
-      words: [
-        "myje"
-      ]
-    },
-    {
-      id: "87",
-      name: "mą",
-      words: [
-        "mąka"
-      ]
-    },
-    {
-      id: "88",
-      name: "mę",
-      words: [
-        "męka", "męki"
-      ]
-    },
-    {
-      id: "89",
-      name: "na",
-      words: [
-        
-      ]
-    },
-    {
-      id: "90",
-      name: "ne",
-      words: [
-        
-      ]
-    },
-    {
-      id: "91",
-      name: "ni",
-      words: [
-        
-      ]
-    },
-    {
-      id: "92",
-      name: "no",
-      words: [
-        "noce",   "noga", "nogi",   "nora", "nory",    "nosy", "nowa", "nowe", "nowy",   "noże"
-      ]
-    },
-    {
-      id: "93",
-      name: "nu",
-      words: [
-        "nuda", "nudy",   "nuta", "nuty"
-      ]
-    },
-    {
-      id: "94",
-      name: "ny",
-      words: [
-        
-      ]
-    },
-    {
-      id: "95",
-      name: "ną",
-      words: [
-        
-      ]
-    },
-    {
-      id: "96",
-      name: "nę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "97",
-      name: "pa",
-      words: [
-        "pada", "paka", "paki",     "para"
-      ]
-    },
-    {
-      id: "98",
-      name: "pe",
-      words: [
-        
-      ]
-    },
-    {
-      id: "99",
-      name: "pi",
-      words: [
-        "pita", "piwo", "piła", "piły"
-      ]
-    },
-    {
-      id: "100",
-      name: "po",
-      words: [
-        "pory", "poza", "pozy"
-      ]
-    },
-    {
-      id: "101",
-      name: "pu",
-      words: [
-        "pufa",   "puma", "pumy",   "pupa", "pupy"
-      ]
-    },
-    {
-      id: "102",
-      name: "py",
-      words: [
-        
-      ]
-    },
-    {
-      id: "103",
-      name: "pą",
-      words: [
-        "pąki"
-      ]
-    },
-    {
-      id: "104",
-      name: "pę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "105",
-      name: "ra",
-      words: [
-        "raca", "race",   "rada", "rady",   "rafa", "rafy",   "rama", "ramy",   "rana", "rany",   "rasa", "rasy"
-      ]
-    },
-    {
-      id: "106",
-      name: "re",
-      words: [
-        
-      ]
-    },
-    {
-      id: "107",
-      name: "ri",
-      words: [
-        
-      ]
-    },
-    {
-      id: "108",
-      name: "ro",
-      words: [
-        "rogi",   "rola", "role",    "ropa",   "rosa",   "rowy"
-      ]
-    },
-    {
-      id: "109",
-      name: "ru",
-      words: [
-        "ruda", "rudy", "rura", "rury"
-      ]
-    },
-    {
-      id: "110",
-      name: "ry",
-      words: [
-        "ryba", "ryby",   "rymy"
-      ]
-    },
-    {
-      id: "111",
-      name: "rą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "112",
-      name: "rę",
-      words: [
-        "ręka"
-      ]
-    },
-    {
-      id: "113",
-      name: "sa",
-      words: [
-        "sady", "sala", "sama", "sami", "samo"
-      ]
-    },
-    {
-      id: "114",
-      name: "se",
-      words: [
-        "sera", "sery"
-      ]
-    },
-    {
-      id: "115",
-      name: "si",
-      words: [
-        "sika", "siki", "sito", "siwa", "siwy", "siła", "siły"
-      ]
-    },
-    {
-      id: "116",
-      name: "so",
-      words: [
-        "sofa", "sofy",    "soki",  "sole",   "sowa", "sowy"
-      ]
-    },
-    {
-      id: "117",
-      name: "su",
-      words: [
-        "suka", "suma", "sumy"
-      ]
-    },
-    {
-      id: "118",
-      name: "sy",
-      words: [
-        
-      ]
-    },
-    {
-      id: "119",
-      name: "są",
-      words: [
-        
-      ]
-    },
-    {
-      id: "120",
-      name: "sę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "121",
-      name: "ta",
-      words: [
-        "taca",    "tama", "tamy",   "tata", "tato"
-      ]
-    },
-    {
-      id: "122",
-      name: "te",
-      words: [
-        
-      ]
-    },
-    {
-      id: "123",
-      name: "ti",
-      words: [
-        
-      ]
-    },
-    {
-      id: "124",
-      name: "to",
-      words: [
-        
-      ]
-    },
-    {
-      id: "125",
-      name: "tu",
-      words: [
-        "tuba", "tuby",  "tuli",   "tura", "tury"
-      ]
-    },
-    {
-      id: "126",
-      name: "ty",
-      words: [
-        "tyka", "tyły"
-      ]
-    },
-    {
-      id: "127",
-      name: "tą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "128",
-      name: "tę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "129",
-      name: "wa",
-      words: [
-        "waga", "wagi",   "wata", "waty",   "waza", "wazy",   "wały"
-      ]
-    },
-    {
-      id: "130",
-      name: "we",
-      words: [
-        
-      ]
-    },
-    {
-      id: "131",
-      name: "wi",
-      words: [
-        
-      ]
-    },
-    {
-      id: "132",
-      name: "wo",
-      words: [
-        "woda", "wody",   "wory", "wozy"
-      ]
-    },
-    {
-      id: "133",
-      name: "wu",
-      words: [
-        
-      ]
-    },
-    {
-      id: "134",
-      name: "wy",
-      words: [
-        "wyje"
-      ]
-    },
-    {
-      id: "135",
-      name: "wą",
-      words: [
-        "wąsy"
-      ]
-    },
-    {
-      id: "136",
-      name: "wę",
-      words: [
-        
-      ]
-    },
-    {
-      id: "137",
-      name: "za",
-      words: [
-        
-      ]
-    },
-    {
-      id: "138",
-      name: "ze",
-      words: [
-        "zera", "zero"
-      ]
-    },
-    {
-      id: "139",
-      name: "zi",
-      words: [
-        "zima", "zimy"
-      ]
-    },
-    {
-      id: "140",
-      name: "zo",
-      words: [
-        
-      ]
-    },
-    {
-      id: "141",
-      name: "zu",
-      words: [
-        "zupa", "zupy"
-      ]
-    },
-    {
-      id: "142",
-      name: "zy",
-      words: [
-        
-      ]
-    },
-    {
-      id: "143",
-      name: "zą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "144",
-      name: "zę",
-      words: [
-        "zęby"
-      ]
-    },
-    {
-      id: "145",
-      name: "ża",
-      words: [
-        "żaba", "żaby"
-      ]
-    },
-    {
-      id: "146",
-      name: "że",
-      words: [
-        
-      ]
-    },
-    {
-      id: "147",
-      name: "żi",
-      words: [
-        
-      ]
-    },
-    {
-      id: "148",
-      name: "żo",
-      words: [
-        "żona", "żony"
-      ]
-    },
-    {
-      id: "149",
-      name: "żu",
-      words: [
-        
-      ]
-    },
-    {
-      id: "150",
-      name: "ży",
-      words: [
-        
-      ]
-    },
-    {
-      id: "151",
-      name: "żą",
-      words: [
-        
-      ]
-    },
-    {
-      id: "152",
-      name: "żę",
-      words: [
-        
-      ]
-    }
-  ]
-}
+const initialState = {
+  syllables: []
+};
+  // syllables: [
+  //   {
+  //     id: "1",
+  //     name: "ba",
+  //     words: [
+  //       "baba", "baby", "bada", "baja", "baje", "bawi", "baza"
+  //     ]
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "be",
+  //     words: [
+  //       "beka", "beki", "beza", "bezy"
+  //     ]
+  //   },
+  //   {
+  //     id: "3",
+  //     name: "bi",
+  //     words: [
+  //       "bije", "bila", "bile"
+  //     ]
+  //   },
+  //   {
+  //     id: "4",
+  //     name: "bo",
+  //     words: [
+  //       "boja", "boje",   "boki",  "boli", "bolą", "bory", "bosa", "bose",  "boso",   "boty", "boża", "boży"
+  //     ]
+  //   },
+  //   {
+  //     id: "5",
+  //     name: "bu",
+  //     words: [
+  //       "buda", "budy",   "buja", "bura", "bure", "bury",   "buła", "buły"
+  //     ]
+  //   },
+  //   {
+  //     id: "6",
+  //     name: "by",
+  //     words: [
+  //       "byki",  "była", "były"
+  //     ]
+  //   },
+  //   {
+  //     id: "7",
+  //     name: "bą",
+  //     words: [
+  //       "bąki"
+  //     ]
+  //   },
+  //   {
+  //     id: "8",
+  //     name: "bę",
+  //     words: [
+  //       "będą", "będę"
+  //     ]
+  //   },
+  //   {
+  //     id: "9",
+  //     name: "ca",
+  //     words: [
+  //       "cała", "całe",  "cały"
+  //     ]
+  //   },
+  //   {
+  //     id: "10",
+  //     name: "ce",
+  //     words: [
+  //       "cela", "cele",   "cena", "ceny",   "cera"
+  //     ]
+  //   },
+  //   {
+  //     id: "11",
+  //     name: "ci",
+  //     words: [
+  //       "cisy"
+  //     ]
+  //   },
+  //   {
+  //     id: "12",
+  //     name: "co",
+  //     words: [
+  //       "cofa"
+  //     ]
+  //   },
+  //   {
+  //     id: "13",
+  //     name: "cu",
+  //     words: [
+  //       "cuda",   "cuma",   "cumy"
+  //     ]
+  //   },
+  //   {
+  //     id: "14",
+  //     name: "cy",
+  //     words: [
+  //       "cyka"
+  //     ]
+  //   },
+  //   {
+  //     id: "15",
+  //     name: "cą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "16",
+  //     name: "cę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "17",
+  //     name: "da",
+  //     words: [
+  //       "daje",   "dama", "damy",   "dane", "dary", "data", "daty"
+  //     ]
+  //   },
+  //   {
+  //     id: "18",
+  //     name: "de",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "19",
+  //     name: "di",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "20",
+  //     name: "do",
+  //     words: [
+  //       "doba", "doby",     "doki",  "domy",  "doły"
+  //     ]
+  //   },
+  //   {
+  //     id: "21",
+  //     name: "du",
+  //     words: [
+  //       "duma",  "duża", "duże", "dużo", "duży"
+  //     ]
+  //   },
+  //   {
+  //     id: "22",
+  //     name: "dy",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "23",
+  //     name: "dą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "24",
+  //     name: "dę",
+  //     words: [
+  //       "dęby", "dęty"
+  //     ]
+  //   },
+  //   {
+  //     id: "25",
+  //     name: "fa",
+  //     words: [
+  //       "fala", "fale"
+  //     ]
+  //   },
+  //   {
+  //     id: "26",
+  //     name: "fe",
+  //     words: [
+  //       "feta"
+  //     ]
+  //   },
+  //   {
+  //     id: "27",
+  //     name: "fi",
+  //     words: [
+  //       "figa", "figi",   "fika"
+  //     ]
+  //   },
+  //   {
+  //     id: "28",
+  //     name: "fo",
+  //     words: [
+  //       "foka", "foki",   "fosa", "fosy"
+  //     ]
+  //   },
+  //   {
+  //     id: "29",
+  //     name: "fu",
+  //     words: [
+  //       "fura", "fury"
+  //     ]
+  //   },
+  //   {
+  //     id: "30",
+  //     name: "fy",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "31",
+  //     name: "fą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "32",
+  //     name: "fę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "33",
+  //     name: "ga",
+  //     words: [
+  //       "gafa", "gafy",      "gama",  "gapa", "gapy",  "gary"
+  //     ]
+  //   },
+  //   {
+  //     id: "34",
+  //     name: "ge",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "35",
+  //     name: "gi",
+  //     words: [
+  //       "gile"
+  //     ]
+  //   },
+  //   {
+  //     id: "36",
+  //     name: "go",
+  //     words: [
+  //       "goła", "goły"
+  //     ]
+  //   },
+  //   {
+  //     id: "37",
+  //     name: "gu",
+  //     words: [
+  //       "guma", "gumy",    "guzy"
+  //     ]
+  //   },
+  //   {
+  //     id: "38",
+  //     name: "gy",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "39",
+  //     name: "gą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "40",
+  //     name: "gę",
+  //     words: [
+  //       "gęba", "gęby",   "gęga"
+  //     ]
+  //   },
+  //   {
+  //     id: "41",
+  //     name: "ha",
+  //     words: [
+  //       "haki", "hala", "hale",   "hasa"
+  //     ]
+  //   },
+  //   {
+  //     id: "42",
+  //     name: "he",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "43",
+  //     name: "hi",
+  //     words: [
+  //       "hity"
+  //     ]
+  //   },
+  //   {
+  //     id: "44",
+  //     name: "ho",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "45",
+  //     name: "hu",
+  //     words: [
+  //       "huba", "huby",  "huki", "hula"
+  //     ]
+  //   },
+  //   {
+  //     id: "46",
+  //     name: "hy",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "47",
+  //     name: "hą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "48",
+  //     name: "hę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "49",
+  //     name: "ja",
+  //     words: [
+  //       "jaja", "jajo",  "jama", "jamy"
+  //     ]
+  //   },
+  //   {
+  //     id: "50",
+  //     name: "je",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "51",
+  //     name: "ji",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "52",
+  //     name: "jo",
+  //     words: [
+  //       "joga"
+  //     ]
+  //   },
+  //   {
+  //     id: "53",
+  //     name: "ju",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "54",
+  //     name: "jy",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "55",
+  //     name: "ją",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "56",
+  //     name: "ję",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "57",
+  //     name: "ka",
+  //     words: [
+  //       "kapa", "kapy",   "kara", "kary",   "kasa", "kasy",   "kawa", "kawy"
+  //     ]
+  //   },
+  //   {
+  //     id: "58",
+  //     name: "ke",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "59",
+  //     name: "ki",
+  //     words: [
+  //       "kica",  "kije", "kita",   "kity", "kiwa", "kiwi"
+  //     ]
+  //   },
+  //   {
+  //     id: "60",
+  //     name: "ko",
+  //     words: [
+  //       "koce",     "kora",   "kosa",   "koty", "koza", "kozy",   "koła", "koło"
+  //     ]
+  //   },
+  //   {
+  //     id: "61",
+  //     name: "ku",
+  //     words: [
+  //       "kuca", "kuce", "kuka", "kula", "kule",   "kuna", "kuny",   "kupa", "kupy",   "kura", "kury"
+  //     ]
+  //   },
+  //   {
+  //     id: "62",
+  //     name: "ky",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "63",
+  //     name: "ką",
+  //     words: [
+  //       "kąty"
+  //     ]
+  //   },
+  //   {
+  //     id: "64",
+  //     name: "kę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "65",
+  //     name: "la",
+  //     words: [
+  //       "lada", "lady",   "lala", "lale",   "lama", "lamy",   "lasy", "lata", "lato", "lawa", "lawy",    "lało"
+  //     ]
+  //   },
+  //   {
+  //     id: "66",
+  //     name: "le",
+  //     words: [
+  //       "leci", "leki", "lewa", "lewy",  "leży"
+  //     ]
+  //   },
+  //   {
+  //     id: "67",
+  //     name: "li",
+  //     words: [
+  //       "liga",    "limo", "lina", "liny",   "lipa", "lipy",   "lisy", "liże"
+  //     ]
+  //   },
+  //   {
+  //     id: "68",
+  //     name: "lo",
+  //     words: [
+  //       "lody", "logo", "loki"
+  //     ]
+  //   },
+  //   {
+  //     id: "69",
+  //     name: "lu",
+  //     words: [
+  //       "luka",  "luki",  "lula", "lupa", "lupy",   "luty", "luzy"
+  //     ]
+  //   },
+  //   {
+  //     id: "70",
+  //     name: "ly",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "71",
+  //     name: "lą",
+  //     words: [
+  //       "lądy"
+  //     ]
+  //   },
+  //   {
+  //     id: "72",
+  //     name: "lę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "73",
+  //     name: "ła",
+  //     words: [
+  //       "łapa", "łapy",   "łata", "łaty",   "ława", "ławy"
+  //     ]
+  //   },
+  //   {
+  //     id: "74",
+  //     name: "łe",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "75",
+  //     name: "łi",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "76",
+  //     name: "ło",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "77",
+  //     name: "łu",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "78",
+  //     name: "ły",
+  //     words: [
+  //       "łyki"
+  //     ]
+  //   },
+  //   {
+  //     id: "79",
+  //     name: "łą",
+  //     words: [
+  //       "łąka", "łąki"
+  //     ]
+  //   },
+  //   {
+  //     id: "80",
+  //     name: "łę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "81",
+  //     name: "ma",
+  //     words: [
+  //       "mama", "mamy",   "mapa", "mapy",   "masa",   "masy", "mata", "maty",   "mała", "mało", "mały"
+  //     ]
+  //   },
+  //   {
+  //     id: "82",
+  //     name: "me",
+  //     words: [
+  //       "meta",    "mewa", "mewy"
+  //     ]
+  //   },
+  //   {
+  //     id: "83",
+  //     name: "mi",
+  //     words: [
+  //       "mina", "miny",   "misa", "misy",   "miła", "miłe", "miło", "miły"
+  //     ]
+  //   },
+  //   {
+  //     id: "84",
+  //     name: "mo",
+  //     words: [
+  //       "moda",      "moja", "moje",   "mopy", "mowa"
+  //     ]
+  //   },
+  //   {
+  //     id: "85",
+  //     name: "mu",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "86",
+  //     name: "my",
+  //     words: [
+  //       "myje"
+  //     ]
+  //   },
+  //   {
+  //     id: "87",
+  //     name: "mą",
+  //     words: [
+  //       "mąka"
+  //     ]
+  //   },
+  //   {
+  //     id: "88",
+  //     name: "mę",
+  //     words: [
+  //       "męka", "męki"
+  //     ]
+  //   },
+  //   {
+  //     id: "89",
+  //     name: "na",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "90",
+  //     name: "ne",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "91",
+  //     name: "ni",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "92",
+  //     name: "no",
+  //     words: [
+  //       "noce",   "noga", "nogi",   "nora", "nory",    "nosy", "nowa", "nowe", "nowy",   "noże"
+  //     ]
+  //   },
+  //   {
+  //     id: "93",
+  //     name: "nu",
+  //     words: [
+  //       "nuda", "nudy",   "nuta", "nuty"
+  //     ]
+  //   },
+  //   {
+  //     id: "94",
+  //     name: "ny",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "95",
+  //     name: "ną",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "96",
+  //     name: "nę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "97",
+  //     name: "pa",
+  //     words: [
+  //       "pada", "paka", "paki",     "para"
+  //     ]
+  //   },
+  //   {
+  //     id: "98",
+  //     name: "pe",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "99",
+  //     name: "pi",
+  //     words: [
+  //       "pita", "piwo", "piła", "piły"
+  //     ]
+  //   },
+  //   {
+  //     id: "100",
+  //     name: "po",
+  //     words: [
+  //       "pory", "poza", "pozy"
+  //     ]
+  //   },
+  //   {
+  //     id: "101",
+  //     name: "pu",
+  //     words: [
+  //       "pufa",   "puma", "pumy",   "pupa", "pupy"
+  //     ]
+  //   },
+  //   {
+  //     id: "102",
+  //     name: "py",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "103",
+  //     name: "pą",
+  //     words: [
+  //       "pąki"
+  //     ]
+  //   },
+  //   {
+  //     id: "104",
+  //     name: "pę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "105",
+  //     name: "ra",
+  //     words: [
+  //       "raca", "race",   "rada", "rady",   "rafa", "rafy",   "rama", "ramy",   "rana", "rany",   "rasa", "rasy"
+  //     ]
+  //   },
+  //   {
+  //     id: "106",
+  //     name: "re",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "107",
+  //     name: "ri",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "108",
+  //     name: "ro",
+  //     words: [
+  //       "rogi",   "rola", "role",    "ropa",   "rosa",   "rowy"
+  //     ]
+  //   },
+  //   {
+  //     id: "109",
+  //     name: "ru",
+  //     words: [
+  //       "ruda", "rudy", "rura", "rury"
+  //     ]
+  //   },
+  //   {
+  //     id: "110",
+  //     name: "ry",
+  //     words: [
+  //       "ryba", "ryby",   "rymy"
+  //     ]
+  //   },
+  //   {
+  //     id: "111",
+  //     name: "rą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "112",
+  //     name: "rę",
+  //     words: [
+  //       "ręka"
+  //     ]
+  //   },
+  //   {
+  //     id: "113",
+  //     name: "sa",
+  //     words: [
+  //       "sady", "sala", "sama", "sami", "samo"
+  //     ]
+  //   },
+  //   {
+  //     id: "114",
+  //     name: "se",
+  //     words: [
+  //       "sera", "sery"
+  //     ]
+  //   },
+  //   {
+  //     id: "115",
+  //     name: "si",
+  //     words: [
+  //       "sika", "siki", "sito", "siwa", "siwy", "siła", "siły"
+  //     ]
+  //   },
+  //   {
+  //     id: "116",
+  //     name: "so",
+  //     words: [
+  //       "sofa", "sofy",    "soki",  "sole",   "sowa", "sowy"
+  //     ]
+  //   },
+  //   {
+  //     id: "117",
+  //     name: "su",
+  //     words: [
+  //       "suka", "suma", "sumy"
+  //     ]
+  //   },
+  //   {
+  //     id: "118",
+  //     name: "sy",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "119",
+  //     name: "są",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "120",
+  //     name: "sę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "121",
+  //     name: "ta",
+  //     words: [
+  //       "taca",    "tama", "tamy",   "tata", "tato"
+  //     ]
+  //   },
+  //   {
+  //     id: "122",
+  //     name: "te",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "123",
+  //     name: "ti",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "124",
+  //     name: "to",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "125",
+  //     name: "tu",
+  //     words: [
+  //       "tuba", "tuby",  "tuli",   "tura", "tury"
+  //     ]
+  //   },
+  //   {
+  //     id: "126",
+  //     name: "ty",
+  //     words: [
+  //       "tyka", "tyły"
+  //     ]
+  //   },
+  //   {
+  //     id: "127",
+  //     name: "tą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "128",
+  //     name: "tę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "129",
+  //     name: "wa",
+  //     words: [
+  //       "waga", "wagi",   "wata", "waty",   "waza", "wazy",   "wały"
+  //     ]
+  //   },
+  //   {
+  //     id: "130",
+  //     name: "we",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "131",
+  //     name: "wi",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "132",
+  //     name: "wo",
+  //     words: [
+  //       "woda", "wody",   "wory", "wozy"
+  //     ]
+  //   },
+  //   {
+  //     id: "133",
+  //     name: "wu",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "134",
+  //     name: "wy",
+  //     words: [
+  //       "wyje"
+  //     ]
+  //   },
+  //   {
+  //     id: "135",
+  //     name: "wą",
+  //     words: [
+  //       "wąsy"
+  //     ]
+  //   },
+  //   {
+  //     id: "136",
+  //     name: "wę",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "137",
+  //     name: "za",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "138",
+  //     name: "ze",
+  //     words: [
+  //       "zera", "zero"
+  //     ]
+  //   },
+  //   {
+  //     id: "139",
+  //     name: "zi",
+  //     words: [
+  //       "zima", "zimy"
+  //     ]
+  //   },
+  //   {
+  //     id: "140",
+  //     name: "zo",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "141",
+  //     name: "zu",
+  //     words: [
+  //       "zupa", "zupy"
+  //     ]
+  //   },
+  //   {
+  //     id: "142",
+  //     name: "zy",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "143",
+  //     name: "zą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "144",
+  //     name: "zę",
+  //     words: [
+  //       "zęby"
+  //     ]
+  //   },
+  //   {
+  //     id: "145",
+  //     name: "ża",
+  //     words: [
+  //       "żaba", "żaby"
+  //     ]
+  //   },
+  //   {
+  //     id: "146",
+  //     name: "że",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "147",
+  //     name: "żi",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "148",
+  //     name: "żo",
+  //     words: [
+  //       "żona", "żony"
+  //     ]
+  //   },
+  //   {
+  //     id: "149",
+  //     name: "żu",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "150",
+  //     name: "ży",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "151",
+  //     name: "żą",
+  //     words: [
+        
+  //     ]
+  //   },
+  //   {
+  //     id: "152",
+  //     name: "żę",
+  //     words: [
+        
+  //     ]
+  //   }
+  // ]
+
 
 export default initialState;

@@ -6,7 +6,6 @@ import GameEasy from './components/pages/GameEasy/GameEasy';
 import GameHard from './components/pages/GameHard/GameHard';
 import NonFound from './components/pages/NonFound/NonFound';
 import Header from './components/views/Header/Header';
-import { useEffect } from 'react';
 
 const App = () => {
 
@@ -18,7 +17,6 @@ const App = () => {
 //     .then(res => res.json())
 //     .then(players => console.log('playerSlice fetching data', players));
 // }, []);
-
 
 
 

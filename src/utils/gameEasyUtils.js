@@ -6,7 +6,7 @@ utils.getRandomSyllable = (e, syllables, randomLastSyllables, setWord, setRandom
   const [ randomSyllableObj ] = syllables.filter( syllable => syllable.id == randomSyllableId);
 
   if(randomSyllableObj.words.length > 0) {
-    console.log('pierwsze losowanie');
+    console.log('game easy - pierwsze losowanie');
     setRandomFirstSyllable(randomSyllableObj.name);
     setFirstSyllableWords(randomSyllableObj.words);
     const wordIndex = Math.floor(Math.random() * randomSyllableObj.words.length);
@@ -21,7 +21,7 @@ utils.getRandomSyllable = (e, syllables, randomLastSyllables, setWord, setRandom
     }
     randomLastSyllables.sort();
   } else if(randomSyllableObj.words.length === 0){ 
-    console.log('ponowne losowanie');
+    console.log('game easy - ponowne losowanie');
     utils.getRandomSyllable(e, syllables, randomLastSyllables, setWord, setRandomFirstSyllable, setFirstSyllableWords) 
   }
   //console.log('po kliknięciu na losowanie - to jest e.target', e.target, e.target.setAttribute('disabled', true));
@@ -29,6 +29,7 @@ utils.getRandomSyllable = (e, syllables, randomLastSyllables, setWord, setRandom
 
 utils.createAnswer = (e, answers, setAnswers, randomFirstSyllable) => {
   if(e.target.checked) {
+    console.log('game easy - to jest zaznaczona odpowiedź', e.target.value);
     setAnswers( answers => [...answers, `${randomFirstSyllable}${e.target.value}`]);
   } else {
     const uncheckedAnswer = `${randomFirstSyllable}${e.target.value}`;

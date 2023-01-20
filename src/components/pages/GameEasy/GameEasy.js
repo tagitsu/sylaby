@@ -1,14 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './GameEasy.module.scss';
 import clsx from "clsx";
 import { useParams } from 'react-router-dom';
 import { addPoints } from '../../../redux/player/playerSlice';
 import utils from '../../../utils/gameEasyUtils';
+import { getSyllablesAsync } from "../../../redux/syllables/syllablesSlice";
 
 
 const GameEasy = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSyllablesAsync())
+  }, [dispatch]);
 
   const player = useParams();
   const syllables = useSelector(state => state.syllables.syllables);
@@ -33,10 +38,7 @@ const GameEasy = () => {
     setFirstSyllableWords([]);
     setRandomLastSyllables([]);
     setWord('');
-    
-
-
-    
+  
   };
 
   return(
@@ -47,18 +49,15 @@ const GameEasy = () => {
           <form className={styles.easy__last} onSubmit={(e) => submitSolution(e)}>
             {randomLastSyllables.map( lastSyllable => 
               <div className={clsx(styles.easy__task)} key={lastSyllable}>
-                <input 
-                type='checkbox' 
-                id={lastSyllable} 
-                name='lastSyllable'
-                value={lastSyllable}
-                onChange={(e) => utils.createAnswer(e, answers, setAnswers, randomFirstSyllable)}
-                >
-                </input>
-                <label 
-                htmlFor={lastSyllable} 
-                className={clsx(styles.easy__check)} 
-                >
+                <label className={clsx(styles.easy__checkboxLabel )}>
+                  <input 
+                  type='checkbox' 
+                  name='lastSyllable'
+                  className={clsx(styles.easy__checkboxInput)}
+                  value={lastSyllable}
+                  onChange={(e) => utils.createAnswer(e, answers, setAnswers, randomFirstSyllable)}
+                  >
+                  </input>
                 {lastSyllable}
                 </label>
               </div>

@@ -33,7 +33,6 @@
   }
 
   &__last {
-    cursor: pointer;
     display: flex;
   }
 
@@ -42,5 +41,13 @@
     width: 30vw;
     cursor: pointer;
     justify-self: center;
+  }
+
+  &__checkboxInput {
+  }
+
+  &__checkboxLabel {
+    text-align: center;
+
   }
 }
