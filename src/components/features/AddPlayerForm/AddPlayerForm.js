@@ -105,7 +105,7 @@ const AddPlayerForm = () => {
 
   if(!isActive) {
     return(
-      <button className={clsx(styles.form__btn, 'styles.form__btn--add')} onClick={() => setIsActive(!isActive)}>
+      <button className={clsx(styles.form__btn)} onClick={() => setIsActive(!isActive)}>
         <FontAwesomeIcon icon={faPlusCircle} />
       </button>
     );
@@ -130,7 +130,7 @@ const AddPlayerForm = () => {
       </fieldset>
       <fieldset className={styles.form__section}>
         <legend>Wybierz swój kolor</legend>
-          <input className={styles.form__input} type='color' name='playerColor' onChange={(e) => handleChangeColor(e)} ></input>
+          <input className={clsx(styles.form__input, styles.form__inputColor)} type='color' name='playerColor' onChange={(e) => handleChangeColor(e)} ></input>
           {/* {colors.map(
             color => 
             <div key={color}>
@@ -141,7 +141,7 @@ const AddPlayerForm = () => {
             </div>
           )} */}
       </fieldset>
-      <button className={styles.form__btn} >Dodaj nowego gracza</button>
+      <button className={styles.form__btnSubmit} >Dodaj nowego gracza</button>
     </form>
   );
 

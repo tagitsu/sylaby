@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+
 export const getPlayersAsync = createAsyncThunk(
   'players/getPlayerAsync',
   async () => {
-    const res = await fetch(' http://localhost:3131/players');
+    const res = await fetch('http://localhost:3131/players');
     if (res.ok) {
       const players = await res.json();
       return { players }
@@ -14,7 +15,7 @@ export const getPlayersAsync = createAsyncThunk(
 export const addPlayerAsync = createAsyncThunk(
   'players/addPlayerAsync',
   async (payload) => {
-    const res = await fetch(' http://localhost:3131/players', {
+    const res = await fetch('http://localhost:3131/players', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

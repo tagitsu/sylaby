@@ -8,34 +8,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  border: 5px solid $color-light;
+  border: 4px solid $color-light;
   border-radius: $radius;
-  margin: calc($base-size * 2) calc($base-size * 8);
-
-
-  &__section {
-    display: flex;
-    border: 2px solid $color-light;
-    border-radius: $radius;
-    background-color: transparent;
-    color: $color-light;
-    margin: calc($base-size * 2) calc($base-size * 8);
-  }
-
-  &__input {
-    background-color: transparent;
-    border: none;
-    color: $color-light;
-
-  }
-
-  &__image {
-    height: calc($base-size * 4);
-  }
+  margin: calc($base-size * 4) calc($base-size * 8);
 
   &__btn {
-    background-color: transparent;
     border: none;
+    background-color: transparent;
     color: $color-light;
 
     &--add {
@@ -43,4 +22,34 @@
     }
   }
 
-}
+  &__section, &__btnSubmit {
+    display: flex;
+    justify-content: center;
+    border: 2px solid $color-light;
+    border-radius: $radius;
+    background-color: transparent;
+    color: $color-light;
+    margin: calc($base-size * 2) calc($base-size * 8);
+    text-align: center;
+    padding: $base-size;
+
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    color: $color-light;
+    text-align: center;
+  }
+
+  &__inputColor {
+    width: calc($base-size * 3);
+    height: calc($base-size * 3);
+  }
+
+  &__image {
+    height: calc($base-size * 4);
+  }
+
+    
+  }
