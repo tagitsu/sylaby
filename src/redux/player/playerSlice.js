@@ -42,6 +42,25 @@ export const addPlayerAsync = createAsyncThunk(
 
 // TODO - usuwanie gracza
 // TODO - dodawanie punktów xp (zmiana w obiekcie gracza)
+export const addPointsAsync = createAsyncThunk(
+  'players/getPointsAsync',
+  async (payload) => {
+    const res = await fetch(
+      `http://localhost:3131/players/${payload.id}`, 
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: payload.id, xp: payload.xp })
+      });
+
+      if (res.ok) {
+        const player = await res.json();
+        return ({ id: player.id, xp: player.xp })
+      }
+  }
+)
 // TODO - levelownie (zmiana w obiekcie gracza)
 
 
@@ -79,6 +98,11 @@ export const playerSlice = createSlice({
     },
     [addPlayerAsync.fulfilled]: (state, action) => {
       state.push(action.payload);
+    },
+    [addPointsAsync.fulfilled]: (state, action) => {
+      const activePlayer = state;
+      console.log('addPointAsync - state', activePlayer);
+      activePlayer.xp =+ action.payload.xp
     }
   }
 });

@@ -49,7 +49,7 @@ const AddPlayerForm = () => {
         name: '341B',
         icon: 'storybots.png',
       },
-    ];
+  ];
   
   //const colors = ['#FFC312', '#F79F1F', '#EE5A24'];
 

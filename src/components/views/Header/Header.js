@@ -10,7 +10,7 @@ const Header = () => {
       <Link to='/'>
         <Logo />
       </Link>
-      <CurrentPlayer />
+      {/* <CurrentPlayer /> */}
     </div>
   );
 };

@@ -9,17 +9,6 @@ import Header from './components/views/Header/Header';
 
 const App = () => {
 
-// Pobieranie danych z serwera - sposób I
-// nie można użyć useEffect w slice
-
-// useEffect(() => {
-//   fetch('http://localhost:3131/players')
-//     .then(res => res.json())
-//     .then(players => console.log('playerSlice fetching data', players));
-// }, []);
-
-
-
   return (
     <div>
       <Header />
