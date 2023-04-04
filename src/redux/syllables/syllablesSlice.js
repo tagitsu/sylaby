@@ -19,7 +19,7 @@ export const syllablesSlice = createSlice({
   },
   extraReducers: {
     [getSyllablesAsync.pending]: (state, action) => {
-      console.log('pobieram sylaby')
+      console.log('syllables slice - pobieram sylaby')
     },
     [getSyllablesAsync.fulfilled]: (state, action) => {
       return action.payload;

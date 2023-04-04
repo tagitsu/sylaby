@@ -1,0 +1,14 @@
+@import '/src/styles/settings.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 20vh;
+  min-height: calc($base-size * 10);
+  margin: $base-size;
+  //position: fixed;
+
+  a {
+    text-decoration: none;
+  }
+}

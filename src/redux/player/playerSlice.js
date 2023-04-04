@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
 export const getPlayersAsync = createAsyncThunk(
-  'players/getPlayerAsync',
+  'players/getPlayersAsync',
   async () => {
     const res = await fetch('http://localhost:3131/players');
     if (res.ok) {
@@ -43,8 +43,9 @@ export const addPlayerAsync = createAsyncThunk(
 // TODO - usuwanie gracza
 // TODO - dodawanie punktów xp (zmiana w obiekcie gracza)
 export const addPointsAsync = createAsyncThunk(
-  'players/getPointsAsync',
-  async (payload) => {
+  'players/addPointsAsync',
+  async (payload, { getState }) => {
+    const state = getState();
     const res = await fetch(
       `http://localhost:3131/players/${payload.id}`, 
       {
@@ -61,50 +62,57 @@ export const addPointsAsync = createAsyncThunk(
       }
   }
 )
-// TODO - levelownie (zmiana w obiekcie gracza)
+// TODO - levelowanie (zmiana w obiekcie gracza)
 
 
  const initialState = {
   players: [],
-  currentPlayer: ''
 };
 
 export const playerSlice = createSlice({
   name: 'player',
   initialState,
   reducers: {
-    chooseCurrentPlayer: (state, action) => {
-      state.currentPlayer = action.payload
-    },
-    addPoints: (state, action) => {
-      state.players.map( player => {if(player.id === state.currentPlayer) {player.xp =+ action.payload + player.xp}} )
-    },
-    levelUp: (state, action) => {
-      state.players.map( player => 
-        {if(player.id === state.currentPlayer) {
-          player.level++;
-          player.badges.push(action.payload)
-        }
-      })
-    },
+    // chooseCurrentPlayer: (state, action) => {
+    //   state.currentPlayer = action.payload
+    // },
+    // addPoints: (state, action) => {
+    //   state.players.map( player => {if(player.id === state.currentPlayer) {player.xp =+ action.payload + player.xp}} )
+    // },
+    // levelUp: (state, action) => {
+    //   state.players.map( player => 
+    //     {if(player.id === state.currentPlayer) {
+    //       player.level++;
+    //       player.badges.push(action.payload)
+    //     }
+    //   })
+    // },
     // addNewPlayer: (state, action) => {
     //   console.log('reducer - dodaje nowego gracza');
     //   state.players.push(action.payload);
-    // }
+  // }
   },
-  extraReducers: {
-    [getPlayersAsync.fulfilled]: (state, action) => {
-      return action.payload;
-    },
-    [addPlayerAsync.fulfilled]: (state, action) => {
-      state.push(action.payload);
-    },
-    [addPointsAsync.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(addPointsAsync.fulfilled, (state, action) => {
       const activePlayer = state;
-      console.log('addPointAsync - state', activePlayer);
-      activePlayer.xp =+ action.payload.xp
-    }
-  }
+      activePlayer.xp += action.payload.xp + activePlayer.xp;
+    });
+    builder.addCase(getPlayersAsync.fulfilled, (state, action) => {
+      return action.payload;
+    })
+  },
+  // extraReducers: {
+  //   // [getPlayersAsync.fulfilled]: (state, action) => {
+  //   //   return action.payload;
+  //   // },
+  //   [addPlayerAsync.fulfilled]: (state, action) => {
+  //     state.players.push(action.payload);
+  //   },
+  //   // [addPointsAsync.fulfilled]: (state, action) => {
+  //   //   const activePlayer = state;
+  //   //   activePlayer.xp =+ action.payload.xp;
+  //   // }
+  // }
 });
 export const { chooseCurrentPlayer, addPoints, levelUp, addNewPlayer } = playerSlice.actions;
 

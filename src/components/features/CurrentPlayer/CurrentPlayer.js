@@ -4,16 +4,18 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import styles from '../CurrentPlayer/CurrentPlayer.module.scss';
 import { Link } from 'react-router-dom';
 import { levelUp } from '../../../redux/player/playerSlice';
+import { useParams } from 'react-router-dom';
 
 const CurrentPlayer = () => {
   const dispatch = useDispatch();
 
+  const activePlayerID = useParams();
   const levels = useSelector(state => state.levels.levels);
   const { players } = useSelector(state => state.player);
-  const currentPlayerID = useSelector(state => state.player.currentPlayer);
-  const [ activePlayer ] = players.filter(player => player.id === currentPlayerID);
+  const [ activePlayer ] = players.filter(player => player.id === activePlayerID.id);
+  
   console.log('current - players', players);
-  console.log('current - current player ID', currentPlayerID, typeof currentPlayerID);
+  console.log('current - active player ID', activePlayerID.id , typeof activePlayerID.id);
   console.log('current - active player', activePlayer);
 
 
