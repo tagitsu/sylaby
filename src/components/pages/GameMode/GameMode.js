@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { getSyllablesAsync } from '../../../redux/syllables/syllablesSlice';
+import { activePlayerAsync } from '../../../redux/player/playerSlice';
 
 // API - pobieranie sylab do magazynu - syllablesSlice
 
@@ -14,6 +15,10 @@ const GameMode = () => {
 
   useEffect(() => {
     dispatch(getSyllablesAsync())
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(activePlayerAsync())
   }, [dispatch]);
 
   const activePlayer = useParams();

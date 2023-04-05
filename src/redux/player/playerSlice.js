@@ -39,7 +39,27 @@ export const addPlayerAsync = createAsyncThunk(
     }
   }
 );
+// TODO - zmiana statusu gracza na aktywny (zmiana w obiekcie)
+export const activePlayerAsync = createAsyncThunk(
+  'players/activePlayerAsync',
+  async (payload, { getState }) => {
+    const state = getState();
+    const res = await fetch(
+      `http://localhost:3131/players/${payload.id}`, 
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/merge-patch+json'
+        },
+        body: JSON.stringify({ id: payload.id, isActive: payload.isActive })
+      });
 
+      if (res.ok) {
+        const player = await res.json();
+        return ({ id: player.id, isActive: player.isActive })
+      }
+  }
+)
 // TODO - usuwanie gracza
 // TODO - dodawanie punktów xp (zmiana w obiekcie gracza)
 export const addPointsAsync = createAsyncThunk(
@@ -93,13 +113,21 @@ export const playerSlice = createSlice({
   // }
   },
   extraReducers: (builder) => {
+    builder.addCase(activePlayerAsync.pending, (state, action) => {
+      console.log('wybieranie aktywnego gracza')
+    });
+    builder.addCase(activePlayerAsync.fulfilled, (state, action) => {
+      console.log('active player', state)
+      state.isActive === action.payload.isActive;
+    });
     builder.addCase(addPointsAsync.fulfilled, (state, action) => {
       const activePlayer = state;
       activePlayer.xp += action.payload.xp + activePlayer.xp;
     });
     builder.addCase(getPlayersAsync.fulfilled, (state, action) => {
       return action.payload;
-    })
+    });
+    
   },
   // extraReducers: {
   //   // [getPlayersAsync.fulfilled]: (state, action) => {
