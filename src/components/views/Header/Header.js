@@ -1,4 +1,5 @@
 import Logo from "../Logo/Logo";
+import Menu from '../Menu/Menu';
 import CurrentPlayer from "../../features/CurrentPlayer/CurrentPlayer";
 import styles from '../Header/Header.module.scss';
 import { Link } from 'react-router-dom';
@@ -10,7 +11,9 @@ const Header = () => {
       <Link to='/'>
         <Logo />
       </Link>
-      {/* <CurrentPlayer /> */}
+      <Menu />
+      <CurrentPlayer />
+
     </div>
   );
 };

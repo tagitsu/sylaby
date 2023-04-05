@@ -12,3 +12,16 @@
 
   }
 }
+
+.circle {
+  height: calc($base-size * 1.2);
+  width: calc($base-size * 1.2);
+  background-color: $color-light;
+  border-radius: 50%;
+  margin: $base-size;
+  transition: $transition;
+}
+
+.circle:hover {
+  background-color: $color-yellow;
+}

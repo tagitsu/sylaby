@@ -1,9 +1,9 @@
 $color-light: #fff;
 $color-dark: #1f1f1f;
-$color-success: #009432;
-$color-warning: #EA2027;
-$color-yellow: #FFC312;
-$color-blue: #0652DD;
+$color-success: #52d67e;
+$color-warning: #ff565c;
+$color-yellow: #ffe28a;
+$color-blue: #4acefd;
 
 
 
@@ -13,4 +13,4 @@ $radius: 20px;
 $base-size: 12px;
 $transition: all 0.5s;
 $box-shadow: 0 0 50px rgb(0 0 0 / 50%);
-$background-gradient: linear-gradient(to right, #009432, #0652DD);
+$background-gradient: linear-gradient(to right, $color-success, $color-blue);

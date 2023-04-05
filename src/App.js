@@ -7,6 +7,7 @@ import GameHard from './components/pages/GameHard/GameHard';
 import NonFound from './components/pages/NonFound/NonFound';
 import Header from './components/views/Header/Header';
 import PlayersList from './components/pages/PlayersList/PlayersList';
+import AddPlayerForm from './components/features/AddPlayerForm/AddPlayerForm';
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/players' element={<PlayersList />} />
+          <Route path='/newplayer' element={<AddPlayerForm />} />
           <Route path='/player/:id' element={<PlayerProfile />} />
           <Route path='/player/:id/game' element={<GameMode />} />
           <Route path='/player/:id/game/easy' element={<GameEasy />} />

@@ -3,12 +3,9 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 20vh;
   min-height: calc($base-size * 10);
   margin: $base-size;
-  //position: fixed;
 
-  a {
-    text-decoration: none;
-  }
 }

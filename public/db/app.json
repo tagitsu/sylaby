@@ -2,9 +2,9 @@
   "players": [
     {
       "id": "1",
-      "name": "Pikachu",
+      "name": "Szymek",
       "icon": "pikachu.png",
-      "color": "yellow",
+      "color": "",
       "level": 1,
       "title": "",
       "badges": [],
@@ -12,46 +12,13 @@
     },
     {
       "id": "2",
-      "name": "George",
+      "name": "Maciuś",
       "icon": "curious_george.png",
       "color": "green",
       "level": 1,
       "title": "",
       "badges": [],
       "xp": 1
-    },
-    {
-      "id": "6",
-      "name": "SpongeBob",
-      "icon": "spongebob.png",
-      "color": "#feab90",
-      "level": 1,
-      "title": "",
-      "badges": [],
-      "xp": 0,
-      "isCurrent": false
-    },
-    {
-      "id": "4",
-      "name": "Elsa",
-      "icon": "elsa.png",
-      "color": "#ddc2ff",
-      "level": 1,
-      "title": "",
-      "badges": [],
-      "xp": 0,
-      "isCurrent": false
-    },
-    {
-      "id": "5",
-      "name": "zespół 341B",
-      "icon": "storybots.png",
-      "color": "#f39512",
-      "level": 1,
-      "title": "",
-      "badges": [],
-      "xp": 1,
-      "isCurrent": false
     }
   ],
   "syllables": [

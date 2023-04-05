@@ -22,7 +22,7 @@ const PlayersList = () => {
       {players.map( player => 
       <div key={player.id} className={styles.list}>
         <div className={styles.list__icon}>
-          <PlayerIcon id={player.id} icon={player.icon} name={player.name} color={player.color} />
+          <PlayerIcon id={player.id} icon={player.icon} name={player.name} /* color={player.color} */ />
           <div className={styles.list__level} >
             <p className={styles.list__levelValue}>{player.level}</p>
           </div>

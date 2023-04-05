@@ -1,9 +1,6 @@
 import styles from './AddPlayerForm.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { addNewPlayer } from '../../../redux/player/playerSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 import { addPlayerAsync } from '../../../redux/player/playerSlice';
 
@@ -105,12 +102,6 @@ const AddPlayerForm = () => {
 
   if(!isActive) {
     return(
-      <button className={clsx(styles.form__btn)} onClick={() => setIsActive(!isActive)}>
-        <FontAwesomeIcon icon={faPlusCircle} />
-      </button>
-    );
-  } else {
-      return(
     <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
       <fieldset className={styles.form__section}>
         <legend>Wpisz swoje imię</legend>

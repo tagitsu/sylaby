@@ -15,6 +15,11 @@ body {
   letter-spacing: 0.5px;
 }
 
+a {
+  text-decoration: none;
+  color: $color-light;
+}
+
 :global(.container) {
   width: 90%;
   max-width: 1400px;

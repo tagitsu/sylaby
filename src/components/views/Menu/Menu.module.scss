@@ -1,14 +1,9 @@
 @import '/src/styles/settings.scss';
 
-.header {
+.menu {
   display: flex;
-  justify-content: space-between;
-  height: 20vh;
+  justify-content: space-evenly;
+  gap: $base-size;
   min-height: calc($base-size * 10);
   margin: $base-size;
-  //position: fixed;
-
-  a {
-    text-decoration: none;
-  }
 }
