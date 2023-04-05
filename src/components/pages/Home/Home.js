@@ -1,9 +1,5 @@
 import { Link } from 'react-router-dom';
 import styles from '../Home/Home.module.scss';
-import AddPlayerForm from '../../features/AddPlayerForm/AddPlayerForm';
-import CurrentPlayer from '../../features/CurrentPlayer/CurrentPlayer';
-// import { useGetPlayersQuery } from '../../../redux/apiSlice/apiSlice';
-// API - pobieranie obiektów-graczy do magazynu - playerSlice
 
 const Home = () => {
 

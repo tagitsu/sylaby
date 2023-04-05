@@ -2,7 +2,7 @@ import Home from './components/pages/Home/Home';
 import { Routes, Route } from 'react-router-dom';
 import PlayerProfile from './components/pages/PlayerProfile/PlayerProfile';
 import GameMode from './components/pages/GameMode/GameMode';
-import GameEasy from './components/pages/GameEasy/GameEasy';
+import GameSyllablesEasy from './components/pages/GameSyllablesEasy/GameSyllablesEasy';
 import GameHard from './components/pages/GameHard/GameHard';
 import NonFound from './components/pages/NonFound/NonFound';
 import Header from './components/views/Header/Header';
@@ -21,7 +21,7 @@ const App = () => {
           <Route path='/newplayer' element={<AddPlayerForm />} />
           <Route path='/player/:id' element={<PlayerProfile />} />
           <Route path='/player/:id/game' element={<GameMode />} />
-          <Route path='/player/:id/game/easy' element={<GameEasy />} />
+          <Route path='/player/:id/game/easysyllables' element={<GameSyllablesEasy />} />
           <Route path='/player/:id/game/hard' element={<GameHard />} />
           <Route path='*' element={<NonFound />} />
         </Routes>

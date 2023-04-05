@@ -1,6 +1,6 @@
 import Logo from "../Logo/Logo";
 import Menu from '../Menu/Menu';
-import CurrentPlayer from "../../features/CurrentPlayer/CurrentPlayer";
+import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from '../Header/Header.module.scss';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Header = () => {
         <Logo />
       </Link>
       <Menu />
-      <CurrentPlayer />
+      <ActivePlayer />
 
     </div>
   );

@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from 'react';
-import styles from './GameEasy.module.scss';
+import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
 import { addPointsAsync } from "../../../redux/player/playerSlice";
-import utils from '../../../utils/gameEasyUtils';
+import utils from '../../../utils/gameSyllablesEasyUtils';
 import { useParams } from 'react-router-dom';
 
 // API - dodawanie punktów xp do profilu garcza - playerSlice
 
-const GameEasy = () => {
+const GameSyllablesEasy = () => {
   const dispatch = useDispatch();
 
   const { syllables } = useSelector(state => state.syllables);
@@ -56,7 +56,7 @@ const GameEasy = () => {
               <div className={clsx(styles.easy__task)} key={syllable2}>
                 <label className={clsx(styles.easy__checkboxLabel )}>
                   <input 
-                  type='checkbox' 
+                  type='radio' 
                   name='lastSyllable'
                   className={clsx(styles.easy__checkboxInput)}
                   value={syllable2}
@@ -76,4 +76,4 @@ const GameEasy = () => {
   );
 };
 
-export default GameEasy;
+export default GameSyllablesEasy;
