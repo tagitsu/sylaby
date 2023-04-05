@@ -39,14 +39,12 @@
   }
 
   &__btn {
-    border: 4px solid $color-light;
-    border-radius: $radius;
     padding: $base-size;
-    background-color: transparent;
+    background-color: $color-light;
 
     & a {
       text-decoration: none;
-      color: $color-light;
+      color: $color-blue;
     }
   }
 }

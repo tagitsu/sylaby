@@ -1,14 +1,29 @@
 @import '/src/styles/settings.scss';
 
 .button {
-  border: 4px solid $color-light;
+  border: 2px outset $color-light;
   border-radius: $radius;
   padding: $base-size;
-  background-color: transparent;
-  color: $color-light;
+  background-color: $color-light;
+  color: $color-success;
+  transition: $transition;
 
   & a {
     text-decoration: none;
+    color: $color-success;
+    transition: $transition;
+
+  }
+}
+
+.button:hover a {
+  color: $color-yellow;
+}
+
+.button:active {
+  background-color: $color-success;
+
+  & a {
     color: $color-light;
   }
 }

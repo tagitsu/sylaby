@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getPlayersAsync } from '../../../redux/player/playerSlice';
 
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
+import Button from '../../common/Button/Button';
 import styles from './PlayersList.module.scss';
 
 const PlayersList = () => {
@@ -28,12 +29,8 @@ const PlayersList = () => {
           </div>
         </div>
         <p className={styles.list__name}>{player.name}</p>
-        <button className={styles.list__btn}>
-          <Link to={`/player/${player.id}`}>Karta postaci</Link>
-        </button>
-        <button className={styles.list__btn}>
-          <Link to={`/player/${player.id}/game`}>Zacznij grę</Link>
-        </button>
+        <Button content={<Link to={`/player/${player.id}`}>Karta postaci</Link>} />
+        <Button content={<Link to={`/player/${player.id}/game`}>Zacznij grę</Link>} />
       </div>
     )}
     </div>
