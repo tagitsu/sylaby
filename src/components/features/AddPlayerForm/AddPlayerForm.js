@@ -2,7 +2,6 @@ import styles from './AddPlayerForm.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import clsx from 'clsx';
-import { addPlayerAsync } from '../../../redux/player/playerSlice';
 
 const AddPlayerForm = () => {
 
@@ -86,17 +85,7 @@ const AddPlayerForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Dodaję gracza o imieniu ${playerName}, który wybrał postać ${playerCharacter} i kolor ${playerColor}`);
-    dispatch(addPlayerAsync({
-      id: `${newPlayerID}`,
-      name: playerName,
-      icon: playerCharacter,
-      color: playerColor,
-      level: 1,
-      title: '',
-      badges: [],
-      xp: 0,
-      isCurrent: false
-    }));
+    
     setIsActive(!isActive);
   };
 

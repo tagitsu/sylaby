@@ -1,20 +1,17 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
-import { addPointsAsync } from "../../../redux/player/playerSlice";
 import utils from '../../../utils/gameSyllablesEasyUtils';
 import { useParams } from 'react-router-dom';
+import { useGetPlayersQuery, useGetSyllablesQuery } from "../../../api/apiSlice";
 
 // API - dodawanie punktów xp do profilu garcza - playerSlice
 
 const GameSyllablesEasy = () => {
-  const dispatch = useDispatch();
 
-  const { syllables } = useSelector(state => state.syllables);
-  console.log('game easy - syllables length', syllables.length);
-  const { players } = useSelector(state => state.player);
-  console.log('game easy - all players', players);
+  const { data: syllables } = useGetSyllablesQuery();
+  const { data: players } = useGetPlayersQuery();
   const activePlayerParam = useParams();
   const [ activePlayer ] = players.filter( player => player.id === activePlayerParam.id);
   console.log('game easy - active player ID', activePlayerParam.id);
@@ -28,12 +25,16 @@ const GameSyllablesEasy = () => {
   const [ correctAnswers, setCorrectAnswers ] = useState([]);
 
 
+  const addPoints = () => {
+    console.log('dodaję punty graczowi')
+  };
+
   const submitSolution = (e) => {
     e.preventDefault();
     for (let i = 0; i < answers.length; i++) {
       if (syllable1Words.includes(answers[i])) {
         console.log(`game easy - moja odpowiedź ${answers[i]} jest poprawna`);
-        dispatch(addPointsAsync({ id: activePlayer.id, xp: 1 }))
+        /* dodaj punkty */(addPoints({ id: activePlayer.id, xp: 1 }))
       } else {
         console.log(`game easy - moja odpowiedź ${answers[i]} jest błędna`)
       }

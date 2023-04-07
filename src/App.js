@@ -1,5 +1,5 @@
 import Home from './components/pages/Home/Home';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 import PlayerProfile from './components/pages/PlayerProfile/PlayerProfile';
 import GameMode from './components/pages/GameMode/GameMode';
 import GameSyllablesEasy from './components/pages/GameSyllablesEasy/GameSyllablesEasy';
@@ -11,6 +11,7 @@ import AddPlayerForm from './components/features/AddPlayerForm/AddPlayerForm';
 
 const App = () => {
 
+  let { playerID } = useParams();
   return (
     <div>
       <Header />
@@ -19,10 +20,9 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/players' element={<PlayersList />} />
           <Route path='/newplayer' element={<AddPlayerForm />} />
-          <Route path='/player/:id' element={<PlayerProfile />} />
-          <Route path='/player/:id/game' element={<GameMode />} />
-          <Route path='/player/:id/game/easysyllables' element={<GameSyllablesEasy />} />
-          <Route path='/player/:id/game/hard' element={<GameHard />} />
+          <Route path='/players/:playerID' element={<PlayerProfile />} />
+          <Route path='/game/:playerID' element={<GameMode />} />
+          <Route path='/game/easysyllables/:playerID' element={<GameSyllablesEasy />} />
           <Route path='*' element={<NonFound />} />
         </Routes>
       </main>
