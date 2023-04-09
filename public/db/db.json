@@ -4,21 +4,21 @@
       "id": "1",
       "name": "Szymek",
       "icon": "pikachu.png",
-      "isActive": "false",
+      "isActive": false,
       "level": 1,
       "title": "",
-      "badges": [],
-      "xp": 1
+      "badges": ["faMouse"],
+      "xp": 0
     },
     {
       "id": "2",
       "name": "Maciuś",
       "icon": "curious_george.png",
-      "isActive": "false",
+      "isActive": false,
       "level": 1,
       "title": "",
       "badges": [],
-      "xp": 1
+      "xp": 0
     }
   ],
   "levels": [
@@ -30,7 +30,7 @@
     },
     {
       "id": 2,
-      "title": "literujący kotek",
+      "title": "sylabujący kotek",
       "badge": "faCat",
       "nextLevel": 30
     },

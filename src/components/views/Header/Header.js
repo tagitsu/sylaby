@@ -1,10 +1,11 @@
 import Logo from "../Logo/Logo";
 import Menu from '../Menu/Menu';
-import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from '../Header/Header.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Header = () => {
+
+  const activePlayer = useParams();
 
   return(
     <div className={styles.header}>
@@ -12,8 +13,6 @@ const Header = () => {
         <Logo />
       </Link>
       <Menu />
-      <ActivePlayer />
-
     </div>
   );
 };

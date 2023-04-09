@@ -1,23 +1,24 @@
-import { useSelector } from "react-redux";
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from '../ActivePlayer/ActivePlayer.module.scss';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { useGetPlayersQuery } from "../../../api/apiSlice";
+import { useEffect, useState } from "react";
 
 const ActivePlayer = () => {
 
-  const { playerID } = useParams();
+  const [ activePlayer, setActivePlayer ] = useState(0);
+
+  const activePlayerID = useParams();
+  
   const { data: players } = useGetPlayersQuery();
   console.log('active player comp - players', players);
-  console.log('active player comp - player param', playerID);
+  console.log('active player comp - player param', activePlayerID);
   //const [ activePlayer ] = players.filter( player => player.id === activePlayerParam);
   
 
-  // tylko do testu
-  const activePlayer = undefined;
 
-  if(activePlayer === undefined) {
+  if(!activePlayer) {
     return(
       <div>brak aktywnego garcza</div>
     );

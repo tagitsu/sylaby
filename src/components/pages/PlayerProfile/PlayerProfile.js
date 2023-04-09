@@ -8,19 +8,34 @@ import { useGetLevelsQuery, useGetPlayersQuery } from "../../../api/apiSlice";
 
 const PlayerProfile = () => {
 
-  const param = useParams();
-  console.log('palyer profile - id from url', param.playerID);
-  const { data: players } = useGetPlayersQuery();
-  console.log('profile - players', players);
-  const { data: levels } = useGetLevelsQuery();
-  console.log('profile - levels', levels);
-  const [ player ] = players.filter( player => player.id == param.playerID);
-  console.log('profile - active player object', player);
-  const [ playerLevel ] = levels.filter( level => player.level === level.id);
-  console.log('profile - level object', playerLevel);
-  
+  const activePlayer = useParams();
+  console.log('profile - id from url', activePlayer.id);
+  const { data: players, isSuccess: playersOK, isUninitialized } = useGetPlayersQuery();
 
-  return(
+  let player, playerLevel;
+
+  if (playersOK) {
+    console.log('profile - players', players);
+    [ player ] = players.filter( player => player.id == activePlayer.id);
+    console.log('profile - active player object', player);
+  } else if (isUninitialized) {
+    console.log('nie pobiera graczy')
+  }
+  
+  const { data: levels, isSuccess: levelsOK, isError, error } = useGetLevelsQuery();
+  if (isError) {
+    console.log('błąd w pobieraniu levelów', error)
+  } else if (levelsOK) {
+    console.log('profile - levels', levels);
+    [ playerLevel ]= levels.filter( level => player.level == level.id);
+    console.log('profile - level object', playerLevel);
+  }
+  
+  console.log('badges', player.badges)
+
+
+  if (playersOK && levelsOK) {
+    return(
     <div key={player.id} className={styles.profile}>
       <PlayerIcon icon={player.icon} name={player.name} color={player.color} />
       <div>Imię gracza:
@@ -30,14 +45,18 @@ const PlayerProfile = () => {
         <p>{player.level}</p>
         <ProgressBar xp={player.xp} levelUp={playerLevel.nextLevel} /> {player.xp}/{playerLevel.nextLevel}
       </div>
-      <div className={styles.profile__badges}>Odznaki: 
-        <div className={styles.profile__badge}>{player.badges.map( badge => <FontAwesomeIcon key={badge.iconName} icon={badge} />)}</div>
-      </div>
+      {/* <div className={styles.profile__badges}>Odznaki: 
+        <div className={styles.profile__badge}>
+          {player.badges.length > 0 && player.badges.map( badge => <FontAwesomeIcon key={badge.iconName} icon={badge} />)}
+        </div>
+      </div> */}
       <button>
-        <Link to={`/game/${player.id}`} className={styles.list__btn}>Zacznij grę</Link>
+        <Link to={`/game/${player.id}`}>Zacznij grę</Link>
       </button>
     </div>
     );
+  }
+  
   }
 
 

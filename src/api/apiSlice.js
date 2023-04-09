@@ -7,6 +7,13 @@ export const apiSlice = createApi({
     getPlayers: builder.query({
       query: () => '/players'
     }),
+    getPlayer: builder.query({
+      query: (player) => ({
+        url: `/players/${player.id}`,
+        method: 'GET',
+        body: player
+      })
+    }),
     addPlayer: builder.mutation({
       query: (player) => ({
         url: '/players',
@@ -40,6 +47,7 @@ export const apiSlice = createApi({
 // TRK Query tworzy customowe hooki na podstawie metod które wprowadzamy
 export const {
   useGetPlayersQuery,
+  useGetPlayerQuery,
   useAddPlayerMutation,
   useUpdatePlayerMutation,
   useDeletePlayerMutation,

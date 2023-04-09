@@ -9,7 +9,7 @@ const Home = () => {
   <div>
     <p> Witaj w grze pełnej liter, sylab i powstających z nich słów. </p>
     <p> Jeśli chcesz już zacząć grać, 
-      <Link to='/players'> wybierz </Link> 
+      <Link to='/playerslist'> wybierz </Link> 
       lub 
       <Link to='/newplayer'> stwórz </Link>
       swoją postać. 

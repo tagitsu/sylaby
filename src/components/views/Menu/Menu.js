@@ -8,7 +8,7 @@ const Menu = () => {
     <div>
       <ul className={styles.menu}>
         <Link to='/'>strona główna</Link>
-        <Link to='/players'>lista graczy</Link>
+        <Link to='/playerslist'>lista graczy</Link>
         <Link to='/instruction'>jak grać</Link>
         <Link to='/about'>o autorze</Link>
       </ul>
