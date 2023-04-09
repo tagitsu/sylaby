@@ -3,18 +3,15 @@ import styles from './GameMode.module.scss';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
-
+import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 
 const GameMode = () => {
-
-
-
-
 
   const activePlayer = useParams();
 
   return(
     <div className={styles.mode}>
+      <ActivePlayer id={activePlayer.id} />
       <h1 className={styles.mode__title}>Wybierz poziom trudności</h1>
       <div className={styles.mode__btns}>
         <Link 

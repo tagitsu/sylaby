@@ -1,26 +1,20 @@
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from '../ActivePlayer/ActivePlayer.module.scss';
 import { Link } from 'react-router-dom';
-import { useParams } from "react-router-dom";
 import { useGetPlayersQuery } from "../../../api/apiSlice";
-import { useEffect, useState } from "react";
 
-const ActivePlayer = () => {
+const ActivePlayer = (props) => {
 
-  const [ activePlayer, setActivePlayer ] = useState(0);
-
-  const activePlayerID = useParams();
-  
   const { data: players } = useGetPlayersQuery();
   console.log('active player comp - players', players);
-  console.log('active player comp - player param', activePlayerID);
-  //const [ activePlayer ] = players.filter( player => player.id === activePlayerParam);
+  console.log('active player comp - player param', props.id);
+  const [ activePlayer ] = players.filter( player => player.id === props.id);
   
 
 
   if(!activePlayer) {
     return(
-      <div>brak aktywnego garcza</div>
+      <div>Brak aktywnego garcza</div>
     );
   } else {
     return(

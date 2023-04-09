@@ -16,6 +16,11 @@
   }
 }
 
+.button:hover {
+  cursor: pointer
+
+}
+
 .button:hover a {
   color: $color-yellow;
 }
@@ -26,4 +31,8 @@
   & a {
     color: $color-light;
   }
+}
+
+.button:disabled {
+  background-color: lightgrey;
 }

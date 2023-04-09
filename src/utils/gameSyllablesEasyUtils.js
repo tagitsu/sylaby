@@ -1,7 +1,8 @@
+import Button from "../components/common/Button/Button";
 
 const utils = {};
 
-utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words) => {
+utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setIsHidden) => {
   const randomSyllableId = Math.floor(Math.random() * syllables.length);
   const [ randomSyllableObj ] = syllables.filter( syllable => syllable.id == randomSyllableId);
 
@@ -24,16 +25,33 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
     console.log('game easy - ponowne losowanie');
     utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words) 
   }
+
+  setIsHidden(true);
 };
 
-utils.createAnswer = (e, answers, setAnswers, syllable1) => {
-  if(e.target.checked) {
-    console.log('game easy - to jest zaznaczona odpowiedź', e.target.value);
-    setAnswers( answers => [...answers, `${syllable1}${e.target.value}`]);
-  } else {
-    const uncheckedAnswer = `${syllable1}${e.target.value}`;
-    setAnswers( answers.filter( el => el !== uncheckedAnswer));
-  }
+utils.createAnswer = (e, setAnswer, syllable1) => {
+  let syllable = syllable1
+  e.preventDefault();
+  console.log(syllable + e.target.value);
+  setAnswer(`${syllable1}${e.target.value}`);
 };
+
+utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setIsHidden) => {
+  e.preventDefault();
+
+  if (syllable1Words.includes(answer)) {
+    console.log(`game easy - moja odpowiedź ${answer} jest poprawna`);
+    /* dodaj punkty */
+  } else {
+    console.log(`game easy - moja odpowiedź ${answer} jest błędna`)
+  }
+  setSyllable1('');
+  setSyllable1Words([]);
+  setSyllables2([]);
+  setWord('');
+  setIsHidden(false);
+
+};
+
 
 export default utils;
