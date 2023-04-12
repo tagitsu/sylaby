@@ -8,9 +8,9 @@
       "level": 1,
       "title": "",
       "badges": [
-        "faMouse"
+        "faCat"
       ],
-      "xp": 4
+      "xp": 5
     },
     {
       "id": "2",
@@ -26,8 +26,8 @@
   "levels": [
     {
       "id": 1,
-      "title": "głoskująca myszka",
-      "badge": "faMouse",
+      "title": "głoskująca żabka",
+      "badge": "faFrog",
       "nextLevel": 10
     },
     {
@@ -38,8 +38,8 @@
     },
     {
       "id": 3,
-      "title": "literkowy królik",
-      "badge": "faRabbit",
+      "title": "literkowy piesek",
+      "badge": "faDog",
       "nextLevel": 70
     }
   ],

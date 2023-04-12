@@ -1,58 +1,49 @@
 import { useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCat, faMouse, faDog, faDove } from '@fortawesome/free-solid-svg-icons'
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import { Link } from 'react-router-dom';
 import { useGetLevelsQuery, useGetPlayersQuery } from "../../../api/apiSlice";
+import Button from "../../common/Button/Button";
 
 const PlayerProfile = () => {
 
-  const activePlayer = useParams();
-  console.log('profile - id from url', activePlayer.id);
-  const { data: players, isSuccess: playersOK, isUninitialized } = useGetPlayersQuery();
-
-  let player, playerLevel;
-
-  if (playersOK) {
-    console.log('profile - players', players);
-    [ player ] = players.filter( player => player.id == activePlayer.id);
-    console.log('profile - active player object', player);
-  } else if (isUninitialized) {
-    console.log('nie pobiera graczy')
+  const { data: players, isSuccess } = useGetPlayersQuery();
+  let activePlayer, playerLevel;
+  if (isSuccess) {
+    [ activePlayer ] = players.filter( player => player.isActive);
+    console.log('profile - active player', activePlayer);
   }
   
   const { data: levels, isSuccess: levelsOK, isError, error } = useGetLevelsQuery();
-  if (isError) {
-    console.log('błąd w pobieraniu levelów', error)
-  } else if (levelsOK) {
+  if (levelsOK) {
     console.log('profile - levels', levels);
-    [ playerLevel ]= levels.filter( level => player.level == level.id);
+    [ playerLevel ]= levels.filter( level => activePlayer.level == level.id);
     console.log('profile - level object', playerLevel);
   }
   
-  console.log('badges', player.badges)
-
-
-  if (playersOK && levelsOK) {
+  if (isSuccess && levelsOK) {
     return(
-    <div key={player.id} className={styles.profile}>
-      <PlayerIcon icon={player.icon} name={player.name} color={player.color} />
+    <div key={activePlayer.id} className={styles.profile}>
+      <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} />
       <div>Imię gracza:
-        <p>{player.name}</p> 
+        <p>{activePlayer.name}</p> 
       </div>
       <div>LVL:
-        <p>{player.level}</p>
-        <ProgressBar xp={player.xp} levelUp={playerLevel.nextLevel} /> {player.xp}/{playerLevel.nextLevel}
+        <p>{activePlayer.level}</p>
+        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} /> {activePlayer.xp}/{playerLevel.nextLevel}
       </div>
-      {/* <div className={styles.profile__badges}>Odznaki: 
+      <div className={styles.profile__badges}>Odznaki: 
         <div className={styles.profile__badge}>
-          {player.badges.length > 0 && player.badges.map( badge => <FontAwesomeIcon key={badge.iconName} icon={badge} />)}
+          {activePlayer.badges.length > 0 && activePlayer.badges.map( badge => <FontAwesomeIcon key={badge} icon={faCat} />)}
         </div>
-      </div> */}
-      <button>
-        <Link to={`/game/${player.id}`}>Zacznij grę</Link>
-      </button>
+      </div>
+      <Button
+        content={<Link to={`/game/${activePlayer.id}`}>Zacznij grę</Link>}
+      />
+        
     </div>
     );
   }

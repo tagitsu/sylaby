@@ -35,7 +35,7 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
 //   setAnswer(`${syllable1}${e.target.value}`);
 // };
 
-utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setIsHidden, points, setPoints) => {
+utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setHidden, points, setPoints) => {
   e.preventDefault();
   if (syllable1Words.includes(answer)) {
     let turnPoints = points + 1;
@@ -48,7 +48,7 @@ utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Wor
   setSyllable1Words([]);
   setSyllables2([]);
   setWord('');
-  setIsHidden(false);
+  setHidden(false);
 };
 
 export default utils;

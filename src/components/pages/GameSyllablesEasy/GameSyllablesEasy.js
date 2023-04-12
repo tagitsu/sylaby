@@ -30,7 +30,7 @@ const GameSyllablesEasy = () => {
   const [ syllables2, setSyllables2 ] = useState([]);
   const [ word, setWord ] = useState('');
   const [ answer, setAnswer ] = useState('');
-  const [ isHidden, setIsHidden ] = useState(false);
+  const [ hidden, setHidden ] = useState(false);
   const [ points, setPoints ] = useState(0);
  
   console.log('game syllables easy - points', points);
@@ -50,9 +50,9 @@ const GameSyllablesEasy = () => {
       <ActivePlayer id={activePlayerParam.id} points={points} />
       <Button 
         name='setTurnBtn'
-        onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setIsHidden)} 
+        onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setHidden)} 
         content='Wylosuj sylabę'
-        hidden={isHidden}
+        hidden={hidden}
       />
       <section className={styles.easy__board}>
         <div className={clsx(styles.easy__first)}>{syllable1}</div>
@@ -72,7 +72,7 @@ const GameSyllablesEasy = () => {
           {answer}
         </div>
         <Button 
-          onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setIsHidden, points, setPoints)} 
+          onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setHidden, points, setPoints)} 
           className={styles.easy__btn} content='OK' 
         />
       </section>
