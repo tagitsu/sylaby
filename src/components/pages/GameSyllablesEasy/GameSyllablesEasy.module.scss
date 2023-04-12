@@ -13,7 +13,7 @@
     transition: all .2s ease-in-out;
   }
   
-  &__first, &__task {
+  &__first, &__task, &__answer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +26,23 @@
     text-align: center;
     margin: $base-size;
     background-color: $color-light;
+    border: none;
   }
+
+  &__task:hover {
+    border: 3px solid $color-yellow;
+    cursor: pointer;
+  }
+
+  &__first {
+    border: 3px solid $color-success;
+  }
+
+  &__answer {
+    border: 3px solid $color-blue;
+  }
+
+
 
   &__last {
     display: flex;

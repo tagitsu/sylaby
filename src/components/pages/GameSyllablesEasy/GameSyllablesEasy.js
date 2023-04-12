@@ -48,7 +48,7 @@ const GameSyllablesEasy = () => {
             </div>
           )}
         </form>
-        <div className={clsx(styles.easy__first)}>
+        <div className={clsx(styles.easy__answer)}>
           {answer}
         </div>
         <Button 
