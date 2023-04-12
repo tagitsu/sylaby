@@ -8,7 +8,7 @@ const Button = (props) => {
       className={styles.button} 
       onClick={props.onClick} 
       type={props.type}
-      isHidden={props.isHidden}
+      hidden={props.hidden}
     >
     {props.content}
     </button>

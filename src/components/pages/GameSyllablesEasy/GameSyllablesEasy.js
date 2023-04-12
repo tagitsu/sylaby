@@ -1,20 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
 import utils from '../../../utils/gameSyllablesEasyUtils';
-import { useParams } from 'react-router-dom';
-import { useGetPlayersQuery, useGetSyllablesQuery } from "../../../api/apiSlice";
+import { Link, useParams } from 'react-router-dom';
+import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation } from "../../../api/apiSlice";
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 import Button from '../../common/Button/Button';
 
-// API - dodawanie punktów xp do profilu garcza - playerSlice
 
 const GameSyllablesEasy = () => {
 
   const { data: syllables } = useGetSyllablesQuery();
-  const { data: players } = useGetPlayersQuery();
+  const { data: players, isSuccess } = useGetPlayersQuery();
+  let activePlayer;
+  if (isSuccess) {
+    console.log('game syllables easy', players);
+    [ activePlayer ] = players.filter( player => player.isActive);
+    console.log('game syllables easy - active', activePlayer);
+  }
   const activePlayerParam = useParams();
-  const [ activePlayer ] = players.filter( player => player.id === activePlayerParam.id);
+
+  const [ updatePlayer ] = useUpdatePlayerMutation();
+  // wskazywanie aktywnego gracza:
+  // 1. wykorzystanie parametru z url i filtrowanie wszystkich graczy pobranych z api
+  // 2. update gracza isActive na true wg parametru url
 
   const [ syllable1, setSyllable1 ] = useState('');
   const [ syllable1Words, setSyllable1Words ] = useState([]);
@@ -22,17 +31,28 @@ const GameSyllablesEasy = () => {
   const [ word, setWord ] = useState('');
   const [ answer, setAnswer ] = useState('');
   const [ isHidden, setIsHidden ] = useState(false);
-
-
+  const [ points, setPoints ] = useState(0);
  
+  console.log('game syllables easy - points', points);
+
+  console.log('game syllables easy - xp', activePlayer.xp);
+
+  const gameOver = () => {
+  let turnPoints = points + activePlayer.xp;
+  console.log('punkty za grę', points, 'punkty gracza', turnPoints);
+  updatePlayer({ ...activePlayer, xp: turnPoints, isActive: false });
+  };
+
+  
+  
   return(
     <div className={styles.easy} >
-      <ActivePlayer id={activePlayer.id} />
+      <ActivePlayer id={activePlayerParam.id} points={points} />
       <Button 
         name='setTurnBtn'
         onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setIsHidden)} 
         content='Wylosuj sylabę'
-        isHidden={isHidden}
+        hidden={isHidden}
       />
       <section className={styles.easy__board}>
         <div className={clsx(styles.easy__first)}>{syllable1}</div>
@@ -52,9 +72,11 @@ const GameSyllablesEasy = () => {
           {answer}
         </div>
         <Button 
-          onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setIsHidden)} 
-          className={styles.easy__btn} content='OK' ></Button>
+          onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setIsHidden, points, setPoints)} 
+          className={styles.easy__btn} content='OK' 
+        />
       </section>
+      <Link to='/playerslist' onClick={gameOver}>Zakończ grę</Link>
     </div>
   );
 };

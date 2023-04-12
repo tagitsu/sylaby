@@ -17,7 +17,7 @@ const PlayersList = () => {
 
   const changeActiveStatus = (e, player) => {
     e.preventDefault();
-    updatePlayer({ ...player, isActive: !player.isActive});
+    updatePlayer({ ...player, isActive: true});
   }
 
   if (isSuccess) {
@@ -34,7 +34,10 @@ const PlayersList = () => {
             </div>
           </div>
           <p className={styles.list__name}>{player.name}</p>
-          <Button content={<Link to={`/game/${player.id}`}>Zacznij grę</Link>} />
+          <Button 
+            content={<Link to={`/game/${player.id}`}>Zacznij grę</Link>} 
+            onClick={ (e) => changeActiveStatus(e, player)}
+            />
         </div>
       )}
       </div>

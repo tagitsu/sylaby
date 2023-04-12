@@ -1,4 +1,3 @@
-import Button from "../components/common/Button/Button";
 
 const utils = {};
 
@@ -29,19 +28,19 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
   setIsHidden(true);
 };
 
-utils.createAnswer = (e, setAnswer, syllable1) => {
-  let syllable = syllable1
-  e.preventDefault();
-  console.log(syllable + e.target.value);
-  setAnswer(`${syllable1}${e.target.value}`);
-};
+// utils.createAnswer = (e, setAnswer, syllable1) => {
+//   let syllable = syllable1
+//   e.preventDefault();
+//   console.log(syllable + e.target.value);
+//   setAnswer(`${syllable1}${e.target.value}`);
+// };
 
-utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setIsHidden) => {
+utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setIsHidden, points, setPoints) => {
   e.preventDefault();
-
   if (syllable1Words.includes(answer)) {
-    console.log(`game easy - moja odpowiedź ${answer} jest poprawna`);
-    /* dodaj punkty */
+    let turnPoints = points + 1;
+    setPoints(turnPoints);
+
   } else {
     console.log(`game easy - moja odpowiedź ${answer} jest błędna`)
   }
@@ -50,8 +49,6 @@ utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Wor
   setSyllables2([]);
   setWord('');
   setIsHidden(false);
-
 };
-
 
 export default utils;

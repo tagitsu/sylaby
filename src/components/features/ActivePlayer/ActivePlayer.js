@@ -5,25 +5,25 @@ import { useGetPlayersQuery } from "../../../api/apiSlice";
 
 const ActivePlayer = (props) => {
 
-  const { data: players } = useGetPlayersQuery();
-  console.log('active player comp - players', players);
-  console.log('active player comp - player param', props.id);
-  const [ activePlayer ] = players.filter( player => player.id === props.id);
-  
+  const { data: players, isSuccess } = useGetPlayersQuery();
+  let activePlayer;
+  if (isSuccess) {
+    [activePlayer] = players.filter( player => player.isActive);
+  }
 
 
   if(!activePlayer) {
     return(
       <div>Brak aktywnego garcza</div>
     );
-  } else {
+  } else if (activePlayer) {
     return(
     <div className={styles.current}>
       <div> Aktywnym graczem jest { activePlayer.name} </div>
       <Link to={`/player/${activePlayer.id}`}>
         <PlayerIcon className={styles.current__item} icon={activePlayer.icon} name={activePlayer.name} />
       </Link>
-      <div>Zdobyte punkty: {activePlayer.xp} </div>
+      <div>Zdobyte punkty: {props.points} </div>
     </div>
     );
   }
