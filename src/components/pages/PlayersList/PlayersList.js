@@ -47,6 +47,8 @@ const PlayersList = () => {
             />
           </div>
           <p className={styles.list__name}>{player.name}</p>
+          <p className={styles.list__name}>{player.xp}</p>
+
           <Button 
             content={<Link to={`/game/${player.id}`}>Zacznij grę</Link>} 
             onClick={ (e) => changeActiveStatus(e, player)}

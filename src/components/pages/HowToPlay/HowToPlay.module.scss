@@ -1,0 +1,28 @@
+@import '/src/styles/settings.scss';
+
+:root {
+  --player-xp: 0;
+}
+
+.how {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+  &__game {
+    width: 70vw;
+    margin: $base-size;
+    padding: $base-size;
+    background-color: $color-light;
+    color: $color-dark;
+    border: 3px solid $color-yellow;
+    border-radius: $radius;
+  }
+
+  &__game h1 {
+    font-size: calc($base-size * 2);
+    color: $color-blue;
+    
+  }
+}

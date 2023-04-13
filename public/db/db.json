@@ -16,7 +16,7 @@
       "id": "2",
       "name": "Maciuś",
       "icon": "curious_george.png",
-      "isActive": false,
+      "isActive": true,
       "level": 1,
       "title": "",
       "badges": [],

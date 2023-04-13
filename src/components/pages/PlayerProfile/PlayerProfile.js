@@ -1,4 +1,3 @@
-import { useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCat, faMouse, faDog, faDove } from '@fortawesome/free-solid-svg-icons'
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
@@ -17,10 +16,10 @@ const PlayerProfile = () => {
     console.log('profile - active player', activePlayer);
   }
   
-  const { data: levels, isSuccess: levelsOK, isError, error } = useGetLevelsQuery();
+  const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   if (levelsOK) {
     console.log('profile - levels', levels);
-    [ playerLevel ]= levels.filter( level => activePlayer.level == level.id);
+    [ playerLevel ]= levels.filter( level => activePlayer.level === level.id);
     console.log('profile - level object', playerLevel);
   }
   
@@ -48,7 +47,7 @@ const PlayerProfile = () => {
     );
   }
   
-  }
+}
 
 
 export default PlayerProfile;

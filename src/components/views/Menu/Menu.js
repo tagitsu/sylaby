@@ -9,7 +9,7 @@ const Menu = () => {
       <ul className={styles.menu}>
         <Link to='/'>strona główna</Link>
         <Link to='/playerslist'>lista graczy</Link>
-        <Link to='/instruction'>jak grać</Link>
+        <Link to='/howtoplay'>jak grać</Link>
         <Link to='/about'>o autorze</Link>
       </ul>
     </div>

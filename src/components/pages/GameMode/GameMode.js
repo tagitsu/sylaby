@@ -30,11 +30,19 @@ const GameMode = () => {
           <FontAwesomeIcon className={styles.star} icon={faStar} />
         </Link>
         <Link 
-          to={`/player/${activePlayerParam.id}/game/hard`} 
-          className={clsx(styles.mode__btn, styles.mode__btnHard)}
+          to={`/game/number/${activePlayerParam.id}`} 
+          className={clsx(styles.mode__btn, styles.mode__btnEasy)}
           >
-          <p>inna gra</p>
+          <p>brakująca liczba</p>
           <FontAwesomeIcon className={styles.star} icon={faStar} />
+          <FontAwesomeIcon className={styles.star} icon={faStar} />
+          <FontAwesomeIcon className={styles.star} icon={faStar} />
+        </Link>
+        <Link 
+          to={`/game/dots/${activePlayerParam.id}`} 
+          className={clsx(styles.mode__btn, styles.mode__btnEasy)}
+          >
+          <p>ile kropek?</p>
           <FontAwesomeIcon className={styles.star} icon={faStar} />
         </Link>
       </div>

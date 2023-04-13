@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
 import utils from '../../../utils/gameSyllablesEasyUtils';
@@ -40,7 +40,7 @@ const GameSyllablesEasy = () => {
   const gameOver = () => {
   let turnPoints = points + activePlayer.xp;
   console.log('punkty za grę', points, 'punkty gracza', turnPoints);
-  updatePlayer({ ...activePlayer, xp: turnPoints, isActive: false });
+  updatePlayer({ ...activePlayer, xp: turnPoints });
   };
 
   
