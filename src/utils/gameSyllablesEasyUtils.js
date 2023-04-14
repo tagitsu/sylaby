@@ -1,12 +1,12 @@
 
 const utils = {};
 
-utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setIsHidden) => {
+utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setHidden) => {
   const randomSyllableId = Math.floor(Math.random() * syllables.length);
   const [ randomSyllableObj ] = syllables.filter( syllable => syllable.id == randomSyllableId);
 
   if(randomSyllableObj.words.length > 0) {
-    console.log('game easy - pierwsze losowanie');
+    console.log('game easy syllables - pierwsze losowanie sylaby');
     setSyllable1(randomSyllableObj.name);
     setSyllable1Words(randomSyllableObj.words);
     const wordIndex = Math.floor(Math.random() * randomSyllableObj.words.length);
@@ -21,34 +21,31 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
     }
     syllables2.sort();
   } else if(randomSyllableObj.words.length === 0){ 
-    console.log('game easy - ponowne losowanie');
+    console.log('game easy syllables - ponowne losowanie sylaby');
     utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words) 
   }
 
-  setIsHidden(true);
+  setHidden(true);
 };
 
-// utils.createAnswer = (e, setAnswer, syllable1) => {
-//   let syllable = syllable1
-//   e.preventDefault();
-//   console.log(syllable + e.target.value);
-//   setAnswer(`${syllable1}${e.target.value}`);
-// };
-
-utils.submitSolution = (e, syllable1Words, answer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setHidden, points, setPoints) => {
+utils.submitSolution = (e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setHidden, points, setPoints, activePlayer, updatePlayer) => {
   e.preventDefault();
   if (syllable1Words.includes(answer)) {
     let turnPoints = points + 1;
     setPoints(turnPoints);
-
+    let playerPoints = activePlayer.xp + 1;
+    updatePlayer({ ...activePlayer, xp: playerPoints });
+    alert(`Stworzyłeś słowo ${answer}. To dobra odpowiedź :) Dostajesz 1 punkt! `);
   } else {
-    console.log(`game easy - moja odpowiedź ${answer} jest błędna`)
+    alert(`Stworzyłeś słowo ${answer}, którego nie ma w słowniku. Spróbuj jeszcze raz :) `);
   }
   setSyllable1('');
   setSyllable1Words([]);
   setSyllables2([]);
   setWord('');
+  setAnswer('')
   setHidden(false);
+
 };
 
 export default utils;

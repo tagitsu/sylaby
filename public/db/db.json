@@ -10,17 +10,17 @@
       "badges": [
         "faCat"
       ],
-      "xp": 5
+      "xp": 14
     },
     {
       "id": "2",
       "name": "Maciuś",
       "icon": "curious_george.png",
-      "isActive": true,
+      "isActive": false,
       "level": 1,
       "title": "",
       "badges": [],
-      "xp": 3
+      "xp": 12
     }
   ],
   "levels": [
