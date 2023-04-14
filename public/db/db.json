@@ -4,23 +4,23 @@
       "id": "1",
       "name": "Szymek",
       "icon": "pikachu.png",
-      "isActive": false,
-      "level": 1,
+      "isActive": true,
+      "level": 2,
       "title": "",
       "badges": [
         "faCat"
       ],
-      "xp": 14
+      "xp": 8
     },
     {
       "id": "2",
       "name": "Maciuś",
       "icon": "curious_george.png",
       "isActive": false,
-      "level": 1,
+      "level": 3,
       "title": "",
       "badges": [],
-      "xp": 12
+      "xp": 6
     }
   ],
   "levels": [

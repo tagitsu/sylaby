@@ -4,14 +4,14 @@ import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import { Link } from 'react-router-dom';
-import { useGetLevelsQuery, useGetPlayersQuery } from "../../../api/apiSlice";
+import { useGetLevelsQuery, useGetPlayersQuery, useUpdatePlayerMutation } from "../../../api/apiSlice";
 import Button from "../../common/Button/Button";
 
 const PlayerProfile = () => {
 
-  const { data: players, isSuccess } = useGetPlayersQuery();
+  const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   let activePlayer, playerLevel;
-  if (isSuccess) {
+  if (playersOK) {
     [ activePlayer ] = players.filter( player => player.isActive);
     console.log('profile - active player', activePlayer);
   }
@@ -19,12 +19,18 @@ const PlayerProfile = () => {
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   if (levelsOK) {
     console.log('profile - levels', levels);
-    [ playerLevel ]= levels.filter( level => activePlayer.level === level.id);
+    [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
     console.log('profile - level object', playerLevel);
   }
-  
-  if (isSuccess && levelsOK) {
-    return(
+
+  const [updatePlayer] = useUpdatePlayerMutation();
+
+  if (playersOK && levelsOK) {
+
+  if (activePlayer.xp >= playerLevel.nextLevel) {
+    updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0 })
+  }
+  return(
     <div key={activePlayer.id} className={styles.profile}>
       <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} />
       <div>Imię gracza:

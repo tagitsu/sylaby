@@ -19,10 +19,12 @@ const ActivePlayer = (props) => {
   } else if (activePlayer) {
     return(
     <div className={styles.current}>
-      <div> Aktywnym graczem jest {activePlayer.name} </div>
+      <div> Aktywnym graczem jest {activePlayer.name}. Na levelu {activePlayer.level} zdobył już {activePlayer.xp} pkt </div>
+
       <Link to={`/player/${activePlayer.id}`} className={styles.current__item}>
-        <PlayerIcon  icon={activePlayer.icon} name={activePlayer.name} />
+        <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} />
       </Link>
+
     </div>
     );
   }

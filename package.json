@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --port 3131 --no-cors --delay 250 --watch public/db/db.json --routes public/db/routes.json"
+    "server": "json-server --port 3131 --no-cors --delay 0 --watch public/db/db.json --routes public/db/routes.json"
   },
   "eslintConfig": {
     "extends": [

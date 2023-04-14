@@ -28,6 +28,7 @@ const GameMode = () => {
           >
           <p>sylaby</p>
           <FontAwesomeIcon className={styles.star} icon={faStar} />
+          <FontAwesomeIcon className={styles.star} icon={faStar} />
         </Link>
         <Link 
           to={`/game/number/${activePlayerParam.id}`} 

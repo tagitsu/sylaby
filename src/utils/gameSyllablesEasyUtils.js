@@ -22,13 +22,13 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
     syllables2.sort();
   } else if(randomSyllableObj.words.length === 0){ 
     console.log('game easy syllables - ponowne losowanie sylaby');
-    utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words) 
+    utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setHidden) 
   }
 
   setHidden(true);
 };
 
-utils.submitSolution = (e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setHidden, points, setPoints, activePlayer, updatePlayer) => {
+utils.submitSolution = (e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, word, setWord, setHidden, points, setPoints, activePlayer, updatePlayer) => {
   e.preventDefault();
   if (syllable1Words.includes(answer)) {
     let turnPoints = points + 1;
@@ -37,7 +37,7 @@ utils.submitSolution = (e, syllable1Words, answer, setAnswer, setSyllable1, setS
     updatePlayer({ ...activePlayer, xp: playerPoints });
     alert(`Stworzyłeś słowo ${answer}. To dobra odpowiedź :) Dostajesz 1 punkt! `);
   } else {
-    alert(`Stworzyłeś słowo ${answer}, którego nie ma w słowniku. Spróbuj jeszcze raz :) `);
+    alert(`Stworzyłeś słowo ${answer}, którego nie ma w słowniku. Prawidłowa odpowiedź to ${word}. Spróbuj jeszcze raz :) `);
   }
   setSyllable1('');
   setSyllable1Words([]);

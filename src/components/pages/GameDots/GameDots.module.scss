@@ -1,5 +1,46 @@
 @import '/src/styles/settings.scss';
 
+:root {
+  --dot-size: 60px;
+  --dot-color: $color-yellow;
+}
+
 .dots {
-  
+
+  &__dots {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  &__dot {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    border: 3px solid $color-light;
+    background-color: var(--dot-color);
+    margin: $base-size;
+    transition: $transition;
+  }
+
+  &__dot:hover {
+    background-color: white;
+
+  }
+
+  &__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $base-size;
+    text-decoration: none;
+    color: $color-dark;
+    font-size: calc($base-size * 3);
+    width: 10vw;
+    height: 7vw;
+    text-align: center;
+    margin: $base-size;
+    background-color: $color-light;
+    border: 3px solid $color-blue;
+  }
 }

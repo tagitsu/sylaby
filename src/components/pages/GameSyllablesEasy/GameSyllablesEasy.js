@@ -2,27 +2,18 @@ import { useEffect, useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
 import utils from '../../../utils/gameSyllablesEasyUtils';
-import { Link, NavLink, useParams } from 'react-router-dom';
-import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation } from "../../../api/apiSlice";
+import { Link, useParams } from 'react-router-dom';
+import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 import Button from '../../common/Button/Button';
 
 
 const GameSyllablesEasy = () => {
 
-  const { data: syllables, isSuccess: syllablesOK, isError: syllablesERR, error, status } = useGetSyllablesQuery();
-  const { data: players, isSuccess } = useGetPlayersQuery();
-  let activePlayer;
-  if (isSuccess) {
-    [ activePlayer ] = players.filter( player => player.isActive);
-  }
-  if (syllablesOK) {
-    console.log('game sylaby', syllables.length);
-  } else if (syllablesERR) {
-    console.log('game sylaby', error);
-  } else {
-    console.log('nadal coś nie tak z sylabami - status', status)
-  }
+  const { data: syllables, isSuccess: syllablesOK } = useGetSyllablesQuery();
+  const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
+  const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
+
   const activePlayerParam = useParams();
 
   const [ updatePlayer ] = useUpdatePlayerMutation();
@@ -35,7 +26,16 @@ const GameSyllablesEasy = () => {
   const [ hidden, setHidden ] = useState(false);
   const [ points, setPoints ] = useState(0);
  
-  console.log('sylaby - punkty z tury', points);
+  let activePlayer, playerLevel;
+  if (playersOK && levelsOK) {
+    [ activePlayer ] = players.filter( player => player.isActive);
+    [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
+    if (activePlayer.xp >= playerLevel.nextLevel) {
+      updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0 })
+    }
+  
+  }
+
 
   return(
     <>
@@ -65,7 +65,7 @@ const GameSyllablesEasy = () => {
             {answer}
           </div>
           <Button 
-            onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, setWord, setHidden, points, setPoints, activePlayer, updatePlayer)} 
+            onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, word, setWord, setHidden, points, setPoints, activePlayer, updatePlayer)} 
             className={styles.easy__btn} content='OK' 
           />
         </section>

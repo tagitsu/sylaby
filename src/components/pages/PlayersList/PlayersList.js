@@ -35,7 +35,7 @@ const PlayersList = () => {
           <div className={styles.list__icon}>
             <Button
               content={
-                <Link to={`/player/${player.id}`}>
+                <Link to={`/player/${player.id}`} >
                   <PlayerIcon 
                     id={player.id} 
                     icon={player.icon} 
@@ -47,7 +47,8 @@ const PlayersList = () => {
             />
           </div>
           <p className={styles.list__name}>{player.name}</p>
-          <p className={styles.list__name}>{player.xp}</p>
+          <p className={styles.list__name}>level: {player.level}</p>
+          <p className={styles.list__name}>punkty: {player.xp}</p>
 
           <Button 
             content={<Link to={`/game/${player.id}`}>Zacznij grę</Link>} 
