@@ -30,21 +30,30 @@ const PlayerProfile = () => {
   if (activePlayer.xp >= playerLevel.nextLevel) {
     updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0 })
   }
+
+  const badges =
+    <div className={styles.profile__badge}>
+      {activePlayer.badges.length > 0 && activePlayer.badges.map( badge => <FontAwesomeIcon key={badge} icon={badge} />)}
+    </div>
+
   return(
     <div key={activePlayer.id} className={styles.profile}>
       <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} />
-      <div>Imię gracza:
-        <p>{activePlayer.name}</p> 
-      </div>
-      <div>LVL:
-        <p>{activePlayer.level}</p>
-        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} /> {activePlayer.xp}/{playerLevel.nextLevel}
-      </div>
-      <div className={styles.profile__badges}>Odznaki: 
-        <div className={styles.profile__badge}>
-          {activePlayer.badges.length > 0 && activePlayer.badges.map( badge => <FontAwesomeIcon key={badge} icon={faCat} />)}
+      <div className={styles.profile__infoBox}>
+        <div className={styles.profile__info}>
+          Imię gracza: {activePlayer.name}
+        </div>
+        <div className={styles.profile__info}>
+        Level: {activePlayer.level}
+        </div>
+        <div className={styles.profile__info}>
+          <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
+        </div>
+        <div className={styles.profile__info}>
+          Odznaki: {badges}
         </div>
       </div>
+      
       <Button
         content={<Link to={`/game/${activePlayer.id}`}>Zacznij grę</Link>}
       />

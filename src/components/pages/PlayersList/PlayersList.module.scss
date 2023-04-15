@@ -13,62 +13,40 @@
     display: flex;
     gap: $base-size;
     align-items: center;
-
   }
+
   &__icon {
     display: flex;
     position: relative;
+    border-radius: 50%;
   }
 
-  // &__level {
-  //   width: calc($base-size * 5);
-  //   height: calc($base-size * 5);
-  //   position: absolute;
-  //   bottom: 0;
-  //   right: -18%;
-  //   color: $color-blue;
-  //   font-weight: 700;
-  // }
+  &__level {
+    width: calc($base-size * 5);
+    height: calc($base-size * 5);
+    position: absolute;
+    z-index: -1;
+    bottom: -20%;
+    right: -28%;
+    border-radius: 50%;
+  }
 
-  // &__levelValue {
-  //   background: var(--player-color);
-  //   width: 100%;
-  //   height: 100%;
-  //   border: 10px solid $color-light;
-  //   border-radius: 50%;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
+  &__levelValue {
+    width: 100%;
+    height: 100%;
+    border: 10px solid $color-light;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px lightgrey;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-  // &__btn {
-  //   padding: $base-size;
-  //   background-color: $color-light;
+  &__name {
+    margin-left: calc($base-size * 2);
+    letter-spacing: 2px;
+    transition: all .3s ease-in-out;
+  }
 
-  //   & a {
-  //     text-decoration: none;
-  //     color: $color-blue;
-  //   }
-  // }
 }
-
-// .icon__container {
-//   width: 100px;
-//   height: 100px;
-//   background-color: transparent;
-// }
-
-// .icon__background {
-//   background: var(--player-color);
-//   width: 100%;
-//   height: 100%;
-//   border: 10px solid $color-light;
-//   border-radius: 50%;
-//   display: flex;
-//   justify-content: center;
-// }
-
-// .icon__image {
-//   height: 100%;
-
-// }

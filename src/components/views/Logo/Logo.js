@@ -3,11 +3,11 @@ import styles from './Logo.module.scss';
 const Logo = () => {
   return(
     <h1 className={styles.logo}>
-      sy
+      za
       <div className={styles.circle} />
-      la
+      graj
       <div className={styles.circle} />
-      by
+      my
     </h1>
   );
 };

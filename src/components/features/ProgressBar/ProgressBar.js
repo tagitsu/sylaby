@@ -8,7 +8,8 @@ const ProgressBar = (props) => {
 
   return(
     <div className={styles.prog}>
-      <div className={styles.prog__bar}></div>
+      <div className={styles.prog__bar} />
+      <p className={styles.prog__points}>{props.content}</p>
     </div>
   );
 };

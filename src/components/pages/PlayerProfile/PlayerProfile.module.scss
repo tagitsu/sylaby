@@ -4,7 +4,17 @@
 .profile {
   font-size: calc($base-size * 2);
   display: flex;
-  justify-content: space-between;
   background-color: transparent;
   margin: calc($base-size * 3);
+
+  &__infoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 60vh;
+  }
+
+  &__info {
+    margin: calc($base-size * 2);
+  }
 }

@@ -33,9 +33,7 @@ const PlayersList = () => {
         {players.map( player => 
         <div key={player.id} className={styles.list}>
           <div className={styles.list__player}>
-            <div className={styles.list__icon}>
-              <Button
-                content={
+            <div className={styles.list__icon} style={{ backgroundColor: player.color }} onClick={ (e) => changeActiveStatus(e, player)} >
                   <Link to={`/player/${player.id}`} >
                     <PlayerIcon 
                       id={player.id} 
@@ -43,12 +41,14 @@ const PlayersList = () => {
                       name={player.name}
                     />
                   </Link>
-                }
-                onClick={ (e) => changeActiveStatus(e, player)} 
-              />
+              <div className={styles.list__level} style={{ backgroundColor: player.color }}>
+                <div className={styles.list__levelValue}>
+                  {player.level}
+                </div>
+              </div>
             </div>
+            
             <p className={styles.list__name}>{player.name}</p>
-            <p className={styles.list__name}>level: {player.level}</p>
           </div>
           <Button 
             content={<Link to={`/game/${player.id}`}>Zacznij grę</Link>} 

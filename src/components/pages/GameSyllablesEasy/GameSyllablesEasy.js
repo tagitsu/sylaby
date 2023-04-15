@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
 import utils from '../../../utils/gameSyllablesEasyUtils';

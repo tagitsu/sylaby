@@ -6,11 +6,12 @@
       "icon": "pikachu.png",
       "isActive": true,
       "level": 3,
+      "color": "yellow",
       "title": "",
       "badges": [
         "faCat"
       ],
-      "xp": 0
+      "xp": 1
     },
     {
       "id": "2",
@@ -18,6 +19,7 @@
       "icon": "curious_george.png",
       "isActive": false,
       "level": 3,
+      "color": "green",
       "title": "",
       "badges": [],
       "xp": 6

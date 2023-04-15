@@ -2,6 +2,9 @@ import styles from './PlayerIcon.module.scss';
 
 const PlayerIcon = (props) => {
 
+  const root = document.querySelector(':root');
+  root.style.setProperty('--player-color', props.color);
+
   return(
     <div key={props.id} className={styles.icon__container}>
       <div className={styles.icon__background}>
