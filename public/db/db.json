@@ -10,13 +10,13 @@
       "badges": [
         "faCat"
       ],
-      "xp": 8
+      "xp": 25
     },
     {
       "id": "2",
       "name": "Maciuś",
       "icon": "curious_george.png",
-      "isActive": false,
+      "isActive": true,
       "level": 3,
       "title": "",
       "badges": [],

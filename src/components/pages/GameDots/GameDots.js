@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
+import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 
 import Button from "../../common/Button/Button";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from './GameDots.module.scss';
 import utils from '../../../utils/gameDotsUtils';
-import clsx from 'clsx';
 
 const GameDots = () => {
 
@@ -23,35 +22,39 @@ const GameDots = () => {
       updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0 })
     }
   }
-  console.log('kropki ', activePlayer);
 
   const [ dots, setDots ] = useState([]);
   const [ answer, setAnswer ] = useState(0);
-  const root = document.querySelector(':root');
   
   let dotsBoard;
 
   if (dots !== undefined) {
     dotsBoard = 
       <div className={styles.dots__dots}>
-        { dots.map( dot => <div key={dot.id} className={clsx(styles.dots__dot)} size={dot.size} color={dot.color} />) }
+        { dots.map( dot => 
+          <div 
+            key={dot.id} 
+            className={styles.dots__dot} 
+            style={{
+              backgroundColor: dot.color, 
+              width: dot.size, 
+              height: dot.size,
+              top: dot.top,
+              left: dot.left
+            }} 
+          />) 
+        }
       </div>
   } else {
       dotsBoard = 
       <div> nie ma jeszcze kropek </div>
   }
 
-  dots.map ( dot => root.style.setProperty('--dot-color', dot.color) );
-  dots.map ( dot => root.style.setProperty('--dot-size', dot.size) );
-
+  
   const handleChange = (e) => {
     e.preventDefault();
-    console.log('wartość inputa', e.target.value);
     setAnswer(e.target.value);
   }
-
-  console.log('stan odpowiedzi', answer);
-
 
     return(
     <div className={styles.dots}>

@@ -10,12 +10,15 @@ utils.setGameTurn = (setDots) => {
       const randomColorR = Math.floor(Math.random() * 255);
       const randomColorG = Math.floor(Math.random() * 255);
       const randomColorB = Math.floor(Math.random() * 255);
+      const randomPositionTop = Math.floor(Math.random() * 100);
+      const randomPositionLeft = Math.floor(Math.random() * 100);
+      const dotTop = `${randomPositionTop}%`;
+      const dotLeft = `${randomPositionLeft}%`;
       const dotColor = `rgb(${randomColorR}, ${randomColorG}, ${randomColorB})`;
       const dotSize = `${randomSize}px`;
-      dots.push({ id: i, color: dotColor, size: dotSize });
+      dots.push({ id: i, color: dotColor, size: dotSize, top: dotTop, left: dotLeft });
     }
 
-  console.log('kropki', dots);
   setDots(dots);
 };
 
@@ -23,12 +26,14 @@ utils.submitSolution = (e, answer, setAnswer, dots, setDots, activePlayer, updat
   e.preventDefault();
 
   if ( answer == dots.length ) {
-    console.log('odpowiedź zagadza się z wylosowaną ilością kropek');
-    console.log('ile punktów ma gracz', activePlayer);
+    alert(`Brawo! Na planszy widać ${answer} kropek. Zdobywasz punkt :)`);
     let playerPoints = activePlayer.xp + 1;
     updatePlayer({ ...activePlayer, xp: playerPoints })
-  } else {
-    console.log(`nie zgadza się, tablica ma długość ${dots.length}, a odpowiedź to ${answer}`)
+  } else if ( answer < dots.length ) {
+      alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś się schowała? Spróbuj jeszcze raz :)`)
+  } else if ( answer > dots.length ) {
+      alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś kropka została policzona podwójnie? Spróbuj jeszcze raz :)`)
+
   }
   setAnswer(0);
   setDots([]);

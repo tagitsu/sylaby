@@ -1,31 +1,27 @@
 @import '/src/styles/settings.scss';
 
-:root {
-  --dot-size: 60px;
-  --dot-color: $color-yellow;
-}
-
 .dots {
+  
+  &__board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
 
   &__dots {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    width: 60vw;
+    height: 60vh;
+    position: relative;
   }
 
   &__dot {
-    width: var(--dot-size);
-    height: var(--dot-size);
     border-radius: 50%;
     border: 3px solid $color-light;
-    background-color: var(--dot-color);
     margin: $base-size;
+    position: absolute;
     transition: $transition;
-  }
-
-  &__dot:hover {
-    background-color: white;
-
   }
 
   &__input {
