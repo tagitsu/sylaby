@@ -10,12 +10,14 @@
   width: calc($base-size * 20);
   border-radius: $radius;
   display: flex;
+  overflow: hidden;
+
 
   &__bar {
     width: var(--player-xp);
     height: calc($base-size * 2);
     background-color: $color-yellow;
-    border-radius: $radius;
+
   }
 
   &__points {
