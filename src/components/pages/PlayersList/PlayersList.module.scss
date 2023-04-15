@@ -1,10 +1,6 @@
 @import '/src/styles/settings.scss';
 
 
-:root {
-  --player-color: white;
-}
-
 .list {
   display: flex;
   justify-content: space-between;
@@ -12,60 +8,67 @@
   margin: calc($base-size * 2) $base-size;
   font-size: calc($base-size * 2.2);
 
+  &__player {
+    flex: 4;
+    display: flex;
+    gap: $base-size;
+    align-items: center;
+
+  }
   &__icon {
     display: flex;
     position: relative;
   }
 
-  &__level {
-    width: calc($base-size * 5);
-    height: calc($base-size * 5);
-    position: absolute;
-    bottom: 0;
-    right: -18%;
-    color: $color-blue;
-    font-weight: 700;
-  }
+  // &__level {
+  //   width: calc($base-size * 5);
+  //   height: calc($base-size * 5);
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: -18%;
+  //   color: $color-blue;
+  //   font-weight: 700;
+  // }
 
-  &__levelValue {
-    background: var(--player-color);
-    width: 100%;
-    height: 100%;
-    border: 10px solid $color-light;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  // &__levelValue {
+  //   background: var(--player-color);
+  //   width: 100%;
+  //   height: 100%;
+  //   border: 10px solid $color-light;
+  //   border-radius: 50%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
 
-  &__btn {
-    padding: $base-size;
-    background-color: $color-light;
+  // &__btn {
+  //   padding: $base-size;
+  //   background-color: $color-light;
 
-    & a {
-      text-decoration: none;
-      color: $color-blue;
-    }
-  }
+  //   & a {
+  //     text-decoration: none;
+  //     color: $color-blue;
+  //   }
+  // }
 }
 
-.icon__container {
-  width: 100px;
-  height: 100px;
-  background-color: transparent;
-}
+// .icon__container {
+//   width: 100px;
+//   height: 100px;
+//   background-color: transparent;
+// }
 
-.icon__background {
-  background: var(--player-color);
-  width: 100%;
-  height: 100%;
-  border: 10px solid $color-light;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-}
+// .icon__background {
+//   background: var(--player-color);
+//   width: 100%;
+//   height: 100%;
+//   border: 10px solid $color-light;
+//   border-radius: 50%;
+//   display: flex;
+//   justify-content: center;
+// }
 
-.icon__image {
-  height: 100%;
+// .icon__image {
+//   height: 100%;
 
-}
+// }
