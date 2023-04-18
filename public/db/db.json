@@ -4,14 +4,14 @@
       "id": "1",
       "name": "Szymek",
       "icon": "pikachu.png",
-      "isActive": true,
+      "isActive": false,
       "level": 3,
       "color": "yellow",
       "title": "",
       "badges": [
         "faCat"
       ],
-      "xp": 13
+      "xp": 18
     },
     {
       "id": "2",

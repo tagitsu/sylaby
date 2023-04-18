@@ -22,8 +22,8 @@
     text-decoration: none;
     color: $color-dark;
     font-size: calc($base-size * 3);
-    width: 10vw;
-    height: 7vw;
+    width: calc($base-size * 8);
+    height: calc($base-size * 5);
     text-align: center;
     margin: $base-size;
     background-color: $color-light;
