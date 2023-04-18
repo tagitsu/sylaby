@@ -7,11 +7,11 @@ $color-blue: #4acefd;
 
 
 
-$font-text: 'Arial', serif; //  'Zilla Slab'
+$font-text: 'Arial', serif;
 
 
 $base-size: 12px;
-$radius: calc($base-size * 2);
+$radius: calc($base-size * 1.2);
 $transition: all 0.5s;
 $box-shadow: 0 0 50px rgb(0 0 0 / 50%);
 $background-gradient: linear-gradient(to right, $color-success, $color-blue);

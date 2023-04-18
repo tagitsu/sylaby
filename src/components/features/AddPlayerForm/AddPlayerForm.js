@@ -1,100 +1,72 @@
 import styles from './AddPlayerForm.module.scss';
-import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import clsx from 'clsx';
-
+import { useGetPlayersQuery, useAddPlayerMutation } from '../../../api/apiSlice';
 const AddPlayerForm = () => {
 
-  const dispatch = useDispatch();
+  const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
 
-  const [ isActive, setIsActive ] = useState(false);
-
-  const characters = [
-      {
-        id: '1',
-        name: 'Pikachu',
-        icon: 'pikachu.png',
-      },
-      {
-        id: '2',
-        name: 'Curious George',
-        icon: 'curious_george.png',
-      },
-      {
-        id: '3',
-        name: 'Sponge Bob',
-        icon: 'spongebob.png',
-      },
-      {
-        id: '4',
-        name: 'Elsa',
-        icon: 'elsa.png',
-      },
-      {
-        id: '5',
-        name: 'George the Pig',
-        icon: 'george_pig.png',
-      },
-      {
-        id: '6',
-        name: 'C3PO and R2D2',
-        icon: 'r2d2_c3po.png',
-      },
-      {
-        id: '7',
-        name: '341B',
-        icon: 'storybots.png',
-      },
-  ];
-  
-  //const colors = ['#FFC312', '#F79F1F', '#EE5A24'];
-
-
-  const playersAmount = useSelector(state => state.player.players.length);
-
-  const newPlayerID = playersAmount + 1;
-
-  const [ playerName, setPlayerName ] = useState('');
-  const [ playerCharacter, setPlayerCharacter ] = useState('');
-  const [ playerColor, setPlayerColor ] = useState('');
+  console.log('new player', players);
 
   const root = document.querySelector(':root');
-  root.style.setProperty('--radio-color', playerColor);
+  root.style.setProperty('--radio-color', 'yellow');
 
-
-  const handleChangeCharacter = (e) => {
-    setPlayerCharacter(e.target.value);
-  };
-
-  const handleChangeColor = (e) => {
-    setPlayerColor(e.target.value);
-  };
+  const characters = [
+    {
+      id: '1',
+      name: 'Pikachu',
+      icon: 'pikachu.png',
+    },
+    {
+      id: '2',
+      name: 'Curious George',
+      icon: 'curious_george.png',
+    },
+    {
+      id: '3',
+      name: 'Sponge Bob',
+      icon: 'spongebob.png',
+    },
+    {
+      id: '4',
+      name: 'Elsa',
+      icon: 'elsa.png',
+    },
+    {
+      id: '5',
+      name: 'George the Pig',
+      icon: 'george_pig.png',
+    },
+    {
+      id: '6',
+      name: 'C3PO and R2D2',
+      icon: 'r2d2_c3po.png',
+    },
+    {
+      id: '7',
+      name: '341B',
+      icon: 'storybots.png',
+    },
+];
 
   const newPlayer = {
-    id: `${newPlayerID}`,
-    name: playerName,
-    icon: playerCharacter,
-    color: playerColor,
-    level: 1,
+    id: '',
+    name: '',
+    icon: "pikachu.png",
+    isActive: false,
+    level: 0,
+    color: '',
     title: '',
     badges: [],
-    xp: 0,
-    isCurrent: false
+    xp: 0
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`Dodaję gracza o imieniu ${playerName}, który wybrał postać ${playerCharacter} i kolor ${playerColor}`);
-    
-    setIsActive(!isActive);
-  };
 
-  if(!isActive) {
     return(
-    <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+    <form className={styles.form}>
       <fieldset className={styles.form__section}>
         <legend>Wpisz swoje imię</legend>
-        <input className={styles.form__input} type='text' id='name' name='playerName' value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
+        <input className={styles.form__input} type='text' id='name' name='playerName' />
       </fieldset>
       <fieldset className={styles.form__section}>
         <legend>Wybierz swoją postać</legend>
@@ -104,28 +76,17 @@ const AddPlayerForm = () => {
             <label htmlFor={character.name}>
               <img className={styles.form__image} src={`${process.env.PUBLIC_URL}/images/${character.icon}`} alt={`${character.name} icon`} />
             </label>
-            <input type='radio' id={character.name} name='character' value={character.icon} onChange={(e) => handleChangeCharacter(e)} ></input>
+            <input type='radio' id={character.name} name='character' value={character.icon} />
           </div>
         )}
       </fieldset>
       <fieldset className={styles.form__section}>
         <legend>Wybierz swój kolor</legend>
-          <input className={clsx(styles.form__input, styles.form__inputColor)} type='color' name='playerColor' onChange={(e) => handleChangeColor(e)} ></input>
-          {/* {colors.map(
-            color => 
-            <div key={color}>
-              <label htmlFor={color}>
-                <div className={styles.form__color} />
-              </label>
-              <input type='radio' id={color} name='color' value={color} onChange={(e) => handleChangeColor(e)} ></input>
-            </div>
-          )} */}
+          <input className={clsx(styles.form__input, styles.form__inputColor)} type='color' name='playerColor' />
       </fieldset>
       <button className={styles.form__btnSubmit} >Dodaj nowego gracza</button>
     </form>
   );
-
-  }
 };
 
 export default AddPlayerForm;

@@ -1,13 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCat, faMouse, faDog, faDove } from '@fortawesome/free-solid-svg-icons'
+import { faCat, faMouse, faDog, faDove, faTrash } from '@fortawesome/free-solid-svg-icons'
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import { Link } from 'react-router-dom';
-import { useGetLevelsQuery, useGetPlayersQuery, useUpdatePlayerMutation } from "../../../api/apiSlice";
+import { useGetLevelsQuery, useGetPlayersQuery, useUpdatePlayerMutation, useDeletePlayerMutation } from "../../../api/apiSlice";
 import Button from "../../common/Button/Button";
+import DeleteButton from "../../common/DeleteButton/DeleteButton";
+import { useState } from "react";
 
 const PlayerProfile = () => {
+
+  const [ warning, setWarning ] = useState('');
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   let activePlayer, playerLevel;
@@ -24,6 +28,7 @@ const PlayerProfile = () => {
   }
 
   const [updatePlayer] = useUpdatePlayerMutation();
+  const [deletePlayer] = useDeletePlayerMutation();
 
   if (playersOK && levelsOK) {
 
@@ -35,6 +40,30 @@ const PlayerProfile = () => {
     <div className={styles.profile__badge}>
       {activePlayer.badges.length > 0 && activePlayer.badges.map( badge => <FontAwesomeIcon key={badge} icon={badge} />)}
     </div>
+
+  const deleteWarning = 
+    <div className={styles.profile__warning}>
+      <p className={styles.profile__warningText}>Uwaga! Usuwanie profilu gracza</p>
+      <p className={styles.profile__warningText}>Czy na pewno chcesz usunąć swój profil gracza? Nie da się tego cofnąć.</p>
+      <button 
+        className={styles.profile__warningButton}
+        onClick={ () => console.log('usuwam gracza', activePlayer.id)}
+      >
+      Tak, chcę usunąć profil gracza {activePlayer.name}
+      </button>
+      <button 
+        onClick={() => setWarning('')} 
+      >
+      Anuluj
+      </button>
+
+    </div>;
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    console.log('usuwam gracza', activePlayer.id);
+    setWarning(deleteWarning);
+  }
 
   return(
     <div key={activePlayer.id} className={styles.profile}>
@@ -52,6 +81,13 @@ const PlayerProfile = () => {
         <div className={styles.profile__info}>
           Odznaki: {badges}
         </div>
+
+        {/** TODO wprowadź opcję usuwania gracza, z formularzem żeby nie usunąć przypadkowo */}
+        <DeleteButton 
+          content={ <FontAwesomeIcon icon={faTrash} /> }
+          onClick={ (e) => handleDelete(e) }
+        />
+        {warning}
       </div>
       
       <Button

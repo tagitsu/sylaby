@@ -17,4 +17,21 @@
   &__info {
     margin: calc($base-size * 2);
   }
+
+  &__warning {
+    border: 2px solid $color-warning;
+    border-radius: $radius;
+    background-color: $color-light;
+    width: 50wv;
+    padding: $base-size;
+    font-size: calc($base-size * 1.2);
+  }
+
+  &__warningText {
+    color: $color-dark;
+  }
+
+  &__warningButton {
+    font-size: $base-size;
+  }
 }
