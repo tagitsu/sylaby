@@ -18,6 +18,7 @@
   &__dot {
     border-radius: 50%;
     border: 3px solid $color-light;
+    opacity: .9;
     margin: $base-size;
     position: absolute;
     transition: $transition;

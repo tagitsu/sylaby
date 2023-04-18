@@ -24,7 +24,7 @@ const GameDots = () => {
   }
 
   const [ dots, setDots ] = useState([]);
-  const [ answer, setAnswer ] = useState(0);
+  const [ answer, setAnswer ] = useState('');
   
   let dotsBoard;
 
