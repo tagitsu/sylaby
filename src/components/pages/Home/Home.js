@@ -7,7 +7,7 @@ const Home = () => {
 
   return(
   <div>
-    <p> Witaj w grze pełnej liter, sylab i powstających z nich słów. </p>
+    <p> Witaj w aplikacji z zadaniami pełnymi liter, liczb, kolorów i kształtów. </p>
     <p> Jeśli chcesz już zacząć grać, 
       <Link to='/playerslist'> wybierz </Link> 
       lub 
