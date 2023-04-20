@@ -5,11 +5,17 @@ import { useGetPlayersQuery, useAddPlayerMutation } from '../../../api/apiSlice'
 const AddPlayerForm = () => {
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
-
+  const [ addPlayer ] = useAddPlayerMutation();
   console.log('new player', players);
 
-  const root = document.querySelector(':root');
-  root.style.setProperty('--radio-color', 'yellow');
+  const [ newPlayerName, setNewPlayerName ] = useState('');
+  const [ newPlayerIcon, setNewPlayerIcon ] = useState('');
+  const [ newPlayerColor, setNewPlayerColor ] = useState('');
+
+  let newPlayerID;
+  if (playersOK) {
+    newPlayerID = players.length + 1;
+  }
 
   const characters = [
     {
@@ -50,23 +56,33 @@ const AddPlayerForm = () => {
 ];
 
   const newPlayer = {
-    id: '',
-    name: '',
-    icon: "pikachu.png",
+    id: newPlayerID,
+    name: newPlayerName,
+    icon: newPlayerIcon,
     isActive: false,
-    level: 0,
-    color: '',
+    level: 1,
+    color: newPlayerColor,
     title: '',
     badges: [],
     xp: 0
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addPlayer(newPlayer);
+  }
 
     return(
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <fieldset className={styles.form__section}>
         <legend>Wpisz swoje imię</legend>
-        <input className={styles.form__input} type='text' id='name' name='playerName' />
+        <input 
+          className={styles.form__input} 
+          type='text' 
+          id='name' 
+          name='playerName'
+          onChange={(e) => setNewPlayerName(e.target.value)}
+        />
       </fieldset>
       <fieldset className={styles.form__section}>
         <legend>Wybierz swoją postać</legend>
@@ -76,15 +92,26 @@ const AddPlayerForm = () => {
             <label htmlFor={character.name}>
               <img className={styles.form__image} src={`${process.env.PUBLIC_URL}/images/${character.icon}`} alt={`${character.name} icon`} />
             </label>
-            <input type='radio' id={character.name} name='character' value={character.icon} />
+            <input 
+              type='radio' 
+              id={character.name} 
+              name='character' 
+              value={character.icon} 
+              onChange={(e) => setNewPlayerIcon(e.target.value)}
+            />
           </div>
         )}
       </fieldset>
       <fieldset className={styles.form__section}>
         <legend>Wybierz swój kolor</legend>
-          <input className={clsx(styles.form__input, styles.form__inputColor)} type='color' name='playerColor' />
+          <input 
+            className={clsx(styles.form__input, styles.form__inputColor)} 
+            type='color' 
+            name='playerColor' 
+            onChange={(e) => setNewPlayerColor(e.target.value)}
+          />
       </fieldset>
-      <button className={styles.form__btnSubmit} >Dodaj nowego gracza</button>
+      <button className={styles.form__btnSubmit} type='submit' >Dodaj nowego gracza</button>
     </form>
   );
 };

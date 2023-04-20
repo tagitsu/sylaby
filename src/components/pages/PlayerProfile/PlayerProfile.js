@@ -47,7 +47,7 @@ const PlayerProfile = () => {
       <p className={styles.profile__warningText}>Czy na pewno chcesz usunąć swój profil gracza? Nie da się tego cofnąć.</p>
       <button 
         className={styles.profile__warningButton}
-        onClick={ () => console.log('usuwam gracza', activePlayer.id)}
+        onClick={ () => deletePlayer(activePlayer.id)}
       >
       Tak, chcę usunąć profil gracza {activePlayer.name}
       </button>
