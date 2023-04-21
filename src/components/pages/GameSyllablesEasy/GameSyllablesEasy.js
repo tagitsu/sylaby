@@ -36,7 +36,6 @@ const GameSyllablesEasy = () => {
   
   }
 
-
   return(
     <>
       <ActivePlayer id={activePlayerParam.id} />
@@ -47,6 +46,7 @@ const GameSyllablesEasy = () => {
           content='Wylosuj sylabę'
           hidden={hidden}
         />
+        { syllable1 && 
         <section className={styles.easy__board}>
           <div className={clsx(styles.easy__first)}>{syllable1}</div>
           <form className={styles.easy__last}>
@@ -69,12 +69,11 @@ const GameSyllablesEasy = () => {
             className={styles.easy__btn} content='OK' 
           />
         </section>
-    </div>
-    <Button
-      content={<Link to='/playerslist'>Zakończ grę</Link>}
-    />
-
-
+        }
+      </div>
+      <Button
+        content={<Link to='/playerslist'>Zakończ grę</Link>}
+      />
     </>
   );
 };

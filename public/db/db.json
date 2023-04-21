@@ -23,6 +23,50 @@
       "title": "",
       "badges": [],
       "xp": 13
+    },
+    {
+      "id": 3,
+      "name": "bobuś",
+      "icon": "george_pig.png",
+      "isActive": true,
+      "level": 1,
+      "color": "#83ece5",
+      "title": "",
+      "badges": [],
+      "xp": 3
+    },
+    {
+      "id": 4,
+      "name": "mała mi",
+      "icon": "elsa.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#bec6e4",
+      "title": "",
+      "badges": [],
+      "xp": 0
+    },
+    {
+      "id": 5,
+      "name": "robo",
+      "icon": "r2d2_c3po.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#008c8f",
+      "title": "",
+      "badges": [],
+      "xp": 0
+    },
+    {
+      "id": 6,
+      "name": "Julia",
+      "icon": "storybots.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#9acc7f",
+      "title": "",
+      "badges": [],
+      "xp": 0
     }
   ],
   "levels": [

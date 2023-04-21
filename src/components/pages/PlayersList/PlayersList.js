@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import Button from '../../common/Button/Button';
@@ -56,6 +58,9 @@ const PlayersList = () => {
           />
         </div>
       )}
+        <Button 
+          content={ <Link to='/newPlayer'><FontAwesomeIcon icon={faPlus} /></Link> }
+        />
       </div>
     )
   };
