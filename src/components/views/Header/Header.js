@@ -5,8 +5,6 @@ import { Link, useParams } from 'react-router-dom';
 
 const Header = () => {
 
-  const activePlayer = useParams();
-
   return(
     <div className={styles.header}>
       <Link to='/'>

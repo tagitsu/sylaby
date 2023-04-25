@@ -7,10 +7,10 @@ const Menu = () => {
   return(
     <div>
       <ul className={styles.menu}>
-        <Link to='/'>strona główna</Link>
-        <Link to='/playerslist'>lista graczy</Link>
-        <Link to='/howtoplay'>jak grać</Link>
-        <Link to='/about'>o autorze</Link>
+        <Link className={styles.menu__item} to='/'>strona główna</Link>
+        <Link className={styles.menu__item} to='/playerslist'>lista graczy</Link>
+        <Link className={styles.menu__item} to='/howtoplay'>jak grać</Link>
+        <Link className={styles.menu__item} to='/about'>o autorze</Link>
       </ul>
     </div>
   );

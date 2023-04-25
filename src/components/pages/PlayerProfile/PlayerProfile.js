@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCat, faMouse, faDog, faDove, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faCat, faMouse, faDog, faDove, faFish,  faTrash } from '@fortawesome/free-solid-svg-icons'
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
@@ -38,7 +38,7 @@ const PlayerProfile = () => {
 
   const badges =
     <div className={styles.profile__badge}>
-      {activePlayer.badges.length > 0 && activePlayer.badges.map( badge => <FontAwesomeIcon key={badge} icon={badge} />)}
+      {activePlayer.badges.length > 0 && activePlayer.badges.map( badge => <img src={`${process.env.PUBLIC_URL}/images/badges/${badge}.png`} alt={`${badge} icon`} key={badge}/>)}
     </div>
 
   const deleteWarning = 

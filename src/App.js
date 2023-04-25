@@ -10,11 +10,12 @@ import AddPlayerForm from './components/features/AddPlayerForm/AddPlayerForm';
 import HowToPlay from './components/pages/HowToPlay/HowToPlay';
 import GameNumber from './components/pages/GameNumber/GameNumber';
 import GameDots from './components/pages/GameDots/GameDots';
+import styles from './App.module.scss';
 
 const App = () => {
 
   return (
-    <div>
+    <div className={styles.app}>
       <Header />
       <main>
         <Routes>

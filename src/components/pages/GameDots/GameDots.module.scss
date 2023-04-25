@@ -1,7 +1,9 @@
 @import '/src/styles/settings.scss';
 
 .dots {
-  
+  display: flex;
+  flex-direction: column;
+
   &__board {
     display: flex;
     flex-direction: column;
@@ -11,7 +13,7 @@
 
   &__dots {
     width: 60vw;
-    height: 60vh;
+    height: 40vh;
     position: relative;
   }
 
@@ -25,9 +27,9 @@
   }
 
   &__input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
     padding: $base-size;
     text-decoration: none;
     color: $color-dark;

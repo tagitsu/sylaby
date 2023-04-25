@@ -2,7 +2,8 @@ import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
 import utils from '../../../utils/gameSyllablesEasyUtils';
-import { Link, useParams } from 'react-router-dom';
+import levelUp from '../../../utils/levelUpUtils';
+import { Link } from 'react-router-dom';
 import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 import Button from '../../common/Button/Button';
@@ -14,7 +15,6 @@ const GameSyllablesEasy = () => {
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
 
-  const activePlayerParam = useParams();
 
   const [ updatePlayer ] = useUpdatePlayerMutation();
 
@@ -26,19 +26,20 @@ const GameSyllablesEasy = () => {
   const [ hidden, setHidden ] = useState(false);
   const [ points, setPoints ] = useState(0);
  
-  let activePlayer, playerLevel;
+  let activePlayer, playerLevel, nextLevel;
   if (playersOK && levelsOK) {
     [ activePlayer ] = players.filter( player => player.isActive);
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
-    if (activePlayer.xp >= playerLevel.nextLevel) {
-      updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0 })
-    }
+    [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id);
+    if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
   
   }
 
+  console.log('jaki jest nast.ępny level', nextLevel);
+
   return(
     <>
-      <ActivePlayer id={activePlayerParam.id} />
+      <ActivePlayer />
       <div className={styles.easy} >
         <Button 
           name='setTurnBtn'

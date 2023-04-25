@@ -1,10 +1,12 @@
 import styles from './AddPlayerForm.module.scss';
 import { useState } from 'react';
 import clsx from 'clsx';
-import { useGetPlayersQuery, useAddPlayerMutation } from '../../../api/apiSlice';
+import { useGetPlayersQuery, useGetLevelsQuery, useAddPlayerMutation } from '../../../api/apiSlice';
 const AddPlayerForm = () => {
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
+  const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
+
   const [ addPlayer ] = useAddPlayerMutation();
   console.log('new player', players);
 
@@ -12,9 +14,21 @@ const AddPlayerForm = () => {
   const [ newPlayerIcon, setNewPlayerIcon ] = useState('');
   const [ newPlayerColor, setNewPlayerColor ] = useState('');
 
-  let newPlayerID;
-  if (playersOK) {
+  let newPlayerID, firstLevel, newPlayer;
+  if (playersOK && levelsOK) {
     newPlayerID = players.length + 1;
+    [ firstLevel ] = levels.filter( level => level.id === 1);
+    newPlayer = {
+      id: newPlayerID,
+      name: newPlayerName,
+      icon: newPlayerIcon,
+      isActive: false,
+      level: 1,
+      color: newPlayerColor,
+      title: firstLevel.title,
+      badges: [firstLevel.badge],
+      xp: 0
+    };
   }
 
   const characters = [
@@ -54,18 +68,6 @@ const AddPlayerForm = () => {
       icon: 'storybots.png',
     },
 ];
-
-  const newPlayer = {
-    id: newPlayerID,
-    name: newPlayerName,
-    icon: newPlayerIcon,
-    isActive: false,
-    level: 1,
-    color: newPlayerColor,
-    title: '',
-    badges: [],
-    xp: 0
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

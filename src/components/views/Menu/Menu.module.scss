@@ -3,7 +3,16 @@
 .menu {
   display: flex;
   justify-content: space-evenly;
-  gap: $base-size;
+  gap: calc($base-size * 2);
   min-height: calc($base-size * 10);
   margin: $base-size;
+
+  &__item {
+    transition: $transition;
+  }
+
+  &__item:hover {
+    color: $color-yellow;
+  }
 }
+

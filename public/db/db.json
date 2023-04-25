@@ -9,9 +9,10 @@
       "color": "yellow",
       "title": "",
       "badges": [
-        "faCat"
+        "cat",
+        "fish"
       ],
-      "xp": 21
+      "xp": 58
     },
     {
       "id": "2",
@@ -22,25 +23,27 @@
       "color": "green",
       "title": "",
       "badges": [],
-      "xp": 13
+      "xp": 15
     },
     {
       "id": 3,
       "name": "bobuś",
       "icon": "george_pig.png",
-      "isActive": true,
-      "level": 1,
+      "isActive": false,
+      "level": 2,
       "color": "#83ece5",
       "title": "",
-      "badges": [],
-      "xp": 3
+      "badges": [
+        "cat"
+      ],
+      "xp": 0
     },
     {
       "id": 4,
       "name": "mała mi",
       "icon": "elsa.png",
       "isActive": false,
-      "level": 1,
+      "level": 2,
       "color": "#bec6e4",
       "title": "",
       "badges": [],
@@ -51,42 +54,88 @@
       "name": "robo",
       "icon": "r2d2_c3po.png",
       "isActive": false,
-      "level": 1,
+      "level": 2,
       "color": "#008c8f",
       "title": "",
       "badges": [],
       "xp": 0
     },
     {
-      "id": 6,
-      "name": "Julia",
+      "id": 10,
+      "name": "mądroboty",
       "icon": "storybots.png",
       "isActive": false,
       "level": 1,
-      "color": "#9acc7f",
-      "title": "",
-      "badges": [],
+      "color": "#460080",
+      "title": "głoskująca myszka",
+      "badges": [
+        "mouse"
+      ],
+      "xp": 0
+    },
+    {
+      "id": 9,
+      "name": "Maciuś Diaków",
+      "icon": "curious_george.png",
+      "isActive": false,
+      "level": 2,
+      "color": "#7c4404",
+      "title": "głoskująca myszka",
+      "badges": [
+        "mouse"
+      ],
+      "xp": 0
+    },
+    {
+      "id": 8,
+      "name": "szymek",
+      "icon": "pikachu.png",
+      "isActive": true,
+      "level": 2,
+      "color": "#ffde0a",
+      "title": "głoskująca myszka",
+      "badges": [
+        "mouse"
+      ],
       "xp": 0
     }
   ],
   "levels": [
     {
       "id": 1,
-      "title": "głoskująca żabka",
-      "badge": "faFrog",
+      "title": "głoskująca myszka",
+      "badge": "mouse",
       "nextLevel": 10
     },
     {
       "id": 2,
       "title": "sylabujący kotek",
-      "badge": "faCat",
-      "nextLevel": 30
+      "badge": "cat",
+      "nextLevel": 25
     },
     {
       "id": 3,
-      "title": "literkowy piesek",
-      "badge": "faDog",
+      "title": "zwinna rybka",
+      "badge": "fish",
       "nextLevel": 70
+    },
+    {
+      "id": 4,
+      "title": "zwinna rybka",
+      "badge": "fish",
+      "nextLevel": 100
+    },
+    {
+      "id": 5,
+      "title": "szybki krab",
+      "badge": "crab",
+      "nextLevel": 145
+    },
+    {
+      "id": 6,
+      "title": "sprytny lisek",
+      "badge": "fox",
+      "nextLevel": 180
     }
   ],
   "syllables": [

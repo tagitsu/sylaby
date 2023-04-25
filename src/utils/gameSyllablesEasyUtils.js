@@ -29,15 +29,15 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
 };
 
 utils.submitSolution = (e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, word, setWord, setHidden, points, setPoints, activePlayer, updatePlayer) => {
-  e.preventDefault();
+  //e.preventDefault();
   if (syllable1Words.includes(answer)) {
     let turnPoints = points + 1;
     setPoints(turnPoints);
     let playerPoints = activePlayer.xp + 1;
     updatePlayer({ ...activePlayer, xp: playerPoints });
-    alert(`Stworzyłeś słowo ${answer}. To dobra odpowiedź :) Dostajesz 1 punkt! `);
+    console.log(`Stworzyłeś słowo ${answer}. To dobra odpowiedź :) Dostajesz 1 punkt! `);
   } else {
-    alert(`Stworzyłeś słowo ${answer}, którego nie ma w słowniku. Prawidłowa odpowiedź to ${word}. Spróbuj jeszcze raz :) `);
+    console.log(`Stworzyłeś słowo ${answer}, którego nie ma w słowniku. Prawidłowa odpowiedź to ${word}. Spróbuj jeszcze raz :) `);
   }
   setSyllable1('');
   setSyllable1Words([]);

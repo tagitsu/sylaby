@@ -2,6 +2,8 @@ import styles from '../HowToPlay/HowToPlay.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
+import Button from '../../common/Button/Button';
+
 const HowToPlay = () => {
 
   const games = [
@@ -51,7 +53,9 @@ const HowToPlay = () => {
       <p>
         Kliknij i przeczytaj jakie są zasady gry.
       </p>
-      { games.map( game => <button key={game.id} onClick={handleClick}>{game.name}</button>) }
+      <div className={styles.how__buttons}>
+        { games.map( game => <Button key={game.id} onClick={handleClick} content={game.name}>{game.name}</Button>) }
+      </div>
       { choosenGame && 
         <article className={styles.how__game}>
           <h1>{gameObject.name}</h1>

@@ -28,6 +28,11 @@
     letter-spacing: 2px;
   }
 
+  &__buttons {
+    display: flex;
+    gap: $base-size;
+  }
+
 
 
 }
