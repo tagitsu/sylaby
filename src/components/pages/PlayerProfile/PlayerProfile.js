@@ -21,7 +21,7 @@ const PlayerProfile = () => {
   }
   
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
-  if (levelsOK) {
+  if (levelsOK && activePlayer) {
     console.log('profile - levels', levels);
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
     console.log('profile - level object', playerLevel);

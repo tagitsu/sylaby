@@ -5,23 +5,46 @@
   --player-color: transparent;
 }
 
-.icon__container {
-  width: 100px;
-  height: 100px;
+.icon {
+  width: 130px;
+  height: 130px;
   background-color: transparent;
-}
+  position: relative;
 
-.icon__background {
-  background-color: var(--player-color);
-  width: 100%;
-  height: 100%;
-  border: 10px solid white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-}
+  &__background {
+    background-color: var(--player-color);
+    width: 100%;
+    height: 100%;
+    border: 10px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+  }
 
-.icon__image {
-  height: 100%;
+  &__image {
+    height: 100%;
+  }
+
+  &__level {
+    background-color: var(--player-color);
+    width: calc($base-size * 5);
+    height: calc($base-size * 5);
+    position: absolute;
+    bottom: -10px;
+    right: -30px;
+    border-radius: 50%;
+  }
+
+  &__levelValue {
+    width: 100%;
+    height: 100%;
+    border: 10px solid $color-light;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px lightgrey;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 }

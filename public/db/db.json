@@ -1,75 +1,16 @@
 {
   "players": [
     {
-      "id": "1",
-      "name": "Szymek",
-      "icon": "pikachu.png",
-      "isActive": false,
-      "level": 3,
-      "color": "yellow",
-      "title": "",
-      "badges": [
-        "cat",
-        "fish"
-      ],
-      "xp": 58
-    },
-    {
-      "id": "2",
-      "name": "Maciuś",
-      "icon": "curious_george.png",
-      "isActive": false,
-      "level": 3,
-      "color": "green",
-      "title": "",
-      "badges": [],
-      "xp": 15
-    },
-    {
-      "id": 3,
-      "name": "bobuś",
-      "icon": "george_pig.png",
-      "isActive": false,
-      "level": 2,
-      "color": "#83ece5",
-      "title": "",
-      "badges": [
-        "cat"
-      ],
-      "xp": 0
-    },
-    {
-      "id": 4,
-      "name": "mała mi",
-      "icon": "elsa.png",
-      "isActive": false,
-      "level": 2,
-      "color": "#bec6e4",
-      "title": "",
-      "badges": [],
-      "xp": 0
-    },
-    {
-      "id": 5,
-      "name": "robo",
-      "icon": "r2d2_c3po.png",
-      "isActive": false,
-      "level": 2,
-      "color": "#008c8f",
-      "title": "",
-      "badges": [],
-      "xp": 0
-    },
-    {
       "id": 10,
       "name": "mądroboty",
       "icon": "storybots.png",
       "isActive": false,
-      "level": 1,
+      "level": 2,
       "color": "#460080",
       "title": "głoskująca myszka",
       "badges": [
-        "mouse"
+        "mouse",
+        "cat"
       ],
       "xp": 0
     },
@@ -90,7 +31,7 @@
       "id": 8,
       "name": "szymek",
       "icon": "pikachu.png",
-      "isActive": true,
+      "isActive": false,
       "level": 2,
       "color": "#ffde0a",
       "title": "głoskująca myszka",

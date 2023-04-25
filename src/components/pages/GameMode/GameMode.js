@@ -19,7 +19,7 @@ const GameMode = () => {
 
   return(
     <div className={styles.mode}>
-      <ActivePlayer id={activePlayerParam.id} />
+      <ActivePlayer activePlayer={activePlayer} />
       <h1 className={styles.mode__title}>Wybierz grę</h1>
       <div className={styles.mode__btns}>
         <Link 
