@@ -34,4 +34,9 @@
   &__warningButton {
     font-size: $base-size;
   }
+
+  &__badgeBox {
+    display: flex;
+    
+  }
 }

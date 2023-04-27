@@ -32,10 +32,7 @@ const GameSyllablesEasy = () => {
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
     [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id);
     if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
-  
   }
-
-  console.log('jaki jest nast.ępny level', nextLevel);
 
   return(
     <>

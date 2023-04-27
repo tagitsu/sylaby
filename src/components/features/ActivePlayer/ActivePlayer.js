@@ -30,11 +30,11 @@ const ActivePlayer = (props) => {
   } else if (activePlayer) {
     return(
     <div className={styles.current}>
-      <Link to={`/player/${activePlayer.id}`} className={styles.current__item}>
-        <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} level={activePlayer.level} />
+      <Link to={`/player/${activePlayer.id}`}>
+        <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} level={activePlayer.level} size='80' />
       </Link>
       <div> {activePlayer.name} </div>
-      <div className={styles.current__bar}>
+      <div>
         <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
       </div>
     </div>

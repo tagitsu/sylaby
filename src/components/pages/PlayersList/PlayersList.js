@@ -43,6 +43,7 @@ const PlayersList = () => {
                       name={player.name}
                       level={player.level}
                       color={player.color}
+                      size='120'
                     />
                   </Link>
             </div>

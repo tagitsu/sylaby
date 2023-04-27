@@ -4,11 +4,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  gap: calc($base-size * 2);
   margin: calc($base-size * 2) $base-size;
-
-  &__item {
-    margin: $base-size;
-  }
-
-  
+  height: calc($base-size * 3);
+  font-weight: 700; 
+  letter-spacing: 1.5px;
 }

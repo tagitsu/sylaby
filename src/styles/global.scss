@@ -2,6 +2,7 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  border: 1px solid;
 }
 
 body {
@@ -9,20 +10,14 @@ body {
   padding: 0;
   background: $background-gradient;
   font-family: $font-text;
-  font-size: ($base-size * 1.5);
+  font-size: ($base-size * 2);
   color: $color-light;
-  letter-spacing: 0.5px;
+  letter-spacing: .5px;
 }
 
 a {
   text-decoration: none;
   color: $color-light;
-}
-
-:global(.container) {
-  width: 90%;
-  max-width: 1400px;
-  margin: 0 auto;
 }
 
 @import "./typography.scss";

@@ -4,6 +4,8 @@ const PlayerIcon = (props) => {
 
   const root = document.querySelector(':root');
   root.style.setProperty('--player-color', props.color);
+  root.style.setProperty('--size', `${props.size}px`);
+
 
   return(
     <div key={props.id} className={styles.icon}>

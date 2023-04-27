@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCat, faMouse, faDog, faDove, faFish,  faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from './PlayerProfile.module.scss';
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
@@ -11,24 +11,30 @@ import { useState } from "react";
 
 const PlayerProfile = () => {
 
-  const [ warning, setWarning ] = useState('');
+
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   let activePlayer, playerLevel;
   if (playersOK) {
     [ activePlayer ] = players.filter( player => player.isActive);
-    console.log('profile - active player', activePlayer);
+    //console.log('profile - active player', activePlayer);
   }
   
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   if (levelsOK && activePlayer) {
-    console.log('profile - levels', levels);
+    //console.log('profile - levels', levels);
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
-    console.log('profile - level object', playerLevel);
+    //console.log('profile - level object', playerLevel);
+    
   }
 
   const [updatePlayer] = useUpdatePlayerMutation();
   const [deletePlayer] = useDeletePlayerMutation();
+
+  const [ warning, setWarning ] = useState('');
+  const [ choosenColor, setChoosenColor ] = useState('');
+  const [ badgeText, setBadgeText ] = useState('');
+
 
   if (playersOK && levelsOK) {
 
@@ -37,8 +43,16 @@ const PlayerProfile = () => {
   }
 
   const badges =
-    <div className={styles.profile__badge}>
-      {activePlayer.badges.length > 0 && activePlayer.badges.map( badge => <img src={`${process.env.PUBLIC_URL}/images/badges/${badge}.png`} alt={`${badge} icon`} key={badge}/>)}
+    <div className={styles.profile__badgeBox}>
+      {activePlayer.badges.length > 0 && 
+        activePlayer.badges.map( 
+          badge => 
+          <div key={badge.name} className={styles.profile__badge}>
+            <img src={`${process.env.PUBLIC_URL}/images/badges/${badge.name}.png`} alt={`${badge.name} icon`} />
+            <p>{badge.text}</p>
+          </div>
+        )
+      }
     </div>
 
   const deleteWarning = 
@@ -56,24 +70,36 @@ const PlayerProfile = () => {
       >
       Anuluj
       </button>
-
     </div>;
+
 
   const handleDelete = (e) => {
     e.preventDefault();
-    console.log('usuwam gracza', activePlayer.id);
+    //console.log('usuwam gracza', activePlayer.id);
     setWarning(deleteWarning);
-  }
+  };
+
+  const changeColor = (e) => {
+    e.preventDefault();
+    updatePlayer({ ...activePlayer, color: choosenColor});
+    setChoosenColor('');
+  };
 
   return(
     <div key={activePlayer.id} className={styles.profile}>
-      <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} />
+      <PlayerIcon 
+        icon={activePlayer.icon} 
+        name={activePlayer.name} 
+        color={activePlayer.color} 
+        level={activePlayer.level} 
+        size='160'
+      />
       <div className={styles.profile__infoBox}>
         <div className={styles.profile__info}>
           Imię gracza: {activePlayer.name}
         </div>
         <div className={styles.profile__info}>
-        Level: {activePlayer.level}
+        Punkty: {activePlayer.xp + playerLevel.nextLevel}
         </div>
         <div className={styles.profile__info}>
           <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
@@ -81,13 +107,21 @@ const PlayerProfile = () => {
         <div className={styles.profile__info}>
           Odznaki: {badges}
         </div>
-
-        {/** TODO wprowadź opcję usuwania gracza, z formularzem żeby nie usunąć przypadkowo */}
+        <div className={styles.profile__info}>
+          Zmiana koloru:
+          <form>
+            <input type='color' defaultValue={activePlayer.color} onChange={(e) => setChoosenColor(e.target.value)} />
+            <button onClick={(e) => changeColor(e)}>OK</button>
+          </form>
+        </div>
+        
         <DeleteButton 
           content={ <FontAwesomeIcon icon={faTrash} /> }
           onClick={ (e) => handleDelete(e) }
         />
         {warning}
+        
+
       </div>
       
       <Button

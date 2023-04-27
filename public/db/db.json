@@ -6,13 +6,18 @@
       "icon": "storybots.png",
       "isActive": false,
       "level": 2,
-      "color": "#460080",
-      "title": "głoskująca myszka",
+      "color": "#c5ff47",
       "badges": [
-        "mouse",
-        "cat"
+        {
+          "name": "mouse",
+          "text": "zaradny jak myszka"
+        },
+        {
+          "name": "cat",
+          "text": "zwinny jak kotek"
+        }
       ],
-      "xp": 0
+      "xp": 10
     },
     {
       "id": 9,
@@ -21,7 +26,6 @@
       "isActive": false,
       "level": 2,
       "color": "#7c4404",
-      "title": "głoskująca myszka",
       "badges": [
         "mouse"
       ],
@@ -34,6 +38,18 @@
       "isActive": false,
       "level": 2,
       "color": "#ffde0a",
+      "badges": [
+        "mouse"
+      ],
+      "xp": 0
+    },
+    {
+      "id": 4,
+      "name": "Julia",
+      "icon": "spongebob.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#fb98bf",
       "title": "głoskująca myszka",
       "badges": [
         "mouse"
