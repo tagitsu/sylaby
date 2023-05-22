@@ -1,12 +1,11 @@
 @import '/src/styles/settings.scss';
 
 .header {
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 20vh;
   min-height: calc($base-size * 10);
-  margin: $base-size;
-
+  margin: calc($base-size * 3);
+  padding: $base-size;
 }

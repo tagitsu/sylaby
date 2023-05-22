@@ -1,5 +1,5 @@
 import Home from './components/pages/Home/Home';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import PlayerProfile from './components/pages/PlayerProfile/PlayerProfile';
 import GameMode from './components/pages/GameMode/GameMode';
 import GameSyllablesEasy from './components/pages/GameSyllablesEasy/GameSyllablesEasy';

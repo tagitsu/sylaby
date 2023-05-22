@@ -5,6 +5,7 @@
   color: $color-light;
   display: flex;
   align-items: center;
+  padding: $base-size;
   
   &__dot {
     font-size: calc($base-size * 1.5);

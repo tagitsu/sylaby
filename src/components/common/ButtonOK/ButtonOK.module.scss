@@ -1,0 +1,24 @@
+@import '/src/styles/settings.scss';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px outset $color-light;
+  border-radius: 50%;
+  width: calc($base-size * 4);
+  height: calc($base-size * 4);
+  padding: $base-size;
+  background-color: $color-light;
+  color: $color-blue;
+  transition: $transition;
+  font-size: calc($base-size * 2);
+  max-height: calc($base-size * 5);
+}
+
+.button:hover {
+  cursor: pointer;
+  color: $color-success;
+  border: 2px outset $color-success;
+}
+

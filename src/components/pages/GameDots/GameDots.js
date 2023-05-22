@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useParams } from "react-router";
 import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 
 import Button from "../../common/Button/Button";
+import Option from "../../common/Option/Option";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from './GameDots.module.scss';
 import utils from '../../../utils/gameDotsUtils';
@@ -12,7 +12,6 @@ const GameDots = () => {
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
-  const activePlayerParam = useParams();
   const [ updatePlayer ] = useUpdatePlayerMutation();
 
   let activePlayer, playerLevel, nextLevel;
@@ -25,7 +24,8 @@ const GameDots = () => {
 
 
   const [ dots, setDots ] = useState([]);
-  const [ answer, setAnswer ] = useState('');
+  const [ hidden, setHidden ] = useState(true);
+  const [ options, setOptions ] = useState([]);
   
   let dotsBoard;
 
@@ -50,32 +50,33 @@ const GameDots = () => {
       dotsBoard = 
       <div> nie ma jeszcze kropek </div>
   }
-
   
-  const handleChange = (e) => {
-    e.preventDefault();
-    setAnswer(e.target.value);
-  }
+
+  console.log('co jest w options', options);
+  console.log('active player w dots', activePlayer);
 
     return(
     <div className={styles.dots}>
-      <ActivePlayer id={activePlayerParam.id} />
+      <ActivePlayer />
       <section className={styles.dots__board}>
         <Button
           content='Wylosuj kropki'
-          onClick={ () => {utils.setGameTurn(setDots)}}
+          onClick={ () => {utils.setGameTurn(setDots, setHidden, setOptions)}}
         />
         <div className={styles.dots__dots}>
           {dotsBoard}
         </div>
       </section>
-      <section>
-        <input className={styles.dots__input} value={answer} onChange={handleChange} />
+      <section className={styles.dots__options}>
+        { options.map( option => 
+            <Option 
+              key={option} 
+              content={option}
+              onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setDots, activePlayer, updatePlayer, setOptions)}
+            />
+          )
+        }
       </section>
-      <Button 
-        content='OK' 
-        onClick={ (e) => utils.submitSolution(e, answer, setAnswer, dots, setDots, activePlayer, updatePlayer)}
-        />
     </div>
   );
 

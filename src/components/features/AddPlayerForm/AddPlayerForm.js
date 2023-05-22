@@ -8,16 +8,23 @@ const AddPlayerForm = () => {
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
 
   const [ addPlayer ] = useAddPlayerMutation();
-  console.log('new player', players);
 
   const [ newPlayerName, setNewPlayerName ] = useState('');
   const [ newPlayerIcon, setNewPlayerIcon ] = useState('');
   const [ newPlayerColor, setNewPlayerColor ] = useState('');
 
-  let newPlayerID, firstLevel, newPlayer;
+  let currentPlayersIDs, newPlayerID, firstLevel, newPlayer;
   if (playersOK && levelsOK) {
-    newPlayerID = players.length + 1;
+
+    const sorter = (a, b) => {
+      return a - b;
+    };
+    currentPlayersIDs = players.map( player => player.id );
+    currentPlayersIDs.sort(sorter);
+    newPlayerID = currentPlayersIDs[currentPlayersIDs.length - 1] + 1;
+
     [ firstLevel ] = levels.filter( level => level.id === 1);
+
     newPlayer = {
       id: newPlayerID,
       name: newPlayerName,
@@ -26,7 +33,12 @@ const AddPlayerForm = () => {
       level: 1,
       color: newPlayerColor,
       title: firstLevel.title,
-      badges: [firstLevel.badge],
+      badges: [
+        { 
+          name: firstLevel.badge,
+          text: firstLevel.title
+        }
+      ],
       xp: 0
     };
   }

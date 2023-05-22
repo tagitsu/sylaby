@@ -4,22 +4,21 @@ import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from './GameNumber.module.scss';
 import Button from "../../common/Button/Button";
 import utils from '../../../utils/gameNumberUtils';
-
+import levelUp from '../../../utils/levelUpUtils';
 
 const GameNumber = () => {
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   const [ updatePlayer ] = useUpdatePlayerMutation();
-  let activePlayer, playerLevel;
-  if (playersOK && levelsOK ) {
-    [ activePlayer ] = players.filter( player => player.isActive );
-    [ playerLevel ] = levels.filter( level => activePlayer.level === level.id );
-    if (activePlayer.xp >= playerLevel.nextLevel) {
-      updatePlayer({
-        ...activePlayer, level: activePlayer.level + 1, xp: 0
-      })
-    }
+
+
+  let activePlayer, playerLevel, nextLevel;
+  if (playersOK && levelsOK) {
+    [ activePlayer ] = players.filter( player => player.isActive);
+    [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
+    [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id);
+    if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
   const [ number1, setNumber1 ] = useState('');

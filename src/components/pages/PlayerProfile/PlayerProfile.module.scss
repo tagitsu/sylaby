@@ -3,40 +3,86 @@
 
 .profile {
   font-size: calc($base-size * 2);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   background-color: transparent;
   margin: calc($base-size * 3);
 
-  &__infoBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  &__icon {
+    padding: $base-size;
+    margin: $base-size;
+  }
+
+  &__box {
+    display: grid;
+    grid-template-columns: 1fr;
     height: 60vh;
+    padding: calc($base-size * 3);
   }
 
   &__info {
-    margin: calc($base-size * 2);
-  }
-
-  &__warning {
-    border: 2px solid $color-warning;
-    border-radius: $radius;
-    background-color: $color-light;
-    width: 50wv;
     padding: $base-size;
-    font-size: calc($base-size * 1.2);
   }
 
-  &__warningText {
-    color: $color-dark;
-  }
-
-  &__warningButton {
-    font-size: $base-size;
-  }
-
-  &__badgeBox {
+  &__badge {
     display: flex;
-    
+    align-items: center;
+    justify-content: center;
+    background-color: $color-yellow;
+    border-radius: 50%;
+    width: calc($base-size * 4);
+    height: calc($base-size * 4);
+  }
+
+  &__badge:hover {
+    animation: rainbowShake 2s ease-in-out;
+  }
+
+}
+
+@keyframes rainbowShake {
+  0% {
+    background-color: $color-orange;
+    transform: rotate(-4deg);
+  }
+  10% {
+    background-color: $color-orange;
+    transform: rotate(4deg);
+  }
+  20% {
+    background-color: $color-yellow;
+    transform: rotate(-4deg);
+  }
+  30% {
+    background-color: $color-success;
+    transform: rotate(4deg);
+  }
+  40% {
+    background-color: $color-blue;
+    transform: rotate(-4deg);
+  }
+  50% {
+    background-color: $color-purple;
+    transform: rotate(4deg);
+  }
+  60% {
+    background-color: $color-blue;
+    transform: rotate(-4deg);
+  }
+  70% {
+    background-color: $color-success;
+    transform: rotate(4deg);
+  }
+  80% {
+    background-color: $color-yellow;
+    transform: rotate(-4deg);
+  }
+  90% {
+    background-color: $color-orange;
+    transform: rotate(4deg);
+  }
+  100% {
+    background-color: $color-orange;
+    transform: rotate(-4deg);
   }
 }

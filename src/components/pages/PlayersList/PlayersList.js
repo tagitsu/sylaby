@@ -48,6 +48,8 @@ const PlayersList = () => {
                   </Link>
             </div>
             <p className={styles.list__name}>{player.name}</p>
+            <p className={styles.list__name}>id: {player.id}</p>
+
           </div>
           <Button 
             content={<Link to={`/game/${player.id}`}>Zacznij grę</Link>} 

@@ -5,21 +5,22 @@
 }
 
 .prog {
-  background-color: $color-light;
-  height: calc($base-size * 2);
-  width: calc($base-size * 20);
-  border-radius: $radius;
-  overflow: hidden;
-  position: relative;
+  display: flex;
+  align-items: center;
 
+  &__container {
+    background-color: $color-light;
+    height: calc($base-size * 2);
+    width: calc($base-size * 20);
+    border-radius: $radius;
+    overflow: hidden;
+    position: relative;
+    margin: $base-size;
+  }
+  
   &__bar {
     width: var(--player-xp);
     height: calc($base-size * 2);
     background-color: $color-yellow;
-  }
-
-  &__points {
-    text-align: right;
-    color: $color-light;
   }
 }

@@ -1,0 +1,15 @@
+@import '/src/styles/settings.scss';
+
+.option {
+  padding: $base-size;
+  background-color: $color-light;
+  color: $color-dark;
+  transition: $transition;
+  font-size: calc($base-size * 2);
+  max-height: calc($base-size * 5);
+}
+
+.button:hover {
+  cursor: pointer
+
+}

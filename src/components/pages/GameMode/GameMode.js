@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import styles from './GameMode.module.scss';
-import clsx from 'clsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
@@ -20,31 +19,37 @@ const GameMode = () => {
   return(
     <div className={styles.mode}>
       <ActivePlayer activePlayer={activePlayer} />
-      <h1 className={styles.mode__title}>Wybierz grę</h1>
-      <div className={styles.mode__btns}>
+      <h1 className={styles.mode__title}>Którą grę wybierasz?</h1>
+      <div className={styles.mode__games}>
         <Link 
           to={`/game/easysyllables/${activePlayerParam.id}`} 
-          className={clsx(styles.mode__btn, styles.mode__btnEasy)}
+          className={styles.mode__game}
           >
-          <p>sylaby</p>
-          <FontAwesomeIcon className={styles.star} icon={faStar} />
-          <FontAwesomeIcon className={styles.star} icon={faStar} />
+          <p>sy - la - by</p>
+          <div>
+            <FontAwesomeIcon className={styles.star} icon={faStar} />
+            <FontAwesomeIcon className={styles.star} icon={faStar} />
+          </div>
         </Link>
         <Link 
           to={`/game/number/${activePlayerParam.id}`} 
-          className={clsx(styles.mode__btn, styles.mode__btnEasy)}
+          className={styles.mode__game}
           >
           <p>brakująca liczba</p>
-          <FontAwesomeIcon className={styles.star} icon={faStar} />
-          <FontAwesomeIcon className={styles.star} icon={faStar} />
-          <FontAwesomeIcon className={styles.star} icon={faStar} />
+          <div>
+            <FontAwesomeIcon className={styles.star} icon={faStar} />
+            <FontAwesomeIcon className={styles.star} icon={faStar} />
+            <FontAwesomeIcon className={styles.star} icon={faStar} />
+          </div>
         </Link>
         <Link 
           to={`/game/dots/${activePlayerParam.id}`} 
-          className={clsx(styles.mode__btn, styles.mode__btnEasy)}
+          className={styles.mode__game}
           >
-          <p>ile kropek?</p>
-          <FontAwesomeIcon className={styles.star} icon={faStar} />
+          <p>bańki mydlane</p>
+          <div>
+            <FontAwesomeIcon className={styles.star} icon={faStar} />
+          </div>
         </Link>
       </div>
     </div>

@@ -5,8 +5,8 @@
       "name": "mądroboty",
       "icon": "storybots.png",
       "isActive": false,
-      "level": 2,
-      "color": "#c5ff47",
+      "level": 3,
+      "color": "#f99090",
       "badges": [
         {
           "name": "mouse",
@@ -15,9 +15,10 @@
         {
           "name": "cat",
           "text": "zwinny jak kotek"
-        }
+        },
+        "fish"
       ],
-      "xp": 10
+      "xp": 62
     },
     {
       "id": 9,
@@ -45,16 +46,52 @@
     },
     {
       "id": 4,
-      "name": "Julia",
+      "name": "SpongeBob",
       "icon": "spongebob.png",
       "isActive": false,
-      "level": 1,
-      "color": "#fb98bf",
+      "level": 2,
+      "color": "#23b0b3",
       "title": "głoskująca myszka",
       "badges": [
-        "mouse"
+        "mouse",
+        {
+          "name": "cat"
+        }
+      ],
+      "xp": 5
+    },
+    {
+      "id": 5,
+      "name": "Julia",
+      "icon": "elsa.png",
+      "isActive": false,
+      "level": 2,
+      "color": "#ccffe9",
+      "title": "głoskująca myszka",
+      "badges": [
+        "mouse",
+        {
+          "name": "cat",
+          "text": "sylabujący kotek"
+        }
       ],
       "xp": 0
+    },
+    {
+      "id": 11,
+      "name": "mysz",
+      "icon": "pikachu.png",
+      "isActive": true,
+      "level": 1,
+      "color": "#9bff70",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 1
     }
   ],
   "levels": [
@@ -78,8 +115,8 @@
     },
     {
       "id": 4,
-      "title": "zwinna rybka",
-      "badge": "fish",
+      "title": "mądra sowa",
+      "badge": "owl",
       "nextLevel": 100
     },
     {
