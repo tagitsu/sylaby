@@ -24,9 +24,11 @@ utils.setGameTurn = (setDots, setHidden, setOptions) => {
   const options = [];
   const randomNumber2 = Math.floor(Math.random() * 9 + 1);
   const randomNumber3 = Math.floor(Math.random() * 9 + 1);
-  options.push(randomNumber, randomNumber2, randomNumber3);
-  options.sort();
-  setOptions(options);
+  if (randomNumber !== randomNumber2 && randomNumber !== randomNumber3 && randomNumber2 !== randomNumber3 ) {
+    options.push(randomNumber, randomNumber2, randomNumber3);
+    options.sort();
+    setOptions(options);
+  }
 };
 
 utils.submitSolution = (

@@ -50,10 +50,8 @@ const GameDots = () => {
       dotsBoard = 
       <div> nie ma jeszcze kropek </div>
   }
-  
 
   console.log('co jest w options', options);
-  console.log('active player w dots', activePlayer);
 
     return(
     <div className={styles.dots}>
