@@ -4,13 +4,20 @@
 .profile {
   font-size: calc($base-size * 2);
   display: grid;
+  height: 100vh;
   grid-template-columns: 1fr 3fr;
   background-color: transparent;
-  margin: calc($base-size * 3);
+  padding: $base-size;
 
   &__icon {
     padding: $base-size;
     margin: $base-size;
+  }
+
+  &__play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__box {
@@ -24,6 +31,14 @@
     padding: $base-size;
   }
 
+
+  &__badgeBox {
+    display: flex;
+    gap: $base-size;
+    padding: calc($base-size / 2)
+    
+  }
+
   &__badge {
     display: flex;
     align-items: center;
@@ -35,54 +50,16 @@
   }
 
   &__badge:hover {
-    animation: rainbowShake 2s ease-in-out;
+    animation: rainbowShake 6s ease-in-out infinite;
   }
 
-}
+  &__delete {
+    justify-self: end;
+    opacity: .5;
+  }
 
-@keyframes rainbowShake {
-  0% {
-    background-color: $color-orange;
-    transform: rotate(-4deg);
+  &__delete:hover {
+    opacity: 1;
   }
-  10% {
-    background-color: $color-orange;
-    transform: rotate(4deg);
-  }
-  20% {
-    background-color: $color-yellow;
-    transform: rotate(-4deg);
-  }
-  30% {
-    background-color: $color-success;
-    transform: rotate(4deg);
-  }
-  40% {
-    background-color: $color-blue;
-    transform: rotate(-4deg);
-  }
-  50% {
-    background-color: $color-purple;
-    transform: rotate(4deg);
-  }
-  60% {
-    background-color: $color-blue;
-    transform: rotate(-4deg);
-  }
-  70% {
-    background-color: $color-success;
-    transform: rotate(4deg);
-  }
-  80% {
-    background-color: $color-yellow;
-    transform: rotate(-4deg);
-  }
-  90% {
-    background-color: $color-orange;
-    transform: rotate(4deg);
-  }
-  100% {
-    background-color: $color-orange;
-    transform: rotate(-4deg);
-  }
+
 }

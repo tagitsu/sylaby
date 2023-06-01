@@ -2,7 +2,11 @@ import styles from './AddPlayerForm.module.scss';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { useGetPlayersQuery, useGetLevelsQuery, useAddPlayerMutation } from '../../../api/apiSlice';
+import { useNavigate } from 'react-router';
+
 const AddPlayerForm = () => {
+
+  const navigate = useNavigate();
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
@@ -84,6 +88,7 @@ const AddPlayerForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addPlayer(newPlayer);
+    navigate('/playerslist');
   }
 
     return(

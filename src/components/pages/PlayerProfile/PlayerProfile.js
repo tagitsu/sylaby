@@ -1,30 +1,33 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faWarning, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
-import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
-import styles from './PlayerProfile.module.scss';
-import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import { Link } from 'react-router-dom';
 import { useGetLevelsQuery, useGetPlayersQuery, useUpdatePlayerMutation, useDeletePlayerMutation } from "../../../api/apiSlice";
+import { useState } from "react";
+
+import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
 import DeleteButton from "../../common/DeleteButton/DeleteButton";
-import { useState } from "react";
-import Modal from "../../common/Modal/Modal";
+import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
+import ProgressBar from "../../features/ProgressBar/ProgressBar";
+
+import styles from './PlayerProfile.module.scss';
 
 const PlayerProfile = () => {
 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
+
   let activePlayer, playerLevel;
   if (playersOK) {
     [ activePlayer ] = players.filter( player => player.isActive);
   }
-  
+
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   if (levelsOK && activePlayer) {
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
   }
 
-  const [updatePlayer] = useUpdatePlayerMutation();
-  const [deletePlayer] = useDeletePlayerMutation();
+  const [ updatePlayer ] = useUpdatePlayerMutation();
+  const [ deletePlayer ] = useDeletePlayerMutation();
 
   const [ warning, setWarning ] = useState(false);
   const [ colorModal, setColorModal ] = useState(false);
@@ -34,8 +37,13 @@ const PlayerProfile = () => {
   if (playersOK && levelsOK) {
 
     if (activePlayer.xp >= playerLevel.nextLevel) {
-      updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0 })
+      updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0, color: choosenColor })
     }
+
+    const changeColor = () => {
+      updatePlayer({ ...activePlayer, color: choosenColor });
+      setChoosenColor('');
+    };
 
     const badges =
       <div className={styles.profile__badgeBox}>
@@ -56,22 +64,10 @@ const PlayerProfile = () => {
         }
       </div>
 
-    const handleDoubleClick = (e) => {
-      console.log(e.detail);
-      if (e.detail === 2) setColorModal(true)
-    }
-
-    const changeColor = () => {
-      alert(`Aktywuję funkcję changeColor i zmieniam kolor na ${choosenColor}`);
-      updatePlayer({ ...activePlayer, color: choosenColor });
-      setChoosenColor('');
-    };
-
     return(
       <div key={activePlayer.id} className={styles.profile}>
         <div className={styles.profile__box}>
-          <div className={styles.profile__icon} onClick={(e) => handleDoubleClick(e)}
->
+          <div className={styles.profile__icon} onDoubleClick={ () => setColorModal(true) }>
             <PlayerIcon
               icon={activePlayer.icon} 
               name={activePlayer.name} 
@@ -85,8 +81,7 @@ const PlayerProfile = () => {
             <Button
               content={
                 <Link to={`/game/${activePlayer.id}`}>
-                  Zacznij grę
-                  <FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon>
+                  Zacznij grę <FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon>
                 </Link>
               }
             />
@@ -95,36 +90,29 @@ const PlayerProfile = () => {
 
         <div className={styles.profile__box}>
           <div className={styles.profile__info}>ID: {activePlayer.id}</div>
-          <div className={styles.profile__info} key='1'>
+          <div className={styles.profile__info}>
             Imię gracza: {activePlayer.name}
           </div>
-          <div className={styles.profile__info} key='2'>
+          <div className={styles.profile__info}>
             Zdobyte punkty: { activePlayer.level !== 1 ? activePlayer.xp + playerLevel.nextLevel : activePlayer.xp }
           </div>
-          <div className={styles.profile__info} key='3'>
+          <div className={styles.profile__info}>
             Aktualny poziom: {activePlayer.level}
             <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
           </div>
-          <div className={styles.profile__info} key='4'>
+          <div className={styles.profile__info}>
             Odznaki: {badges}
           </div>
-          {/* <div className={styles.profile__info} key='5'>
-            Zmiana koloru:
-            <form className={styles.profile__info}>
-              <input 
-                type='color' 
-                defaultValue={activePlayer.color} 
-                onChange={(e) => setChoosenColor(e.target.value)} 
-              />
-              <button onClick={(e) => changeColor(e)}>OK</button>
-            </form>
-          </div> */}
           
-          <DeleteButton 
+            
+          <div className={styles.profile__delete}>
+            <DeleteButton 
             content={ <FontAwesomeIcon icon={faTrash} /> }
             onClick={() => setWarning(true)}
-            key='6'
           />
+          </div>
+          
+
           { warning && 
             <Modal 
               cancel={setWarning}
@@ -143,7 +131,7 @@ const PlayerProfile = () => {
               }
             />
           }
-
+          
           { colorModal &&
             <Modal
               accept={changeColor}

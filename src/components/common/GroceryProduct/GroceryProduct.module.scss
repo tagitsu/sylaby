@@ -1,0 +1,7 @@
+@import '/src/styles/settings.scss';
+
+img {
+  width: calc($base-size * 8);
+  object-fit: contain;
+
+}

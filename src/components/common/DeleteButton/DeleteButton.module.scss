@@ -12,6 +12,7 @@
   width: calc($base-size * 4);
   display: flex;
   align-items: center;
+  justify-content: center;
 
   & a {
     text-decoration: none;

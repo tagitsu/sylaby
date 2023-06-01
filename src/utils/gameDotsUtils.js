@@ -7,9 +7,9 @@ utils.setGameTurn = (setDots, setHidden, setOptions) => {
     const dots = [];
     for ( let i = 1; i <= randomNumber; i++ ) {
       const randomSize = Math.floor(Math.random() * 80 + 50);
-      const randomColorR = Math.floor(Math.random() * 255 + 150);
-      const randomColorG = Math.floor(Math.random() * 255 + 150);
-      const randomColorB = Math.floor(Math.random() * 255 + 150);
+      const randomColorR = Math.floor(Math.random() * 255 + 100);
+      const randomColorG = Math.floor(Math.random() * 255 + 100);
+      const randomColorB = Math.floor(Math.random() * 255 + 90);
       const randomPositionTop = Math.floor(Math.random() * 70);
       const randomPositionLeft = Math.floor(Math.random() * 70);
       const dotTop = `${randomPositionTop}%`;
@@ -24,7 +24,6 @@ utils.setGameTurn = (setDots, setHidden, setOptions) => {
   const options = [];
   const randomNumber2 = Math.floor(Math.random() * 9 + 1);
   const randomNumber3 = Math.floor(Math.random() * 9 + 1);
-  alert(`Liczba baniek to ${randomNumber}, a pozostałe opcje to ${randomNumber2} i ${randomNumber3}`);
   options.push(randomNumber, randomNumber2, randomNumber3);
   options.sort();
   setOptions(options);
@@ -44,7 +43,6 @@ utils.submitSolution = (
 
   if ( answer == dots.length ) {
     // TODO zamiast alertów chciałabym użyć portalu / modalu 
-    alert(`Brawo! Na planszy widać ${answer} kropek. Zdobywasz punkt :)`);
     let playerPoints = activePlayer.xp + 1;
     updatePlayer({ ...activePlayer, xp: playerPoints })
   } else if ( answer < dots.length ) {

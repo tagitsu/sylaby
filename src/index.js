@@ -4,6 +4,9 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { apiSlice } from './api/apiSlice';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import './styles/normalize.scss';
 import './styles/global.scss';
 
@@ -12,7 +15,9 @@ root.render(
   <React.StrictMode>
     <ApiProvider api={apiSlice}>
         <BrowserRouter>
-          <App />
+          <DndProvider backend={HTML5Backend}>
+            <App />
+          </DndProvider>
         </BrowserRouter>
     </ApiProvider>
   </React.StrictMode>

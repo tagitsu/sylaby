@@ -10,6 +10,7 @@ import AddPlayerForm from './components/features/AddPlayerForm/AddPlayerForm';
 import HowToPlay from './components/pages/HowToPlay/HowToPlay';
 import GameNumber from './components/pages/GameNumber/GameNumber';
 import GameDots from './components/pages/GameDots/GameDots';
+import GameGrocery from './components/pages/GameGrocery/GameGrocery';
 import styles from './App.module.scss';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path='/game/easysyllables/:id' element={<GameSyllablesEasy />} />
           <Route path='/game/number/:id' element={<GameNumber />} />
           <Route path='/game/dots/:id' element={<GameDots />} />
+          <Route path='/game/grocery/:id' element={<GameGrocery />} />
           <Route path='/howtoplay' element={<HowToPlay />} />
           <Route path='*' element={<NonFound />} />
         </Routes>

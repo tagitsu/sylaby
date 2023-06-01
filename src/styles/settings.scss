@@ -1,12 +1,12 @@
 $color-light: #fff;
 $color-dark: #1f1f1f;
-$color-warning: #ff565c;
+$color-warning: #fc7176;
 $color-orange: #ffab77;
 $color-yellow: #ffe28a;
-$color-success: #75f39f;
-$color-blue: #4acefd;
+$color-success: #75f375;
+$color-blue: #3ddfff;
 $color-indigo: #4a8ffd;
-$color-purple: #d473ef;
+$color-purple: #e58dfe;
 
 
 $font-text: 'PT Sans', sans-serif;
@@ -17,3 +17,51 @@ $radius: calc($base-size * 1.2);
 $transition: all 0.5s;
 $box-shadow: 0 0 50px rgb(0 0 0 / 50%);
 $background-gradient: linear-gradient(to right, $color-success, $color-blue);
+
+
+@keyframes rainbowShake {
+  0% {
+    background-color: $color-yellow;
+    transform: rotate(-4deg);
+  }
+  10% {
+    background-color: $color-success;
+    transform: rotate(4deg);
+  }
+  20% {
+    background-color: $color-blue;
+    transform: rotate(-4deg);
+  }
+  30% {
+    background-color: $color-purple;
+    transform: rotate(4deg);
+  }
+  40% {
+    background-color: $color-blue;
+    transform: rotate(-4deg);
+  }
+  50% {
+    background-color: $color-success;
+    transform: rotate(4deg);
+  }
+  60% {
+    background-color: $color-yellow;
+    transform: rotate(-4deg);
+  }
+  70% {
+    background-color: $color-orange;
+    transform: rotate(4deg);
+  }
+  80% {
+    background-color: $color-warning;
+    transform: rotate(-4deg);
+  }
+  90% {
+    background-color: $color-orange;
+    transform: rotate(4deg);
+  }
+  100% {
+    background-color: $color-yellow;
+    transform: rotate(-4deg);
+  }
+}

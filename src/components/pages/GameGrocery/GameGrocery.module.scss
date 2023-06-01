@@ -1,0 +1,77 @@
+@import '/src/styles/settings.scss';
+
+:root {
+  --colorVege: black;
+  --colorFruit: black;
+}
+
+.grocery {
+  display: flex;
+  flex-direction: column;
+
+  &__board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__shop {
+    width: 90%;
+    padding: $base-size;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: $base-size;
+  }
+
+  &__shopElement {
+    display: flex;
+    gap: $base-size;
+    padding: $base-size;
+    border-radius: $radius;
+    border: 3px solid $color-yellow;
+    transition: $transition;
+    color: $color-success;
+    background-color: $color-light;
+  }
+
+  &__list {
+    flex-direction: column;
+    width: calc($base-size * 30);
+  }
+
+  &__color {
+    width: calc($base-size * 3);
+    height: calc($base-size * 3);
+    border-radius: 50%;
+  }
+
+  &__vege {
+    background-color: var(--colorVege);
+  }
+
+  &__fruit {
+    background-color: var(--colorFruit);
+  }
+
+  &__task {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+    color: $color-dark;
+    padding: 5px;
+  }
+
+  &__cart {
+    flex-wrap: wrap;
+    align-items: space-evenly;
+  }
+
+  &__assortment {
+    grid-column: 1 / span 2;
+    flex-wrap: wrap;
+  }
+
+}

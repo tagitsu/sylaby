@@ -4,8 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 20vh;
-  min-height: calc($base-size * 10);
-  margin: calc($base-size * 3);
+  margin: calc($base-size * 2);
   padding: $base-size;
 }

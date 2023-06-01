@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 import { useGetPlayersQuery } from "../../../api/apiSlice";
-
+import GameButton from '../../common/GameButton/GameButton';
 const GameMode = () => {
 
   const { data: players, isSuccess } = useGetPlayersQuery();
@@ -21,6 +21,7 @@ const GameMode = () => {
       <ActivePlayer activePlayer={activePlayer} />
       <h1 className={styles.mode__title}>Którą grę wybierasz?</h1>
       <div className={styles.mode__games}>
+        <GameButton gameAddress='grocery' gameName='warzywniaczek' gameDifficulty={1} activePlayerID={activePlayerParam.id} />
         <Link 
           to={`/game/easysyllables/${activePlayerParam.id}`} 
           className={styles.mode__game}

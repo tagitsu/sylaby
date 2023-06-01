@@ -1,14 +1,10 @@
 import styles from '../Modal/Modal.module.scss';
 import clsx from 'clsx';
-import { useNavigate } from 'react-router';
 
 const Modal = (props) => {
 
   const root = document.querySelector(':root');
   root.style.setProperty('--color', props.color);
-
-
-  const navigate = useNavigate();
 
   const handleAccept = () => {
     if (props.acceptArg) {
@@ -16,8 +12,6 @@ const Modal = (props) => {
     } else {
       props.accept();
     }
-    
-    navigate('/playerslist');
   }
 
   return(
@@ -40,7 +34,6 @@ const Modal = (props) => {
         </button>
       </div>
     </dialog>
-    
   )
 };
 

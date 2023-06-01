@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import Button from '../../common/Button/Button';
@@ -52,7 +52,7 @@ const PlayersList = () => {
 
           </div>
           <Button 
-            content={<Link to={`/game/${player.id}`}>Zacznij grę</Link>} 
+            content={<Link to={`/game/${player.id}`}>Zacznij grę <FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon></Link>} 
             onClick={ (e) => changeActiveStatus(e, player)}
           />
         </div>

@@ -4,9 +4,9 @@
       "id": 10,
       "name": "mądroboty",
       "icon": "storybots.png",
-      "isActive": false,
-      "level": 3,
-      "color": "#f99090",
+      "isActive": true,
+      "level": 6,
+      "color": "#d4ff38",
       "badges": [
         {
           "name": "mouse",
@@ -16,9 +16,12 @@
           "name": "cat",
           "text": "zwinny jak kotek"
         },
-        "fish"
+        {
+          "name": "owl",
+          "text": "mądra sowa"
+        }
       ],
-      "xp": 62
+      "xp": 7
     },
     {
       "id": 9,
@@ -45,45 +48,12 @@
       "xp": 0
     },
     {
-      "id": 4,
-      "name": "SpongeBob",
-      "icon": "spongebob.png",
-      "isActive": false,
-      "level": 2,
-      "color": "#23b0b3",
-      "title": "głoskująca myszka",
-      "badges": [
-        "mouse",
-        {
-          "name": "cat"
-        }
-      ],
-      "xp": 5
-    },
-    {
-      "id": 5,
-      "name": "Julia",
-      "icon": "elsa.png",
-      "isActive": false,
-      "level": 2,
-      "color": "#ccffe9",
-      "title": "głoskująca myszka",
-      "badges": [
-        "mouse",
-        {
-          "name": "cat",
-          "text": "sylabujący kotek"
-        }
-      ],
-      "xp": 0
-    },
-    {
       "id": 11,
       "name": "mysz",
       "icon": "pikachu.png",
-      "isActive": true,
+      "isActive": false,
       "level": 1,
-      "color": "#9bff70",
+      "color": "#ff3646",
       "title": "głoskująca myszka",
       "badges": [
         {
@@ -91,7 +61,39 @@
           "text": "głoskująca myszka"
         }
       ],
-      "xp": 1
+      "xp": 0
+    },
+    {
+      "id": 12,
+      "name": "piu",
+      "icon": "elsa.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#fecddc",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 2
+    },
+    {
+      "id": 13,
+      "name": "Julia",
+      "icon": "spongebob.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#fbfe4d",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
     }
   ],
   "levels": [
