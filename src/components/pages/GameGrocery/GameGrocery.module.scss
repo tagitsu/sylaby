@@ -20,13 +20,14 @@
     width: 90%;
     padding: $base-size;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit) 1fr;
     grid-template-rows: auto;
     gap: $base-size;
   }
 
   &__shopElement {
     display: flex;
+    flex-wrap: wrap;
     gap: $base-size;
     padding: $base-size;
     border-radius: $radius;
@@ -65,13 +66,11 @@
   }
 
   &__cart {
-    flex-wrap: wrap;
-    align-items: space-evenly;
+    align-items: flex-start;
   }
 
   &__assortment {
     grid-column: 1 / span 2;
-    flex-wrap: wrap;
   }
 
 }

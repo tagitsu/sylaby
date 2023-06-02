@@ -9,7 +9,7 @@ import utils from '../../../utils/gameGroceryUtils';
 import levelUp from "../../../utils/levelUpUtils";
 import GroceryProduct from "../../common/GroceryProduct/GroceryProduct";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBasket, faShop, faList, faAppleWhole, faCarrot, faMultiply } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket, faShop, faList, faAppleWhole, faCarrot, faMultiply, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useDrop } from "react-dnd";
 import clsx from "clsx";
 
@@ -31,12 +31,11 @@ const GameGrocery = () => {
   const [ fruits, setFruits ] = useState([]);
   const [ vegetables, setVegetables ] = useState([]);
 
-  console.log(`fruits`, fruits);
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: 'image',
+  const [{ isOverCart }, dropInCart] = useDrop(() => ({
+    accept: 'product',
     drop: (item) => addProductToCart(item.id),
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOverCart: !!monitor.isOver(),
     })
   }));
 
@@ -73,8 +72,6 @@ const GameGrocery = () => {
     setCart( (cart) => [...cart, productList[0]]);
   };
 
-  console.log(`owoce ${fruits} i warzywa ${vegetables}`, fruits, vegetables);
-
   const root = document.querySelector(':root');
   root.style.setProperty('--colorVege', vegetables[1]);
   root.style.setProperty('--colorFruit', fruits[1]);
@@ -92,9 +89,9 @@ const GameGrocery = () => {
             <h2><FontAwesomeIcon icon={faList} /></h2>
             {fruits.length ? shoppingList : null}
           </div>
-          <div className={clsx(styles.grocery__shopElement, styles.grocery__cart)} ref={drop}>
+          <div className={clsx(styles.grocery__shopElement, styles.grocery__cart)} ref={dropInCart} >
             <h2><FontAwesomeIcon icon={faShoppingBasket} /></h2>
-            {cart.map( cartProduct => <GroceryProduct product={cartProduct} size='20%' />)}
+            {cart.map( cartProduct => <GroceryProduct product={cartProduct} size='4rem' text={cartProduct.name} />)}
           </div>
           <div className={clsx(styles.grocery__shopElement, styles.grocery__assortment)}>
             <h2><FontAwesomeIcon icon={faShop} /></h2>
@@ -104,7 +101,6 @@ const GameGrocery = () => {
           </div>
         </div>
         <ButtonOK onClick={(e) => utils.submitSolution(e, vegetables, fruits, cart, activePlayer, updatePlayer, setCart, setFruits, setVegetables)}/>
-
       </section>
     </div>
   )

@@ -66,6 +66,94 @@ utils.shop = [
         color: 'yellow',
         type: 'vege'
       },
+      {
+        id: 9,
+        title: 'chilli',
+        name: 'papryka ostra',
+        icon: 'chilli.png',
+        color: 'red',
+        type: 'vege'
+      },
+      {
+        id: 10,
+        title: 'onion',
+        name: 'szczypiorek',
+        icon: 'onion.png',
+        color: 'green',
+        type: 'vege'
+      },
+      {
+        id: 11,
+        title: 'watermelon',
+        name: 'arbuz',
+        icon: 'watermelon.png',
+        color: 'green',
+        type: 'fruit'
+      },
+      {
+        id: 12,
+        title: 'lemon',
+        name: 'cytryna',
+        icon: 'lemon.png',
+        color: 'yellow',
+        type: 'fruit'
+      },
+      {
+        id: 13,
+        title: 'lime',
+        name: 'limonka',
+        icon: 'lime.png',
+        color: 'green',
+        type: 'fruit'
+      },
+      {
+        id: 14,
+        title: 'strawberry',
+        name: 'truskawka',
+        icon: 'strawberry.png',
+        color: 'red',
+        type: 'fruit'
+      },
+      {
+        id: 15,
+        title: 'raspberry',
+        name: 'malina',
+        icon: 'raspberry.png',
+        color: 'red',
+        type: 'fruit'
+      },
+      {
+        id: 16,
+        title: 'melon',
+        name: 'melon',
+        icon: 'melon.png',
+        color: 'yellow',
+        type: 'fruit'
+      },
+      {
+        id: 17,
+        title: 'lettuce',
+        name: 'sałata',
+        icon: 'lettuce.png',
+        color: 'green',
+        type: 'vege'
+      },
+      {
+        id: 18,
+        title: 'tangerine',
+        name: 'mandarynka',
+        icon: 'tangerine.png',
+        color: 'orange',
+        type: 'fruit'
+      },
+      {
+        id: 19,
+        title: 'pumpkin',
+        name: 'dynia',
+        icon: 'pumpkin.png',
+        color: 'orange',
+        type: 'vege'
+      },
     ];
 
 utils.setGameTurn = (setFruits, setVegetables) => {

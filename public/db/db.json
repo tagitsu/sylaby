@@ -4,7 +4,7 @@
       "id": 10,
       "name": "mądroboty",
       "icon": "storybots.png",
-      "isActive": true,
+      "isActive": false,
       "level": 6,
       "color": "#d4ff38",
       "badges": [
@@ -21,7 +21,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 7
+      "xp": 13
     },
     {
       "id": 9,

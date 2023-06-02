@@ -1,19 +1,20 @@
 @import '/src/styles/settings.scss';
 
 .menu {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   gap: calc($base-size * 2);
-  //min-height: calc($base-size * 10);
   margin: $base-size;
 
   &__item {
     padding: $base-size;
     transition: $transition;
+    text-align: center;
   }
 
   &__item:hover {
     color: $color-yellow;
+    border-bottom: 2px solid $color-yellow;
   }
 }
 

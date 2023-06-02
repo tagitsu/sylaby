@@ -29,7 +29,7 @@ const ActivePlayer = (props) => {
       <Link to={`/player/${activePlayer.id}`}>
         <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} level={activePlayer.level} size='80' />
       </Link>
-      <div className={styles.current__name}> {activePlayer.name} </div>
+      {/* <div className={styles.current__name}> {activePlayer.name} </div> */}
       <div className={styles.current__bar}>
         <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
       </div>

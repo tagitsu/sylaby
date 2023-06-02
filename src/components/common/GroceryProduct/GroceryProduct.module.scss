@@ -1,7 +1,20 @@
 @import '/src/styles/settings.scss';
 
+.product {
+  display: flex;
+}
+
+p {
+  margin: 0;
+  font-size: calc($base-size * 1.2);
+  display: flex;
+  align-items: center;
+
+}
+
 img {
   width: calc($base-size * 8);
   object-fit: contain;
+  padding: $base-size;
 
 }
