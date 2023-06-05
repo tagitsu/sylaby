@@ -12,8 +12,10 @@
   }
 
   &__dots {
-    width: 90vw;
+    width: 70vw;
     height: 50vh;
+    display: flex;
+    align-items: center;
     padding: calc($base-size * -10);
     position: relative;
   }
@@ -28,20 +30,10 @@
 
   &__options {
     display: flex;
+    flex-direction: column;
     gap: $base-size;
   }
 
-  &__option {
-    padding: $base-size;
-    color: $color-dark;
-    font-size: calc($base-size * 3);
-    width: calc($base-size * 6);
-    height: calc($base-size * 6);
-    text-align: center;
-    background-color: $color-light;
-    border: 3px solid $color-blue;
-    border-radius: $radius;
-  }
 
   &__correct {
     background-color: $color-success;

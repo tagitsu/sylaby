@@ -22,58 +22,78 @@ const GameDots = () => {
     if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
-
   const [ dots, setDots ] = useState([]);
-  const [ hidden, setHidden ] = useState(true);
+  //const [ hidden, setHidden ] = useState(true);
   const [ options, setOptions ] = useState([]);
-  
-  let dotsBoard;
-
-  if (dots !== undefined) {
-    dotsBoard = 
-      <div className={styles.dots__dots}>
-        { dots.map( dot => 
-          <div 
-            key={dot.id} 
-            className={styles.dots__dot} 
-            style={{
-              backgroundColor: dot.color, 
-              width: dot.size, 
-              height: dot.size,
-              top: dot.top,
-              left: dot.left
-            }} 
-          />) 
-        }
-      </div>
-  } else {
-      dotsBoard = 
-      <div> nie ma jeszcze kropek </div>
+  const [ correctAnswer, setCorrectAnswer ] = useState();
+  console.log('sprawdzam dots', dots);
+  console.log('sprawdzam dots, options, Correct', dots, options, correctAnswer);
+  let dotsBoard = 
+  <div className={styles.dots__dots}>
+  { dots.map( dot => 
+    <div 
+      key={dot.id} 
+      className={styles.dots__dot} 
+      style={{
+        backgroundColor: dot.color, 
+        width: dot.size, 
+        height: dot.size,
+        top: dot.top,
+        left: dot.left
+      }} 
+    />) 
   }
+</div>;
 
-  console.log('co jest w options', options);
+  // if (dots !== undefined) {
+  //   dotsBoard = 
+  //     <div className={styles.dots__dots}>
+  //       { dots.map( dot => 
+  //         <div 
+  //           key={dot.id} 
+  //           className={styles.dots__dot} 
+  //           style={{
+  //             backgroundColor: dot.color, 
+  //             width: dot.size, 
+  //             height: dot.size,
+  //             top: dot.top,
+  //             left: dot.left
+  //           }} 
+  //         />) 
+  //       }
+  //     </div>
+  // } else {
+  //     dotsBoard = 
+  //     <div> Kliknij w przycisk i wylosuj bańki! </div>
+  // }
 
     return(
     <div className={styles.dots}>
       <ActivePlayer />
       <section className={styles.dots__board}>
-        <Button
-          content='Wylosuj kropki'
-          onClick={ () => {utils.setGameTurn(setDots, setHidden, setOptions)}}
-        />
-        <div className={styles.dots__dots}>
-          {dotsBoard}
-        </div>
-      </section>
-      <section className={styles.dots__options}>
-        { options.map( option => 
-            <Option 
-              key={option} 
-              content={option}
-              onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setDots, activePlayer, updatePlayer, setOptions)}
-            />
-          )
+        { 
+          !dots.length && 
+          <Button
+            content={'Wylosuj bańki'}
+            onClick={ () => {utils.setGameTurn(setDots, setOptions)}}
+          /> 
         }
+        <div className={styles.dots__dots}>
+          <div>
+            {dotsBoard}
+          </div>
+          <div className={styles.dots__options}>
+            { options.map( option => 
+                <Option 
+                  key={option} 
+                  content={option}
+                  onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setCorrectAnswer, activePlayer, updatePlayer, setDots, setOptions)}
+                  correct={correctAnswer}
+                />
+              )
+            }
+          </div>
+        </div>
       </section>
     </div>
   );

@@ -2,14 +2,29 @@
 
 .option {
   padding: $base-size;
-  background-color: $color-light;
   color: $color-dark;
+  font-size: calc($base-size * 3);
+  width: calc($base-size * 6);
+  height: calc($base-size * 6);
+  text-align: center;
+  background-color: $color-light;
+  border: 3px solid $color-blue;
+  border-radius: $radius;
   transition: $transition;
-  font-size: calc($base-size * 2);
-  max-height: calc($base-size * 5);
+
+  &__correct {
+    background-color: $color-success;
+  }
 }
 
-.button:hover {
-  cursor: pointer
-
+.option:hover {
+  cursor: pointer;
+  border-color: $color-yellow;
+  transform: scale(1.03);
 }
+
+.option:action {
+  transform: scale(.97);
+}
+
+
