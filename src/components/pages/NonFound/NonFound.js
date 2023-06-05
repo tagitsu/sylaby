@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDrag, useDrop } from "react-dnd";
 
+import styles from './NonFound.module.scss' 
 
 const NonFound = () => {
 
@@ -56,6 +57,17 @@ const NonFound = () => {
       </div>
       <div ref={square} style={ { width: '100px', backgroundColor: 'lightblue', height: '100px', margin: '10px' } }></div>
       <div ref={circle} style={ { width: '100px', backgroundColor: 'lightblue', height: '100px', margin: '10px', borderRadius: '50%' } }></div>
+
+      <div className={styles.rainbow}>
+        <div className={styles.rainbow__stripe} style={{ width: '100px', height: '70px', backgroundColor: 'red' }}></div>
+        <div className={styles.rainbow__stripe} style={{ width: '100px', height: '70px', backgroundColor: 'orange' }}></div>
+        <div className={styles.rainbow__stripe} style={{ width: '100px', height: '70px', backgroundColor: 'yellow' }}></div>
+        <div className={styles.rainbow__stripe} style={{ width: '100px', height: '70px', backgroundColor: 'green' }}></div>
+        <div className={styles.rainbow__stripe} style={{ width: '100px', height: '70px', backgroundColor: 'blue' }}></div>
+        <div className={styles.rainbow__stripe} style={{ width: '100px', height: '70px', backgroundColor: 'indigo' }}></div>
+        <div className={styles.rainbow__stripe} style={{ width: '100px', height: '70px', backgroundColor: 'purple' }}></div>
+
+      </div>
     </div>
   );
 };

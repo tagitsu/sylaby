@@ -5,6 +5,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 import { useGetPlayersQuery } from "../../../api/apiSlice";
 import GameButton from '../../common/GameButton/GameButton';
+
 const GameMode = () => {
 
   const { data: players, isSuccess } = useGetPlayersQuery();
@@ -16,42 +17,40 @@ const GameMode = () => {
       console.log('game mode - active', activePlayer);
   }
 
+  const games = [
+    {
+      name: 'rainbow',
+      title: 'tęcza',
+      difficulty: '4+'
+    },
+    {
+      name: 'dots',
+      title: 'kolorowe bańki',
+      difficulty: '5+'
+    },
+    {
+      name: 'grocery',
+      title: 'warzywniaczek',
+      difficulty: '5+'
+    },
+    {
+      name: 'syllables',
+      title: 'sylaby',
+      difficulty: '6+',
+    },
+    {
+      name: 'number',
+      title: 'dodawanie',
+      difficulty: '7+'
+    },
+  ];
+
   return(
     <div className={styles.mode}>
       <ActivePlayer activePlayer={activePlayer} />
       <h1 className={styles.mode__title}>Którą grę wybierasz?</h1>
       <div className={styles.mode__games}>
-        <GameButton gameAddress='grocery' gameName='warzywniaczek' gameDifficulty={1} activePlayerID={activePlayerParam.id} />
-        <Link 
-          to={`/game/easysyllables/${activePlayerParam.id}`} 
-          className={styles.mode__game}
-          >
-          <p>sy - la - by</p>
-          <div>
-            <FontAwesomeIcon className={styles.star} icon={faStar} />
-            <FontAwesomeIcon className={styles.star} icon={faStar} />
-          </div>
-        </Link>
-        <Link 
-          to={`/game/number/${activePlayerParam.id}`} 
-          className={styles.mode__game}
-          >
-          <p>brakująca liczba</p>
-          <div>
-            <FontAwesomeIcon className={styles.star} icon={faStar} />
-            <FontAwesomeIcon className={styles.star} icon={faStar} />
-            <FontAwesomeIcon className={styles.star} icon={faStar} />
-          </div>
-        </Link>
-        <Link 
-          to={`/game/dots/${activePlayerParam.id}`} 
-          className={styles.mode__game}
-          >
-          <p>bańki mydlane</p>
-          <div>
-            <FontAwesomeIcon className={styles.star} icon={faStar} />
-          </div>
-        </Link>
+        {games.map( game => <GameButton key={game.name} game={game} activePlayerID={activePlayerParam.id} /> )}
       </div>
     </div>
     

@@ -1,43 +1,32 @@
 @import '/src/styles/settings.scss';
 
-.button {
-  border: 2px outset $color-light;
-  border-radius: $radius;
-  padding: calc($base-size * 2);
-  background-color: $color-light;
-  color: $color-success;
-  transition: $transition;
-  font-size: calc($base-size * 2);
-  max-height: calc($base-size * 5);
+.game {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  background-color: $color-light;
+  color: $color-blue;
+  overflow: visible;
+  border-radius: $radius;
+  border: 2px solid $color-yellow;
+  padding: 5px;
 
-  & a {
-    text-decoration: none;
-    color: $color-success;
-    transition: $transition;
-
+  &__title {
+    padding: 4px;
+    font-size: calc($base-size * 1.3);
   }
-}
 
-.button:hover {
-  cursor: pointer
-
-}
-
-.button:hover a {
-  color: $color-yellow;
-}
-
-.button:active {
-  background-color: $color-success;
-
-  & a {
-    color: $color-light;
+  &__difficulty {
+    align-self: flex-start;
+    border: 2px solid $color-yellow;
+    border-radius: 50%;
+    padding: 3px;
+    margin: 3px;
+    font-weight: 700;
   }
-}
 
-.button:disabled {
-  background-color: lightgrey;
+  &__img {
+    width: 100%;
+  }
 }
