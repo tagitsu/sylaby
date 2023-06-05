@@ -3,9 +3,15 @@
 .mode {
   text-align: center;
 
+  &__title {
+    font-size: $font-title;
+
+  }
+
   &__games {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
     gap: $base-size;
+    margin: $base-size auto;
   }
 }
