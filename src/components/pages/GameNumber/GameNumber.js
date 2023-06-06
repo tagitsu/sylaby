@@ -21,6 +21,7 @@ const GameNumber = () => {
     if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
+  console.log(activePlayer, playerLevel, nextLevel);
   const [ number1, setNumber1 ] = useState('');
   const [ number2, setNumber2 ] = useState('');
   const [ equationResult, setEquationResult ] = useState('');

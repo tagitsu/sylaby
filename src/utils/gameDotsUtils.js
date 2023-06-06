@@ -1,17 +1,25 @@
 
 const utils = {};
 
-utils.setGameTurn = (setDots, setOptions) => {
+utils.setGameTurn = (setDots, setOptions, setCorrectAnswer) => {
 
   setDots([]);
   setOptions([]);
 
-  const randomNumber = Math.floor(Math.random() * 9 + 1);
+  const numbers = [];
+  const options = [];
 
-  let dots = [];
+  for ( let i = 1; i < 10; i++ ) {
+    numbers.push(i);
+  }
+  for ( let i = 0; i < 3; i++ ) {
+    options[i] = numbers.splice(Math.floor(Math.random() * numbers.length), 1)
+  }
 
-  for ( let i = 1; i <= randomNumber; i++ ) {
-    const randomSize = Math.floor(Math.random() * 80 + 50);
+  const dots = [];
+
+  for ( let i = 1; i <= options[1]; i++ ) {
+    const randomSize = Math.floor(Math.random() * 30 + 10);
     const randomColorR = Math.floor(Math.random() * 255 + 100);
     const randomColorG = Math.floor(Math.random() * 255 + 100);
     const randomColorB = Math.floor(Math.random() * 255 + 90);
@@ -20,30 +28,18 @@ utils.setGameTurn = (setDots, setOptions) => {
     const dotTop = `${randomPositionTop}%`;
     const dotLeft = `${randomPositionLeft}%`;
     const dotColor = `rgb(${randomColorR}, ${randomColorG}, ${randomColorB})`;
-    const dotSize = `${randomSize}px`;
+    const dotSize = `${randomSize}%`;
     dots.push({ id: i, color: dotColor, size: dotSize, top: dotTop, left: dotLeft });
   }
 
-  let options = [];
-  const randomNumber2 = Math.floor(Math.random() * 9 + 1);
-  const randomNumber3 = Math.floor(Math.random() * 9 + 1);
-  if (randomNumber !== randomNumber2 && randomNumber !== randomNumber3 && randomNumber2 !== randomNumber3 ) {
-    options.push(randomNumber, randomNumber2, randomNumber3);
-    options.sort();
-  }
-
   setDots(dots);
-  setOptions(options);
-  
-  // FIX co kilka losowań tablica options jest pusta
-  console.log('utils dots, options', dots, options);
+  setOptions(options.sort());
 };
 
 utils.submitSolution = (
   e, 
   answer, 
   dots, 
-  setCorrectAnswer,
   activePlayer, 
   updatePlayer, 
   ) => {
@@ -52,7 +48,6 @@ utils.submitSolution = (
 
   if ( answer == dots.length ) {
     // TODO zamiast alertów chciałabym użyć portalu / modalu 
-    setCorrectAnswer(dots.length);
     let playerPoints = activePlayer.xp + 1;
     updatePlayer({ ...activePlayer, xp: playerPoints })
   } else if ( answer < dots.length ) {

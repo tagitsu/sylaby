@@ -21,7 +21,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 61
+      "xp": 79
     },
     {
       "id": 9,
@@ -68,32 +68,48 @@
       "name": "piu",
       "icon": "elsa.png",
       "isActive": false,
-      "level": 1,
+      "level": 3,
       "color": "#fecddc",
       "title": "głoskująca myszka",
       "badges": [
         {
           "name": "mouse",
           "text": "głoskująca myszka"
+        },
+        {
+          "name": "cat",
+          "text": "sylabujący kotek"
+        },
+        {
+          "name": "fish",
+          "text": "zwinna rybka"
         }
       ],
-      "xp": 2
+      "xp": 29
     },
     {
       "id": 13,
       "name": "Julia",
       "icon": "spongebob.png",
       "isActive": false,
-      "level": 1,
+      "level": 3,
       "color": "#fbfe4d",
       "title": "głoskująca myszka",
       "badges": [
         {
           "name": "mouse",
           "text": "głoskująca myszka"
+        },
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        },
+        {
+          "name": "fish",
+          "text": "zwinna rybka"
         }
       ],
-      "xp": 0
+      "xp": 14
     }
   ],
   "levels": [

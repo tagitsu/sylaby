@@ -16,87 +16,64 @@ const GameDots = () => {
 
   let activePlayer, playerLevel, nextLevel;
   if (playersOK && levelsOK) {
-    [ activePlayer ] = players.filter( player => player.isActive);
-    [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
-    [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id);
+    [ activePlayer ] = players.filter( player => player.isActive );
+    [ playerLevel ] = levels.filter( level => activePlayer.level === level.id );
+    [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id );
     if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
   const [ dots, setDots ] = useState([]);
-  //const [ hidden, setHidden ] = useState(true);
   const [ options, setOptions ] = useState([]);
   const [ correctAnswer, setCorrectAnswer ] = useState();
+
   console.log('sprawdzam dots', dots);
   console.log('sprawdzam dots, options, Correct', dots, options, correctAnswer);
-  let dotsBoard = 
-  <div className={styles.dots__dots}>
-  { dots.map( dot => 
-    <div 
-      key={dot.id} 
-      className={styles.dots__dot} 
-      style={{
-        backgroundColor: dot.color, 
-        width: dot.size, 
-        height: dot.size,
-        top: dot.top,
-        left: dot.left
-      }} 
-    />) 
-  }
-</div>;
+  console.log('dots activePlayer, playerLevel, nextLevel', activePlayer, playerLevel, nextLevel);
 
-  // if (dots !== undefined) {
-  //   dotsBoard = 
-  //     <div className={styles.dots__dots}>
-  //       { dots.map( dot => 
-  //         <div 
-  //           key={dot.id} 
-  //           className={styles.dots__dot} 
-  //           style={{
-  //             backgroundColor: dot.color, 
-  //             width: dot.size, 
-  //             height: dot.size,
-  //             top: dot.top,
-  //             left: dot.left
-  //           }} 
-  //         />) 
-  //       }
-  //     </div>
-  // } else {
-  //     dotsBoard = 
-  //     <div> Kliknij w przycisk i wylosuj bańki! </div>
-  // }
-
+  if (activePlayer) {
     return(
-    <div className={styles.dots}>
-      <ActivePlayer />
-      <section className={styles.dots__board}>
-        { 
-          !dots.length && 
-          <Button
-            content={'Wylosuj bańki'}
-            onClick={ () => {utils.setGameTurn(setDots, setOptions)}}
-          /> 
-        }
-        <div className={styles.dots__dots}>
-          <div>
-            {dotsBoard}
+      <div className={styles.dots}>
+        <ActivePlayer />
+        <section className={styles.dots__board}>
+          { 
+            !dots.length && 
+            <Button
+              content={'Wylosuj bańki'}
+              onClick={ () => {utils.setGameTurn(setDots, setOptions)}}
+            /> 
+          }
+          <div className={styles.dots__box}>
+            <div className={styles.dots__dots}>
+              { dots.map( dot => 
+                <div 
+                  key={dot.id} 
+                  className={styles.dots__dot} 
+                  style={{
+                    backgroundColor: dot.color, 
+                    width: dot.size, 
+                    height: dot.size,
+                    top: dot.top,
+                    left: dot.left
+                  }} 
+                />) 
+              }
+            </div>
+            <div className={styles.dots__options}>
+              { options.map( option => 
+                  <Option 
+                    key={option} 
+                    content={option}
+                    onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, activePlayer, updatePlayer, setDots, setOptions)}
+                  />
+                )
+              }
+            </div>
           </div>
-          <div className={styles.dots__options}>
-            { options.map( option => 
-                <Option 
-                  key={option} 
-                  content={option}
-                  onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setCorrectAnswer, activePlayer, updatePlayer, setDots, setOptions)}
-                  correct={correctAnswer}
-                />
-              )
-            }
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+        </section>
+      </div>
+    );
+
+  }
 
 };
 

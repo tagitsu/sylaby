@@ -6,16 +6,20 @@
 
   &__board {
     display: flex;
-    flex-direction: column;
+    //flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  &__dots {
-    width: 70vw;
-    height: 50vh;
+  &__box {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+  }
+
+  &__dots {
+    width: 50vh;
+    height: 50vh;
     padding: calc($base-size * -10);
     position: relative;
   }

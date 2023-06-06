@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 const Option = (props) => {
 
-  console.log('option', props.correctAnswer, props.content);
+  console.log('option', props.correct, props.content);
 
 
   if (props.correct === props.content) {
