@@ -19,13 +19,13 @@ const ActivePlayer = (props) => {
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
   }
 
-  const barContent = `${activePlayer.xp}/${playerLevel.nextLevel}`;
+  //const barContent = `${activePlayer.xp}/${playerLevel.nextLevel}`;
 
   if (activePlayer) {
     return(
     <div className={styles.current}>
       <Link to={`/player/${activePlayer.id}`}>
-        <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} level={activePlayer.level} size='50' />
+        <img src={`${process.env.PUBLIC_URL}/images/${activePlayer.icon}`} alt={`ikona ${activePlayer.icon}`} />
       </Link>
       {/* <div className={styles.current__name}> {activePlayer.name} </div> */}
       <div className={styles.current__bar}>

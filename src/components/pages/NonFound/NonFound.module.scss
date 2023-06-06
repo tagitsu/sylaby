@@ -1,2 +1,13 @@
 @import '/src/styles/settings.scss';
 
+.rainbow {
+  display: flex;
+  flex-direction: column;
+  gap: $base-size;
+
+  &__stripe {
+    border-radius: 50%;
+    width: calc($base-size * 3);
+    height: calc($base-size * 3);
+  }
+}

@@ -4,7 +4,7 @@
       "id": 10,
       "name": "mądroboty",
       "icon": "storybots.png",
-      "isActive": false,
+      "isActive": true,
       "level": 6,
       "color": "#d4ff38",
       "badges": [
