@@ -4,7 +4,7 @@
       "id": 10,
       "name": "mądroboty",
       "icon": "storybots.png",
-      "isActive": true,
+      "isActive": false,
       "level": 6,
       "color": "#d4ff38",
       "badges": [
@@ -21,7 +21,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 79
+      "xp": 84
     },
     {
       "id": 9,
@@ -51,7 +51,7 @@
       "id": 11,
       "name": "mysz",
       "icon": "pikachu.png",
-      "isActive": false,
+      "isActive": true,
       "level": 1,
       "color": "#ff3646",
       "title": "głoskująca myszka",
@@ -61,7 +61,7 @@
           "text": "głoskująca myszka"
         }
       ],
-      "xp": 0
+      "xp": 2
     },
     {
       "id": 12,

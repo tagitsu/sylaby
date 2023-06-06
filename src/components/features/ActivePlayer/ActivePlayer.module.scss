@@ -5,10 +5,16 @@
   justify-content: flex-start;
   align-items: center;
   gap: calc($base-size * 2);
-  //margin: $base-size;
   width: fit-content;
   height: calc($base-size * 7);
   font-weight: 700; 
   letter-spacing: 1.5px;
+  position: relative;
+
+  &__bar {
+    position: absolute;
+    left: 40%;
+    z-index: -1;
+  }
 
 }

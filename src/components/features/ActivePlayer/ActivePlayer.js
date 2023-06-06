@@ -19,19 +19,17 @@ const ActivePlayer = (props) => {
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
   }
 
-  if(!activePlayer) {
-    return(
-      <div>Brak aktywnego garcza</div>
-    );
-  } else if (activePlayer) {
+  const barContent = `${activePlayer.xp}/${playerLevel.nextLevel}`;
+
+  if (activePlayer) {
     return(
     <div className={styles.current}>
       <Link to={`/player/${activePlayer.id}`}>
-        <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} level={activePlayer.level} size='80' />
+        <PlayerIcon icon={activePlayer.icon} name={activePlayer.name} color={activePlayer.color} level={activePlayer.level} size='50' />
       </Link>
       {/* <div className={styles.current__name}> {activePlayer.name} </div> */}
       <div className={styles.current__bar}>
-        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
+        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} />
       </div>
     </div>
     );

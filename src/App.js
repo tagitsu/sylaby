@@ -25,7 +25,7 @@ const App = () => {
           <Route path='/newplayer' element={<AddPlayerForm />} />
           <Route path='/player/:id' element={<PlayerProfile />} />
           <Route path='/game/:id' element={<GameMode />} />
-          <Route path='/game/easysyllables/:id' element={<GameSyllablesEasy />} />
+          <Route path='/game/syllables/:id' element={<GameSyllablesEasy />} />
           <Route path='/game/number/:id' element={<GameNumber />} />
           <Route path='/game/dots/:id' element={<GameDots />} />
           <Route path='/game/grocery/:id' element={<GameGrocery />} />
