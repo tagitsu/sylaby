@@ -14,8 +14,8 @@ const Sign = (props) => {
   });
 
   return(
-    <div key={props.name} className={styles.sign} ref={drag}>
-      <FontAwesomeIcon icon={props.icon} />
+    <div key={props.name} className={clsx( styles.sign, isDragging ? styles.dragging : styles.sign )} ref={drag}>
+      {props.icon}
     </div>
   )
 }

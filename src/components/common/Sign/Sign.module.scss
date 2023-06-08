@@ -6,5 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $color-yellow;
+}
 
+.sign:hover {
+  transform: scale(1.03);
+}
+
+.sign:active {
+  transform: scale(.97);
+}
+
+.dragging {
+  opacity: 0;
 }

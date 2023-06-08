@@ -1,14 +1,22 @@
 
 const utils = {};
 
-utils.setGameTurn = (setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong) => {
+utils.mathSigns = [
+  { name: 'less', icon: '<' },
+  { name: 'greater', icon: '>' },
+  { name: 'equal', icon: '=' },
+];
+
+utils.setGameTurn = (setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong, setMathSigns, setHelp) => {
 
   setAnswer();
   setIsCorrect();
   setIsWrong();
+  setMathSigns(utils.mathSigns);
+  setHelp(false);
 
-  const number1 = Math.floor(Math.random() * 100 );
-  const number2 = Math.floor(Math.random() * 100 );
+  const number1 = Math.floor(Math.random() * 20 );
+  const number2 = Math.floor(Math.random() * 20 );
   let solution;
 
   if (number1 > number2) {
@@ -24,28 +32,23 @@ utils.setGameTurn = (setNumber1, setNumber2, setSolution, setAnswer, setIsCorrec
   setSolution(solution);
 };
 
-utils.submitSolution = (answer, solution, updatePlayer, activePlayer, setIsCorrect, setIsWrong) => {
-  
+utils.submitSolution = (answer, solution, setIsCorrect, setIsWrong) => {
 
-  console.log('utils odpowiedź', answer);
-
-  if ( answer === solution) {
-    console.log('Odpowiedź jest prawidłowa');
+  if ( answer === solution ) {
     setIsWrong(false);
     setIsCorrect(true);
   } else {
-    console.log('odpowiedź jest błędna');
     setIsCorrect(false);
     setIsWrong(true);
   }
-  
 };
 
 utils.addPoints = (isCorrect, updatePlayer, activePlayer) => {
-  console.log('add Points działa');
 
-  if (isCorrect) {
+  if ( isCorrect ) {
     updatePlayer({ ...activePlayer, xp: activePlayer.xp + 1 });
+  } else {
+    updatePlayer({ ...activePlayer, xp: activePlayer.xp });
   }
 }
 
