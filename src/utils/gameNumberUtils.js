@@ -1,26 +1,52 @@
 
 const utils = {};
 
-utils.setGameTurn = (setNumber1, setNumber2, setEquationResult) => {
+utils.setGameTurn = (setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong) => {
 
-  const randomNumber1 = Math.floor(Math.random() * 10);
-  const randomNumber2 = Math.floor(Math.random() * 10);
-  const equationResult = randomNumber1 + randomNumber2;
-  setNumber1(randomNumber1);
-  setNumber2(randomNumber2);
-  setEquationResult(equationResult);
-};
+  setAnswer();
+  setIsCorrect();
+  setIsWrong();
 
-utils.submitSolution = (e, playerAnswer, equationResult, updatePlayer, activePlayer, setPlayerAnswer) => {
-  e.preventDefault();
-  const answer = parseInt(playerAnswer);
-  if (answer === equationResult) {
-    console.log('Odpowiedź jest prawidłowa')
-    updatePlayer({ ...activePlayer, xp: activePlayer.xp + 1 });
+  const number1 = Math.floor(Math.random() * 100 );
+  const number2 = Math.floor(Math.random() * 100 );
+  let solution;
+
+  if (number1 > number2) {
+    solution = 'greater';
+  } else if (number1 < number2) {
+    solution = 'less';
   } else {
-    console.log('odpowiedź jest błędna', typeof answer, answer, typeof equationResult, equationResult)
+    solution = 'equal';
   }
-  setPlayerAnswer('');
+
+  setNumber1(number1);
+  setNumber2(number2);
+  setSolution(solution);
 };
+
+utils.submitSolution = (answer, solution, updatePlayer, activePlayer, setIsCorrect, setIsWrong) => {
+  
+
+  console.log('utils odpowiedź', answer);
+
+  if ( answer === solution) {
+    console.log('Odpowiedź jest prawidłowa');
+    setIsWrong(false);
+    setIsCorrect(true);
+  } else {
+    console.log('odpowiedź jest błędna');
+    setIsCorrect(false);
+    setIsWrong(true);
+  }
+  
+};
+
+utils.addPoints = (isCorrect, updatePlayer, activePlayer) => {
+  console.log('add Points działa');
+
+  if (isCorrect) {
+    updatePlayer({ ...activePlayer, xp: activePlayer.xp + 1 });
+  }
+}
 
 export default utils;

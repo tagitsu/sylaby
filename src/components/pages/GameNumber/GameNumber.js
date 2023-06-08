@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { useDrag, useDrop } from "react-dnd";
 import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from './GameNumber.module.scss';
 import Button from "../../common/Button/Button";
+import ButtonOK from '../../common/ButtonOK/ButtonOK';
 import utils from '../../../utils/gameNumberUtils';
 import levelUp from '../../../utils/levelUpUtils';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEquals, faLessThan, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
+import Sign from "../../common/Sign/Sign";
+import clsx from "clsx";
 
 const GameNumber = () => {
 
@@ -21,36 +27,63 @@ const GameNumber = () => {
     if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
-  console.log(activePlayer, playerLevel, nextLevel);
   const [ number1, setNumber1 ] = useState('');
   const [ number2, setNumber2 ] = useState('');
-  const [ equationResult, setEquationResult ] = useState('');
-  const [ playerAnswer, setPlayerAnswer ] = useState('');
+  const [ solution, setSolution ] = useState('');
+  const [ answer, setAnswer ] = useState();
+  const [ isCorrect, setIsCorrect ] = useState();
+  const [ isWrong, setIsWrong ] = useState();
+  const [ mathSigns, setMathSigns ] = useState([
+    {
+      name: 'less',
+      icon: faLessThan,
+    },
+    {
+      name: 'greater',
+      icon: faGreaterThan,
+    },
+    {
+      name: 'equal',
+      icon: faEquals,
+    },
+  ]);
+
+  const [ { isOverSign }, dropSign ] = useDrop({
+    accept: 'sign',
+    drop: (item) => {
+      setAnswer([item]);
+      setMathSigns([]);
+      utils.submitSolution(item.name, solution, updatePlayer, activePlayer, setIsCorrect, setIsWrong);
+    },
+    collect: monitor => ({
+      isOverSign: !!monitor.isOver(),
+    })
+  });
 
   return(
-    <div className={styles.missing}>
+    <div className={styles.number}>
       <ActivePlayer />
-      <section className={styles.missing__board}>
+      <div className={styles.number__board}>
         <Button 
-          content='losuj równanie' 
-          onClick={() => utils.setGameTurn(setNumber1, setNumber2, setEquationResult)}
+          content='losuj' 
+          onClick={ () => utils.setGameTurn(setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong) }
         />
-        <div className={styles.missing__equation}>
-          <div className={styles.missing__item}> {number1} </div>
-          <div className={styles.missing__item}>+</div>
-          <div className={styles.missing__item}> {number2} </div>
-          <div className={styles.missing__item}>=</div>
-          <input 
-            className={styles.missing__item}
-            defaultValue={playerAnswer}
-            onChange={ (e) => setPlayerAnswer(e.target.value)}
-          />
+        <div className={styles.number__box}>
+          <div key={1} className={styles.number__number}> {number1} </div>
+          <div key={2} className={clsx(styles.number__sign, isCorrect ? styles.correct : '', isWrong ? styles.wrong : '' )} ref={dropSign}>
+            { answer?.map( sign => <Sign key={sign.name} name={sign.name} icon={sign.icon}/>) }
+          </div>
+          <div key={3} className={styles.number__number}> {number2} </div>
         </div>
-        <Button 
-          content='OK' 
-          onClick={ (e) => utils.submitSolution(e, playerAnswer, equationResult, updatePlayer, activePlayer, setPlayerAnswer) }
-        />
-      </section>
+        <div className={styles.number__box}>
+          { mathSigns.map( sign => { 
+            return(
+              <Sign key={sign.name} name={sign.name} icon={sign.icon} />
+            )}
+          )}
+        </div>
+        <ButtonOK onClick={() => utils.addPoints(isCorrect, updatePlayer, activePlayer)}/>
+      </div>
     </div>
   );
 };

@@ -20,5 +20,7 @@
   cursor: pointer;
   color: $color-success;
   border: 2px outset $color-success;
+  box-shadow: 0 0 calc($base-size * 4) rgba(154, 255, 21, 0.9);
+
 }
 

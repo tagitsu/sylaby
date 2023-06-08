@@ -29,7 +29,7 @@ const ActivePlayer = (props) => {
       </Link>
       {/* <div className={styles.current__name}> {activePlayer.name} </div> */}
       <div className={styles.current__bar}>
-        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} />
+        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} />{activePlayer.xp}
       </div>
     </div>
     );

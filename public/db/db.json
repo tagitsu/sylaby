@@ -21,7 +21,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 84
+      "xp": 124
     },
     {
       "id": 9,
@@ -51,7 +51,7 @@
       "id": 11,
       "name": "mysz",
       "icon": "pikachu.png",
-      "isActive": true,
+      "isActive": false,
       "level": 1,
       "color": "#ff3646",
       "title": "głoskująca myszka",

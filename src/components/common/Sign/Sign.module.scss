@@ -1,0 +1,10 @@
+@import '/src/styles/settings.scss';
+
+.sign {
+  width: calc($base-size * 3);
+  height: calc($base-size * 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

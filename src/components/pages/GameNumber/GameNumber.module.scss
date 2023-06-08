@@ -1,26 +1,54 @@
 @import '/src/styles/settings.scss';
 
-.missing {
-
-  &__equation {
+.number {
+  &__board {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: $base-size;
   }
 
-  &__item {
+  &__container {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    gap: $base-size;
+    color: $color-dark;
+    padding: $base-size;
+  }
+
+  &__sign {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: $base-size;
-    text-decoration: none;
-    color: $color-dark;
-    font-size: calc($base-size * 3);
-    width: 10vw;
-    height: 7vw;
-    text-align: center;
-    margin: $base-size;
+    width: calc($base-size * 4);
+    height: calc($base-size * 4);
     background-color: $color-light;
-    border: none;
+    margin: 0 $base-size;
   }
 
+
+  &__number {
+    width: calc($base-size * 4);
+    height: calc($base-size * 4);
+    background-color: $color-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $radius;
+  }
+
+}
+
+.correct {
+  background-color: $color-success;
+  //box-shadow: 0 0 calc($base-size * 4) rgba(255, 21, 247, 0.906);
+}
+
+.wrong {
+  background-color: $color-warning;
 }
