@@ -6,7 +6,7 @@ import Option from "../../common/Option/Option";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from './GameDots.module.scss';
 import utils from '../../../utils/gameDotsUtils';
-import levelUp from "../../../utils/levelUpUtils";
+import playerUtils from "../../../utils/playerUtils";
 
 const GameDots = () => {
 
@@ -19,7 +19,7 @@ const GameDots = () => {
     [ activePlayer ] = players.filter( player => player.isActive );
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id );
     [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id );
-    if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
+    if (activePlayer.xp >= playerLevel.nextLevel) { playerUtils.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
   const [ dots, setDots ] = useState([]);
@@ -72,9 +72,7 @@ const GameDots = () => {
         </section>
       </div>
     );
-
   }
-
 };
 
 export default GameDots;

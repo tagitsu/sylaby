@@ -1,10 +1,9 @@
-import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import styles from '../ActivePlayer/ActivePlayer.module.scss';
 import { Link } from 'react-router-dom';
 import { useGetPlayersQuery, useGetLevelsQuery } from "../../../api/apiSlice";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
-const ActivePlayer = (props) => {
+const ActivePlayer = () => {
 
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery(); 
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();

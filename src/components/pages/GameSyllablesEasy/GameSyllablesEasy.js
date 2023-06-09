@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import clsx from "clsx";
 import utils from '../../../utils/gameSyllablesEasyUtils';
-import levelUp from '../../../utils/levelUpUtils';
+import playerUtils from '../../../utils/playerUtils';
 import { Link } from 'react-router-dom';
 import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
@@ -31,7 +31,7 @@ const GameSyllablesEasy = () => {
     [ activePlayer ] = players.filter( player => player.isActive);
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
     [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id);
-    if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
+    if (activePlayer.xp >= playerLevel.nextLevel) { playerUtils.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
   return(

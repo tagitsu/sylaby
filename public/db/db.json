@@ -4,9 +4,9 @@
       "id": 10,
       "name": "mądroboty",
       "icon": "storybots.png",
-      "isActive": true,
+      "isActive": false,
       "level": 6,
-      "color": "#d4ff38",
+      "color": "#fed971",
       "badges": [
         {
           "name": "mouse",
@@ -46,22 +46,6 @@
         "mouse"
       ],
       "xp": 0
-    },
-    {
-      "id": 11,
-      "name": "mysz",
-      "icon": "pikachu.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#ff3646",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 2
     },
     {
       "id": 12,
@@ -110,6 +94,134 @@
         }
       ],
       "xp": 14
+    },
+    {
+      "id": 16,
+      "name": "julia",
+      "icon": "rapunzel.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#57ebff",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 17,
+      "name": "test",
+      "icon": "lemmings.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#d7fb23",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 18,
+      "name": "test",
+      "icon": "vaiana.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#18ecfb",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 19,
+      "name": "test",
+      "icon": "maui.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#00a365",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 20,
+      "name": "test",
+      "icon": "grizzly.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#005726",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 21,
+      "name": "test",
+      "icon": "gravity_falls.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#b13dff",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 22,
+      "name": "test",
+      "icon": "blaze.png",
+      "isActive": true,
+      "level": 1,
+      "color": "#fcff47",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 23,
+      "name": "test",
+      "icon": "transylvania.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#660058",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
     }
   ],
   "levels": [

@@ -1,7 +1,5 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styles from './GameMode.module.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faStar} from '@fortawesome/free-solid-svg-icons';
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 import { useGetPlayersQuery } from "../../../api/apiSlice";
 import GameButton from '../../common/GameButton/GameButton';
@@ -18,31 +16,11 @@ const GameMode = () => {
   }
 
   const games = [
-    {
-      name: 'rainbow',
-      title: 'tęcza',
-      difficulty: '4+'
-    },
-    {
-      name: 'dots',
-      title: 'kolorowe bańki',
-      difficulty: '5+'
-    },
-    {
-      name: 'grocery',
-      title: 'warzywniaczek',
-      difficulty: '5+'
-    },
-    {
-      name: 'syllables',
-      title: 'sylaby',
-      difficulty: '6+',
-    },
-    {
-      name: 'number',
-      title: 'dodawanie',
-      difficulty: '7+'
-    },
+    { name: 'rainbow', title: 'tęcza', difficulty: '4+' },
+    { name: 'dots', title: 'kolorowe bańki', difficulty: '5+' },
+    { name: 'grocery', title: 'warzywniaczek', difficulty: '5+' },
+    { name: 'syllables', title: 'sylaby', difficulty: '6+', },
+    { name: 'number', title: 'dodawanie', difficulty: '7+' },
   ];
 
   return(

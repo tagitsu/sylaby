@@ -6,7 +6,7 @@ import Button from "../../common/Button/Button";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from './GameGrocery.module.scss';
 import utils from '../../../utils/gameGroceryUtils';
-import levelUp from "../../../utils/levelUpUtils";
+import playerUtils from "../../../utils/playerUtils";
 import GroceryProduct from "../../common/GroceryProduct/GroceryProduct";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faShop, faList, faAppleWhole, faCarrot, faMultiply, faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -24,7 +24,7 @@ const GameGrocery = () => {
     [ activePlayer ] = players.filter( player => player.isActive);
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
     [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id);
-    if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
+    if (activePlayer.xp >= playerLevel.nextLevel) { playerUtils.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
   const [ cart, setCart ] = useState([]);

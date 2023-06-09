@@ -19,17 +19,32 @@
     }
   }
 
-  &__section, &__btnSubmit {
-    display: flex;
-    justify-content: center;
+  &__section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
     border: 2px solid $color-light;
     border-radius: $radius;
-    background-color: transparent;
     color: $color-light;
     margin: calc($base-size * 2) calc($base-size * 8);
     text-align: center;
     padding: $base-size;
+  }
 
+  &__btnSubmit {
+    background-color: transparent;
+    border: 2px solid $color-light;
+    border-radius: $radius;
+    color: $color-light;
+    margin: calc($base-size * 2) calc($base-size * 8);
+    text-align: center;
+    padding: $base-size;
+    grid-column: 1 / 5;
+  }
+
+  &__input:hover, &__btnSubmit:hover {
+    cursor: pointer;
   }
 
   &__input {
@@ -40,13 +55,31 @@
   }
 
   &__inputColor {
-    width: calc($base-size * 3);
-    height: calc($base-size * 3);
+    grid-column: 1 / 5;
+    width: 80%;
+    height: calc($base-size * 5);
   }
 
   &__image {
-    height: calc($base-size * 4);
+    height: 100px;
+    width: 100px;
+    transition: $transition;
   }
 
-    
+  &__choosen {
+    border-radius: $radius;
+    box-shadow: 0 0 calc($base-size * 4) rgba(255, 255, 255, 0.9) inset;
   }
+
+  &__image:hover {
+    transform: scale(1.1);
+    border-radius: $radius;
+    box-shadow: 0 0 calc($base-size * 4) rgba(255, 255, 255, 0.9) inset;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    opacity: 0;
+  }
+
+}

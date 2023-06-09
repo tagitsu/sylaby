@@ -3,7 +3,7 @@ import { useDrop } from "react-dnd";
 import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 
 import utils from '../../../utils/gameNumberUtils';
-import levelUp from '../../../utils/levelUpUtils';
+import playerUtils from '../../../utils/playerUtils';
 
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import Button from "../../common/Button/Button";
@@ -25,7 +25,7 @@ const GameNumber = () => {
     [ activePlayer ] = players.filter( player => player.isActive);
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
     [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id);
-    if (activePlayer.xp >= playerLevel.nextLevel) { levelUp.levelUp(updatePlayer, activePlayer, nextLevel) }
+    if (activePlayer.xp >= playerLevel.nextLevel) { playerUtils.levelUp(updatePlayer, activePlayer, nextLevel) }
   }
 
   const [ number1, setNumber1 ] = useState('');

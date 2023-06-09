@@ -3,6 +3,8 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import { useGetPlayersQuery, useGetLevelsQuery, useAddPlayerMutation } from '../../../api/apiSlice';
 import { useNavigate } from 'react-router';
+import playerProfile from '../../../utils/playerUtils';
+import playerUtils from '../../../utils/playerUtils';
 
 const AddPlayerForm = () => {
 
@@ -16,6 +18,12 @@ const AddPlayerForm = () => {
   const [ newPlayerName, setNewPlayerName ] = useState('');
   const [ newPlayerIcon, setNewPlayerIcon ] = useState('');
   const [ newPlayerColor, setNewPlayerColor ] = useState('');
+
+  console.log('zaznaczona postać', newPlayerName, newPlayerIcon);
+
+  const [ choosenIcon ] = playerUtils.characters.filter( icon => icon.icon === newPlayerIcon );
+
+  console.log('wybrana ikona' , choosenIcon);
 
   let currentPlayersIDs, newPlayerID, firstLevel, newPlayer;
   if (playersOK && levelsOK) {
@@ -47,44 +55,6 @@ const AddPlayerForm = () => {
     };
   }
 
-  const characters = [
-    {
-      id: '1',
-      name: 'Pikachu',
-      icon: 'pikachu.png',
-    },
-    {
-      id: '2',
-      name: 'Curious George',
-      icon: 'curious_george.png',
-    },
-    {
-      id: '3',
-      name: 'Sponge Bob',
-      icon: 'spongebob.png',
-    },
-    {
-      id: '4',
-      name: 'Elsa',
-      icon: 'elsa.png',
-    },
-    {
-      id: '5',
-      name: 'George the Pig',
-      icon: 'george_pig.png',
-    },
-    {
-      id: '6',
-      name: 'C3PO and R2D2',
-      icon: 'r2d2_c3po.png',
-    },
-    {
-      id: '7',
-      name: '341B',
-      icon: 'storybots.png',
-    },
-];
-
   const handleSubmit = (e) => {
     e.preventDefault();
     addPlayer(newPlayer);
@@ -105,15 +75,16 @@ const AddPlayerForm = () => {
       </fieldset>
       <fieldset className={styles.form__section}>
         <legend>Wybierz swoją postać</legend>
-        {characters.map(
+        {playerProfile.characters.map(
           character => 
-          <div key={character.id}>
-            <label htmlFor={character.name}>
-              <img className={styles.form__image} src={`${process.env.PUBLIC_URL}/images/${character.icon}`} alt={`${character.name} icon`} />
+          <div key={character.id} className={styles.form__character}>
+            <label htmlFor={character.id}>
+              <img className={clsx(styles.form__image, choosenIcon?.id === character.id && styles.form__choosen)} src={`${process.env.PUBLIC_URL}/images/characters/${character.icon}`} alt={`${character.name} icon`} />
             </label>
             <input 
+              className={styles.form__checkbox}
               type='radio' 
-              id={character.name} 
+              id={character.id} 
               name='character' 
               value={character.icon} 
               onChange={(e) => setNewPlayerIcon(e.target.value)}
@@ -130,9 +101,12 @@ const AddPlayerForm = () => {
             onChange={(e) => setNewPlayerColor(e.target.value)}
           />
       </fieldset>
-      <button className={styles.form__btnSubmit} type='submit' >Dodaj nowego gracza</button>
+      <button className={clsx(styles.form__btnSubmit)} type='submit' >Dodaj nowego gracza</button>
     </form>
   );
+
+  // TODO walidacja formularza. Wpisanie imienia i wybór ikony zanim gracz zostanie dodany do listy.
+
 };
 
 export default AddPlayerForm;
