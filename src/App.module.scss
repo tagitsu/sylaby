@@ -1,16 +1,16 @@
 @import './styles/settings.scss';
 
 .app {
+  margin: calc($base-size * 2);
   display: grid;
-  grid-template-columns: 100vw;
-  grid-template-rows: 1fr 5fr;
-  max-height: 100vh;
-  
+  //grid-template-columns: 100vw;
+  //grid-template-rows: 1fr 5fr;
+  //max-height: 100vh;
 
   &__container {
-    margin: calc($base-size * 3);
-    padding: $base-size;
-    overflow: auto;
+    //margin: calc($base-size * 3);
+    //padding: $base-size;
+    //overflow: auto;
   }
 }
 

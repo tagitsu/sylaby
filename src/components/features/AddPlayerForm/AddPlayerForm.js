@@ -1,10 +1,11 @@
 import styles from './AddPlayerForm.module.scss';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import clsx from 'clsx';
 import { useGetPlayersQuery, useGetLevelsQuery, useAddPlayerMutation } from '../../../api/apiSlice';
 import { useNavigate } from 'react-router';
 import playerProfile from '../../../utils/playerUtils';
 import playerUtils from '../../../utils/playerUtils';
+import Button from '../../common/Button/Button';
 
 const AddPlayerForm = () => {
 
@@ -15,15 +16,13 @@ const AddPlayerForm = () => {
 
   const [ addPlayer ] = useAddPlayerMutation();
 
-  const [ newPlayerName, setNewPlayerName ] = useState('');
   const [ newPlayerIcon, setNewPlayerIcon ] = useState('');
-  const [ newPlayerColor, setNewPlayerColor ] = useState('');
+  const newPlayerName = useRef('');
+  const newPlayerColor = useRef('');
 
-  console.log('zaznaczona postać', newPlayerName, newPlayerIcon);
+  const [ focused, setFocused ] = useState(false);
 
   const [ choosenIcon ] = playerUtils.characters.filter( icon => icon.icon === newPlayerIcon );
-
-  console.log('wybrana ikona' , choosenIcon);
 
   let currentPlayersIDs, newPlayerID, firstLevel, newPlayer;
   if (playersOK && levelsOK) {
@@ -31,6 +30,7 @@ const AddPlayerForm = () => {
     const sorter = (a, b) => {
       return a - b;
     };
+
     currentPlayersIDs = players.map( player => player.id );
     currentPlayersIDs.sort(sorter);
     newPlayerID = currentPlayersIDs[currentPlayersIDs.length - 1] + 1;
@@ -39,11 +39,11 @@ const AddPlayerForm = () => {
 
     newPlayer = {
       id: newPlayerID,
-      name: newPlayerName,
+      name: newPlayerName.current.value,
       icon: newPlayerIcon,
       isActive: false,
       level: 1,
-      color: newPlayerColor,
+      color: newPlayerColor.current.value,
       title: firstLevel.title,
       badges: [
         { 
@@ -55,26 +55,37 @@ const AddPlayerForm = () => {
     };
   }
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addPlayer(newPlayer);
     navigate('/playerslist');
   }
 
+  const handleFocus = (e) => {
+    setFocused(true);
+  };
+
     return(
     <form className={styles.form} onSubmit={handleSubmit}>
       <fieldset className={styles.form__section}>
-        <legend>Wpisz swoje imię</legend>
+        <legend className={styles.form__legend}>Wpisz swoje imię</legend>
         <input 
+          ref={newPlayerName}
           className={styles.form__input} 
           type='text' 
           id='name' 
           name='playerName'
-          onChange={(e) => setNewPlayerName(e.target.value)}
+          focused={focused.toString()}
+          pattern='^[A-Za-z0-9]{2,15}$'
+          required={true}
+          onBlur={handleFocus}
         />
+        <span>Wpisz imię zawierające 2 - 15 znaków (nie używaj znaków specjalnych). </span>
       </fieldset>
       <fieldset className={styles.form__section}>
-        <legend>Wybierz swoją postać</legend>
+        <legend className={styles.form__legend}>Wybierz ulubioną postać</legend>
         {playerProfile.characters.map(
           character => 
           <div key={character.id} className={styles.form__character}>
@@ -88,25 +99,29 @@ const AddPlayerForm = () => {
               name='character' 
               value={character.icon} 
               onChange={(e) => setNewPlayerIcon(e.target.value)}
+              required={true}
             />
+            <span>Zaznacz ikonę postaci, którą chcesz wybrać.</span>
+
           </div>
         )}
+
       </fieldset>
       <fieldset className={styles.form__section}>
-        <legend>Wybierz swój kolor</legend>
+        <legend className={styles.form__legend}>Wybierz swój kolor</legend>
           <input 
-            className={clsx(styles.form__input, styles.form__inputColor)} 
+            className={clsx(styles.form__input, styles.form__color)} 
+            ref={newPlayerColor}
+            defaultValue='#FFFF66'
             type='color' 
             name='playerColor' 
-            onChange={(e) => setNewPlayerColor(e.target.value)}
+            required={true}
           />
       </fieldset>
-      <button className={clsx(styles.form__btnSubmit)} type='submit' >Dodaj nowego gracza</button>
+      <Button type='submit' content='Dodaj nowego gracza'></Button>
+      {/* <button type='button' onClick={() => console.log('wybór', newPlayerName.current.value, newPlayerIcon, newPlayerColor.current.value)}>Pokaż w konsoli</button> */}
     </form>
   );
-
-  // TODO walidacja formularza. Wpisanie imienia i wybór ikony zanim gracz zostanie dodany do listy.
-
 };
 
 export default AddPlayerForm;

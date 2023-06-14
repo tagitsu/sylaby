@@ -195,7 +195,7 @@
       "id": 22,
       "name": "test",
       "icon": "blaze.png",
-      "isActive": true,
+      "isActive": false,
       "level": 1,
       "color": "#fcff47",
       "title": "głoskująca myszka",
@@ -214,6 +214,102 @@
       "isActive": false,
       "level": 1,
       "color": "#660058",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 24,
+      "name": "test",
+      "icon": "heihei.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#c2ffe2",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 25,
+      "name": "test",
+      "icon": "maui.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#81be60",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 26,
+      "name": "test",
+      "icon": "grizzly.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#00eeaa",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 27,
+      "name": "test",
+      "icon": "vaiana.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#00eeaa",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 28,
+      "name": "test123",
+      "icon": "blaze.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#000000",
+      "title": "głoskująca myszka",
+      "badges": [
+        {
+          "name": "mouse",
+          "text": "głoskująca myszka"
+        }
+      ],
+      "xp": 0
+    },
+    {
+      "id": 29,
+      "name": "SpongeBob",
+      "icon": "spongebob.png",
+      "isActive": false,
+      "level": 1,
+      "color": "#ffffff",
       "title": "głoskująca myszka",
       "badges": [
         {
