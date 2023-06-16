@@ -2,17 +2,19 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   //border: 1px solid;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: $background-gradient;
   font-family: $font-text;
   font-size: ($base-size * 2);
   color: $color-light;
   letter-spacing: .5px;
+  background-image: linear-gradient(to right, $color-success, $color-blue);
 }
 
 a {

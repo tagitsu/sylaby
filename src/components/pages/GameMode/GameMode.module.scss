@@ -2,16 +2,21 @@
 
 .mode {
   text-align: center;
+  padding-top: calc($base-size * 2);
 
+  
   &__title {
     font-size: $font-title;
-
+    padding: $base-size;
+    margin: $base-size 0;
   }
 
   &__games {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: $base-size;
-    margin: $base-size auto;
+    margin: $base-size 0;
+    padding: $base-size 0;
   }
 }
+

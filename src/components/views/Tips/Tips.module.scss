@@ -1,0 +1,32 @@
+@import '/src/styles/settings.scss';
+
+.tips {
+  margin: $base-size 0;
+  padding: calc($base-size * 2);
+  font-size: $font-text;
+  border: 1px solid;
+  border-radius: $radius;
+  position: relative;
+
+  p, span {
+    display: inline;
+  }
+
+  &__icon {
+    width: calc($base-size * 4);
+    height: calc($base-size * 4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient( $color-orange, $color-yellow);
+    border: 1px solid $color-light;
+    border-radius: 50%;
+    color: $color-light;
+    font-size: $font-title;
+    position: absolute;
+    top: calc($base-size * -2);
+    left: calc($base-size * -1);
+  }
+  
+}
+

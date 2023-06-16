@@ -1,23 +1,9 @@
 @import '/src/styles/settings.scss';
 
 .logo {
-  font-size: calc($base-size * 3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: $base-size;
-  padding: $base-size;
-}
-
-.circle {
-  height: calc($base-size * 1.5);
-  width: calc($base-size * 1.5);
-  background-color: $color-light;
-  border-radius: 50%;
-  margin: $base-size;
-  transition: $transition;
-}
-
-.circle:hover {
-  animation: rainbowShake 6s ease;
+  width: max-content;
+  height: 100%;
+  margin: calc($base-size * 2);
+  font-size: $font-title;
+  color: $color-light;
 }

@@ -21,7 +21,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 138
+      "xp": 147
     },
     {
       "id": 9,
@@ -93,7 +93,7 @@
           "text": "zwinna rybka"
         }
       ],
-      "xp": 14
+      "xp": 15
     },
     {
       "id": 16,
@@ -116,16 +116,20 @@
       "name": "test",
       "icon": "lemmings.png",
       "isActive": false,
-      "level": 1,
+      "level": 2,
       "color": "#d7fb23",
       "title": "głoskująca myszka",
       "badges": [
         {
           "name": "mouse",
           "text": "głoskująca myszka"
+        },
+        {
+          "name": "cat",
+          "text": "sylabujący kotek"
         }
       ],
-      "xp": 0
+      "xp": 3
     },
     {
       "id": 18,
@@ -141,7 +145,7 @@
           "text": "głoskująca myszka"
         }
       ],
-      "xp": 0
+      "xp": 1
     },
     {
       "id": 19,
@@ -189,7 +193,7 @@
           "text": "głoskująca myszka"
         }
       ],
-      "xp": 0
+      "xp": 4
     },
     {
       "id": 22,
@@ -212,16 +216,20 @@
       "name": "test",
       "icon": "transylvania.png",
       "isActive": false,
-      "level": 1,
+      "level": 2,
       "color": "#660058",
       "title": "głoskująca myszka",
       "badges": [
         {
           "name": "mouse",
           "text": "głoskująca myszka"
+        },
+        {
+          "name": "cat",
+          "text": "sylabujący kotek"
         }
       ],
-      "xp": 0
+      "xp": 2
     },
     {
       "id": 24,
@@ -269,7 +277,7 @@
           "text": "głoskująca myszka"
         }
       ],
-      "xp": 0
+      "xp": 1
     },
     {
       "id": 27,

@@ -1,6 +1,20 @@
 @import '/src/styles/settings.scss';
 
 .header {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: max-content;
+  background-color: rgba(255, 255, 255, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
+
+@media (max-width: 576px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

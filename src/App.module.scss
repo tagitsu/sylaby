@@ -1,16 +1,41 @@
 @import './styles/settings.scss';
 
 .app {
-  margin: calc($base-size * 2);
+  width: 100%;
+  padding: calc($base-size * 2);
   display: grid;
-  //grid-template-columns: 100vw;
-  //grid-template-rows: 1fr 5fr;
-  //max-height: 100vh;
 
   &__container {
-    //margin: calc($base-size * 3);
-    //padding: $base-size;
-    //overflow: auto;
+    overflow: auto;
   }
 }
+
+@media (max-width: 576px) {
+  .app {
+    //background-color: red;
+  }
+}
+
+@media (min-width: 768px) {
+  .app {
+    //background-color: orangered;
+  }
+}
+
+@media (min-width: 992px) {
+  .app {
+    //background-color: orange;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app {
+    //background-color: yellowgreen;
+  }
+}
+
+// 576px for portrait phones.
+// 768px for tablets.
+// 992px for laptops.
+// 1200px for large devices.
 

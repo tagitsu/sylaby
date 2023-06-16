@@ -7,7 +7,7 @@
   background-color: $color-light;
   color: $color-success;
   transition: $transition;
-  font-size: calc($base-size * 2);
+  font-size: calc($base-size * 3.6);
   max-height: calc($base-size * 5);
   display: flex;
   justify-content: center;
@@ -15,16 +15,17 @@
   justify-self: center;
 
   & a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: $color-success;
     transition: $transition;
-
   }
 }
 
 .button:hover {
   cursor: pointer
-
 }
 
 .button:hover a {
@@ -41,4 +42,12 @@
 
 .button:disabled {
   background-color: lightgrey;
+}
+
+@media (max-width: 576px) {
+  .button {
+    width: calc($base-size * 4);
+    height: calc($base-size * 4);
+    font-size: calc($base-size * 2.6);
+  }
 }

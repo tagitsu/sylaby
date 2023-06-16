@@ -2,11 +2,13 @@
 
 :root {
   --player-xp: 0;
+  --player-color: green;
 }
 
 .prog {
   display: flex;
   align-items: center;
+  width: 60vw;
 
   &__container {
     background-color: $color-light;
@@ -15,12 +17,31 @@
     border-radius: $radius;
     overflow: hidden;
     position: relative;
-    margin: $base-size;
+    margin-bottom: $base-size;
+    position: relative;
   }
   
   &__bar {
     width: var(--player-xp);
     height: calc($base-size * 2);
-    background-color: $color-yellow;
+    background-image: linear-gradient(white, var(--player-color) 20%, var(--player-color) 80%, lightgray);
+  }
+
+  &__points {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $font-content;
+    font-weight: 700;
+    text-shadow: $text-shadow;
+  }
+}
+
+@media (max-width: 576px) {
+  .prog {
+    &__container {
+      width: 100%;
+    }
   }
 }

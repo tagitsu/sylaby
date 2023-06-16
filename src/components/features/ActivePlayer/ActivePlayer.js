@@ -19,17 +19,15 @@ const ActivePlayer = () => {
   }
 
   //const barContent = `${activePlayer.xp}/${playerLevel.nextLevel}`;
-
   if (activePlayer) {
     return(
     <div className={styles.current}>
       <Link to={`/player/${activePlayer.id}`}>
-        <img src={`${process.env.PUBLIC_URL}/images/${activePlayer.icon}`} alt={`ikona ${activePlayer.icon}`} />
+        <img className={styles.current__icon} src={`${process.env.PUBLIC_URL}/images/characters/${activePlayer.icon}`} alt={`ikona ${activePlayer.icon}`} />
       </Link>
-      {/* <div className={styles.current__name}> {activePlayer.name} </div> */}
       <div className={styles.current__bar}>
-        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} />
-        {activePlayer.xp} 
+        <div className={styles.current__name}> {activePlayer.name} </div>
+        <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={activePlayer.xp} />
       </div>
     </div>
     );

@@ -7,7 +7,6 @@ import { apiSlice } from './api/apiSlice';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import './styles/normalize.scss';
 import './styles/global.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
