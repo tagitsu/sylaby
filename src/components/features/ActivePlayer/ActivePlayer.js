@@ -18,6 +18,8 @@ const ActivePlayer = () => {
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
   }
 
+  console.log('level aktualnego gracza', playerLevel);
+
   //const barContent = `${activePlayer.xp}/${playerLevel.nextLevel}`;
   if (activePlayer) {
     return(

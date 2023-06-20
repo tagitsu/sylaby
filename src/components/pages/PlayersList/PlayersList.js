@@ -45,7 +45,7 @@ const PlayersList = () => {
             <div key={player.id} className={styles.list__player}>
               <div className={styles.list__box}>
                 <div onClick={ (e) => changeActiveStatus(e, player)} >
-                    <Link to={`/player/${player.id}`} >
+                    <Link to={`/player/${player.id}`} className={styles.list__link}>
                       <PlayerIcon 
                         id={player.id} 
                         icon={player.icon} 
@@ -53,6 +53,7 @@ const PlayersList = () => {
                         level={player.level}
                         color={player.color}
                         size='120'
+                        hover={true}
                       />
                     </Link>
                 </div>

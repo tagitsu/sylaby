@@ -9,14 +9,11 @@
   margin: calc($base-size * 2) $base-size;
   font-size: calc($base-size * 2.2);
 
-  
-
-
   &__list {
     width: 100%;
     margin: calc($base-size * 2);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: $base-size;
   }
 
@@ -35,6 +32,10 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+  }
+
+  &__link:hover {
+    transform: scale(1.04);
   }
 
   &__name {

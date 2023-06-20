@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './PlayerIcon.module.scss';
 
 const PlayerIcon = (props) => {
@@ -10,7 +11,7 @@ const PlayerIcon = (props) => {
   return(
     <div key={props.id} className={styles.icon}>
       <div className={styles.icon__background} style={{ backgroundColor: props.color }}>
-        <img className={styles.icon__image} src={`${process.env.PUBLIC_URL}/images/characters/${props.icon}`} alt={`${props.name} icon`} />
+        <img className={clsx(styles.icon__image, props.hover && styles.hover)} src={`${process.env.PUBLIC_URL}/images/characters/${props.icon}`} alt={`${props.name} icon`} />
       </div>
       <div className={styles.icon__level} style={{ backgroundColor: props.color }}>
         <div className={styles.icon__levelValue}>

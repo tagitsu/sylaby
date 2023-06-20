@@ -2,8 +2,24 @@
 
 .menu {
   width: 100%;
-  height: 100%;
+  //height: 100%;
   margin: 0;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    width: calc($base-size * 3);
+    height: calc($base-size * 2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    color: $color-light;
+    cursor: pointer;
+  }
 
   &__list {
     display: grid;
@@ -12,6 +28,7 @@
     width: 100%;
     height: 100%;
   }
+
 
   &__item {
     display: flex;
@@ -28,26 +45,12 @@
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.093) inset;
   }
 
-  &__button {
-    width: calc($base-size * 3);
-    height: calc($base-size * 2);
-    position: absolute;
-    top: calc($base-size * 2.5);
-    right: $base-size;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  &__bar {
-    width: 100%;
-    height: 4px;
-    border-radius: 5px;
-    background-color: $color-light;
-  }
+  // &__bar {
+  //   width: 100%;
+  //   height: 4px;
+  //   border-radius: 5px;
+  //   background-color: $color-light;
+  // }
 }
 
 
@@ -67,12 +70,37 @@
 
     &__item {
       width: 100%;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
 
     &__button {
       display: flex;
     }
   }
+}
 
-  
+@media (max-width: 780px) and (orientation: landscape) {
+  .menu {
+    //width: max-content;
+
+    &__list {
+      display: none;
+    }
+
+    .active {
+      display: flex;
+      flex-direction: column;
+      justify-items: flex-start;
+      gap: 0;
+    }
+
+    &__item {
+      height: fit-content;
+    }
+
+    &__button {
+      display: flex;
+    }
+  }
 }

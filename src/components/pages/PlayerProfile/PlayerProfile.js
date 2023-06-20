@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faWarning, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faWarning, faPlay } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { useGetLevelsQuery, useGetPlayersQuery, useUpdatePlayerMutation, useDeletePlayerMutation } from "../../../api/apiSlice";
 import { useState } from "react";
@@ -46,22 +46,19 @@ const PlayerProfile = () => {
     };
 
     const badges =
-      <div className={styles.profile__badgeBox}>
-        {activePlayer.badges.length > 0 && 
-          activePlayer.badges.map( 
-            badge => 
-            <div 
-              key={badge.name} 
-              className={styles.profile__badge}>
-              
-              <img 
-                src={`${process.env.PUBLIC_URL}/images/badges/${badge.name}.png`} 
-                alt={`${badge.name} icon`} 
-                className={styles.profile__badgeIcon}
-              />
-            </div>
-          )
-        }
+      <div className={styles.profile__badges}>
+        {levels.map( level => 
+          <div 
+            key={level.id} 
+            className={styles.profile__badge}>
+            { activePlayer.badges[level.id - 1] && <img 
+              src={`${process.env.PUBLIC_URL}/images/badges/${level.badge}.png`} 
+              alt={`${level.badge} icon`} 
+              className={styles.profile__badgeIcon}
+            />
+            }
+          </div>
+        )}
       </div>
 
     return(
@@ -76,32 +73,29 @@ const PlayerProfile = () => {
               size='160'
             />
           </div>
-          
           <div className={styles.profile__play}>
             <Button
               content={
                 <Link to={`/game/${activePlayer.id}`}>
-                  Zacznij grę <FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
                 </Link>
               }
             />
           </div>
         </div>
-
         <div className={styles.profile__box}>
-          <div className={styles.profile__info}>ID: {activePlayer.id}</div>
           <div className={styles.profile__info}>
-            Imię gracza: {activePlayer.name}
+            <p>Imię gracza: {activePlayer.name}</p>
           </div>
           <div className={styles.profile__info}>
-            Zdobyte punkty: { activePlayer.level !== 1 ? activePlayer.xp + playerLevel.nextLevel : activePlayer.xp }
+            <p>Zdobyte punkty: { activePlayer.level !== 1 ? activePlayer.xp + playerLevel.nextLevel : activePlayer.xp }</p>
           </div>
           <div className={styles.profile__info}>
-            Aktualny poziom: {activePlayer.level}
+            <p>Level: {activePlayer.level}</p>
             <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
           </div>
           <div className={styles.profile__info}>
-            Odznaki: {badges}
+            <p>Odznaki:</p> {badges}
           </div>
           
             

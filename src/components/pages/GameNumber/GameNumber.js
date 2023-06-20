@@ -61,39 +61,43 @@ const GameNumber = () => {
 
   return(
     <div className={styles.number}>
-      <div className={styles.number__info}>
-        <ActivePlayer />
-        <Button content='?' type='button' onClick={() => setHelp(!help)} />
-      </div>
+      <ActivePlayer />
+      <button 
+        className={styles.number__hint}
+        type='button' 
+        onClick={() => setHelp(!help)} 
+      >
+      ?
+      </button>
+      <Button 
+        content='Losuj liczby'
+        name='setupBtn'
+        onClick={ () => utils.setGameTurn(setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong, setMathSigns, setHelp) }
+      />
       <div className={styles.number__board}>
+        <div className={styles.number__box}>
         <div className={styles.number__help}>
-          {help ? help1.map( item => <div key={item} className={styles.number__item} /> ) : null}
+          { help ? help1.map( item => <div key={item} className={styles.number__item} /> ) : null }
         </div>
-        <div className={styles.number__game}>
-          <Button 
-            content='losuj' 
-            onClick={ () => utils.setGameTurn(setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong, setMathSigns, setHelp) }
-          />
-          <div className={styles.number__box}>
-            <div key={1} className={styles.number__number}> {number1} </div>
-            <div key={2} className={clsx(styles.number__sign, isCorrect ? styles.correct : '', isWrong ? styles.wrong : '' )} ref={dropSign}>
-              { answer?.map( sign => <Sign key={sign.name} name={sign.name} icon={sign.icon}/>) }
-            </div>
-            <div key={3} className={styles.number__number}> {number2} </div>
+          { !help && <div key={1} className={styles.number__number}> {number1} </div> }
+          <div key={2} className={clsx(styles.number__sign, isCorrect ? styles.correct : '', isWrong ? styles.wrong : '' )} ref={dropSign}>
+            { answer?.map( sign => <Sign key={sign.name} name={sign.name} icon={sign.icon}/>) }
           </div>
-          <div className={styles.number__box}>
-            { mathSigns?.map( sign => { 
-              return(
-                <Sign key={sign.name} name={sign.name} icon={sign.icon} />
-              )}
+          { !help && <div key={3} className={styles.number__number}> {number2} </div> }
+          <div className={styles.number__help}>
+            {help ? help2.map( item => <div key={item} className={styles.number__item} /> ) : null}
+          </div>
+        </div>
+        <div className={styles.number__box}>
+          { mathSigns?.map( sign => { 
+            return(
+              <Sign key={sign.name} name={sign.name} icon={sign.icon} />
             )}
-          </div>
-          <ButtonOK onClick={() => utils.addPoints(isCorrect, updatePlayer, activePlayer)}/>
-        </div>
-        <div className={styles.number__help}>
-          {help ? help2.map( item => <div key={item} className={styles.number__item} /> ) : null}
+          )}
         </div>
       </div>
+      <ButtonOK onClick={() => utils.addPoints(isCorrect, updatePlayer, activePlayer)}/>
+
     </div>
   );
 };

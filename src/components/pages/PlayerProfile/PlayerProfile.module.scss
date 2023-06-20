@@ -4,39 +4,48 @@
 .profile {
   font-size: calc($base-size * 2);
   display: grid;
-  height: 100vh;
-  grid-template-columns: 1fr 3fr;
+  height: max-content;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   background-color: transparent;
   padding: $base-size;
+  border: 1px solid blue;
+
+  &__box {
+    padding: calc($base-size * 3);
+    border: 1px solid green;
+  }
 
   &__icon {
+    width: fit-content;
     padding: $base-size;
-    margin: $base-size;
+    border: 1px solid fuchsia;
   }
 
   &__play {
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+    border: 1px solid fuchsia;
 
-  &__box {
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 60vh;
-    padding: calc($base-size * 3);
   }
 
   &__info {
     padding: $base-size;
+    border: 1px solid greenyellow;
+
+    p {
+      padding: calc($base-size / 2);
+      border: 1px solid yellow;
+    }
   }
 
-
-  &__badgeBox {
-    display: flex;
+  &__badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc($base-size * 4), 1fr));
     gap: $base-size;
-    padding: calc($base-size / 2)
-    
+    padding: calc($base-size / 2);
+    border: 1px solid tomato;
   }
 
   &__badge {
@@ -44,6 +53,7 @@
     align-items: center;
     justify-content: center;
     background-color: $color-yellow;
+    border: 3px solid $color-light;
     border-radius: 50%;
     width: calc($base-size * 4);
     height: calc($base-size * 4);
@@ -54,12 +64,34 @@
   }
 
   &__delete {
+    width: fit-content;
     justify-self: end;
     opacity: .5;
+    border: 1px solid fuchsia;
   }
 
   &__delete:hover {
     opacity: 1;
   }
 
+}
+
+@media (max-width: 360px) {
+  .profile {
+    background-color: pink;
+    border-color: blueviolet;
+
+    &__box {
+      width: 80vw;
+      padding: $base-size;
+    }
+
+    &__info {
+      width: fit-content;
+    }
+
+    &__badges {
+      width: 60vw;
+    }
+  }
 }

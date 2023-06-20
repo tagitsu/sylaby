@@ -1,20 +1,17 @@
 import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
-import clsx from "clsx";
 import utils from '../../../utils/gameSyllablesEasyUtils';
 import playerUtils from '../../../utils/playerUtils';
-import { Link } from 'react-router-dom';
 import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
+import ButtonOK from '../../common/ButtonOK/ButtonOK';
 import Button from '../../common/Button/Button';
-
 
 const GameSyllablesEasy = () => {
 
   const { data: syllables, isSuccess: syllablesOK } = useGetSyllablesQuery();
   const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
-
 
   const [ updatePlayer ] = useUpdatePlayerMutation();
 
@@ -35,44 +32,42 @@ const GameSyllablesEasy = () => {
   }
 
   return(
-    <>
-      <ActivePlayer />
       <div className={styles.easy} >
+        <ActivePlayer />
         <Button 
-          name='setTurnBtn'
+          name='setupBtn'
           onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setHidden)} 
           content='Wylosuj sylabę'
-          hidden={hidden}
         />
-        { syllable1 && 
-        <section className={styles.easy__board}>
-          <div className={clsx(styles.easy__first)}>{syllable1}</div>
-          <form className={styles.easy__last}>
-            {syllables2.map( syllable2 => 
-              <div className={clsx(styles.easy__task)} key={syllable2}>
+        {
+          syllable1 && 
+          <section className={styles.easy__board}>
+            <div className={styles.easy__first}>{syllable1}</div>
+            <form className={styles.easy__last}>
+              {syllables2.map( syllable2 => 
+                <div className={styles.easy__task} key={syllable2}>
                   <input 
                   value={syllable2}
                   readOnly
-                  className={clsx(styles.easy__task)}
+                  className={styles.easy__task}
                   onClick={(e) => setAnswer(`${syllable1}${e.target.value}`)}
                   />
-              </div>
-            )}
-          </form>
-          <div className={clsx(styles.easy__answer)}>
-            {answer}
-          </div>
-          <Button 
+                </div>
+              )}
+            </form>
+            <div className={styles.easy__answer}>
+              {answer}
+            </div>
+          </section>
+        }
+        {
+          syllable1 && 
+          <ButtonOK 
             onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, word, setWord, setHidden, points, setPoints, activePlayer, updatePlayer)} 
-            className={styles.easy__btn} content='OK' 
+            className={styles.easy__btn} 
           />
-        </section>
         }
       </div>
-      <Button
-        content={<Link to='/playerslist'>Zakończ grę</Link>}
-      />
-    </>
   );
 };
 

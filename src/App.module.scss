@@ -6,13 +6,22 @@
   display: grid;
 
   &__container {
+    padding: $base-size;
     overflow: auto;
   }
 }
 
+
 @media (max-width: 576px) {
   .app {
     //background-color: red;
+  }
+}
+
+@media (max-width: 780px) and (orientation: landscape) {
+  .app {
+    padding: calc($base-size * 1);
+    grid-template-columns: auto auto;
   }
 }
 

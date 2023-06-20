@@ -5,7 +5,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   min-height: max-content;
-  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: $radius;
+  backdrop-filter: brightness(95%) blur(5px);
   position: sticky;
   top: 0;
   z-index: 2;
@@ -15,6 +16,15 @@
   .header {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 780px) and (orientation: landscape) {
+  .header {
+    width: fit-content;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
   }
 }
 

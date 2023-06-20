@@ -4,14 +4,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  border: 1px solid blue;
 
-  &__board{
+  &__board {
+    width: 100%;
     display: flex;
     flex-direction: column;
-
     justify-items: center;
     align-items: center;
     transition: all .2s ease-in-out;
+    border: 1px solid green;
   }
   
   &__first, &__task, &__answer {
@@ -22,47 +24,41 @@
     text-decoration: none;
     color: $color-dark;
     font-size: calc($base-size * 3);
-    width: calc($base-size * 8);
-    height: calc($base-size * 5);
+    width: calc($base-size * 9);
+    height: calc($base-size * 6);
     text-align: center;
     margin: $base-size;
     background-color: $color-light;
     border: none;
+    border-radius: $radius;
+    transition: $transition;
   }
 
   &__task:hover {
-    border: 3px solid $color-yellow;
+    background-color: $color-yellow;
     cursor: pointer;
   }
 
   &__first {
-    border: 3px solid $color-success;
+    border: 3px solid $color-light;
+    background-color: $color-orange;
   }
 
   &__answer {
-    border: 3px solid $color-blue;
+    width: calc($base-size * 11);
+    background-color: $color-blue;
+    border: 3px solid $color-light;
   }
-
-
 
   &__last {
-    display: flex;
-  }
-
-  &__btn {
-    background-color: $color-yellow;
-    width: 30vw;
-    cursor: pointer;
-    justify-self: center;
-  }
-
-  &__syllableButton {
-    border: none;
-    background-color: $color-light;
-  }
-
-  &__checkboxLabel {
-    text-align: center;
-
+    border: 3px solid $color-light;
+    border-radius: $radius;
+    padding: $base-size;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    place-items: center;
+    gap: $base-size;
+    grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 8), 1fr));
   }
 }

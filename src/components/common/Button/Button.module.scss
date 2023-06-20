@@ -44,10 +44,29 @@
   background-color: lightgrey;
 }
 
+.setup {
+  width: max-content;
+  font-size: calc($base-size * 2);
+}
+
 @media (max-width: 576px) {
   .button {
     width: calc($base-size * 4);
     height: calc($base-size * 4);
     font-size: calc($base-size * 2.6);
   }
+
+  .setup {
+    width: min-content;
+    font-size: calc($base-size * 1.2);
+  }
+
+  .tip {
+    width: calc($base-size * 4);
+    height: calc($base-size * 4);
+    color: $color-orange;
+    border-radius: 50%;
+    place-self: end;
+  }
+  
 }

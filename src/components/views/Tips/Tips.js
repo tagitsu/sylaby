@@ -1,7 +1,6 @@
 import styles from './Tips.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
-import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 
 const Tips = (props) => {
   return(

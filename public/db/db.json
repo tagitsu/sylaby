@@ -21,7 +21,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 147
+      "xp": 168
     },
     {
       "id": 9,
@@ -45,7 +45,7 @@
       "badges": [
         "mouse"
       ],
-      "xp": 0
+      "xp": 4
     },
     {
       "id": 12,
@@ -184,16 +184,28 @@
       "name": "test",
       "icon": "gravity_falls.png",
       "isActive": false,
-      "level": 1,
+      "level": 4,
       "color": "#b13dff",
       "title": "głoskująca myszka",
       "badges": [
         {
           "name": "mouse",
           "text": "głoskująca myszka"
+        },
+        {
+          "name": "cat",
+          "text": "sylabujący kotek"
+        },
+        {
+          "name": "fish",
+          "text": "zwinna rybka"
+        },
+        {
+          "name": "owl",
+          "text": "mądra sowa"
         }
       ],
-      "xp": 4
+      "xp": 0
     },
     {
       "id": 22,
@@ -283,9 +295,9 @@
       "id": 27,
       "name": "test",
       "icon": "vaiana.png",
-      "isActive": false,
+      "isActive": true,
       "level": 1,
-      "color": "#00eeaa",
+      "color": "#c2ff1a",
       "title": "głoskująca myszka",
       "badges": [
         {

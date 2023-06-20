@@ -20,7 +20,7 @@ const GameMode = () => {
     { name: 'dots', title: 'kolorowe bańki', difficulty: '5+' },
     { name: 'grocery', title: 'warzywniaczek', difficulty: '5+' },
     { name: 'syllables', title: 'sylaby', difficulty: '6+', },
-    { name: 'number', title: 'więcej czy mniej', difficulty: '7+' },
+    { name: 'number', title: 'mniej więcej', difficulty: '7+' },
   ];
 
   return(
