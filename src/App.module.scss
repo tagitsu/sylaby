@@ -2,12 +2,16 @@
 
 .app {
   width: 100%;
-  padding: calc($base-size * 2);
-  display: grid;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+
 
   &__container {
     padding: $base-size;
     overflow: auto;
+    border: 1px solid red;
   }
 }
 
@@ -20,8 +24,10 @@
 
 @media (max-width: 780px) and (orientation: landscape) {
   .app {
-    padding: calc($base-size * 1);
-    grid-template-columns: 1fr 3fr;
+
+    &__container {
+      padding: 0;
+    }
   }
 }
 

@@ -1,10 +1,12 @@
 @import '/src/styles/settings.scss';
 
 .current {
-  width: 100%;
+  width: 65%;
   height: calc($base-size * 7.3);
   position: relative;
   margin: 0 0 calc($base-size * 2) 0;
+  border: 1px solid orange;
+  align-self: flex-end;
 
   &__icon {
     position: absolute;
@@ -33,4 +35,14 @@
     padding: 0 $base-size;
   }
 
+}
+
+@media (max-width: 780px) and (orientation: landscape) {
+  .current {
+    //width: fit-content;
+
+    &__bar {
+      width: fit-content;
+    }
+  }
 }

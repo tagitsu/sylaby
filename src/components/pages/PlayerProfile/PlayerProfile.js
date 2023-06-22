@@ -9,6 +9,7 @@ import Button from "../../common/Button/Button";
 import DeleteButton from "../../common/DeleteButton/DeleteButton";
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
+import Tips from "../../views/Tips/Tips";
 
 import styles from './PlayerProfile.module.scss';
 
@@ -36,9 +37,12 @@ const PlayerProfile = () => {
   const [ updatePlayer ] = useUpdatePlayerMutation();
   const [ deletePlayer ] = useDeletePlayerMutation();
 
+  const [ tip, setTip ] = useState(false);
   const [ warning, setWarning ] = useState(false);
   const [ colorModal, setColorModal ] = useState(false);
   const [ choosenColor, setChoosenColor ] = useState('');
+
+
 
 
   let changeColor, badges;
@@ -70,11 +74,19 @@ const PlayerProfile = () => {
       </div>
   }
 
-  
   if (activePlayer && levelsOK) {
     return(
       <div key={activePlayer.id} className={styles.profile}>
         <div className={styles.profile__box}>
+          <Tips 
+            content={
+              <div>
+                <p>Klikając dwukrotnie na ikonę postaci możesz zmienić kolor tła.</p>
+              </div>
+            }
+            onClick={() => setTip(!tip)}
+            tip={tip}
+          />
           <div className={styles.profile__icon} onDoubleClick={ () => setColorModal(true) }>
             <PlayerIcon
               icon={activePlayer.icon} 

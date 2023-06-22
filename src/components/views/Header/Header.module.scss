@@ -1,11 +1,11 @@
 @import '/src/styles/settings.scss';
 
 .header {
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   min-height: max-content;
-  border-radius: $radius;
   backdrop-filter: brightness(95%) blur(5px);
   position: sticky;
   top: 0;
@@ -21,10 +21,8 @@
 
 @media (max-width: 780px) and (orientation: landscape) {
   .header {
-    width: fit-content;
     flex-direction: column;
-    position: sticky;
-    top: 0;
+    align-items: flex-start;
   }
 }
 

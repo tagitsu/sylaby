@@ -1,32 +1,47 @@
 @import '/src/styles/settings.scss';
 
 .tips {
-  margin: $base-size 0;
-  padding: calc($base-size * 2);
+  margin: $base-size;
+  display: grid;
+  grid-template-columns: 1fr auto;
   font-size: $font-content;
-  border: 1px solid;
-  border-radius: $radius;
-  position: relative;
   text-align: justify;
   line-height: 1.5;
 
-  p {
-    display: inline;
+  &__text {
+    width: fit-content;
+    padding: 0 $base-size;
+
+    p {
+      display: inline;
+    }
   }
 
-  &__icon {
+  &__iconOn, &__iconOff {
     width: calc($base-size * 4);
     height: calc($base-size * 4);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: radial-gradient( $color-orange, $color-yellow);
-    border: 1px solid $color-light;
+    border: none;
     border-radius: 50%;
     color: $color-light;
     font-size: $font-title;
-    position: absolute;
-    top: calc($base-size * -2);
-    right: calc($base-size * -2);
+  }
+
+  &__iconOn {
+    background-image: radial-gradient( $color-orange, $color-yellow);
+    box-shadow: 0px 0px 20px $color-yellow;
+  }
+
+  &__iconOff {
+    background-image: radial-gradient( $color-indigo, $color-blue);
+    color: $color-indigo;
+    transition: $transition;
+  }
+
+  &__iconOff:hover {
+    color: $color-light;
+    cursor: help;
   }
 }

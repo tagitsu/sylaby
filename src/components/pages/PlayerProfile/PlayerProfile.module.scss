@@ -8,17 +8,14 @@
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   background-color: transparent;
   padding: $base-size;
-  border: 1px solid blue;
 
   &__box {
     padding: calc($base-size * 3);
-    border: 1px solid green;
   }
 
   &__icon {
     width: fit-content;
     padding: $base-size;
-    border: 1px solid fuchsia;
   }
 
   &__play {

@@ -7,7 +7,7 @@ import Button from '../../common/Button/Button';
 import styles from './PlayersList.module.scss';
 
 import { useGetPlayersQuery, useUpdatePlayerMutation } from '../../../api/apiSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Tips from '../../views/Tips/Tips';
 import Spinner from '../../common/Spinner/Spinner';
 
@@ -16,6 +16,9 @@ const PlayersList = () => {
   const { data: players, isSuccess } = useGetPlayersQuery();
 
   const [ updatePlayer ] = useUpdatePlayerMutation();
+
+  const [ tip, setTip ] = useState(false);
+
 
   useEffect( () => {
     if (isSuccess) {
@@ -31,16 +34,20 @@ const PlayersList = () => {
   const refreshPage = () => {
     window.location.reload(false);
   }
+  console.log('tip', tip);
 
   if (isSuccess) {
     return(
       <div className={styles.list}>
-        <Tips content={
+        <Tips 
+          content={
           <div>
             <p>Wybierz swoją postać i naciśnij przycisk <span><FontAwesomeIcon icon={faPlay} /></span> żeby wybrać grę. Klikając w ikonę postaci przejdziesz do profilu gracza.</p>
             <p> A jeśli nie masz jeszcze swojej postaci, łatwo ją stworzysz naciskając przycisk <span><FontAwesomeIcon icon={faPlus} /></span> na dole strony.</p>
           </div>
           }
+          onClick={() => setTip(!tip)}
+          tip={tip}
         />
         <div className={styles.list__list}>
           {players.map( player => 
