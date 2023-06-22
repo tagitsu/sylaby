@@ -61,4 +61,33 @@
     gap: $base-size;
     grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 8), 1fr));
   }
+
 }
+
+// .info {
+//   padding: 0 2px;
+//   background-color: $color-light;
+//   color: $color-success;
+//   border: 2px solid $color-light;
+//   border-radius: 4px;
+
+//   &__first {
+//     background-color: $color-orange;
+//     color: $color-dark;
+//   }
+
+//   &__second {
+//     color: $color-dark;
+//   }
+
+//   &__word {
+//     background-color: $color-blue;
+//     color: $color-dark;
+//   }
+
+//   &__ok {
+//     display: flex;
+//     padding: 2px;
+//     border-radius: 50%;
+//   }
+// }

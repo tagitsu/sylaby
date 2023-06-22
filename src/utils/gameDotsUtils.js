@@ -20,9 +20,9 @@ utils.setGameTurn = (setDots, setOptions, setCorrectAnswer) => {
 
   for ( let i = 1; i <= options[1]; i++ ) {
     const randomSize = Math.floor(Math.random() * 30 + 10);
-    const randomColorR = Math.floor(Math.random() * 255 + 100);
-    const randomColorG = Math.floor(Math.random() * 255 + 100);
-    const randomColorB = Math.floor(Math.random() * 255 + 90);
+    const randomColorR = Math.floor(Math.random() * 255 + 120);
+    const randomColorG = Math.floor(Math.random() * 255 + 120);
+    const randomColorB = Math.floor(Math.random() * 255 + 120);
     const randomPositionTop = Math.floor(Math.random() * 70);
     const randomPositionLeft = Math.floor(Math.random() * 70);
     const dotTop = `${randomPositionTop}%`;

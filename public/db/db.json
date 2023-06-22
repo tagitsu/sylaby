@@ -1,29 +1,6 @@
 {
   "players": [
     {
-      "id": 10,
-      "name": "mądroboty",
-      "icon": "storybots.png",
-      "isActive": false,
-      "level": 6,
-      "color": "#fed971",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "zaradny jak myszka"
-        },
-        {
-          "name": "cat",
-          "text": "zwinny jak kotek"
-        },
-        {
-          "name": "owl",
-          "text": "mądra sowa"
-        }
-      ],
-      "xp": 168
-    },
-    {
       "id": 9,
       "name": "Maciuś Diaków",
       "icon": "curious_george.png",
@@ -52,7 +29,7 @@
       "name": "piu",
       "icon": "elsa.png",
       "isActive": false,
-      "level": 3,
+      "level": 4,
       "color": "#fecddc",
       "title": "głoskująca myszka",
       "badges": [
@@ -67,9 +44,13 @@
         {
           "name": "fish",
           "text": "zwinna rybka"
+        },
+        {
+          "name": "owl",
+          "text": "mądra sowa"
         }
       ],
-      "xp": 29
+      "xp": 30
     },
     {
       "id": 13,
@@ -100,24 +81,8 @@
       "name": "julia",
       "icon": "rapunzel.png",
       "isActive": false,
-      "level": 1,
-      "color": "#57ebff",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
-      "id": 17,
-      "name": "test",
-      "icon": "lemmings.png",
-      "isActive": false,
       "level": 2,
-      "color": "#d7fb23",
+      "color": "#57ebff",
       "title": "głoskująca myszka",
       "badges": [
         {
@@ -129,13 +94,13 @@
           "text": "sylabujący kotek"
         }
       ],
-      "xp": 3
+      "xp": 6
     },
     {
       "id": 18,
       "name": "test",
       "icon": "vaiana.png",
-      "isActive": false,
+      "isActive": true,
       "level": 1,
       "color": "#18ecfb",
       "title": "głoskująca myszka",
@@ -146,38 +111,6 @@
         }
       ],
       "xp": 1
-    },
-    {
-      "id": 19,
-      "name": "test",
-      "icon": "maui.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#00a365",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
-      "id": 20,
-      "name": "test",
-      "icon": "grizzly.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#005726",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
     },
     {
       "id": 21,
@@ -209,127 +142,11 @@
     },
     {
       "id": 22,
-      "name": "test",
-      "icon": "blaze.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#fcff47",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
-      "id": 23,
-      "name": "test",
-      "icon": "transylvania.png",
-      "isActive": false,
-      "level": 2,
-      "color": "#660058",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        },
-        {
-          "name": "cat",
-          "text": "sylabujący kotek"
-        }
-      ],
-      "xp": 2
-    },
-    {
-      "id": 24,
-      "name": "test",
+      "name": "blablu",
       "icon": "heihei.png",
       "isActive": false,
       "level": 1,
-      "color": "#c2ffe2",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
-      "id": 25,
-      "name": "test",
-      "icon": "maui.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#81be60",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
-      "id": 26,
-      "name": "test",
-      "icon": "grizzly.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#00eeaa",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 1
-    },
-    {
-      "id": 27,
-      "name": "test",
-      "icon": "vaiana.png",
-      "isActive": true,
-      "level": 1,
-      "color": "#c2ff1a",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
-      "id": 28,
-      "name": "test123",
-      "icon": "blaze.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#000000",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
-      "id": 29,
-      "name": "SpongeBob",
-      "icon": "spongebob.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#ffffff",
+      "color": "#bfcac5",
       "title": "głoskująca myszka",
       "badges": [
         {

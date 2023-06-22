@@ -22,14 +22,16 @@
     height: 50vh;
     padding: calc($base-size * -10);
     position: relative;
+    border: 1px solid black;
   }
 
   &__dot {
     border-radius: 50%;
-    border: 3px solid $color-light;
     opacity: .7;
+    box-shadow: 0 0 15px rgba(133, 185, 241, 0.962) inset;
     position: absolute;
     transition: $transition;
+    filter: contrast(100%) saturate(110%);
   }
 
   &__options {

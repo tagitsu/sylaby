@@ -6,6 +6,10 @@ import { useGetPlayersQuery, useGetSyllablesQuery, useUpdatePlayerMutation, useG
 import ActivePlayer from '../../features/ActivePlayer/ActivePlayer';
 import ButtonOK from '../../common/ButtonOK/ButtonOK';
 import Button from '../../common/Button/Button';
+import Tips from '../../views/Tips/Tips';
+import clsx from 'clsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faS } from '@fortawesome/free-solid-svg-icons';
 
 const GameSyllablesEasy = () => {
 
@@ -34,11 +38,12 @@ const GameSyllablesEasy = () => {
   return(
       <div className={styles.easy} >
         <ActivePlayer />
-        <Button 
+        { !syllable1 && <Tips content={<p>Naciśnij przycisk <span className={styles.info}>START</span>, który wylosuje zestaw sylab. Do <span className={clsx(styles.info, styles.info__first)}>pierwszej</span> sylaby dopasuj <span className={clsx(styles.info, styles.info__second)}>drugą</span> tak aby razem stworzyły <span className={clsx(styles.info, styles.info__word)}>słowo</span>. Jeśli chcesz potwierdzić swoją odpowiedź, kliknij przycisk <span className={clsx(styles.info, styles.info__ok)}>OK</span>.</p>} /> }
+        { !syllable1 && <Button 
           name='setupBtn'
           onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setHidden)} 
-          content='Wylosuj sylabę'
-        />
+          content='START'
+        /> }
         {
           syllable1 && 
           <section className={styles.easy__board}>

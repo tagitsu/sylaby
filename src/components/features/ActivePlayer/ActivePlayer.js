@@ -2,6 +2,7 @@ import styles from '../ActivePlayer/ActivePlayer.module.scss';
 import { Link } from 'react-router-dom';
 import { useGetPlayersQuery, useGetLevelsQuery } from "../../../api/apiSlice";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import Spinner from '../../common/Spinner/Spinner';
 
 const ActivePlayer = () => {
 
@@ -21,7 +22,7 @@ const ActivePlayer = () => {
   console.log('level aktualnego gracza', playerLevel);
 
   //const barContent = `${activePlayer.xp}/${playerLevel.nextLevel}`;
-  if (activePlayer) {
+  if (activePlayer && playerLevel) {
     return(
     <div className={styles.current}>
       <Link to={`/player/${activePlayer.id}`}>
@@ -33,6 +34,8 @@ const ActivePlayer = () => {
       </div>
     </div>
     );
+  } else {
+    return(<Spinner content='...wczytywanie aktywnego gracza' />)
   }
 };
 

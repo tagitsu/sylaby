@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faWarning, faPlay } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetLevelsQuery, useGetPlayersQuery, useUpdatePlayerMutation, useDeletePlayerMutation } from "../../../api/apiSlice";
 import { useState } from "react";
 
@@ -14,12 +14,19 @@ import styles from './PlayerProfile.module.scss';
 
 const PlayerProfile = () => {
 
-  const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
+  const playerID = useParams();
+
+  const { data: players, isLoading: playersLoading, isSuccess: playersOK, isFetching: playersFetching } = useGetPlayersQuery();
+
+  if (playersLoading) console.log('loading...');
 
   let activePlayer, playerLevel;
   if (playersOK) {
     [ activePlayer ] = players.filter( player => player.isActive);
   }
+
+  if (!activePlayer && playersOK) console.log('brak gracza');
+
 
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   if (levelsOK && activePlayer) {
@@ -34,18 +41,19 @@ const PlayerProfile = () => {
   const [ choosenColor, setChoosenColor ] = useState('');
 
 
-  if (playersOK && levelsOK) {
+  let changeColor, badges;
+  if (activePlayer && levelsOK) {
 
     if (activePlayer.xp >= playerLevel.nextLevel) {
       updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0, color: choosenColor })
     }
 
-    const changeColor = () => {
+    changeColor = () => {
       updatePlayer({ ...activePlayer, color: choosenColor });
       setChoosenColor('');
     };
 
-    const badges =
+    badges =
       <div className={styles.profile__badges}>
         {levels.map( level => 
           <div 
@@ -60,7 +68,10 @@ const PlayerProfile = () => {
           </div>
         )}
       </div>
+  }
 
+  
+  if (activePlayer && levelsOK) {
     return(
       <div key={activePlayer.id} className={styles.profile}>
         <div className={styles.profile__box}>
@@ -149,7 +160,20 @@ const PlayerProfile = () => {
         
       </div>
     );
+  } else if (playersLoading) {
+    return (
+      <div> Trwa pobieranie danych gracza ...</div>
+    );
+  
+  } else if (playersOK && !playersFetching && !playersLoading && !activePlayer) {
+    return (
+      <div>
+        Profil gracza o numerze {playerID.id} nie może zostać pobrany. Mógł zostać usunięty.
+        Możesz <Link to='/playerslist'> wybrać </Link> z listy graczy inną postać lub <Link to='/newPlayer'>stworzyć zupełnie nową</Link>.
+      </div>
+    );
   }
+  
 }
 
 export default PlayerProfile;

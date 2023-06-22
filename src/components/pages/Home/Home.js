@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Spinner from '../../common/Spinner/Spinner';
 import styles from '../Home/Home.module.scss';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Link to='/newplayer'> stwórz </Link>
       swoją postać. 
     </p>
+    <Spinner />
   </div>
 
   );

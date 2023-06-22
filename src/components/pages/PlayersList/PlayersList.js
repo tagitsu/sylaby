@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faPlay, faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPlay, faLightbulb, faRefresh } from '@fortawesome/free-solid-svg-icons'
 
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import Button from '../../common/Button/Button';
@@ -9,15 +9,13 @@ import styles from './PlayersList.module.scss';
 import { useGetPlayersQuery, useUpdatePlayerMutation } from '../../../api/apiSlice';
 import { useEffect } from 'react';
 import Tips from '../../views/Tips/Tips';
+import Spinner from '../../common/Spinner/Spinner';
 
 const PlayersList = () => {
 
-  const { 
-    data: players,
-    isSuccess, 
-  } = useGetPlayersQuery();
+  const { data: players, isSuccess } = useGetPlayersQuery();
 
-  const [updatePlayer] = useUpdatePlayerMutation();
+  const [ updatePlayer ] = useUpdatePlayerMutation();
 
   useEffect( () => {
     if (isSuccess) {
@@ -28,6 +26,10 @@ const PlayersList = () => {
   const changeActiveStatus = (e, player) => {
     e.preventDefault();
     updatePlayer({ ...player, isActive: true});
+  }
+
+  const refreshPage = () => {
+    window.location.reload(false);
   }
 
   if (isSuccess) {
@@ -71,7 +73,15 @@ const PlayersList = () => {
         />
       </div>
     )
-  };
+  } else {
+    return(
+      <div>
+        <Spinner content='oczekiwanie na dane z serwera' />
+        <p>Spróbuj odświeżyć stronę</p>
+        <FontAwesomeIcon icon={faRefresh} onClick={refreshPage} /> 
+      </div>
+    )
+  }
 };
 
 export default PlayersList;
