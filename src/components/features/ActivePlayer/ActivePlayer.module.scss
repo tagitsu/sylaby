@@ -4,6 +4,7 @@
   width: 100%;
   height: calc($base-size * 7.3);
   position: relative;
+  margin: 0 0 calc($base-size * 2) 0;
 
   &__icon {
     position: absolute;

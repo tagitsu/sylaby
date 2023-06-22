@@ -4,6 +4,7 @@ import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "
 import Button from "../../common/Button/Button";
 import Option from "../../common/Option/Option";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
+
 import styles from './GameDots.module.scss';
 import utils from '../../../utils/gameDotsUtils';
 import playerUtils from "../../../utils/playerUtils";
@@ -26,23 +27,19 @@ const GameDots = () => {
   const [ options, setOptions ] = useState([]);
   const [ correctAnswer, setCorrectAnswer ] = useState();
 
-  console.log('sprawdzam dots', dots);
-  console.log('sprawdzam dots, options, Correct', dots, options, correctAnswer);
-  console.log('dots activePlayer, playerLevel, nextLevel', activePlayer, playerLevel, nextLevel);
-
   if (activePlayer) {
     return(
       <div className={styles.dots}>
         <ActivePlayer />
-        <section className={styles.dots__board}>
-          { 
-            !dots.length && 
+        { !dots.length && 
             <Button
+              name='setupBtn'
               content={'Wylosuj bańki'}
               onClick={ () => {utils.setGameTurn(setDots, setOptions)}}
             /> 
-          }
-          <div className={styles.dots__box}>
+        }
+        <section className={styles.dots__board}>
+          { dots.length > 0 && 
             <div className={styles.dots__dots}>
               { dots.map( dot => 
                 <div 
@@ -58,18 +55,20 @@ const GameDots = () => {
                 />) 
               }
             </div>
-            <div className={styles.dots__options}>
-              { options.map( option => 
-                  <Option 
-                    key={option} 
-                    content={option}
-                    onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, activePlayer, updatePlayer, setDots, setOptions)}
-                  />
-                )
-              }
-            </div>
-          </div>
+          }
+        <div className={styles.dots__options}>
+          { options.map( option => 
+            <Option 
+              key={option} 
+              content={option}
+              onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, activePlayer, updatePlayer, setDots, setOptions)}
+            />
+            )
+          }
+        </div>
         </section>
+        
+
       </div>
     );
   }

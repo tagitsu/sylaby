@@ -1,33 +1,36 @@
 @import '/src/styles/settings.scss';
 
+
 .dots {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  * {
+    border: 1px solid;
+  }
 
   &__board {
     display: flex;
     //flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  &__box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin: calc($base-size * 3) 0;
   }
 
   &__dots {
     width: 50vh;
     height: 50vh;
-    padding: calc($base-size * -10);
+    margin: calc($base-size * 2) 0;
     position: relative;
-    border: 1px solid black;
+    background-color: $color-light;
+    border-radius: $radius;
+
   }
 
   &__dot {
     border-radius: 50%;
-    opacity: .7;
+    opacity: .5;
     box-shadow: 0 0 15px rgba(133, 185, 241, 0.962) inset;
     position: absolute;
     transition: $transition;
@@ -36,7 +39,6 @@
 
   &__options {
     display: flex;
-    flex-direction: column;
     gap: $base-size;
   }
 
@@ -44,5 +46,39 @@
   &__correct {
     background-color: $color-success;
     color: $color-light;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .dots {
+
+    &__dots {
+      width: 85vw;
+      height: 85vw;
+    }
+  }
+}
+
+@media (max-width: 780px) and (orientation: landscape) {
+  .dots {
+    border: 1px solid orangered;
+
+    &__board {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: $base-size;
+      margin: 0;
+    }
+
+    &__dots {
+      margin: 0;
+      width: 60vh;
+      height: 60vh;
+    }
+
+    &__options {
+    }
   }
 }
