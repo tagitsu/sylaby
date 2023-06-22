@@ -11,7 +11,7 @@
   width: 60vw;
 
   &__container {
-    background-color: $color-light;
+    background-image: linear-gradient(white, $color-light 20%, $color-light 80%, lightgray);
     height: calc($base-size * 2);
     width: calc($base-size * 20);
     border-radius: $radius;
@@ -19,6 +19,7 @@
     position: relative;
     margin-bottom: $base-size;
     position: relative;
+
   }
   
   &__bar {

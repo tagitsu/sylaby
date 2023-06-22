@@ -2,7 +2,7 @@
 
 .current {
   width: 100%;
-  height: calc($base-size * 7);
+  height: calc($base-size * 7.3);
   position: relative;
 
   &__icon {
@@ -26,9 +26,10 @@
 
   &__name {
     font-size: $font-content;
+    letter-spacing: 2px;
     text-shadow: $text-shadow;
-    margin-left: $base-size;
+    margin-left: calc($base-size * 2);
+    padding: 0 $base-size;
   }
-
 
 }

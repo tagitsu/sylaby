@@ -80,7 +80,7 @@
       "id": 16,
       "name": "julia",
       "icon": "rapunzel.png",
-      "isActive": false,
+      "isActive": true,
       "level": 2,
       "color": "#57ebff",
       "title": "głoskująca myszka",
@@ -100,7 +100,7 @@
       "id": 18,
       "name": "test",
       "icon": "vaiana.png",
-      "isActive": true,
+      "isActive": false,
       "level": 1,
       "color": "#18ecfb",
       "title": "głoskująca myszka",
@@ -138,7 +138,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 0
+      "xp": 9
     },
     {
       "id": 22,
