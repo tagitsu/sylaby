@@ -81,13 +81,13 @@ const GameGrocery = () => {
     <div className={styles.grocery}>
       <ActivePlayer />
       <Button
-        content='Co chcesz dzisiaj kupić?'
+        content='Start'
         name='setupBtn'
         hidden={hidden}
         onClick={() => utils.setGameTurn(setFruits, setVegetables, setHidden)}
       />
       <section className={styles.grocery__board}>
-        <div className={clsx(styles.grocery__shopElement)}>
+        <div className={clsx(styles.grocery__shopElement, styles.grocery__list)}>
           <div className={styles.grocery__icon}><FontAwesomeIcon icon={faList} /></div>
           {
             fruits.length
@@ -115,7 +115,7 @@ const GameGrocery = () => {
             </div>
           )}
         </div>
-        <div className={clsx(styles.grocery__shopElement, styles.grocery__assortment)}>
+        <div className={clsx(styles.grocery__shopElement, styles.grocery__shop)}>
           <div className={styles.grocery__icon}>
             <FontAwesomeIcon icon={faShop} />
           </div>

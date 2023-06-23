@@ -29,8 +29,8 @@
       "name": "piu",
       "icon": "elsa.png",
       "isActive": true,
-      "level": 4,
-      "color": "#fecddc",
+      "level": 5,
+      "color": "#cdfed7",
       "title": "głoskująca myszka",
       "badges": [
         {
@@ -48,9 +48,13 @@
         {
           "name": "owl",
           "text": "mądra sowa"
+        },
+        {
+          "name": "crab",
+          "text": "szybki krab"
         }
       ],
-      "xp": 96
+      "xp": 15
     },
     {
       "id": 13,
@@ -100,7 +104,7 @@
       "id": 18,
       "name": "test",
       "icon": "vaiana.png",
-      "isActive": true,
+      "isActive": false,
       "level": 1,
       "color": "#b0e4e8",
       "title": "głoskująca myszka",

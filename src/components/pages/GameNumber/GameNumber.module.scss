@@ -1,54 +1,62 @@
 @import '/src/styles/settings.scss';
 
 .number {
-  border: 1px solid green;
   min-height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  * {
+    border: 1px dotted teal;
+  }
+
+  &__tips{
+    position: absolute;
+    left: 0;
+    width: 30vw;
+  }
   &__board {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: $base-size;
-    border: 1px solid red;
-
   }
   
   &__hint {
-    width: calc($base-size * 3);
-    height: calc($base-size * 3);
-    margin: $base-size;
+    width: calc($base-size * 1.5);
+    height: calc($base-size * 1.5);
+    margin: 0 5px;
     color: $color-light;
-    border: none;
+    font-size: $base-size;
+    font-weight: 700;
+    border: 2px solid $color-light;
     border-radius: 50%;
     background-color: $color-orange;
-    font-size: calc($base-size * 2);
     align-self: flex-end;
+    transition: $transition;
   }
 
   &__hint:hover {
+    transform: scale(1.1);
     cursor: help;
   }
-  
-  
 
   &__help {
+    width: 30vw;
+    height: 100%;
     padding: $base-size;
     display: grid;
-    //gap: $base-size;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(5, auto);
+    grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 4), 1fr));
+    gap: $base-size;
     justify-items: center;
-    align-items: center;
-    border: 1px solid pink;
+    background-color: aliceblue;
+    border-radius: $radius;
   }
 
   &__item {
     width: calc($base-size * 4);
     height: calc($base-size * 4);
-    margin: calc($base-size / 2);
     background: radial-gradient($color-indigo, $color-blue);
     border-radius: 50%;
   }
@@ -99,8 +107,7 @@
 @media (max-width: 576px) {
   .number {
     &__help {
-      grid-template-columns: repeat(2, auto);
-      grid-template-rows: repeat(10, auto);
+      grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 3), 1fr));
     }
 
     &__item {
@@ -113,6 +120,5 @@
 
 @media (max-width: 780px) and (orientation: landscape) {
   .number {
-    background-color: orangered;
   }
 }

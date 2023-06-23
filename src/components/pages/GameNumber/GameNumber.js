@@ -9,6 +9,7 @@ import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import Button from "../../common/Button/Button";
 import ButtonOK from '../../common/ButtonOK/ButtonOK';
 import Sign from "../../common/Sign/Sign";
+import Tips from '../../views/Tips/Tips';
 
 import clsx from "clsx";
 import styles from './GameNumber.module.scss';
@@ -36,6 +37,8 @@ const GameNumber = () => {
   const [ isWrong, setIsWrong ] = useState();
   const [ mathSigns, setMathSigns ] = useState();
   const [ help, setHelp ] = useState(false);
+  const [ tip, setTip ] = useState(false);
+  const [ hidden, setHidden ] = useState(false);
 
   console.log('help', help);
   let help1 = [], help2 = [];
@@ -59,24 +62,38 @@ const GameNumber = () => {
     })
   });
 
+  const handleHint = () => {
+    setHelp(!help);
+    setTip(!tip);
+  };
+
   return(
     <div className={styles.number}>
       <ActivePlayer />
-      <button 
-        className={styles.number__hint}
-        type='button' 
-        onClick={() => setHelp(!help)} 
-      >
-      ?
-      </button>
       <Button 
         content='Losuj liczby'
         name='setupBtn'
-        onClick={ () => utils.setGameTurn(setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong, setMathSigns, setHelp) }
+        hidden={hidden}
+        onClick={ () => utils.setGameTurn(setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong, setMathSigns, setHelp, setHidden) }
       />
       <div className={styles.number__board}>
+      <div className={styles.number__tips}>
+      <Tips 
+        tip={tip} 
+        onClick={() => setTip(!tip)}
+        content={
+          <div>
+            <p>Porównaj wylosowane liczby. Złap odpowiedni znak i przeciągnij go na puste pole. </p>
+            <p>
+              Jeśli masz wątpliwości która liczba jest mniejsza a która większa, wciśnij 
+              <button className={styles.number__hint} type='button' onClick={handleHint}>?</button>
+            </p>
+          </div>
+        }
+      /> 
+      </div>
         <div className={styles.number__box}>
-        <div className={styles.number__help}>
+        <div className={clsx( help && styles.number__help)}>
           { help ? help1.map( item => <div key={item} className={styles.number__item} /> ) : null }
         </div>
           { !help && <div key={1} className={styles.number__number}> {number1} </div> }
@@ -84,7 +101,7 @@ const GameNumber = () => {
             { answer?.map( sign => <Sign key={sign.name} name={sign.name} icon={sign.icon}/>) }
           </div>
           { !help && <div key={3} className={styles.number__number}> {number2} </div> }
-          <div className={styles.number__help}>
+          <div className={clsx( help && styles.number__help)}>
             {help ? help2.map( item => <div key={item} className={styles.number__item} /> ) : null}
           </div>
         </div>

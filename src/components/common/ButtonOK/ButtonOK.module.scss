@@ -1,6 +1,7 @@
 @import '/src/styles/settings.scss';
 
 .button {
+  margin: $base-size;
   display: flex;
   justify-content: center;
   align-items: center;

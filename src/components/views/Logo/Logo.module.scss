@@ -3,22 +3,19 @@
 .logo {
   width: max-content;
   height: 100%;
-  margin: calc($base-size * 2);
-  padding: $base-size;
+  padding: 0 $base-size;
   font-size: $font-title;
   color: $color-light;
 }
 
 @media (max-width: 576px) {
   .logo {
-    border: 1px solid red;
     margin: 0;
   }
 }
 
 @media (max-width: 780px) and (orientation: landscape) {
   .logo {
-    border: 1px solid green;
     margin: 0;
   }
 }

@@ -7,13 +7,14 @@ utils.mathSigns = [
   { name: 'equal', icon: '=' },
 ];
 
-utils.setGameTurn = (setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong, setMathSigns, setHelp) => {
+utils.setGameTurn = (setNumber1, setNumber2, setSolution, setAnswer, setIsCorrect, setIsWrong, setMathSigns, setHelp, setHidden) => {
 
   setAnswer();
   setIsCorrect();
   setIsWrong();
   setMathSigns(utils.mathSigns);
   setHelp(false);
+  setHidden(true);
 
   const number1 = Math.floor(Math.random() * 20 );
   const number2 = Math.floor(Math.random() * 20 );

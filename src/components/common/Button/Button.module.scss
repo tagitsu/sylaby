@@ -1,6 +1,7 @@
 @import '/src/styles/settings.scss';
 
 .button {
+  margin: $base-size;
   border: 2px outset $color-light;
   border-radius: $radius;
   padding: calc($base-size * 2);
