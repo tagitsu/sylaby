@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useDrag } from 'react-dnd';
 import styles from '../GroceryProduct/GroceryProduct.module.scss';
 
@@ -12,16 +13,13 @@ const GroceryProduct = ({ product, size, text }) => {
   }));
 
   return(
-    <div className={styles.product}>
       <img
+        className={clsx(styles.product, isDragging && styles.dragging)}
         ref={drag}
         src={`${process.env.PUBLIC_URL}/images/grocery/${product.icon}`}
         alt={product.name}
-        style={{ opacity: isDragging ? 0.5 : 1, width: size }}
+        style={{ opacity: isDragging ? 0.5 : 1, width: size, height: size }}
       />
-      <p>{ text }</p>
-    </div>
-    
   )
 }
 

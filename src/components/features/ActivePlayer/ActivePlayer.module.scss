@@ -9,6 +9,7 @@
   align-self: flex-end;
 
   &__icon {
+    width: 18%;
     position: absolute;
     left: 0;
     top: 0;
@@ -37,12 +38,25 @@
 
 }
 
+@media (max-width: 568px) {
+  
+}
+
 @media (max-width: 780px) and (orientation: landscape) {
   .current {
-    //width: fit-content;
+    height: calc($base-size * 5);
+    width: 45%;
+
+    &__icon {
+      width: 20%;
+    }
+
+    &__name {
+
+    }
 
     &__bar {
-      width: fit-content;
+      left: calc($base-size * 3);
     }
   }
 }

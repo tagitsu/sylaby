@@ -50,7 +50,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 92
+      "xp": 96
     },
     {
       "id": 13,
@@ -100,7 +100,7 @@
       "id": 18,
       "name": "test",
       "icon": "vaiana.png",
-      "isActive": false,
+      "isActive": true,
       "level": 1,
       "color": "#b0e4e8",
       "title": "głoskująca myszka",

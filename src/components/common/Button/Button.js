@@ -3,7 +3,7 @@ import styles from '../Button/Button.module.scss';
 
 const Button = (props) => {
 
-  if (!props.isHidden) {
+  if (!props.hidden) {
   return(
     <button 
       className={clsx(styles.button, props.name === 'tipBtn' && styles.tip, props.name === 'setupBtn' && styles.setup, )} 

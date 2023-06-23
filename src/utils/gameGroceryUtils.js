@@ -156,7 +156,7 @@ utils.shop = [
       },
     ];
 
-utils.setGameTurn = (setFruits, setVegetables) => {
+utils.setGameTurn = (setFruits, setVegetables, setHidden) => {
 
     const amountOfFruits = Math.floor(Math.random() * 5 + 1);
     const amountOfVegetables = Math.floor(Math.random() * 5 + 1);
@@ -180,9 +180,10 @@ utils.setGameTurn = (setFruits, setVegetables) => {
     ];
     setVegetables(vege);
 
+    setHidden(true);
 };
 
-utils.submitSolution = (e, vegetables, fruits, cart, activePlayer, updatePlayer, setCart, setFruits, setVegetables) => {
+utils.submitSolution = (e, vegetables, fruits, cart, activePlayer, updatePlayer, setCart, setFruits, setVegetables, setHidden) => {
   e.preventDefault();
 
   const correctAnswer = { 
@@ -220,7 +221,7 @@ utils.submitSolution = (e, vegetables, fruits, cart, activePlayer, updatePlayer,
   setCart([]);
   setFruits([]);
   setVegetables([]);
-
+  setHidden(false);
 };
 
 export default utils;
