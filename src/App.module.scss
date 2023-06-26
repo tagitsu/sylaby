@@ -2,19 +2,19 @@
 
 .app {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   border: 1px solid red;
 
 
-  &__container {
+  &__main {
+    min-height: 90vh;
     padding: $base-size;
     overflow: auto;
-    border: 1px solid red;
+    border: 3px solid blue;
   }
 }
-
 
 @media (max-width: 576px) {
   .app {
@@ -25,7 +25,7 @@
 @media (max-width: 780px) and (orientation: landscape) {
   .app {
 
-    &__container {
+    &__main {
       padding: 0;
     }
   }

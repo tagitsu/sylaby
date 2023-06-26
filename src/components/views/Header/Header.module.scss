@@ -2,16 +2,16 @@
 
 .header {
   width: 100%;
-  height: min-content;
+  max-height: fit-content;
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
   backdrop-filter: brightness(95%) blur(5px);
   position: sticky;
   top: 0;
   z-index: 2;
+  border: 1px solid green;
 }
 
 @media (max-width: 576px) {

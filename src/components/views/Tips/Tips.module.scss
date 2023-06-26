@@ -5,14 +5,17 @@
   display: grid;
   grid-template-columns: 1fr auto;
   font-size: $font-content;
-  text-align: justify;
+  //text-align: justify;
   line-height: 1.5;
 
   &__text {
     width: fit-content;
-    padding: 0 $base-size;
-
+    padding: $base-size;
+    backdrop-filter: brightness(160%) blur(5px);
+    overflow: hidden;
+    border-radius: $radius;
     p {
+      color: $color-indigo;
       display: inline;
     }
   }

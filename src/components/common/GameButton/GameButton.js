@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 
 import styles from '../GameButton/GameButton.module.scss';
@@ -10,7 +11,7 @@ const GameButton = ({ game, activePlayerID }) => {
 
   return(
     <Link 
-      className={styles.game} 
+      className={clsx(game.status === 'in progress' ? styles.soon : styles.game)} 
       to={`/game/${game.name}/${activePlayerID}`}
       onMouseOver={handleMouseOver}
     >
@@ -18,6 +19,7 @@ const GameButton = ({ game, activePlayerID }) => {
       <div className={styles.game__graph}>
         <img className={styles.game__img} src={`${process.env.PUBLIC_URL}/images/games/${game.name}.png`} />
         <p className={styles.game__difficulty}>{game.difficulty}</p>
+        { game.status === 'in progress' && <p className={styles.game__info}>już wkrótce!</p> }
       </div>
     </Link>
   )

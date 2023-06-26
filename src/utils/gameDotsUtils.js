@@ -40,21 +40,36 @@ utils.submitSolution = (
   e, 
   answer, 
   dots, 
-  activePlayer, 
-  updatePlayer, 
+  setIsCorrect,
+  setIsWrong,
+  setAnswer
   ) => {
 
   e.preventDefault();
+  setAnswer(answer);
 
   if ( answer == dots.length ) {
+    setIsCorrect(true);
+    setIsWrong(false);
     // TODO zamiast alertów chciałabym użyć portalu / modalu 
-    let playerPoints = activePlayer.xp + 1;
-    updatePlayer({ ...activePlayer, xp: playerPoints })
   } else if ( answer < dots.length ) {
-      alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś się schowała? Spróbuj jeszcze raz :)`)
+      setIsWrong(true);
+      setIsCorrect(false);
+      //alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś się schowała? Spróbuj jeszcze raz :)`)
   } else if ( answer > dots.length ) {
-      alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś kropka została policzona podwójnie? Spróbuj jeszcze raz :)`)
+      setIsWrong(true);
+      setIsCorrect(false);
+      //alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś kropka została policzona podwójnie? Spróbuj jeszcze raz :)`)
   }
 };
+
+utils.addPoints = (isCorrect, activePlayer, updatePlayer) => {
+
+  if ( isCorrect ) {
+    updatePlayer({ ...activePlayer, xp: activePlayer.xp + 1 });
+  } else {
+    updatePlayer({ ...activePlayer, xp: activePlayer.xp });
+  }
+}
 
 export default utils;

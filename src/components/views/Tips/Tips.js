@@ -7,7 +7,12 @@ const Tips = (props) => {
 
   return(
     <section className={clsx(styles.tips)}>
-      <button className={clsx(props.tip ? styles.tips__iconOn : styles.tips__iconOff)} onClick={props.onClick}><FontAwesomeIcon icon={faLightbulb} /></button>
+      <button 
+        className={clsx(props.tip ? styles.tips__iconOn : styles.tips__iconOff)} 
+        onClick={props.onClick}
+      >
+        <FontAwesomeIcon icon={faLightbulb} />
+      </button>
       { props.tip && <div className={styles.tips__text}>{props.content}</div>}
     </section>
   );

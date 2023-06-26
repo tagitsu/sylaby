@@ -1,32 +1,37 @@
 import styles from '../Option/Option.module.scss';
 import clsx from 'clsx';
+import { useState } from 'react';
 
 const Option = (props) => {
 
-  console.log('option', props.correct, props.content);
 
+  console.log('option', props);
 
-  if (props.correct === props.content) {
+  if (props.isCorrect === undefined && props.isWrong === undefined) {
     return(
       <button 
-        className={clsx(styles.option, styles.option__correct)} 
+        className={clsx(styles.option)} 
         onClick={props.onClick} 
         type={props.type}
+        disabled={false}
+        
       >
       {props.content}
       </button>
     )
-  } else {
+  } else if (props.content && props.isCorrect || props.isWrong) {
     return(
       <button 
-        className={styles.option} 
+        className={clsx( (props.answer == props.content) && styles.clicked, styles.option, (props.content == props.dots) && styles.correct, (props.content != props.dots) && styles.wrong)}
         onClick={props.onClick} 
         type={props.type}
+        disabled={true}
       >
       {props.content}
       </button>
     )
   }
+  
 }
 
 export default Option;

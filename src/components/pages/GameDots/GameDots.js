@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
 
 import Button from "../../common/Button/Button";
+import ButtonOK from '../../common/ButtonOK/ButtonOK';
 import Option from "../../common/Option/Option";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 
@@ -25,7 +26,11 @@ const GameDots = () => {
 
   const [ dots, setDots ] = useState([]);
   const [ options, setOptions ] = useState([]);
-  const [ correctAnswer, setCorrectAnswer ] = useState();
+  const [ isCorrect, setIsCorrect ] = useState();
+  const [ isWrong, setIsWrong ] = useState();
+  const [ answer, setAnswer ] = useState();
+
+  console.log('dots', dots, options, isCorrect);
 
   if (activePlayer) {
     return(
@@ -57,17 +62,37 @@ const GameDots = () => {
             </div>
           }
         <div className={styles.dots__options}>
-          { options.map( option => 
-            <Option 
-              key={option} 
-              content={option}
-              onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, activePlayer, updatePlayer, setDots, setOptions)}
-            />
-            )
-          }
+          <Option 
+            key={1} 
+            content={options[0]} 
+            dots={dots.length} 
+            onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
+            isCorrect={isCorrect}
+            isWrong={isWrong}
+            answer={answer}
+          />
+          <Option 
+            key={2} 
+            content={options[1]}
+            dots={dots.length} 
+            onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
+            isCorrect={isCorrect}
+            isWrong={isWrong}
+            answer={answer}
+          />
+          <Option 
+            key={3} 
+            content={options[2]} 
+            dots={dots.length} 
+            onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
+            isCorrect={isCorrect}
+            isWrong={isWrong}
+            answer={answer}
+          />
+
         </div>
         </section>
-        
+        <ButtonOK onClick={() => utils.addPoints(isCorrect, activePlayer, updatePlayer)} />
 
       </div>
     );

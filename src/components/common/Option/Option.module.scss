@@ -27,4 +27,25 @@
   transform: scale(.97);
 }
 
+.correct {
+  color: $color-success;
+  border-color: $color-success;
+}
 
+.wrong {
+  color: $color-warning;
+  border-color: $color-warning;
+}
+
+.correct:hover {
+  cursor: not-allowed;
+}
+
+.wrong:hover {
+  cursor: not-allowed;
+}
+
+.clicked {
+  //background-color: $color-yellow;
+  box-shadow: 0 0 10px 10px $color-light;
+}

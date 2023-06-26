@@ -28,7 +28,7 @@
       "id": 12,
       "name": "piu",
       "icon": "elsa.png",
-      "isActive": true,
+      "isActive": false,
       "level": 5,
       "color": "#cdfed7",
       "title": "głoskująca myszka",
@@ -54,13 +54,13 @@
           "text": "szybki krab"
         }
       ],
-      "xp": 15
+      "xp": 30
     },
     {
       "id": 13,
       "name": "Julia",
       "icon": "spongebob.png",
-      "isActive": false,
+      "isActive": true,
       "level": 3,
       "color": "#fbfe4d",
       "title": "głoskująca myszka",
@@ -78,7 +78,7 @@
           "text": "zwinna rybka"
         }
       ],
-      "xp": 15
+      "xp": 20
     },
     {
       "id": 16,
@@ -98,23 +98,27 @@
           "text": "sylabujący kotek"
         }
       ],
-      "xp": 19
+      "xp": 22
     },
     {
       "id": 18,
       "name": "test",
       "icon": "vaiana.png",
       "isActive": false,
-      "level": 1,
+      "level": 2,
       "color": "#b0e4e8",
       "title": "głoskująca myszka",
       "badges": [
         {
           "name": "mouse",
           "text": "głoskująca myszka"
+        },
+        {
+          "name": "cat",
+          "text": "sylabujący kotek"
         }
       ],
-      "xp": 1
+      "xp": 15
     },
     {
       "id": 21,
@@ -142,7 +146,7 @@
           "text": "mądra sowa"
         }
       ],
-      "xp": 9
+      "xp": 27
     },
     {
       "id": 22,

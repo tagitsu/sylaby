@@ -8,7 +8,6 @@
 .prog {
   display: flex;
   align-items: center;
-  //width: 60vw;
 
   &__container {
     background-image: linear-gradient(white, $color-light 20%, $color-light 80%, lightgray);
@@ -36,13 +35,5 @@
     font-size: $font-content;
     font-weight: 700;
     text-shadow: $text-shadow;
-  }
-}
-
-@media (max-width: 576px) {
-  .prog {
-    &__container {
-      width: 100%;
-    }
   }
 }

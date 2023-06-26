@@ -7,9 +7,11 @@
 
 .grocery {
 
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
   &__board {
     width: 90vw;
@@ -55,6 +57,8 @@
   }
 
   &__list {
+    min-height: calc($base-size * 5);
+    max-height: 30vh;
     display: flex;
     gap: $base-size;
   }
@@ -81,6 +85,7 @@
   &__task {
     max-width: 90%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: $base-size;
@@ -107,7 +112,6 @@
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: $base-size;
-    border: 1px solid blue;
 
     p {
       padding: 0;
@@ -142,6 +146,10 @@
       display: flex;
       flex-direction: column;
     }
+
+    &__list {
+      flex-direction: column;
+    }
     &__task {
       font-size: $font-content;
     }
@@ -157,7 +165,6 @@
   .grocery {
 
     &__board {
-      //display: grid;
       display: flex;
       flex-wrap: wrap;
     }

@@ -26,6 +26,7 @@ const GameSyllablesEasy = () => {
   const [ answer, setAnswer ] = useState('');
   const [ hidden, setHidden ] = useState(false);
   const [ points, setPoints ] = useState(0);
+  const [ tip, setTip ] = useState(false);
  
   let activePlayer, playerLevel, nextLevel;
   if (playersOK && levelsOK) {
@@ -38,7 +39,13 @@ const GameSyllablesEasy = () => {
   return(
       <div className={styles.easy} >
         <ActivePlayer />
-        { !syllable1 && <Tips content={<p>Naciśnij przycisk <span className={styles.info}>START</span>, który wylosuje zestaw sylab. Do <span className={clsx(styles.info, styles.info__first)}>pierwszej</span> sylaby dopasuj <span className={clsx(styles.info, styles.info__second)}>drugą</span> tak aby razem stworzyły <span className={clsx(styles.info, styles.info__word)}>słowo</span>. Jeśli chcesz potwierdzić swoją odpowiedź, kliknij przycisk <span className={clsx(styles.info, styles.info__ok)}>OK</span>.</p>} /> }
+        { !syllable1 && 
+          <Tips 
+            content={<p>Naciśnij przycisk <span className={styles.info}>START</span>, który wylosuje zestaw sylab. Do <span className={clsx(styles.info, styles.info__first)}>pierwszej</span> sylaby dopasuj <span className={clsx(styles.info, styles.info__second)}>drugą</span> tak aby razem stworzyły <span className={clsx(styles.info, styles.info__word)}>słowo</span>. Jeśli chcesz potwierdzić swoją odpowiedź, kliknij przycisk <span className={clsx(styles.info, styles.info__ok)}>OK</span>.</p>} 
+            onClick={() => setTip(!tip)}
+            tip={tip}
+          /> 
+        }
         { !syllable1 && <Button 
           name='setupBtn'
           onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setHidden)} 

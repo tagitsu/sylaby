@@ -16,11 +16,11 @@ const GameMode = () => {
   }
 
   const games = [
-    { name: 'rainbow', title: 'tęcza', difficulty: '4+' },
-    { name: 'dots', title: 'kolorowe bańki', difficulty: '5+' },
-    { name: 'grocery', title: 'warzywniaczek', difficulty: '5+' },
-    { name: 'syllables', title: 'sylaby', difficulty: '6+', },
-    { name: 'number', title: 'mniej więcej', difficulty: '7+' },
+    { name: 'rainbow', title: 'tęcza', difficulty: '4+', status: 'in progress' },
+    { name: 'dots', title: 'kolorowe bańki', difficulty: '5+', status: 'done' },
+    { name: 'grocery', title: 'warzywniaczek', difficulty: '5+', status: 'done' },
+    { name: 'syllables', title: 'sylaby', difficulty: '6+', status: 'done' },
+    { name: 'number', title: 'mniej więcej', difficulty: '7+', status: 'done' },
   ];
 
   return(
