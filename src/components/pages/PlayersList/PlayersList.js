@@ -1,15 +1,16 @@
+import { useGetPlayersQuery, useUpdatePlayerMutation } from '../../../api/apiSlice';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faPlay, faLightbulb, faRefresh } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPlay, faRefresh } from '@fortawesome/free-solid-svg-icons'
 
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import Button from '../../common/Button/Button';
-import styles from './PlayersList.module.scss';
-
-import { useGetPlayersQuery, useUpdatePlayerMutation } from '../../../api/apiSlice';
-import { useEffect, useState } from 'react';
 import Tips from '../../views/Tips/Tips';
 import Spinner from '../../common/Spinner/Spinner';
+
+import styles from './PlayersList.module.scss';
+
 
 const PlayersList = () => {
 
@@ -19,22 +20,23 @@ const PlayersList = () => {
 
   const [ tip, setTip ] = useState(false);
 
+  const cleanStatus = () => {
+    players?.map( player => updatePlayer({ ...player, isActive: false }));
+    console.log('czyszczenie statusu graczy');
+  }
 
   useEffect( () => {
-    if (isSuccess) {
-      players.map( player => updatePlayer({ ...player, isActive: false }))
-    }
+    cleanStatus();
   }, []);
 
-  const changeActiveStatus = (e, player) => {
-    e.preventDefault();
+  const changeActiveStatus = (player) => {
+    cleanStatus();
     updatePlayer({ ...player, isActive: true});
   }
 
   const refreshPage = () => {
     window.location.reload(false);
   }
-  console.log('tip', tip);
 
   if (isSuccess) {
     return(
@@ -53,7 +55,7 @@ const PlayersList = () => {
           {players.map( player => 
             <div key={player.id} className={styles.list__player}>
               <div className={styles.list__box}>
-                <div onClick={ (e) => changeActiveStatus(e, player)} >
+                <div onClick={ () => changeActiveStatus(player)} >
                     <Link to={`/player/${player.id}`} className={styles.list__link}>
                       <PlayerIcon 
                         id={player.id} 
@@ -68,7 +70,7 @@ const PlayersList = () => {
                 </div>
                 <Button 
                 content={<Link to={`/game/${player.id}`}><FontAwesomeIcon className={styles.list__play} icon={faPlay}></FontAwesomeIcon></Link>} 
-                onClick={ (e) => changeActiveStatus(e, player)}
+                onClick={ () => changeActiveStatus(player)}
               />
               </div>
               <p className={styles.list__name}>{player.name}</p>

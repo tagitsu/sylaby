@@ -49,7 +49,7 @@ const GameSyllablesEasy = () => {
         { !syllable1 && <Button 
           name='setupBtn'
           onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words, setHidden)} 
-          content='START'
+          content='Start'
         /> }
         {
           syllable1 && 
@@ -73,7 +73,7 @@ const GameSyllablesEasy = () => {
           </section>
         }
         {
-          syllable1 && 
+          answer && 
           <ButtonOK 
             onClick={(e) => utils.submitSolution(e, syllable1Words, answer, setAnswer, setSyllable1, setSyllable1Words, setSyllables2, word, setWord, setHidden, points, setPoints, activePlayer, updatePlayer)} 
             className={styles.easy__btn} 

@@ -1,23 +1,40 @@
 @import '/src/styles/settings.scss';
 
 .number {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  // height: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: space-between;
 
-  &__tips{
+  height: 100%;
+  padding: $base-size;
+  display: grid;
+  grid-template-rows: calc($base-size * 7.3) auto calc($base-size * 4);
+  justify-items: center;
+  align-items: center;
+
+  overflow: scroll;
+
+  border: 3px solid crimson;
+
+
+  &__tips {
     position: absolute;
-    left: 0;
+    top: 10px;
+    left: 10px;
     width: 30vw;
   }
+
   &__board {
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: $base-size;
+
+    border: 1px solid mediumorchid;
   }
   
   &__hint {
@@ -47,7 +64,7 @@
     grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 4), 1fr));
     gap: $base-size;
     justify-items: center;
-    background-color: aliceblue;
+    background-color: $color-light;
     border-radius: $radius;
   }
 
@@ -61,6 +78,15 @@
   &__container {
     display: grid;
     grid-template-columns: auto auto;
+  }
+
+  &__task {
+    min-height: calc($base-size * 11);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    border: 2px solid khaki;
   }
 
   &__box {
@@ -117,5 +143,6 @@
 
 @media (max-width: 780px) and (orientation: landscape) {
   .number {
+
   }
 }

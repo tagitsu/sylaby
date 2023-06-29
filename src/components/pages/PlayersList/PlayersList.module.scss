@@ -2,14 +2,16 @@
 
 
 .list {
+  border: 1px solid brown;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  //justify-content: space-between;
   align-items: flex-end;
   margin: calc($base-size * 2) $base-size;
   font-size: calc($base-size * 2.2);
 
   &__list {
+    border: 1px solid seagreen;
     width: 100%;
     margin: calc($base-size * 2);
     display: grid;

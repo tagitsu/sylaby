@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 3px solid $color-orange;
+    border: 3px solid var(--color);
     background-color: $color-light;
   }
 
@@ -35,6 +35,7 @@
 
   &__close {
     background-color: transparent;
+    color: $color-dark;
     align-self: flex-end;
   }
 
@@ -46,17 +47,24 @@
     transform: scale(0.95);
   }
 
+  &__icon {
+    color: red;
+  }
+
   &__text {
+    font-size: $font-content;
+    text-align: center;
     padding: $base-size;
     line-height: 1.5;
   }
 
-
   &__accept {
     background-color: var(--color);
     color: $color-light;
-    text-shadow: 1px 1px 2px lightgrey;
+    //text-shadow: 1px 1px 2px lightgrey;
 
   }
+
+  
 
 }

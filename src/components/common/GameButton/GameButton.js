@@ -6,7 +6,7 @@ import styles from '../GameButton/GameButton.module.scss';
 const GameButton = ({ game, activePlayerID }) => {
 
   const handleMouseOver = () => {
-    console.log('a jak hover to będzie co');
+    console.log('kursor nad przyciskiem gry');
   }
 
   return(
@@ -19,7 +19,7 @@ const GameButton = ({ game, activePlayerID }) => {
       <div className={styles.game__graph}>
         <img className={styles.game__img} src={`${process.env.PUBLIC_URL}/images/games/${game.name}.png`} />
         <p className={styles.game__difficulty}>{game.difficulty}</p>
-        { game.status === 'in progress' && <p className={styles.game__info}>już wkrótce!</p> }
+        { game.status === 'in progress' && <p className={styles.soon__info}>już wkrótce!</p> }
       </div>
     </Link>
   )

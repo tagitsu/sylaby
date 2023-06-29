@@ -1,11 +1,7 @@
 import styles from '../Option/Option.module.scss';
 import clsx from 'clsx';
-import { useState } from 'react';
 
 const Option = (props) => {
-
-
-  console.log('option', props);
 
   if (props.isCorrect === undefined && props.isWrong === undefined) {
     return(
@@ -14,7 +10,6 @@ const Option = (props) => {
         onClick={props.onClick} 
         type={props.type}
         disabled={false}
-        
       >
       {props.content}
       </button>
@@ -31,7 +26,6 @@ const Option = (props) => {
       </button>
     )
   }
-  
 }
 
 export default Option;

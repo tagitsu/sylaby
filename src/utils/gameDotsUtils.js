@@ -51,15 +51,12 @@ utils.submitSolution = (
   if ( answer == dots.length ) {
     setIsCorrect(true);
     setIsWrong(false);
-    // TODO zamiast alertów chciałabym użyć portalu / modalu 
   } else if ( answer < dots.length ) {
       setIsWrong(true);
       setIsCorrect(false);
-      //alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś się schowała? Spróbuj jeszcze raz :)`)
   } else if ( answer > dots.length ) {
       setIsWrong(true);
       setIsCorrect(false);
-      //alert(`Na planszy znajduje się ${dots.length} kropek, a Twoja odpowiedź to ${answer}. Może któraś kropka została policzona podwójnie? Spróbuj jeszcze raz :)`)
   }
 };
 

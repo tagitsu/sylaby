@@ -1,5 +1,7 @@
 import styles from '../Modal/Modal.module.scss';
 import clsx from 'clsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 
 const Modal = (props) => {
 
@@ -17,8 +19,8 @@ const Modal = (props) => {
   return(
     <dialog className={styles.modal}>
       <div className={styles.modal__info}>
-        <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => props.cancel(false)}>X</button>
-        <p className={styles.modal__text}>{props.text}</p>
+        <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => props.cancel(false)}><FontAwesomeIcon icon={faXmarkCircle} /></button>
+        <div className={styles.modal__text}>{props.text}</div>
         <button 
           className={clsx(styles.modal__accept, styles.modal__button)}
           

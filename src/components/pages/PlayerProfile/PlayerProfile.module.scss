@@ -1,6 +1,5 @@
 @import '/src/styles/settings.scss';
 
-
 .profile {
   font-size: calc($base-size * 2);
   display: grid;
@@ -23,17 +22,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid fuchsia;
 
   }
 
   &__info {
     padding: $base-size;
-    border: 1px solid greenyellow;
 
     p {
       padding: calc($base-size / 2);
-      border: 1px solid yellow;
     }
   }
 
@@ -42,7 +38,6 @@
     grid-template-columns: repeat(auto-fill, minmax(calc($base-size * 4), 1fr));
     gap: $base-size;
     padding: calc($base-size / 2);
-    border: 1px solid tomato;
   }
 
   &__badge {
@@ -64,11 +59,47 @@
     width: fit-content;
     justify-self: end;
     opacity: .5;
-    border: 1px solid fuchsia;
   }
 
   &__delete:hover {
     opacity: 1;
+  }
+
+  &__nonFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $base-size;
+    font-size: $font-content;
+  }
+
+  &__buttons {
+    margin: $base-size;
+    width: 50vw;
+    display:flex;
+    justify-content: space-evenly;
+  }
+
+  &__button {
+    width: max-content;
+    height: calc($base-size * 4);
+    padding: $base-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-indigo;
+    color: $color-light;
+    transition: $transition;
+    border: 2px outset $color-blue;
+    border-radius: $radius;
+  }
+
+  &__button:hover {
+    transform: scale(1.1);
+  }
+
+  &__button:active {
+    background-color: $color-success;
   }
 
 }

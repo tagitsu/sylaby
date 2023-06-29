@@ -3,16 +3,24 @@
 
 .dots {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  padding: $base-size;
+  display: grid;
+  grid-template-rows: calc($base-size * 7.3) auto calc($base-size * 4);
+  justify-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: flex-start;
+  border: 1px solid blue;
+  overflow: hidden;
+
 
   &__board {
+    padding: $base-size;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: calc($base-size * 3) 0;
+    border: 1px solid green;
   }
 
   &__dots {
@@ -22,7 +30,7 @@
     position: relative;
     background-color: $color-light;
     border-radius: $radius;
-
+    border: 1px solid yellow;
   }
 
   &__dot {
@@ -35,8 +43,9 @@
   }
 
   &__options {
+    margin: $base-size;
     display: flex;
-    gap: $base-size;
+    gap: calc($base-size * 2);
   }
 
 
@@ -46,15 +55,18 @@
   }
 }
 
-
-
 @media (max-width: 576px) {
 
   .dots {
 
+    &__board {
+      padding: 0;
+      flex-direction: column;
+    }
+
     &__dots {
-      width: 85vw;
-      height: 85vw;
+      width: 50vw;
+      height: 50vw;
     }
   }
 }
@@ -67,7 +79,6 @@
       display: flex;
       justify-content: space-between;
       gap: $base-size;
-      margin: 0;
     }
 
     &__dots {
@@ -75,6 +86,5 @@
       width: 60vh;
       height: 60vh;
     }
-
   }
 }

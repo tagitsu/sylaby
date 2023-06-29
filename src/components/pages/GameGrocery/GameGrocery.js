@@ -3,12 +3,12 @@ import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "
 
 import ButtonOK from "../../common/ButtonOK/ButtonOK";
 import Button from "../../common/Button/Button";
-import DeleteButton from '../../common/DeleteButton/DeleteButton';
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
 import styles from './GameGrocery.module.scss';
 import utils from '../../../utils/gameGroceryUtils';
 import playerUtils from "../../../utils/playerUtils";
 import GroceryProduct from "../../common/GroceryProduct/GroceryProduct";
+import Tips from "../../views/Tips/Tips";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faShop, faList, faAppleWhole, faCarrot, faMultiply, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useDrop } from "react-dnd";
@@ -33,6 +33,8 @@ const GameGrocery = () => {
   const [ fruits, setFruits ] = useState([]);
   const [ vegetables, setVegetables ] = useState([]);
   const [ hidden, setHidden ] = useState(false);
+  const [ tip, setTip ] = useState(false);
+  const [ open, setOpen ] = useState(false);
 
 
   const [ { isOverCart }, dropInCart ] = useDrop(() => ({
@@ -65,11 +67,16 @@ const GameGrocery = () => {
 
   const addProductToCart = (id) => {
     const productList = utils.shop.filter( product => id === product.id);
-    setCart( (cart) => [...cart, productList[0]]);
+    setCart( (cart) => [ productList[0], ...cart ]);
   };
 
   const deleteProductFromCart = ([ product ]) => {
     setCart(cart.filter( item => !product.item ))
+  }
+
+  const handleCart = () => {
+    setOpen(!open);
+    console.log('koszyk', open);
   }
 
   const root = document.querySelector(':root');
@@ -80,13 +87,20 @@ const GameGrocery = () => {
   return(
     <div className={styles.grocery}>
       <ActivePlayer />
-      <Button
+      { !hidden && 
+          <Tips 
+            content={<p>Wpisz tu instrukcję gry</p>} 
+            onClick={() => setTip(!tip)}
+            tip={tip}
+          /> 
+        }
+
+      { !hidden && <Button
         content='Start'
         name='setupBtn'
-        hidden={hidden}
         onClick={() => utils.setGameTurn(setFruits, setVegetables, setHidden)}
-      />
-      <section className={styles.grocery__board}>
+      />}
+      { hidden && <section className={styles.grocery__board}>
         <div className={clsx(styles.grocery__shopElement, styles.grocery__list)}>
           <div className={styles.grocery__icon}><FontAwesomeIcon icon={faList} /></div>
           {
@@ -96,15 +110,14 @@ const GameGrocery = () => {
             : 
             null}
         </div>
-        <div className={clsx(styles.grocery__shopElement, styles.grocery__cart)} ref={dropInCart} >
-          <div className={styles.grocery__icon}>
-          <FontAwesomeIcon icon={faShoppingBasket} />
-          <div className={styles.grocery__counter}> { cart.length } </div>
-
+        <div className={clsx(styles.grocery__shopElement, styles.grocery__cart, open && styles.open )} ref={dropInCart} >
+          <div className={clsx(styles.grocery__icon, styles.grocery__cartIcon)} onClick={handleCart}>
+            <FontAwesomeIcon icon={faShoppingBasket} />
+            <div className={styles.grocery__counter}> { cart?.length } </div>
           </div>
-          {cart.map( ( cartProduct ) => 
+          {cart?.map( ( cartProduct ) => 
             <div key={uniqid()} className={styles.grocery__cartProduct}>
-              <GroceryProduct product={cartProduct} size='30px' />
+              <GroceryProduct product={cartProduct} size='40px' />
               <p>{cartProduct.name}</p>
               <button 
                 className={styles.grocery__delete}
@@ -123,8 +136,8 @@ const GameGrocery = () => {
             <GroceryProduct key={product.id} product={product} />
           )}
         </div>
-      </section>
-      <ButtonOK onClick={(e) => utils.submitSolution(e, vegetables, fruits, cart, activePlayer, updatePlayer, setCart, setFruits, setVegetables, setHidden)}/>
+      </section> }
+      { cart?.length > 0 && <ButtonOK onClick={(e) => utils.submitSolution(e, vegetables, fruits, cart, activePlayer, updatePlayer, setCart, setFruits, setVegetables, setHidden)}/>}
     </div>
   )
 };

@@ -5,6 +5,7 @@ import Button from "../../common/Button/Button";
 import ButtonOK from '../../common/ButtonOK/ButtonOK';
 import Option from "../../common/Option/Option";
 import ActivePlayer from "../../features/ActivePlayer/ActivePlayer";
+import Tips from "../../views/Tips/Tips";
 
 import styles from './GameDots.module.scss';
 import utils from '../../../utils/gameDotsUtils';
@@ -29,17 +30,25 @@ const GameDots = () => {
   const [ isCorrect, setIsCorrect ] = useState();
   const [ isWrong, setIsWrong ] = useState();
   const [ answer, setAnswer ] = useState();
+  const [ tip, setTip ] = useState(false);
 
-  console.log('dots', dots, options, isCorrect);
 
   if (activePlayer) {
     return(
       <div className={styles.dots}>
         <ActivePlayer />
         { !dots.length && 
+          <Tips 
+            content={<p>Wpisz tu instrukcję gry</p>} 
+            onClick={() => setTip(!tip)}
+            tip={tip}
+          /> 
+        }
+
+        { !dots.length && 
             <Button
               name='setupBtn'
-              content={'Wylosuj bańki'}
+              content='Start'
               onClick={ () => {utils.setGameTurn(setDots, setOptions)}}
             /> 
         }
@@ -61,39 +70,39 @@ const GameDots = () => {
               }
             </div>
           }
-        <div className={styles.dots__options}>
-          <Option 
-            key={1} 
-            content={options[0]} 
-            dots={dots.length} 
-            onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
-            isCorrect={isCorrect}
-            isWrong={isWrong}
-            answer={answer}
-          />
-          <Option 
-            key={2} 
-            content={options[1]}
-            dots={dots.length} 
-            onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
-            isCorrect={isCorrect}
-            isWrong={isWrong}
-            answer={answer}
-          />
-          <Option 
-            key={3} 
-            content={options[2]} 
-            dots={dots.length} 
-            onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
-            isCorrect={isCorrect}
-            isWrong={isWrong}
-            answer={answer}
-          />
-
-        </div>
+          { options.length > 0 && 
+            <div className={styles.dots__options}>
+              <Option 
+                key={1} 
+                content={options[0]} 
+                dots={dots.length} 
+                onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
+                isCorrect={isCorrect}
+                isWrong={isWrong}
+                answer={answer}
+              />
+              <Option 
+                key={2} 
+                content={options[1]}
+                dots={dots.length} 
+                onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
+                isCorrect={isCorrect}
+                isWrong={isWrong}
+                answer={answer}
+              />
+              <Option 
+                key={3} 
+                content={options[2]} 
+                dots={dots.length} 
+                onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
+                isCorrect={isCorrect}
+                isWrong={isWrong}
+                answer={answer}
+              />
+            </div>
+          }
         </section>
-        <ButtonOK onClick={() => utils.addPoints(isCorrect, activePlayer, updatePlayer)} />
-
+        { answer > 0 && <ButtonOK onClick={() => utils.addPoints(isCorrect, activePlayer, updatePlayer)} />}
       </div>
     );
   }

@@ -7,7 +7,6 @@ import NonFound from './components/pages/NonFound/NonFound';
 import Header from './components/views/Header/Header';
 import PlayersList from './components/pages/PlayersList/PlayersList';
 import AddPlayerForm from './components/features/AddPlayerForm/AddPlayerForm';
-import HowToPlay from './components/pages/HowToPlay/HowToPlay';
 import GameNumber from './components/pages/GameNumber/GameNumber';
 import GameDots from './components/pages/GameDots/GameDots';
 import GameGrocery from './components/pages/GameGrocery/GameGrocery';
@@ -29,7 +28,6 @@ const App = () => {
           <Route path='/game/number/:id' element={<GameNumber />} />
           <Route path='/game/dots/:id' element={<GameDots />} />
           <Route path='/game/grocery/:id' element={<GameGrocery />} />
-          <Route path='/howtoplay' element={<HowToPlay />} />
           <Route path='*' element={<NonFound />} />
         </Routes>
       </main>

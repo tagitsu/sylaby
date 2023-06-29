@@ -54,6 +54,8 @@ const AddPlayerForm = () => {
       xp: 0
     };
   }
+  console.log('kolor', newPlayerColor.current.value);
+  console.log('nowy gracz', newPlayer);
 
   
 
@@ -85,12 +87,23 @@ const AddPlayerForm = () => {
         <span>Wpisz imię zawierające 2 - 15 znaków (nie używaj znaków specjalnych). </span>
       </fieldset>
       <fieldset className={styles.form__section}>
+        <legend className={styles.form__legend}>Wybierz swój kolor</legend>
+          <input 
+            className={clsx(styles.form__input, styles.form__color)} 
+            ref={newPlayerColor}
+            defaultValue='#FFFF66'
+            type='color' 
+            name='playerColor' 
+            required={true}
+          />
+      </fieldset>
+      <fieldset className={styles.form__section}>
         <legend className={styles.form__legend}>Wybierz ulubioną postać</legend>
         {playerProfile.characters.map(
           character => 
-          <div key={character.id} className={styles.form__character}>
-            <label htmlFor={character.id}>
-              <img className={clsx(styles.form__image, choosenIcon?.id === character.id && styles.form__choosen)} src={`${process.env.PUBLIC_URL}/images/characters/${character.icon}`} alt={`${character.name} icon`} />
+          <div key={character.id} className={clsx(styles.form__character, choosenIcon?.id === character.id && styles.form__choosen)}>
+            <label htmlFor={character.id} className={clsx(styles.form__image)}>
+              <img src={`${process.env.PUBLIC_URL}/images/characters/${character.icon}`} alt={`${character.name} icon`} />
             </label>
             <input 
               className={styles.form__checkbox}
@@ -105,21 +118,8 @@ const AddPlayerForm = () => {
 
           </div>
         )}
-
-      </fieldset>
-      <fieldset className={styles.form__section}>
-        <legend className={styles.form__legend}>Wybierz swój kolor</legend>
-          <input 
-            className={clsx(styles.form__input, styles.form__color)} 
-            ref={newPlayerColor}
-            defaultValue='#FFFF66'
-            type='color' 
-            name='playerColor' 
-            required={true}
-          />
       </fieldset>
       <Button type='submit' content='Dodaj nowego gracza'></Button>
-      {/* <button type='button' onClick={() => console.log('wybór', newPlayerName.current.value, newPlayerIcon, newPlayerColor.current.value)}>Pokaż w konsoli</button> */}
     </form>
   );
 };

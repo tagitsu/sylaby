@@ -10,6 +10,7 @@ import DeleteButton from "../../common/DeleteButton/DeleteButton";
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import Tips from "../../views/Tips/Tips";
+import Spinner from "../../common/Spinner/Spinner";
 
 import styles from './PlayerProfile.module.scss';
 
@@ -19,15 +20,12 @@ const PlayerProfile = () => {
 
   const { data: players, isLoading: playersLoading, isSuccess: playersOK, isFetching: playersFetching } = useGetPlayersQuery();
 
-  if (playersLoading) console.log('loading...');
-
   let activePlayer, playerLevel;
   if (playersOK) {
     [ activePlayer ] = players.filter( player => player.isActive);
   }
 
-  if (!activePlayer && playersOK) console.log('brak gracza');
-
+  console.log(`profil gracza ID${playerID.id} - status graczy`, players?.map( player => player.isActive));
 
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   if (levelsOK && activePlayer) {
@@ -41,9 +39,6 @@ const PlayerProfile = () => {
   const [ warning, setWarning ] = useState(false);
   const [ colorModal, setColorModal ] = useState(false);
   const [ choosenColor, setChoosenColor ] = useState('');
-
-
-
 
   let changeColor, badges;
   if (activePlayer && levelsOK) {
@@ -72,7 +67,11 @@ const PlayerProfile = () => {
           </div>
         )}
       </div>
+
+  console.log( 'profil gracza', players.filter( player => player.isActive ));
+
   }
+
 
   if (activePlayer && levelsOK) {
     return(
@@ -136,12 +135,12 @@ const PlayerProfile = () => {
               accept={deletePlayer}
               acceptArg={activePlayer.id}
               player={activePlayer}
-              color='tomato'
+              color='#fc7176'
               text={
-                <p>
-                  <FontAwesomeIcon icon={faWarning} className={styles.modal__icon}></FontAwesomeIcon>
-                  Czy na pewno chcesz usunąć swój profil gracza? Zostaną skasowane wszystkie punkty i odznaki. Nie da się tego cofnąć.
-                </p>
+                <div>
+                  <FontAwesomeIcon icon={faWarning} />
+                  <p>Czy na pewno chcesz usunąć swój profil gracza? Zostaną skasowane wszystkie punkty i odznaki. Nie da się tego cofnąć.</p>
+                </div>
               }
               acceptBtn={
                 <p>Tak, chcę skasować profil gracza {activePlayer.name} </p>
@@ -174,14 +173,22 @@ const PlayerProfile = () => {
     );
   } else if (playersLoading) {
     return (
-      <div> Trwa pobieranie danych gracza ...</div>
+      <Spinner content='Trwa pobieranie danych gracza ...' />
     );
   
   } else if (playersOK && !playersFetching && !playersLoading && !activePlayer) {
     return (
-      <div>
-        Profil gracza o numerze {playerID.id} nie może zostać pobrany. Mógł zostać usunięty.
-        Możesz <Link to='/playerslist'> wybrać </Link> z listy graczy inną postać lub <Link to='/newPlayer'>stworzyć zupełnie nową</Link>.
+      <div className={styles.profile__nonFound}>
+        <p>Profil gracza o numerze {playerID.id} nie może zostać pobrany.</p>
+        <p>Możesz <Link to='/playerslist'> wybrać </Link> z listy graczy inną postać lub <Link to='/newPlayer'>stworzyć zupełnie nową</Link>.</p>
+        <div className={styles.profile__buttons}>
+          <div className={styles.profile__button}>
+          <Link to='/playerslist'> lista graczy </Link>
+          </div>
+          <div className={styles.profile__button}>
+            <Link to='/playerslist'> dodaj nowego gracza </Link>
+          </div>
+        </div>
       </div>
     );
   }

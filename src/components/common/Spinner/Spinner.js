@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 import styles from '../Spinner/Spinner.module.scss';
 
 const Spinner = (props) => {

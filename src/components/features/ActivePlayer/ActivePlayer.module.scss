@@ -1,12 +1,11 @@
 @import '/src/styles/settings.scss';
 
 .current {
+  border: 1px solid hotpink;
   height: calc($base-size * 7.3);
-  position: relative;
-  margin: 0 0 calc($base-size * 2) 0;
+  padding: $base-size calc($base-size * 2);
   display: flex;
-  align-self: flex-end;
-  justify-self: flex-start;
+  position: relative;
 
   &__icon {
     height: 100%;
@@ -36,8 +35,12 @@
 
 @media (max-width: 568px) {
   .current {
-    height: calc($base-size * 5);
-    align-self: center;
+    //height: calc($base-size * 5);
+    width: 100%;
+
+    &__bar {
+      width: 100%;
+    }
   }
 }
 

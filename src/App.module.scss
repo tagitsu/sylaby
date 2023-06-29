@@ -9,10 +9,11 @@
 
 
   &__main {
-    min-height: 90vh;
+    height: 100vh;
     padding: $base-size;
     overflow: auto;
     border: 3px solid blue;
+    position: relative;
   }
 }
 

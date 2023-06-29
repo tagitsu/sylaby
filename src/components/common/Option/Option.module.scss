@@ -19,7 +19,7 @@
 
 .option:hover {
   cursor: pointer;
-  border-color: $color-yellow;
+  //border-color: $color-yellow;
   transform: scale(1.03);
 }
 
@@ -47,5 +47,5 @@
 
 .clicked {
   //background-color: $color-yellow;
-  box-shadow: 0 0 10px 10px $color-light;
+  box-shadow: 0 0 10px 6px $color-light;
 }

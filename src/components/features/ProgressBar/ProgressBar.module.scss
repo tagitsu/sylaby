@@ -6,6 +6,7 @@
 }
 
 .prog {
+  border: 1px solid khaki;
   display: flex;
   align-items: center;
 
@@ -16,9 +17,7 @@
     border-radius: $radius;
     overflow: hidden;
     position: relative;
-    margin-bottom: $base-size;
-    position: relative;
-
+    //margin-bottom: $base-size;
   }
   
   &__bar {
@@ -35,5 +34,22 @@
     font-size: $font-content;
     font-weight: 700;
     text-shadow: $text-shadow;
+  }
+}
+
+@media (max-width: 568px) {
+  .prog {
+    padding: 0 $base-size;
+    width: 100%;
+
+    &__container {
+      width: 100%;
+      border-radius: $radius;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: $base-size;
+      position: relative;
+  
+    }
   }
 }
