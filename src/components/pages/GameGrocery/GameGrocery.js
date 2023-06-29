@@ -10,7 +10,7 @@ import playerUtils from "../../../utils/playerUtils";
 import GroceryProduct from "../../common/GroceryProduct/GroceryProduct";
 import Tips from "../../views/Tips/Tips";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBasket, faShop, faList, faAppleWhole, faCarrot, faMultiply, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket, faShop, faList, faAppleWhole, faCarrot, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useDrop } from "react-dnd";
 import clsx from "clsx";
 import uniqid from 'uniqid';
@@ -89,7 +89,7 @@ const GameGrocery = () => {
       <ActivePlayer />
       { !hidden && 
           <Tips 
-            content={<p>Wpisz tu instrukcję gry</p>} 
+            content={<p>Wciśnij start i zobacz swoją listę zakupów. Przeczytaj jakiego koloru i ile warzyw oraz owoców należy kupić. Warzywa i owoce przeciągaj ze sklepowej półki prosto do koszyka. Produkty mogą się powtarzać. Gdy do koszyka wrzucisz więcej produktów niż chcesz kupić, można je skasować naciskając ikonę kosza. Jeśli chcesz zakończyć zakupy kliknij przycisk OK. </p>} 
             onClick={() => setTip(!tip)}
             tip={tip}
           /> 

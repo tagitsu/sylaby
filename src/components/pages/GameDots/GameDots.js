@@ -39,7 +39,7 @@ const GameDots = () => {
         <ActivePlayer />
         { !dots.length && 
           <Tips 
-            content={<p>Wpisz tu instrukcję gry</p>} 
+            content={<p>Wciśnij start aby na planszy pojawiły się kolorowe bańki. Twoim zadaniem jest policzenie ich. Wciśnij przycisk z liczbą baniek. Jeśli Twoja odpowiedź jest prawidłowa zaznaczony przycisk podświetli się na zielono, jeśli błędna, na czerwono. Aby przejść dalej naciśnij przycisk OK. </p>} 
             onClick={() => setTip(!tip)}
             tip={tip}
           /> 

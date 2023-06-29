@@ -5,7 +5,6 @@
   display: grid;
   grid-template-columns: 1fr auto;
   font-size: $font-content;
-  //text-align: justify;
   line-height: 1.5;
   position: absolute;
   top: 10px;
@@ -15,7 +14,8 @@
   &__text {
     width: fit-content;
     padding: $base-size;
-    backdrop-filter: brightness(160%) blur(5px);
+    background-color: $color-light;
+    //backdrop-filter: brightness(100%) blur(115px);
     overflow: hidden;
     border-radius: $radius;
     p {

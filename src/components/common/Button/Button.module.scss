@@ -50,6 +50,15 @@
   font-size: calc($base-size * 2);
 }
 
+.games {
+  width: calc($base-size * 2.5);
+  height: calc($base-size * 2.5);
+  padding: 0;
+  margin: 0;
+  font-size: calc($base-size * 1.5);
+  border-radius: 50%;
+}
+
 @media (max-width: 576px) {
   .button {
     width: calc($base-size * 4);
@@ -70,4 +79,12 @@
     place-self: end;
   }
   
+  .games {
+    width: calc($base-size * 2.5);
+    height: calc($base-size * 2.5);
+    padding: 0;
+    margin: 0;
+    font-size: calc($base-size * 1.5);
+    border-radius: 50%;
+  }
 }

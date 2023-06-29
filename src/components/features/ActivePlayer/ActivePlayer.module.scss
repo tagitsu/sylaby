@@ -31,6 +31,12 @@
     padding: 0 $base-size;
   }
 
+  &__play {
+    position: absolute;
+    left: 0%;
+    top: 0;
+  }
+
 }
 
 @media (max-width: 568px) {
@@ -40,6 +46,12 @@
 
     &__bar {
       width: 100%;
+    }
+
+    &__play {
+      left: 93%;
+      right: 0;
+      top: 0;
     }
   }
 }

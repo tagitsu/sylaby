@@ -213,16 +213,20 @@
       "name": "test2",
       "icon": "maui.png",
       "isActive": true,
-      "level": 1,
+      "level": 2,
       "color": "#667fff",
       "title": "głoskująca myszka",
       "badges": [
         {
           "name": "mouse",
           "text": "głoskująca myszka"
+        },
+        {
+          "name": "cat",
+          "text": "sylabujący kotek"
         }
       ],
-      "xp": 7
+      "xp": 21
     }
   ],
   "levels": [
