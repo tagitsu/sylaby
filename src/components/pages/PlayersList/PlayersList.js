@@ -30,7 +30,6 @@ const PlayersList = () => {
   }, []);
 
   const changeActiveStatus = (player) => {
-    cleanStatus();
     updatePlayer({ ...player, isActive: true});
   }
 

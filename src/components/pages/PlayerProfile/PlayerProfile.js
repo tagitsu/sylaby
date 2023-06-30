@@ -72,20 +72,32 @@ const PlayerProfile = () => {
 
   }
 
+  const handleDelete = () => {
+    setTip(false);
+    setWarning(true);
+  }
+
 
   if (activePlayer && levelsOK) {
     return(
       <div key={activePlayer.id} className={styles.profile}>
         <div className={styles.profile__box}>
-          <Tips 
-            content={
-              <div>
-                <p>Klikając dwukrotnie na ikonę postaci możesz zmienić kolor tła.</p>
-              </div>
-            }
-            onClick={() => setTip(!tip)}
-            tip={tip}
-          />
+          <div className={styles.profile__tips}>
+            <Tips 
+              content={
+                <div>
+                  <p>Klikając dwukrotnie na ikonę postaci możesz zmienić kolor tła.</p>
+                  <p>Możesz usunąć swoją postać, ale jest to nieodwracalne. Zostaną skasowane wszystkie punkty oraz odznaki otrzymane w czasie gry. Żeby usunąć postać naciśnij ikoną kosza poniżej.</p>
+                  <DeleteButton 
+                    content={ <FontAwesomeIcon icon={faTrash} /> }
+                    onClick={handleDelete}
+                  />
+                </div>
+              }
+              onClick={() => setTip(!tip)}
+              tip={tip}
+            />
+          </div>
           <div className={styles.profile__icon} onDoubleClick={ () => setColorModal(true) }>
             <PlayerIcon
               icon={activePlayer.icon} 
@@ -113,62 +125,50 @@ const PlayerProfile = () => {
             <p>Zdobyte punkty: { activePlayer.level !== 1 ? activePlayer.xp + playerLevel.nextLevel : activePlayer.xp }</p>
           </div>
           <div className={styles.profile__info}>
-            <p>Level: {activePlayer.level}</p>
+            <p>Poziom: {activePlayer.level}</p>
             <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
           </div>
           <div className={styles.profile__info}>
             <p>Odznaki:</p> {badges}
           </div>
-          
-            
-          <div className={styles.profile__delete}>
-            <DeleteButton 
-            content={ <FontAwesomeIcon icon={faTrash} /> }
-            onClick={() => setWarning(true)}
-          />
-          </div>
-          
-
-          { warning && 
-            <Modal 
-              cancel={setWarning}
-              accept={deletePlayer}
-              acceptArg={activePlayer.id}
-              player={activePlayer}
-              color='#fc7176'
-              text={
-                <div>
-                  <FontAwesomeIcon icon={faWarning} />
-                  <p>Czy na pewno chcesz usunąć swój profil gracza? Zostaną skasowane wszystkie punkty i odznaki. Nie da się tego cofnąć.</p>
-                </div>
-              }
-              acceptBtn={
-                <p>Tak, chcę skasować profil gracza {activePlayer.name} </p>
-              }
-            />
-          }
-          
-          { colorModal &&
-            <Modal
-              accept={changeColor}
-              color={choosenColor}
-              cancel={setColorModal}
-              text={
-                  <input 
-                    type='color' 
-                    defaultValue={activePlayer.color} 
-                    onChange={(e) => setChoosenColor(e.target.value)} 
-                  />
-              }
-              acceptBtn={
-                <p>Zmień kolor</p>
-              }
-            />
-          }
-          
         </div>
 
-        
+        { warning && 
+          <Modal 
+            cancel={setWarning}
+            accept={deletePlayer}
+            acceptArg={activePlayer.id}
+            player={activePlayer}
+            color='#fc7176'
+            text={
+              <div>
+                <FontAwesomeIcon icon={faWarning} />
+                <p>Czy na pewno chcesz usunąć swój profil gracza? Zostaną skasowane wszystkie punkty i odznaki. Nie da się tego cofnąć.</p>
+              </div>
+            }
+            acceptBtn={
+              <p>Tak, chcę skasować profil gracza {activePlayer.name} </p>
+            }
+          />
+        }
+          
+        { colorModal &&
+          <Modal
+            accept={changeColor}
+            color={choosenColor}
+            cancel={setColorModal}
+            text={
+                <input 
+                  type='color' 
+                  defaultValue={activePlayer.color} 
+                  onChange={(e) => setChoosenColor(e.target.value)} 
+                />
+            }
+            acceptBtn={
+              <p>Zmień kolor</p>
+            }
+          />
+        }
       </div>
     );
   } else if (playersLoading) {

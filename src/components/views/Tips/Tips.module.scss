@@ -7,15 +7,14 @@
   font-size: $font-content;
   line-height: 1.5;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 0;
+  right: 0;
   z-index: 2;
 
   &__text {
     width: fit-content;
     padding: $base-size;
     background-color: $color-light;
-    //backdrop-filter: brightness(100%) blur(115px);
     overflow: hidden;
     border-radius: $radius;
     p {

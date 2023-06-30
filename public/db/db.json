@@ -60,8 +60,8 @@
       "id": 13,
       "name": "Julia",
       "icon": "spongebob.png",
-      "isActive": true,
-      "level": 3,
+      "isActive": false,
+      "level": 4,
       "color": "#fbfe4d",
       "title": "głoskująca myszka",
       "badges": [
@@ -76,9 +76,13 @@
         {
           "name": "fish",
           "text": "zwinna rybka"
+        },
+        {
+          "name": "owl",
+          "text": "mądra sowa"
         }
       ],
-      "xp": 65
+      "xp": 0
     },
     {
       "id": 16,
@@ -245,26 +249,10 @@
       "xp": 0
     },
     {
-      "id": 30,
-      "name": "test2",
-      "icon": "elsa.png",
-      "isActive": false,
-      "level": 1,
-      "color": "#ffff66",
-      "title": "głoskująca myszka",
-      "badges": [
-        {
-          "name": "mouse",
-          "text": "głoskująca myszka"
-        }
-      ],
-      "xp": 0
-    },
-    {
       "id": 31,
       "name": "test3",
       "icon": "r2d2_c3po.png",
-      "isActive": false,
+      "isActive": true,
       "level": 1,
       "color": "#c65d5d",
       "title": "głoskująca myszka",
@@ -274,7 +262,7 @@
           "text": "głoskująca myszka"
         }
       ],
-      "xp": 0
+      "xp": 1
     }
   ],
   "levels": [

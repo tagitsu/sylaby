@@ -77,20 +77,20 @@ const GameNumber = () => {
       /> }
       { hidden && <div className={styles.number__board}>
         <div className={styles.number__tips}>
-        <Tips 
-          tip={tip} 
-          onClick={() => setTip(!tip)}
-          content={
-            <div>
-              <p>Porównaj wylosowane liczby. Złap odpowiedni znak i przeciągnij go na puste pole. </p>
-              <p>
-                Jeśli masz wątpliwości która liczba jest mniejsza a która większa, wciśnij 
-                <button className={styles.number__hint} type='button' onClick={handleHint}>?</button>
-                Policz koła w zbiorach i przeciągnij odpowiedni znak.
-              </p>
-            </div>
-          }
-        /> 
+          <Tips 
+            tip={tip} 
+            onClick={() => setTip(!tip)}
+            content={
+              <div>
+                <p>Porównaj wylosowane liczby. Złap odpowiedni znak i przeciągnij go na puste pole. </p>
+                <p>
+                  Jeśli masz wątpliwości która liczba jest mniejsza a która większa, wciśnij 
+                  <button className={styles.number__hint} type='button' onClick={handleHint}>?</button>
+                  Policz koła w zbiorach i przeciągnij odpowiedni znak.
+                </p>
+              </div>
+            }
+          /> 
         </div>
         <div className={styles.number__task}>
           <div className={styles.number__box}>
