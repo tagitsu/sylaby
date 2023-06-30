@@ -7,12 +7,7 @@
   display: grid;
   grid-template-rows: calc($base-size * 7.3) auto calc($base-size * 4);
   justify-items: center;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: flex-start;
-  border: 1px solid blue;
-  overflow: hidden;
+  //overflow: hidden;
 
 
   &__board {
@@ -20,7 +15,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid green;
   }
 
   &__dots {
@@ -30,7 +24,6 @@
     position: relative;
     background-color: $color-light;
     border-radius: $radius;
-    border: 1px solid yellow;
   }
 
   &__dot {

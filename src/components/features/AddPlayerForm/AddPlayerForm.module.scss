@@ -4,15 +4,15 @@
   display: grid;
   border: 4px solid $color-light;
   border-radius: $radius;
-  margin: calc($base-size * 4) calc($base-size * 8);
+  margin: $base-size;
 
-  &__section {
+  &__section, &__characters {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     justify-items: center;
     align-items: center;
     gap: $base-size;
-    margin: calc($base-size * 2);
+    margin: $base-size;
     padding: $base-size;
     border: 2px solid $color-light;
     border-radius: $radius;
@@ -28,19 +28,25 @@
     border: none;
     color: $color-light;
     text-align: center;
-    grid-column: 2 / 4;
+    grid-column: 1 / 4;
     padding: calc($base-size / 2);
     width: 100%;
     height: calc($base-size * 5);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid pink;
   }
 
-  span {
+  &__info {
+    margin: 0 auto;
+    grid-column: span 2;
     color: $color-warning;
-    font-size: calc($base-size * 1.2);
+    font-size: calc($base-size * 1);
+    text-align: center;
     display: none;
   }
-  
-  input:invalid[focused='true'] ~ span {
+
+  &__input:invalid[focused='true'] ~ &__info {
     display: block;
   }
 
@@ -62,6 +68,7 @@
     align-items: center;
     height: 100px;
     width: 100px;
+    transition: $transition;
   }
 
   &__character:hover {
@@ -69,6 +76,12 @@
     border-radius: $radius;
     box-shadow: 0 0 calc($base-size * 4) rgba(255, 255, 255, 0.9) inset;
     cursor: pointer;
+  }
+
+  &__character > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   &__choosen {
@@ -80,17 +93,23 @@
     display: none;
   }
 
-  &__image {
-    width: 100%;
-    height: 100%;
-    transition: $transition;
-  }
-
-  &__image > img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  &__submit {
+    justify-self: center;
   }
 }
 
+@media (max-width: 780px) and (orientation: landscape) {
 
+  .form {
+    grid-template-columns: auto auto;
+
+    &__characters {
+      grid-column: 1 / 3;
+    }
+
+    &__submit {
+      grid-column: 1 / 3;
+      justify-self: center;
+    }
+  }
+}

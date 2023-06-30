@@ -1,7 +1,6 @@
 @import '/src/styles/settings.scss';
 
 .current {
-  border: 1px solid hotpink;
   height: calc($base-size * 7.3);
   padding: $base-size calc($base-size * 2);
   display: flex;
@@ -41,7 +40,6 @@
 
 @media (max-width: 568px) {
   .current {
-    //height: calc($base-size * 5);
     width: 100%;
 
     &__bar {

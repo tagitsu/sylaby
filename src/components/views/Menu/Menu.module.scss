@@ -9,10 +9,6 @@
   justify-content: flex-end;
   align-items: center;
 
-  * {
-    border: 1px dotted black;
-  }
-
   &__button {
     width: calc($base-size * 3);
     height: calc($base-size * 2);
@@ -27,9 +23,10 @@
 
   &__list {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
+    gap: $base-size;
   }
 
   &__item {
@@ -43,7 +40,6 @@
   }
 
   &__item:hover {
-    //box-shadow: 0 0 13px 13px violet inset;
     color: $color-indigo;
   }
 }

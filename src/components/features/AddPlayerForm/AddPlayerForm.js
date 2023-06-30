@@ -75,7 +75,7 @@ const AddPlayerForm = () => {
         <legend className={styles.form__legend}>Wpisz swoje imię</legend>
         <input 
           ref={newPlayerName}
-          className={styles.form__input} 
+          className={clsx(styles.form__input, styles.form__name)} 
           type='text' 
           id='name' 
           name='playerName'
@@ -84,7 +84,7 @@ const AddPlayerForm = () => {
           required={true}
           onBlur={handleFocus}
         />
-        <span>Wpisz imię zawierające 2 - 15 znaków (nie używaj znaków specjalnych). </span>
+        <span className={styles.form__info}>Wpisz imię zawierające 2 - 15 znaków (nie używaj znaków specjalnych). </span>
       </fieldset>
       <fieldset className={styles.form__section}>
         <legend className={styles.form__legend}>Wybierz swój kolor</legend>
@@ -96,15 +96,15 @@ const AddPlayerForm = () => {
             name='playerColor' 
             required={true}
           />
+          <span className={styles.form__info}>Wybierz kolor dla swojej postaci. </span>
+
       </fieldset>
-      <fieldset className={styles.form__section}>
+      <fieldset className={(styles.form__section, styles.form__characters)}>
         <legend className={styles.form__legend}>Wybierz ulubioną postać</legend>
         {playerProfile.characters.map(
           character => 
-          <div key={character.id} className={clsx(styles.form__character, choosenIcon?.id === character.id && styles.form__choosen)}>
-            <label htmlFor={character.id} className={clsx(styles.form__image)}>
-              <img src={`${process.env.PUBLIC_URL}/images/characters/${character.icon}`} alt={`${character.name} icon`} />
-            </label>
+          <label htmlFor={character.id} key={character.id} className={clsx(styles.form__character, choosenIcon?.id === character.id && styles.form__choosen)}>
+            <img src={`${process.env.PUBLIC_URL}/images/characters/${character.icon}`} alt={`${character.name} icon`} />
             <input 
               className={styles.form__checkbox}
               type='radio' 
@@ -114,12 +114,14 @@ const AddPlayerForm = () => {
               onChange={(e) => setNewPlayerIcon(e.target.value)}
               required={true}
             />
-            <span>Zaznacz ikonę postaci, którą chcesz wybrać.</span>
-
-          </div>
+          </label>
+          
         )}
+        <span className={styles.form__info}>Zaznacz ikonę postaci, którą chcesz wybrać.</span>
       </fieldset>
-      <Button type='submit' content='Dodaj nowego gracza'></Button>
+      <div className={styles.form__submit}>
+        <Button type='submit' content='Dodaj nowego gracza'></Button>
+      </div>
     </form>
   );
 };

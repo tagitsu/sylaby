@@ -6,7 +6,6 @@
 }
 
 .prog {
-  border: 1px solid khaki;
   display: flex;
   align-items: center;
 
@@ -17,7 +16,6 @@
     border-radius: $radius;
     overflow: hidden;
     position: relative;
-    //margin-bottom: $base-size;
   }
   
   &__bar {
@@ -49,7 +47,6 @@
       position: relative;
       margin-bottom: $base-size;
       position: relative;
-  
     }
   }
 }

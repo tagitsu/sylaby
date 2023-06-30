@@ -5,14 +5,11 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
-
 
   &__main {
     height: 100vh;
     padding: $base-size;
     overflow: auto;
-    border: 3px solid blue;
     position: relative;
   }
 }
