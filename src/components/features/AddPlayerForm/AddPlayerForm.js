@@ -1,20 +1,40 @@
 import styles from './AddPlayerForm.module.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
-import { useGetPlayersQuery, useGetLevelsQuery, useAddPlayerMutation } from '../../../api/apiSlice';
+import { useGetLevelsQuery } from '../../../api/apiSlice';
 import { useNavigate } from 'react-router';
 import playerProfile from '../../../utils/playerUtils';
 import playerUtils from '../../../utils/playerUtils';
 import Button from '../../common/Button/Button';
+import { doc, setDoc, addDoc, collection, getDocs } from 'firebase/firestore';
+import { db } from '../../../firebase-config';
 
-const AddPlayerForm = () => {
+const AddPlayerForm = ({ user }) => {
 
   const navigate = useNavigate();
 
-  const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
+  // nazwa zmiennej players musi pozstać, ale będą props przekazywane z listy graczy
+  //const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
+  const [ players, setPlayers ] = useState([]);
+
+  useEffect(() => {
+    const getUserPlayers = async () => {
+      const players = await getDocs(collection(db, `users/${user}/players`));
+      players.forEach( player => {
+        console.log(`To jest ${player.id}`)
+        setPlayers(players.docs.map( doc => ({...doc.data(), id: doc.id })));
+      })
+    };
+    getUserPlayers();
+  }, [user]);
+
+  console.log('new player form', user);
+
+  // levels nad z api
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
 
-  const [ addPlayer ] = useAddPlayerMutation();
+  // addPlayer jako nazwa musi pozostać, ale będzie to funkcja dodajaca doc do kolekcji players w firestore
+  //const [ addPlayer ] = useAddPlayerMutation();
 
   const [ newPlayerIcon, setNewPlayerIcon ] = useState('');
   const newPlayerName = useRef('');
@@ -25,20 +45,25 @@ const AddPlayerForm = () => {
   const [ choosenIcon ] = playerUtils.characters.filter( icon => icon.icon === newPlayerIcon );
 
   let currentPlayersIDs, newPlayerID, firstLevel, newPlayer;
-  if (playersOK && levelsOK) {
+  
+  if (levelsOK) {
 
     const sorter = (a, b) => {
       return a - b;
     };
 
-    currentPlayersIDs = players.map( player => player.id );
-    currentPlayersIDs.sort(sorter);
-    newPlayerID = currentPlayersIDs[currentPlayersIDs.length - 1] + 1;
+    if (players.length) {
+      currentPlayersIDs = players.map( player => Number(player.id) );
+      currentPlayersIDs.sort(sorter);
+      newPlayerID = currentPlayersIDs[currentPlayersIDs.length - 1] + 1;
+    } else {
+      newPlayerID = 1;
+    }
 
     [ firstLevel ] = levels.filter( level => level.id === 1);
 
     newPlayer = {
-      id: newPlayerID,
+      id: String(newPlayerID),
       name: newPlayerName.current.value,
       icon: newPlayerIcon,
       isActive: false,
@@ -54,18 +79,33 @@ const AddPlayerForm = () => {
       xp: 0
     };
   }
-  console.log('kolor', newPlayerColor.current.value);
-  console.log('nowy gracz', newPlayer);
 
-  
+  console.log(
+    'players', players,
+    'currentPlayerIds', currentPlayersIDs,
+    'user', user,
+    'newPlayerId', newPlayerID,
+    'path', `users/${user}/players`,
+    'imię gracza', newPlayerName.current.value
+  );
+
+  const addNewPlayer = async () => {
+    try {
+      const playersRef = collection(db, `users/${user}/players`);
+      await setDoc(doc(playersRef, String(newPlayerID)), newPlayer);
+      console.log('nowy gracz dodany do firestore');
+    } catch(error) {
+      console.error(error);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPlayer(newPlayer);
+    addNewPlayer();
     navigate('/playerslist');
-  }
+  };
 
-  const handleFocus = (e) => {
+  const handleFocus = () => {
     setFocused(true);
   };
 

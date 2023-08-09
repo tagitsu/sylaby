@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faWarning, faPlay } from '@fortawesome/free-solid-svg-icons'
 import { Link, useParams } from 'react-router-dom';
-import { useGetLevelsQuery, useGetPlayersQuery, useUpdatePlayerMutation, useDeletePlayerMutation } from "../../../api/apiSlice";
-import { useState } from "react";
+import { useGetLevelsQuery } from "../../../api/apiSlice";
+import { useState, useEffect } from "react";
 
 import Modal from "../../common/Modal/Modal";
 import Button from "../../common/Button/Button";
@@ -13,45 +13,38 @@ import Tips from "../../views/Tips/Tips";
 import Spinner from "../../common/Spinner/Spinner";
 
 import styles from './PlayerProfile.module.scss';
+import appUtils from "../../../utils/appUtils";
+import playerUtils from "../../../utils/playerUtils";
 
-const PlayerProfile = () => {
+const PlayerProfile = ({ user }) => {
 
   const playerID = useParams();
 
-  const { data: players, isLoading: playersLoading, isSuccess: playersOK, isFetching: playersFetching } = useGetPlayersQuery();
 
-  let activePlayer, playerLevel;
-  if (playersOK) {
-    [ activePlayer ] = players.filter( player => player.isActive);
-  }
-
-  console.log(`profil gracza ID${playerID.id} - status graczy`, players?.map( player => player.isActive));
+  //const [ players, setPlayers ] = useState([]);
+  const [ activePlayer, setActivePlayer ] = useState();
 
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
+
+
+  useEffect(() => {
+    //appUtils.getPlayersFromUser(user.uid, setPlayers);
+    appUtils.getActivePlayer(user, setActivePlayer);
+  }, [user]);
+
+  let playerLevel, prevLevel;
   if (levelsOK && activePlayer) {
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
+    [ prevLevel ] = levels.filter( level => activePlayer.level - 1 );
   }
-
-  const [ updatePlayer ] = useUpdatePlayerMutation();
-  const [ deletePlayer ] = useDeletePlayerMutation();
 
   const [ tip, setTip ] = useState(false);
   const [ warning, setWarning ] = useState(false);
   const [ colorModal, setColorModal ] = useState(false);
-  const [ choosenColor, setChoosenColor ] = useState('');
+  const [ chosenColor, setChosenColor ] = useState('');
 
-  let changeColor, badges;
+  let badges;
   if (activePlayer && levelsOK) {
-
-    if (activePlayer.xp >= playerLevel.nextLevel) {
-      updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0, color: choosenColor })
-    }
-
-    changeColor = () => {
-      updatePlayer({ ...activePlayer, color: choosenColor });
-      setChoosenColor('');
-    };
-
     badges =
       <div className={styles.profile__badges}>
         {levels.map( level => 
@@ -67,16 +60,12 @@ const PlayerProfile = () => {
           </div>
         )}
       </div>
-
-  console.log( 'profil gracza', players.filter( player => player.isActive ));
-
   }
 
   const handleDelete = () => {
     setTip(false);
     setWarning(true);
-  }
-
+  };
 
   if (activePlayer && levelsOK) {
     return(
@@ -122,11 +111,11 @@ const PlayerProfile = () => {
             <p>Imię gracza: {activePlayer.name}</p>
           </div>
           <div className={styles.profile__info}>
-            <p>Zdobyte punkty: { activePlayer.level !== 1 ? activePlayer.xp + playerLevel.nextLevel : activePlayer.xp }</p>
+            <p>Zdobyte punkty: { activePlayer.level !== 1 ? activePlayer.xp + prevLevel.nextLevel : activePlayer.xp }</p>
           </div>
           <div className={styles.profile__info}>
             <p>Poziom: {activePlayer.level}</p>
-            <ProgressBar xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
+            <ProgressBar user={user} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
           </div>
           <div className={styles.profile__info}>
             <p>Odznaki:</p> {badges}
@@ -136,7 +125,8 @@ const PlayerProfile = () => {
         { warning && 
           <Modal 
             cancel={setWarning}
-            accept={deletePlayer}
+            // TODO tu powinna być funkcja usuwająca dokument z firestore
+            accept={() => playerUtils.deletePlayerProfile(user.uid, activePlayer.id)}
             acceptArg={activePlayer.id}
             player={activePlayer}
             color='#fc7176'
@@ -154,14 +144,14 @@ const PlayerProfile = () => {
           
         { colorModal &&
           <Modal
-            accept={changeColor}
-            color={choosenColor}
+            accept={() => playerUtils.changeColor(user.uid, activePlayer.id, chosenColor)}
+            color={chosenColor}
             cancel={setColorModal}
             text={
                 <input 
                   type='color' 
                   defaultValue={activePlayer.color} 
-                  onChange={(e) => setChoosenColor(e.target.value)} 
+                  onChange={(e) => setChosenColor(e.target.value)} 
                 />
             }
             acceptBtn={
@@ -171,28 +161,7 @@ const PlayerProfile = () => {
         }
       </div>
     );
-  } else if (playersLoading) {
-    return (
-      <Spinner content='Trwa pobieranie danych gracza ...' />
-    );
-  
-  } else if (playersOK && !playersFetching && !playersLoading && !activePlayer) {
-    return (
-      <div className={styles.profile__nonFound}>
-        <p>Profil gracza o numerze {playerID.id} nie może zostać pobrany.</p>
-        <p>Możesz <Link to='/playerslist'> wybrać </Link> z listy graczy inną postać lub <Link to='/newPlayer'>stworzyć zupełnie nową</Link>.</p>
-        <div className={styles.profile__buttons}>
-          <div className={styles.profile__button}>
-          <Link to='/playerslist'> lista graczy </Link>
-          </div>
-          <div className={styles.profile__button}>
-            <Link to='/playerslist'> dodaj nowego gracza </Link>
-          </div>
-        </div>
-      </div>
-    );
   }
-  
-}
+};
 
 export default PlayerProfile;

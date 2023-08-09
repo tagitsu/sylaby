@@ -1,11 +1,41 @@
+import { doc, updateDoc, arrayUnion, increment, deleteDoc } from "firebase/firestore";
+import { db } from "../firebase-config";
+
 const playerUtils = {};
 
-playerUtils.levelUp = (updatePlayer, activePlayer, nextLevel) => {
+playerUtils.addPointToPlayer = async (userId, playerId) => {
+  const activePlayerDocRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
+  await updateDoc(activePlayerDocRef, {
+    xp: increment(1)
+  });
+};
+
+playerUtils.levelUp = async (userId, playerId, nextLevel) => {
+  const activePlayerDocRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
   const badge = {
     name: nextLevel.badge,
     text: nextLevel.title
   };
-  updatePlayer({ ...activePlayer, level: activePlayer.level + 1, xp: 0, badges: [ ...activePlayer.badges, badge ] })
+  await updateDoc(activePlayerDocRef, {
+    badges: arrayUnion(badge),
+    level: nextLevel.id,
+    xp: 0
+  })
+};
+
+playerUtils.changeActiveStatus = async (userId, playerId) => {
+    const playerRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
+    await updateDoc(playerRef, { isActive: true });
+}
+
+playerUtils.changeColor = async (userId, playerId, color) => {
+  const playerRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
+  await updateDoc(playerRef, { color: color });
+};
+
+playerUtils.deletePlayerProfile = async (userId, playerId) => {
+  const playerRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
+  await deleteDoc(playerRef);
 }
 
 playerUtils.characters = [

@@ -1,10 +1,9 @@
+import appUtils from "./appUtils";
+import playerUtils from "./playerUtils";
 
 const utils = {};
 
-utils.setGameTurn = (setDots, setOptions, setCorrectAnswer) => {
-
-  setDots([]);
-  setOptions([]);
+utils.setGameTurn = (setDots, setOptions) => {
 
   const numbers = [];
   const options = [];
@@ -36,18 +35,9 @@ utils.setGameTurn = (setDots, setOptions, setCorrectAnswer) => {
   setOptions(options.sort());
 };
 
-utils.submitSolution = (
-  e, 
-  answer, 
-  dots, 
-  setIsCorrect,
-  setIsWrong,
-  setAnswer
-  ) => {
-
+utils.submitSolution = (e, answer, dots, setIsCorrect, setIsWrong, setAnswer) => {
   e.preventDefault();
   setAnswer(answer);
-
   if ( answer == dots.length ) {
     setIsCorrect(true);
     setIsWrong(false);
@@ -60,13 +50,15 @@ utils.submitSolution = (
   }
 };
 
-utils.addPoints = (isCorrect, activePlayer, updatePlayer) => {
-
+utils.endGameTurn = (isCorrect, userId, playerId, setAnswer, setDots, setOptions, setIsCorrect, setIsWrong) => {
   if ( isCorrect ) {
-    updatePlayer({ ...activePlayer, xp: activePlayer.xp + 1 });
-  } else {
-    updatePlayer({ ...activePlayer, xp: activePlayer.xp });
+    playerUtils.addPointToPlayer(userId, playerId);
   }
-}
+  setAnswer();
+  setDots();
+  setOptions();
+  setIsCorrect();
+  setIsWrong();
+};
 
 export default utils;

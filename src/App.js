@@ -10,6 +10,7 @@ import AddPlayerForm from './components/features/AddPlayerForm/AddPlayerForm';
 import GameNumber from './components/pages/GameNumber/GameNumber';
 import GameDots from './components/pages/GameDots/GameDots';
 import GameGrocery from './components/pages/GameGrocery/GameGrocery';
+import SignUp from './components/features/SignUp/SignUp';
 import styles from './App.module.scss';
 
 import { auth } from './firebase-config';
@@ -21,27 +22,31 @@ const App = () => {
   const [ user, setUser ] = useState();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    })
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log('aktualny użytkownik app to', user.uid)
+        setUser(user.uid);
+      }
+    });
   }, []);
 
-  console.log('app - user', user);
+  console.log('app - user uid', user);
 
   return (
     <div className={styles.app}>
       <Header />
       <main className={styles.app__main}>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/playerslist' element={<PlayersList />} />
-          <Route path='/newplayer' element={<AddPlayerForm />} />
-          <Route path='/player/:id' element={<PlayerProfile />} />
-          <Route path='/game/:id' element={<GameMode />} />
-          <Route path='/game/syllables/:id' element={<GameSyllablesEasy />} />
-          <Route path='/game/number/:id' element={<GameNumber />} />
-          <Route path='/game/dots/:id' element={<GameDots />} />
-          <Route path='/game/grocery/:id' element={<GameGrocery />} />
+          <Route path='/' element={<Home user={user}/>} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/playerslist' element={<PlayersList user={user}/>} />
+          <Route path='/newplayer' element={<AddPlayerForm user={user}/>} />
+          <Route path='/player/:id' element={<PlayerProfile user={user}/>} />
+          <Route path='/game/:id' element={<GameMode user={user} />} />
+          <Route path='/game/syllables/:id' element={<GameSyllablesEasy user={user} />} />
+          <Route path='/game/number/:id' element={<GameNumber user={user} />} />
+          <Route path='/game/dots/:id' element={<GameDots user={user} />} />
+          <Route path='/game/grocery/:id' element={<GameGrocery user={user} />} />
           <Route path='*' element={<NonFound />} />
         </Routes>
       </main>

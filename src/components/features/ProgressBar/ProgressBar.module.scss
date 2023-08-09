@@ -6,16 +6,18 @@
 }
 
 .prog {
-  display: flex;
-  align-items: center;
+  
 
   &__container {
     background-image: linear-gradient(white, $color-light 20%, $color-light 80%, lightgray);
-    height: calc($base-size * 2);
-    width: calc($base-size * 20);
+    //width: calc($base-size * 20);
     border-radius: $radius;
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    //justify-content: center;
+
   }
   
   &__bar {

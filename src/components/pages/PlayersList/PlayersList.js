@@ -1,8 +1,7 @@
-import { useGetPlayersQuery, useUpdatePlayerMutation } from '../../../api/apiSlice';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faPlay, faRefresh } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPlay, faRefresh, faRotateRight } from '@fortawesome/free-solid-svg-icons'
 
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 import Button from '../../common/Button/Button';
@@ -10,34 +9,30 @@ import Tips from '../../views/Tips/Tips';
 import Spinner from '../../common/Spinner/Spinner';
 
 import styles from './PlayersList.module.scss';
+import playerUtils from '../../../utils/playerUtils';
+import appUtils from '../../../utils/appUtils';
 
+const PlayersList = ({ user }) => {
 
-const PlayersList = () => {
-
-  const { data: players, isSuccess } = useGetPlayersQuery();
-
-  const [ updatePlayer ] = useUpdatePlayerMutation();
-
+  const [ players, setPlayers ] = useState();
   const [ tip, setTip ] = useState(false);
 
-  const cleanStatus = () => {
-    players?.map( player => updatePlayer({ ...player, isActive: false }));
-    console.log('czyszczenie statusu graczy');
-  }
+  useEffect(() => {
+    appUtils.getPlayersFromUser(user, setPlayers)
+  }, [user]);
 
   useEffect( () => {
-    cleanStatus();
-  }, []);
+    appUtils.inactiveAllPlayers(players, user);
+  }, [players]);
 
-  const changeActiveStatus = (player) => {
-    updatePlayer({ ...player, isActive: true});
-  }
+  console.log(
+    'lista graczy',
+    'użytkownik', user,
+    'gracze', players,
+    'status', players?.map( player => player.isActive)
+  );
 
-  const refreshPage = () => {
-    window.location.reload(false);
-  }
-
-  if (isSuccess) {
+  if (user) {
     return(
       <div className={styles.list}>
         <Tips 
@@ -51,10 +46,10 @@ const PlayersList = () => {
           tip={tip}
         />
         <div className={styles.list__list}>
-          {players.map( player => 
+          {players?.map( player => 
             <div key={player.id} className={styles.list__player}>
               <div className={styles.list__box}>
-                <div onClick={ () => changeActiveStatus(player)} >
+                <div onClick={ () => playerUtils.changeActiveStatus(user, player.id)} >
                     <Link to={`/player/${player.id}`} className={styles.list__link}>
                       <PlayerIcon 
                         id={player.id} 
@@ -68,9 +63,9 @@ const PlayersList = () => {
                     </Link>
                 </div>
                 <Button 
-                content={<Link to={`/game/${player.id}`}><FontAwesomeIcon className={styles.list__play} icon={faPlay}></FontAwesomeIcon></Link>} 
-                onClick={ () => changeActiveStatus(player)}
-              />
+                  content={<Link to={`/game/${player.id}`}><FontAwesomeIcon className={styles.list__play} icon={faPlay}></FontAwesomeIcon></Link>} 
+                  onClick={ () => playerUtils.changeActiveStatus(user, player.id)}
+                />
               </div>
               <p className={styles.list__name}>{player.name}</p>
             </div>
@@ -84,9 +79,9 @@ const PlayersList = () => {
   } else {
     return(
       <div>
-        {/* <Spinner content='oczekiwanie na dane z serwera' /> */}
-        <p>Lista graczy będzie tu widoczna po zalogowaniu</p>
-        <FontAwesomeIcon icon={faRefresh} onClick={refreshPage} /> 
+        <Spinner content='oczekiwanie na dane z serwera' />
+        <p>Zaloguj się żeby wyswietlić listę graczy</p>
+        {/* <FontAwesomeIcon icon={faRotateRight} onClick={appUtils.refreshPage} />  */}
       </div>
     )
   }

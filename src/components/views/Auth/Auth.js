@@ -12,6 +12,7 @@ import { collection, doc, setDoc } from "firebase/firestore";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import styles from './Auth.module.scss';
 
@@ -29,24 +30,6 @@ const Auth = () => {
   });
 
 
-  const signUp = async() => {
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        loginData.email,
-        loginData.password
-      );
-      const usersRef = collection(db, 'users');
-      await setDoc(doc(usersRef, `${user.user.uid}`), { 
-        id: user.user.uid,
-        name: user.user.email.substring(0, user.user.email.indexOf('@')) 
-      });
-      console.log('Dane użytkownika zostały dodane do firestore')
-
-    } catch (error) {
-      console.error('signUp error', error)
-    }
-  };
 
   const signIn = (e) => {
     e.preventDefault();
@@ -90,23 +73,26 @@ const Auth = () => {
   };
 
   const authForm = 
-  <form onSubmit={signIn} className={styles.auth__form}>
-    <input type='email' placeholder='e-mail' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}/>
-    <p> {errorMessage.length > 0 && errorMessage } </p>
-    <input type='password' placeholder='hasło' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
-    <button type='submit'>Zaloguj</button>
-    <button type='button' onClick={signUp}>Zarejestruj</button>
-    <button type='button' onClick={signInGuest}>Zaloguj jako gość</button>
-  </form>
+  <div>
+    <form onSubmit={signIn} className={styles.auth__info}>
+      <input className={styles.auth__input} type='email' placeholder='e-mail' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}/>
+      <input className={styles.auth__input} type='password' placeholder='hasło' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
+      <button className={styles.auth__signout} type='submit'>Zaloguj</button>
+      <Link to='/signup' ><button className={styles.auth__signout} type='button' >Zarejestruj</button></Link>
+      <button className={styles.auth__signout} type='button' onClick={signInGuest}>Zaloguj jako gość</button>
+    </form>
+    { errorMessage.length > 0 && 
+      <p className={styles.auth__error}>Użytkownik o tej nazwie nie ma swojego konta, jesli chcesz je założyć kliknij Zarejestruj się.</p>
+    }
+    
+  </div>
 
   const userInfo = 
     <div className={styles.auth__info}>
       <div className={styles.auth__icon}><FontAwesomeIcon icon={faUser} /></div>
       <p className={styles.auth__name}> { user?.email ? user?.email.substring(0, user.email.indexOf('@')) : 'gość' } </p>
-      <button className={styles.auth__signout} onClick={signout} ><FontAwesomeIcon icon={faPowerOff} /></button>
+      <button className={styles.auth__signout} onClick={signout} > Wyloguj <FontAwesomeIcon icon={faPowerOff}/></button>
     </div>
-
-  console.log('auth - user props', user);
 
   return(
     <div className={styles.auth}>

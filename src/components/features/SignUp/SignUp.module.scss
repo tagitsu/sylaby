@@ -1,0 +1,25 @@
+@import '../../../styles/settings.scss';
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__form {
+    width: 70%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $base-size;
+  }
+
+  &__input {
+    background-color: $color-light;
+    color: $color-indigo;
+    text-align: center;
+    line-height: 2;
+    border-radius: $radius;
+  }
+
+
+}

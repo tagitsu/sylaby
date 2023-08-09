@@ -3,7 +3,7 @@ import Spinner from '../../common/Spinner/Spinner';
 import styles from '../Home/Home.module.scss';
 import PlayersList from '../PlayersList/PlayersList';
 
-const Home = () => {
+const Home = ({ user }) => {
 
 
   return(
@@ -17,11 +17,11 @@ const Home = () => {
           swoją postać. 
         </p>
         <ul>TO DO
-          <li>logowanie, konto użytkownika, dostęp do własnych postaci - firebase </li>
+          <li> podpowiedzi - dodaj przycisk wyjścia X z okna, zmień ich wielkość, styl, może zrobie z nich modale?</li>
         </ul>
       </article>
       <article className={styles.home__article}>
-        <PlayersList />
+        <PlayersList user={user}/>
       </article>
     </div>
   

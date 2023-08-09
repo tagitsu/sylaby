@@ -1,25 +1,25 @@
 import styles from '../ProgressBar/ProgressBar.module.scss';
-import { useGetPlayersQuery } from "../../../api/apiSlice";
+import { useState, useEffect } from 'react';
+import appUtils from '../../../utils/appUtils';
 
-const ProgressBar = (props) => {
+const ProgressBar = ({ user, levelUp, content }) => {
 
-  const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
-  
-  let activePlayer;
-  if (playersOK) {
-    [ activePlayer ] = players.filter( player => player.isActive)
-  }
+  const [ activePlayer, setActivePlayer ] = useState();
 
-  const barWidth = (((props.xp) / (props.levelUp)) * 100) + '%';
+  useEffect(() => {
+    appUtils.getActivePlayer(user, setActivePlayer);
+  }, []);
+
+  const barWidth = (((activePlayer?.xp) / (levelUp)) * 100) + '%';
   const root = document.querySelector(':root');
   root.style.setProperty('--player-xp', barWidth);
-  root.style.setProperty('--player-color', activePlayer.color);
+  root.style.setProperty('--player-color', activePlayer?.color);
 
   return(
     <div className={styles.prog}>
       <div className={styles.prog__container}>
         <div className={styles.prog__bar}>
-          <span className={styles.prog__points}>{props.content}</span>
+          <span className={styles.prog__points}>{content}</span>
         </div>
       </div>
     </div>

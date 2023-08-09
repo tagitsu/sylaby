@@ -6,28 +6,59 @@
   border: 1px solid blue;
   
 
-  &__form {
-    border: 1px solid fuchsia;
-
+  &__input {
+    background-color: $color-light;
+    color: $color-indigo;
+    text-align: center;
+    line-height: 2;
+    border-radius: $radius;
+   // width: max-content;
   }
 
-  &__info, &__form {
-    border: 1px solid lime;
+  &__info {
+    padding: $base-size;
     display: flex;
     gap: $base-size;
     align-items: center;
     width: max-content;
   }
 
-  &__icon {
-
+  &__error {
+    font-size: $base-size;
   }
+
+  &__icon {
+    background-color: $color-light;
+    border-radius: 50%;
+    color: $color-indigo;
+    height: calc($base-size * 3);
+    width: calc($base-size * 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
 
   &__name {
-
+    font-weight: 700;
+    font-size: $base-size;
   }
 
-  &__logout {
-    
+  &__signout {
+    border: none;
+    background-color: transparent;
+    color: $color-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-size: $base-size;
+    transition: $transition;
+  }
+
+  &__signout:hover, &__icon:hover {
+    color: $color-indigo;
+    cursor: pointer;
   }
 }

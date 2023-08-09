@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useGetPlayersQuery, useUpdatePlayerMutation, useGetLevelsQuery } from "../../../api/apiSlice";
+import { useState, useEffect } from "react";
+import { useGetLevelsQuery } from "../../../api/apiSlice";
 
 import Button from "../../common/Button/Button";
 import ButtonOK from '../../common/ButtonOK/ButtonOK';
@@ -10,19 +10,22 @@ import Tips from "../../views/Tips/Tips";
 import styles from './GameDots.module.scss';
 import utils from '../../../utils/gameDotsUtils';
 import playerUtils from "../../../utils/playerUtils";
+import appUtils from "../../../utils/appUtils";
 
-const GameDots = () => {
+const GameDots = ({ user }) => {
 
-  const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
+  const [ activePlayer, setActivePlayer ] = useState();
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
-  const [ updatePlayer ] = useUpdatePlayerMutation();
 
-  let activePlayer, playerLevel, nextLevel;
-  if (playersOK && levelsOK) {
-    [ activePlayer ] = players.filter( player => player.isActive );
+  useEffect(() => {
+    appUtils.getActivePlayer(user, setActivePlayer);
+  }, []);
+
+  let playerLevel, nextLevel;
+  if (activePlayer && levelsOK) {
     [ playerLevel ] = levels.filter( level => activePlayer.level === level.id );
     [ nextLevel ] = levels.filter( level => activePlayer.level + 1 === level.id );
-    if (activePlayer.xp >= playerLevel.nextLevel) { playerUtils.levelUp(updatePlayer, activePlayer, nextLevel) }
+    if (activePlayer.xp >= playerLevel.nextLevel) { playerUtils.levelUp(user, activePlayer.id, nextLevel) }
   }
 
   const [ dots, setDots ] = useState([]);
@@ -32,12 +35,20 @@ const GameDots = () => {
   const [ answer, setAnswer ] = useState();
   const [ tip, setTip ] = useState(false);
 
+  console.log(
+    'bańki',
+    'user', user,
+    'gracz', activePlayer?.name,
+    'dots', dots?.length,
+    'opcje', options,
+    'odpowiedź', answer
+  );
 
   if (activePlayer) {
     return(
       <div className={styles.dots}>
-        <ActivePlayer />
-        { !dots.length && 
+        <ActivePlayer user={user} activePlayer={activePlayer} />
+        { !dots?.length && 
           <Tips 
             content={<p>Wciśnij start aby na planszy pojawiły się kolorowe bańki. Twoim zadaniem jest policzenie ich. Wciśnij przycisk z liczbą baniek. Jeśli Twoja odpowiedź jest prawidłowa zaznaczony przycisk podświetli się na zielono, jeśli błędna, na czerwono. Aby przejść dalej naciśnij przycisk OK. </p>} 
             onClick={() => setTip(!tip)}
@@ -45,7 +56,7 @@ const GameDots = () => {
           /> 
         }
 
-        { !dots.length && 
+        { !dots?.length && 
             <Button
               name='setupBtn'
               content='Start'
@@ -53,7 +64,7 @@ const GameDots = () => {
             /> 
         }
         <section className={styles.dots__board}>
-          { dots.length > 0 && 
+          { dots?.length > 0 && 
             <div className={styles.dots__dots}>
               { dots.map( dot => 
                 <div 
@@ -70,13 +81,13 @@ const GameDots = () => {
               }
             </div>
           }
-          { options.length > 0 && 
+          { options?.length > 0 && 
             <div className={styles.dots__options}>
               <Option 
                 key={1} 
                 content={options[0]} 
                 dots={dots.length} 
-                onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer)} 
+                onClick={(e) => utils.submitSolution(e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer, user, activePlayer.id)} 
                 isCorrect={isCorrect}
                 isWrong={isWrong}
                 answer={answer}
@@ -102,10 +113,13 @@ const GameDots = () => {
             </div>
           }
         </section>
-        { answer > 0 && <ButtonOK onClick={() => utils.addPoints(isCorrect, activePlayer, updatePlayer)} />}
+        { answer && <ButtonOK onClick={() => utils.endGameTurn(isCorrect, user, activePlayer.id, setAnswer, setDots, setOptions, setIsCorrect, setIsWrong)} />}
       </div>
     );
   }
 };
+
+// takie argumenty były w su
+// e, e.target.innerText, dots, setIsCorrect, setIsWrong, setAnswer
 
 export default GameDots;

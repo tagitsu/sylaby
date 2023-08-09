@@ -1,39 +1,45 @@
 @import '/src/styles/settings.scss';
 
-.current {
-  height: calc($base-size * 7.3);
-  padding: $base-size calc($base-size * 2);
-  display: flex;
-  position: relative;
+.active {
+  width: calc($base-size * 27.3);
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-rows: 5fr 1fr;
+  justify-items: stretch;
+  justify-content: center;
+  align-content: center;
+  gap: 3px;
+
+  border: 1px solid goldenrod;
+
+
+
 
   &__icon {
-    height: 100%;
-    width: auto;
-    position: absolute;
-    z-index: 1;
-    padding: 0;
+    background: radial-gradient($color-light 20%, transparent);
+    border-radius: $radius;
+    overflow: hidden;
+    justify-self: center;
+    
+
+
+
+    img {
+      height: 100%;
+    }
   }
+
 
   &__bar {
-    margin-left: calc($base-size * 3);
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    text-shadow: $text-shadow;
+    grid-column: span 3;
   }
 
-  &__name {
+  &__name, &__btn {
     font-size: $font-content;
     letter-spacing: 2px;
-    text-shadow: $text-shadow;
-    margin-left: calc($base-size * 4);
-    padding: 0 $base-size;
-  }
-
-  &__play {
-    position: absolute;
-    left: 0;
-    top: 0;
+    align-self: center;
   }
 
 }
