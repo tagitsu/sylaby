@@ -8,6 +8,7 @@ import { faPlay, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Spinner from '../../common/Spinner/Spinner';
 import Button from '../../common/Button/Button';
+import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 
 const ActivePlayer = ({ user, activePlayer }) => {
 
@@ -22,8 +23,16 @@ const ActivePlayer = ({ user, activePlayer }) => {
     return(
     <div className={styles.active}>
       <div className={styles.active__icon}>
-        <Link to={`/player/${activePlayer.id}`}>
-          <img src={`${process.env.PUBLIC_URL}/images/characters/${activePlayer.icon}`} alt={`ikona ${activePlayer.icon}`} />
+        <Link to={`/player/${activePlayer.id}`} className={styles.list__link}>
+          <PlayerIcon 
+            id={activePlayer.id} 
+            icon={activePlayer.icon} 
+            name={activePlayer.name}
+            level={activePlayer.level}
+            color={activePlayer.color}
+            size='60'
+            hover={true}
+          />
         </Link>
       </div>
       <div className={styles.active__name}> {activePlayer.name} </div>

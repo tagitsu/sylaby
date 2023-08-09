@@ -4,31 +4,19 @@
   width: calc($base-size * 27.3);
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
-  grid-template-rows: 5fr 1fr;
+  grid-template-rows: 2fr 1fr;
   justify-items: stretch;
   justify-content: center;
   align-content: center;
-  gap: 3px;
+  gap: $base-size;
 
   border: 1px solid goldenrod;
 
-
-
-
   &__icon {
-    background: radial-gradient($color-light 20%, transparent);
-    border-radius: $radius;
-    overflow: hidden;
+    width: 80%;
     justify-self: center;
-    
-
-
-
-    img {
-      height: 100%;
-    }
+    align-self: center;
   }
-
 
   &__bar {
     width: 100%;
@@ -39,28 +27,10 @@
   &__name, &__btn {
     font-size: $font-content;
     letter-spacing: 2px;
-    align-self: center;
+    align-self: flex-end;
   }
 
-}
-
-@media (max-width: 568px) {
-  .current {
-    width: 100%;
-
-    &__bar {
-      width: 100%;
-    }
-
-    // &__play {
-    //   left: 0;
-    //   top: 0;
-    // }
-  }
-}
-
-@media (max-width: 780px) and (orientation: landscape) {
-  .current {
-    height: calc($base-size * 5);
+  &__name {
+    justify-self: end;
   }
 }

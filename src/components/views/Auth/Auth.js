@@ -12,7 +12,7 @@ import { collection, doc, setDoc } from "firebase/firestore";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import styles from './Auth.module.scss';
 
@@ -22,6 +22,8 @@ const Auth = () => {
   const [ errorMessage, setErrorMessage ] = useState('');
   const [ guest, setGuest ] = useState();
   const [ user, setUser ] = useState();
+
+  const navigate = useNavigate();
 
   useEffect( () => {
     onAuthStateChanged( auth, (currentUser) => {
@@ -66,7 +68,8 @@ const Auth = () => {
 
   const signout = async() => {
     try {
-      await signOut(auth)
+      await signOut(auth);
+      navigate('/');
     } catch(error) {
       console.error('signOut', error.message);
     }
