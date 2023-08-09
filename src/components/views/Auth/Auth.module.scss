@@ -1,0 +1,33 @@
+@import '../../../styles/settings.scss';
+
+.auth {
+  display: flex;
+  justify-content: end;
+  border: 1px solid blue;
+  
+
+  &__form {
+    border: 1px solid fuchsia;
+
+  }
+
+  &__info, &__form {
+    border: 1px solid lime;
+    display: flex;
+    gap: $base-size;
+    align-items: center;
+    width: max-content;
+  }
+
+  &__icon {
+
+  }
+
+  &__name {
+
+  }
+
+  &__logout {
+    
+  }
+}

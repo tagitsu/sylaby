@@ -1,2 +1,5 @@
 {
+  "reactSnippets.settings.prettierEnabled": true,
+  "reactSnippets.settings.typescript": false,
+  "reactSnippets.settings.languageScopes": "javascript,javascriptreact"
 }

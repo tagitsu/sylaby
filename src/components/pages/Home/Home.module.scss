@@ -6,8 +6,13 @@
 }
 
 .home {
-  padding: $base-size;
-  background-color: $color-indigo;
-  border-radius: $radius;
+  display: grid;
+  grid-template-columns: auto auto;
+
+  &__article{
+    padding: $base-size;
+    background-color: $color-indigo;
+    border-radius: $radius;
+  }
   
 }

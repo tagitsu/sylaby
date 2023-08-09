@@ -84,8 +84,8 @@ const PlayersList = () => {
   } else {
     return(
       <div>
-        <Spinner content='oczekiwanie na dane z serwera' />
-        <p>Spróbuj odświeżyć stronę</p>
+        {/* <Spinner content='oczekiwanie na dane z serwera' /> */}
+        <p>Lista graczy będzie tu widoczna po zalogowaniu</p>
         <FontAwesomeIcon icon={faRefresh} onClick={refreshPage} /> 
       </div>
     )

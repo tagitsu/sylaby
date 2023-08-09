@@ -12,7 +12,21 @@ import GameDots from './components/pages/GameDots/GameDots';
 import GameGrocery from './components/pages/GameGrocery/GameGrocery';
 import styles from './App.module.scss';
 
+import { auth } from './firebase-config';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+
 const App = () => {
+
+  const [ user, setUser ] = useState();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    })
+  }, []);
+
+  console.log('app - user', user);
 
   return (
     <div className={styles.app}>
