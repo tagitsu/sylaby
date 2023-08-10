@@ -2,7 +2,8 @@
 
 .button {
   margin: $base-size;
-  border: 2px outset $color-indigo;
+  border: none;
+  filter: drop-shadow(2px 2px 1px $color-dark);
   border-radius: $radius;
   padding: calc($base-size * 2);
   background-color: $color-light;
@@ -61,7 +62,7 @@
 
 @media (max-width: 576px) {
   .button {
-    width: calc($base-size * 4);
+    width: calc($base-size * 6);
     height: calc($base-size * 4);
     font-size: calc($base-size * 2.6);
   }
@@ -86,5 +87,13 @@
     margin: 0;
     font-size: calc($base-size * 1.5);
     border-radius: 50%;
+  }
+}
+
+@media (max-width: 780px) and (orientation: landscape) {
+  .button {
+    width: calc($base-size * 6);
+    height: calc($base-size * 4);
+    font-size: calc($base-size * 2.6);
   }
 }

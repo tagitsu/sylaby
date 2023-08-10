@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faWarning, faPlay } from '@fortawesome/free-solid-svg-icons'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useGetLevelsQuery } from "../../../api/apiSlice";
 import { useState, useEffect } from "react";
 
@@ -10,7 +10,6 @@ import DeleteButton from "../../common/DeleteButton/DeleteButton";
 import PlayerIcon from "../../views/PlayerIcon/PlayerIcon";
 import ProgressBar from "../../features/ProgressBar/ProgressBar";
 import Tips from "../../views/Tips/Tips";
-import Spinner from "../../common/Spinner/Spinner";
 
 import styles from './PlayerProfile.module.scss';
 import appUtils from "../../../utils/appUtils";
@@ -18,17 +17,11 @@ import playerUtils from "../../../utils/playerUtils";
 
 const PlayerProfile = ({ user }) => {
 
-  const playerID = useParams();
-
-
-  //const [ players, setPlayers ] = useState([]);
   const [ activePlayer, setActivePlayer ] = useState();
 
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
 
-
   useEffect(() => {
-    //appUtils.getPlayersFromUser(user.uid, setPlayers);
     appUtils.getActivePlayer(user, setActivePlayer);
   }, [user]);
 
@@ -70,52 +63,65 @@ const PlayerProfile = ({ user }) => {
   if (activePlayer && levelsOK) {
     return(
       <div key={activePlayer.id} className={styles.profile}>
+
+        <div className={styles.profile__icon} onDoubleClick={ () => setColorModal(true) }>
+          <PlayerIcon
+            icon={activePlayer.icon} 
+            name={activePlayer.name} 
+            color={activePlayer.color} 
+            level={activePlayer.level} 
+            size='120'
+          />
+          <ProgressBar user={user} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
+
+        </div>
+
         <div className={styles.profile__box}>
-          <div className={styles.profile__tips}>
-            <Tips 
-              content={
-                <div>
-                  <p>Klikając dwukrotnie na ikonę postaci możesz zmienić kolor tła.</p>
-                  <p>A przyciskiem z koszem możesz usunąć swoją postać. Uwaga! Spowoduje to utratę wszystkich postępów w grze.</p>
-                </div>
-              }
-              onClick={() => setTip(!tip)}
-              tip={tip}
-            />
+          <div className={styles.profile__info}>
+            <p> Imię: </p>
+            <p> {activePlayer.name} </p>
           </div>
-          <div className={styles.profile__icon} onDoubleClick={ () => setColorModal(true) }>
-            <PlayerIcon
-              icon={activePlayer.icon} 
-              name={activePlayer.name} 
-              color={activePlayer.color} 
-              level={activePlayer.level} 
-              size='160'
-            />
+          <div className={styles.profile__info}>
+            <p> Punkty: </p>
+            <p> { activePlayer.level !== 1 ? activePlayer.xp + prevLevel.nextLevel : activePlayer.xp } </p>
           </div>
-          <div className={styles.profile__play}>
-            <Button
-              content={
-                <Link to={`/game/${activePlayer.id}`}>
-                  <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
-                </Link>
-              }
-            />
+          <div className={styles.profile__info}>
+            <p> Poziom: </p>
+            <p> {activePlayer.level} </p>
+          </div>
+          <div className={styles.profile__info}>
+            <p> Odznaki: </p> 
+            {badges}
           </div>
         </div>
-        <div className={styles.profile__box}>
-          <div className={styles.profile__info}>
-            <p>Imię gracza: {activePlayer.name}</p>
-          </div>
-          <div className={styles.profile__info}>
-            <p>Zdobyte punkty: { activePlayer.level !== 1 ? activePlayer.xp + prevLevel.nextLevel : activePlayer.xp }</p>
-          </div>
-          <div className={styles.profile__info}>
-            <p>Poziom: {activePlayer.level}</p>
-            <ProgressBar user={user} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
-          </div>
-          <div className={styles.profile__info}>
-            <p>Odznaki:</p> {badges}
-          </div>
+        <div className={styles.profile__play}>
+          <Button
+            content={
+              <Link to={`/game/${activePlayer.id}`}>
+                <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
+              </Link>
+            }
+          />
+        </div>
+
+        <div className={styles.profile__tips}>
+          <Tips 
+            content={
+              <div>
+                <p>Klikając dwukrotnie na ikonę postaci możesz zmienić kolor tła.</p>
+                <p>A przyciskiem z koszem możesz usunąć swoją postać. Uwaga! Spowoduje to utratę wszystkich postępów w grze.</p>
+              </div>
+            }
+            onClick={() => setTip(!tip)}
+            tip={tip}
+          />
+        </div>
+
+        <div className={styles.profile__delete}>
+          <DeleteButton 
+            content={ <FontAwesomeIcon icon={faTrash} /> }
+            onClick={handleDelete}
+          />
         </div>
 
         { warning && 
@@ -140,7 +146,7 @@ const PlayerProfile = ({ user }) => {
           
         { colorModal &&
           <Modal
-            accept={() => playerUtils.changeColor(user.uid, activePlayer.id, chosenColor)}
+            accept={() => playerUtils.changeColor(user, activePlayer.id, chosenColor)}
             color={chosenColor}
             cancel={setColorModal}
             text={
@@ -155,12 +161,6 @@ const PlayerProfile = ({ user }) => {
             }
           />
         }
-        <div className={styles.profile__delete}>
-          <DeleteButton 
-            content={ <FontAwesomeIcon icon={faTrash} /> }
-            onClick={handleDelete}
-          />
-        </div>
       </div>
     );
   }
