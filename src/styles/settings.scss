@@ -1,12 +1,13 @@
 $color-light: #fff;
 $color-dark: #1f1f1f;
-$color-warning: #fc7176;
-$color-orange: #ffab77;
-$color-yellow: #fffa6d;
-$color-success: #99f76e;
-$color-blue: #3ddfff;
-$color-indigo: #4a8ffd;
-$color-purple: #e58dfe;
+$color-warning: rgb(250, 12, 107);
+$color-orange: rgb(246, 138, 8);
+$color-yellow: rgb(254, 190, 54);
+$color-lime: rgb(201, 221, 30);
+$color-success: rgb(81, 180, 49);
+$color-blue: rgb(21, 171, 238);
+$color-indigo: rgb(13, 104, 186);
+$color-purple: rgb(204, 96, 243);
 
 
 $font-text: 'PT Sans', sans-serif;
@@ -20,7 +21,7 @@ $radius: calc($base-size * 1.2);
 $transition: all 0.5s;
 $box-shadow: 0 0 15px rgba(112, 134, 157, 0.962);
 $text-shadow: 0px 0px 6px rgb(172, 172, 172);
-$background-gradient: linear-gradient(to right, $color-success, $color-blue);
+$background-gradient: linear-gradient(to right, $color-lime, $color-warning);
 
 
 @keyframes rainbowShake {

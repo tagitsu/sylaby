@@ -28,7 +28,7 @@ const App = () => {
         setUser(user.uid);
       }
     });
-  }, []);
+  }, [user]);
 
   console.log('app - user uid', user);
 

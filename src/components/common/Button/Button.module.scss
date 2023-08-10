@@ -2,11 +2,11 @@
 
 .button {
   margin: $base-size;
-  border: 2px outset $color-light;
+  border: 2px outset $color-indigo;
   border-radius: $radius;
   padding: calc($base-size * 2);
   background-color: $color-light;
-  color: $color-success;
+  color: $color-indigo;
   transition: $transition;
   font-size: calc($base-size * 3.6);
   max-height: calc($base-size * 5);

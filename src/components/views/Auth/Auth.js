@@ -15,12 +15,12 @@ import { faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 
 import styles from './Auth.module.scss';
+import appUtils from "../../../utils/appUtils";
 
 const Auth = () => {
 
   const [ loginData, setLoginData ] = useState({ email: '', password: ''});
   const [ errorMessage, setErrorMessage ] = useState('');
-  const [ guest, setGuest ] = useState();
   const [ user, setUser ] = useState();
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Auth = () => {
     onAuthStateChanged( auth, (currentUser) => {
       setUser(currentUser);
     })
-  });
+  }, [user]);
 
 
 
@@ -70,25 +70,20 @@ const Auth = () => {
     try {
       await signOut(auth);
       navigate('/');
+      appUtils.refreshPage();
     } catch(error) {
       console.error('signOut', error.message);
     }
   };
 
   const authForm = 
-  <div>
-    <form onSubmit={signIn} className={styles.auth__info}>
+    <form onSubmit={signIn} className={styles.auth__form}>
       <input className={styles.auth__input} type='email' placeholder='e-mail' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}/>
       <input className={styles.auth__input} type='password' placeholder='hasło' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
       <button className={styles.auth__signout} type='submit'>Zaloguj</button>
-      <Link to='/signup' ><button className={styles.auth__signout} type='button' >Zarejestruj</button></Link>
+      <p className={styles.auth__text} > Jeśli nie masz konta, <Link to='/signup' ><span className={styles.auth__signout}>zarejestruj się</span></Link></p>
       <button className={styles.auth__signout} type='button' onClick={signInGuest}>Zaloguj jako gość</button>
     </form>
-    { errorMessage.length > 0 && 
-      <p className={styles.auth__error}>Użytkownik o tej nazwie nie ma swojego konta, jesli chcesz je założyć kliknij Zarejestruj się.</p>
-    }
-    
-  </div>
 
   const userInfo = 
     <div className={styles.auth__info}>
