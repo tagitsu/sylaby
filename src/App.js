@@ -24,7 +24,7 @@ const App = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log('aktualny użytkownik app to', user.uid)
+        console.log('aktualny użytkownik app to', user.displayName)
         setUser(user.uid);
       }
     });

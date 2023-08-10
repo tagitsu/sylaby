@@ -28,7 +28,6 @@ const AddPlayerForm = ({ user }) => {
     getUserPlayers();
   }, [user]);
 
-  console.log('new player form', user);
 
   // levels nad z api
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
@@ -45,7 +44,6 @@ const AddPlayerForm = ({ user }) => {
   const [ choosenIcon ] = playerUtils.characters.filter( icon => icon.icon === newPlayerIcon );
 
   let currentPlayersIDs, newPlayerID, firstLevel, newPlayer;
-  
   if (levelsOK) {
 
     const sorter = (a, b) => {
@@ -83,7 +81,7 @@ const AddPlayerForm = ({ user }) => {
   console.log(
     'players', players,
     'currentPlayerIds', currentPlayersIDs,
-    'user', user,
+    'user', user?.displayName,
     'newPlayerId', newPlayerID,
     'path', `users/${user}/players`,
     'imię gracza', newPlayerName.current.value
@@ -91,8 +89,7 @@ const AddPlayerForm = ({ user }) => {
 
   const addNewPlayer = async () => {
     try {
-      const playersRef = collection(db, `users/${user}/players`);
-      await setDoc(doc(playersRef, String(newPlayerID)), newPlayer);
+      await setDoc(doc(db, `users/${user}/players`, String(newPlayerID)), newPlayer);
       console.log('nowy gracz dodany do firestore');
     } catch(error) {
       console.error(error);
@@ -160,7 +157,7 @@ const AddPlayerForm = ({ user }) => {
         <span className={styles.form__info}>Zaznacz ikonę postaci, którą chcesz wybrać.</span>
       </fieldset>
       <div className={styles.form__submit}>
-        <Button type='submit' content='Dodaj nowego gracza'></Button>
+        <Button type='submit' content='Dodaj nowego gracza' />
       </div>
     </form>
   );

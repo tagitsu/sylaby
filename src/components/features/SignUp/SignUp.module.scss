@@ -17,9 +17,12 @@
     background-color: $color-light;
     color: $color-indigo;
     text-align: center;
-    line-height: 2;
     border-radius: $radius;
+    border: none;
+    padding: $base-size;
   }
+
+  
 
 
 }

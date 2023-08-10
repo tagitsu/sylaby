@@ -33,22 +33,18 @@ const Auth = () => {
 
 
 
-  const signIn = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(
-      auth, 
-      loginData.email, 
-      loginData.password
-    )
-      .then((userCredential) => {
-        console.log('signIn', userCredential)
-      })
-      .catch((error) => {
-        console.log(error.message);
-        if ((error.message.includes('user-not-found)'))) {
-          setErrorMessage('Nie mamy jeszcze użytkownika o tym adresie email. Możesz Stworzyć konto klikając na przysk Zarejetruj się.')
-        }
-      })
+  const signIn = async(e) => {
+    try {
+      e.preventDefault();
+      await signInWithEmailAndPassword(
+        auth, 
+        loginData.email, 
+        loginData.password
+      );
+      navigate('/')
+    } catch (error) {
+      console.error(error.code);
+    }
   };
 
   const signInGuest = async(e) => {
