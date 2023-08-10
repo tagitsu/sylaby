@@ -37,10 +37,10 @@ const PlayersList = ({ user }) => {
       <div className={styles.list}>
         <Tips 
           content={
-          <div>
-            <p>Wybierz swoją postać i naciśnij przycisk <span><FontAwesomeIcon icon={faPlay} /></span> żeby wybrać grę. Klikając w ikonę postaci przejdziesz do profilu gracza.</p>
-            <p> A jeśli nie masz jeszcze swojej postaci, łatwo ją stworzysz naciskając przycisk <span><FontAwesomeIcon icon={faPlus} /></span> na dole strony.</p>
-          </div>
+            <div>
+              <p>Wybierz swoją postać i naciśnij przycisk <span><FontAwesomeIcon icon={faPlay} /></span> żeby wybrać grę. Klikając w ikonę postaci przejdziesz do profilu gracza.</p>
+              <p> A jeśli nie masz jeszcze swojej postaci, łatwo ją stworzysz naciskając przycisk <span><FontAwesomeIcon icon={faPlus} /></span> na dole strony.</p>
+            </div>
           }
           onClick={() => setTip(!tip)}
           tip={tip}

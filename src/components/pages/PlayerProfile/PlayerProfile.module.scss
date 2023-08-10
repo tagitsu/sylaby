@@ -105,6 +105,10 @@
     background-color: $color-success;
   }
 
+  &__delete {
+    grid-column: span 2;
+  }
+
 }
 
 @media (max-width: 576px) {

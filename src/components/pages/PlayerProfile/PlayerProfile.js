@@ -76,11 +76,7 @@ const PlayerProfile = ({ user }) => {
               content={
                 <div>
                   <p>Klikając dwukrotnie na ikonę postaci możesz zmienić kolor tła.</p>
-                  <p>Możesz usunąć swoją postać, ale jest to nieodwracalne. Zostaną skasowane wszystkie punkty oraz odznaki otrzymane w czasie gry. Żeby usunąć postać naciśnij ikoną kosza poniżej.</p>
-                  <DeleteButton 
-                    content={ <FontAwesomeIcon icon={faTrash} /> }
-                    onClick={handleDelete}
-                  />
+                  <p>A przyciskiem z koszem możesz usunąć swoją postać. Uwaga! Spowoduje to utratę wszystkich postępów w grze.</p>
                 </div>
               }
               onClick={() => setTip(!tip)}
@@ -126,10 +122,10 @@ const PlayerProfile = ({ user }) => {
           <Modal 
             cancel={setWarning}
             // TODO tu powinna być funkcja usuwająca dokument z firestore
-            accept={() => playerUtils.deletePlayerProfile(user.uid, activePlayer.id)}
+            accept={() => playerUtils.deletePlayerProfile(user, activePlayer.id)}
             acceptArg={activePlayer.id}
             player={activePlayer}
-            color='#fc7176'
+            color='crimson'
             text={
               <div>
                 <FontAwesomeIcon icon={faWarning} />
@@ -159,6 +155,12 @@ const PlayerProfile = ({ user }) => {
             }
           />
         }
+        <div className={styles.profile__delete}>
+          <DeleteButton 
+            content={ <FontAwesomeIcon icon={faTrash} /> }
+            onClick={handleDelete}
+          />
+        </div>
       </div>
     );
   }
