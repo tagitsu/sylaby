@@ -11,7 +11,7 @@ import {
 import { collection, doc, setDoc } from "firebase/firestore";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPowerOff, faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 
 import styles from './Auth.module.scss';
@@ -78,18 +78,20 @@ const Auth = () => {
 
   const authForm = 
     <form onSubmit={signIn} className={styles.auth__form}>
-      <input className={styles.auth__input} type='email' placeholder='e-mail' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}/>
-      <input className={styles.auth__input} type='password' placeholder='hasło' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
-      <button className={styles.auth__signout} type='submit'>Zaloguj</button>
-      <p className={styles.auth__text} > Jeśli nie masz konta, <Link to='/signup' ><span className={styles.auth__signout}>zarejestruj się</span></Link></p>
-      <button className={styles.auth__signout} type='button' onClick={signInGuest}>Zaloguj jako gość</button>
+      <div className={styles.auth__inputs}>
+        <input className={styles.auth__input} type='email' placeholder='e-mail' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}/>
+        <input className={styles.auth__input} type='password' placeholder='hasło' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
+        <button className={styles.auth__btn} type='submit'>Zaloguj</button>
+        <button className={styles.auth__btn} type='button' onClick={signInGuest}>Zaloguj jako gość</button>
+      </div>
+      <p className={styles.auth__signup} > Jeśli nie masz konta, <Link to='/signup' ><button className={styles.auth__btn}>zarejestruj się</button></Link></p>
     </form>
 
   const userInfo = 
     <div className={styles.auth__info}>
       <div className={styles.auth__icon}><FontAwesomeIcon icon={faUser} /></div>
       <p className={styles.auth__name}> { user?.email ? user?.email.substring(0, user.email.indexOf('@')) : 'gość' } </p>
-      <button className={styles.auth__signout} onClick={signout} > Wyloguj <FontAwesomeIcon icon={faPowerOff}/></button>
+      <button className={styles.auth__btn} onClick={signout} > Wyloguj <FontAwesomeIcon icon={faPowerOff}/></button>
     </div>
 
   return(

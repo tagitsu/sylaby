@@ -13,7 +13,7 @@ body {
   font-size: ($base-size * 2);
   color: $color-light;
   letter-spacing: .5px;
-  background-image: linear-gradient( $color-light 0%, $color-blue 30%, $color-blue 90%, $color-success 98%);
+  background-image: url('../../public/images/background.png'), radial-gradient(farthest-corner at 100% 0%, $color-light 10%, $color-blue 100%);
 }
 
 a {

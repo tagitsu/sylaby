@@ -9,9 +9,9 @@
   display: grid;
   grid-template-columns: auto auto;
 
-  &__article{
+  &__article {
     padding: $base-size;
-    background-color: $color-indigo;
+    background-color: rgba(13, 104, 186, 0.52);
     border-radius: $radius;
   }
   

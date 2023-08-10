@@ -9,7 +9,7 @@
 
   img {
   border-radius: 50%;
-  width: 50%;
+  width: calc($base-size * 5);
 }
   
 //   &__icon {
