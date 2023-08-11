@@ -7,12 +7,16 @@
 
 .home {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 100%;
 
   &__article {
     padding: $base-size;
-    background-color: rgba(21, 169, 238, 0.4);
+    border: 2px solid $color-light;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     border-radius: $radius;
+    margin: $base-size;
+    background-color: rgba(21, 169, 238, 0.5);
   }
   
 }

@@ -48,26 +48,24 @@ const PlayersList = ({ user }) => {
         <div className={styles.list__list}>
           {players?.map( player => 
             <div key={player.id} className={styles.list__player}>
-              <div className={styles.list__box}>
-                <div onClick={ () => playerUtils.changeActiveStatus(user, player.id)} >
-                    <Link to={`/player/${player.id}`} className={styles.list__link}>
-                      <PlayerIcon 
-                        id={player.id} 
-                        icon={player.icon} 
-                        name={player.name}
-                        level={player.level}
-                        color={player.color}
-                        size='120'
-                        hover={true}
-                      />
-                    </Link>
-                </div>
-                <Button 
-                  content={<Link to={`/game/${player.id}`}><FontAwesomeIcon className={styles.list__play} icon={faPlay}></FontAwesomeIcon></Link>} 
-                  onClick={ () => playerUtils.changeActiveStatus(user, player.id)}
-                />
+              <div onClick={ () => playerUtils.changeActiveStatus(user, player.id)} >
+                  <Link to={`/player/${player.id}`} className={styles.list__link}>
+                    <PlayerIcon 
+                      id={player.id} 
+                      icon={player.icon} 
+                      name={player.name}
+                      level={player.level}
+                      color={player.color}
+                      size='120'
+                      hover={true}
+                    />
+                  </Link>
               </div>
-              <p className={styles.list__name}>{player.name}</p>
+              <Button 
+                content={<Link to={`/game/${player.id}`}><FontAwesomeIcon className={styles.list__play} icon={faPlay}></FontAwesomeIcon></Link>} 
+                onClick={ () => playerUtils.changeActiveStatus(user, player.id)}
+              />
+              <p className={styles.list__name}> {player.name} </p>
             </div>
           )}
         </div>

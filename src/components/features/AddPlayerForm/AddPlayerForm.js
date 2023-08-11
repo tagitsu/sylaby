@@ -13,8 +13,6 @@ const AddPlayerForm = ({ user }) => {
 
   const navigate = useNavigate();
 
-  // nazwa zmiennej players musi pozstać, ale będą props przekazywane z listy graczy
-  //const { data: players, isSuccess: playersOK } = useGetPlayersQuery();
   const [ players, setPlayers ] = useState([]);
 
   useEffect(() => {
@@ -29,11 +27,7 @@ const AddPlayerForm = ({ user }) => {
   }, [user]);
 
 
-  // levels nad z api
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
-
-  // addPlayer jako nazwa musi pozostać, ale będzie to funkcja dodajaca doc do kolekcji players w firestore
-  //const [ addPlayer ] = useAddPlayerMutation();
 
   const [ newPlayerIcon, setNewPlayerIcon ] = useState('');
   const newPlayerName = useRef('');
@@ -108,7 +102,7 @@ const AddPlayerForm = ({ user }) => {
 
     return(
     <form className={styles.form} onSubmit={handleSubmit}>
-      <fieldset className={styles.form__section}>
+      <fieldset className={clsx(styles.form__field, styles.form__name)}>
         <legend className={styles.form__legend}>Wpisz swoje imię</legend>
         <input 
           ref={newPlayerName}
@@ -123,10 +117,10 @@ const AddPlayerForm = ({ user }) => {
         />
         <span className={styles.form__info}>Wpisz imię zawierające 2 - 15 znaków (nie używaj znaków specjalnych). </span>
       </fieldset>
-      <fieldset className={styles.form__section}>
+      <fieldset className={clsx(styles.form__field, styles.form__color)}>
         <legend className={styles.form__legend}>Wybierz swój kolor</legend>
           <input 
-            className={clsx(styles.form__input, styles.form__color)} 
+            className={clsx(styles.form__input, styles.form__colorInput)} 
             ref={newPlayerColor}
             defaultValue='#FFFF66'
             type='color' 
@@ -136,7 +130,7 @@ const AddPlayerForm = ({ user }) => {
           <span className={styles.form__info}>Wybierz kolor dla swojej postaci. </span>
 
       </fieldset>
-      <fieldset className={(styles.form__section, styles.form__characters)}>
+      <fieldset className={(styles.form__field, styles.form__characters)}>
         <legend className={styles.form__legend}>Wybierz ulubioną postać</legend>
         {playerProfile.characters.map(
           character => 

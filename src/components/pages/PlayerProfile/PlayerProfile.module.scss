@@ -6,11 +6,16 @@
   display: grid;
   grid-template-columns: 30% 60%;
   grid-template-rows: auto auto;
-  align-items: center;
+  justify-content: center;
   justify-items: center;
+
+  align-content: center;
+  align-items: center;
   padding: calc($base-size * 2);
   position: relative;
-  background-color: rgba(21, 169, 238, 0.4);
+  background-color: rgba(21, 169, 238, 0.5);
+  border: 2px solid $color-light;
+  height: 100%;
   border-radius: $radius;
 
   // informacje o graczu
@@ -22,6 +27,8 @@
     gap: $base-size;
     background-color: $color-blue;
     padding: calc($base-size * 2);
+    border: 2px solid $color-light;
+
     border-radius: $radius;
     justify-self: stretch;
   }
@@ -65,8 +72,6 @@
   }
 
   &__delete {
-    //width: fit-content;
-    //justify-self: end;
     opacity: .5;
     position: absolute;
     bottom: 0;
@@ -78,36 +83,6 @@
     opacity: 1;
   }
 
-
-  // &__nonFound {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   padding: $base-size;
-  //   font-size: $font-content;
-  // }
-
-  // &__buttons {
-  //   margin: $base-size;
-  //   width: 50vw;
-  //   display:flex;
-  //   justify-content: space-evenly;
-  // }
-
-  // &__button {
-  //   width: max-content;
-  //   height: calc($base-size * 4);
-  //   padding: $base-size;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   background-color: $color-indigo;
-  //   color: $color-light;
-  //   transition: $transition;
-  //   border: 2px outset $color-blue;
-  //   border-radius: $radius;
-  // }
-
   &__button:hover {
     transform: scale(1.1);
   }
@@ -115,8 +90,6 @@
   &__button:active {
     background-color: $color-success;
   }
-
-
 }
 
 @media (max-width: 576px) {

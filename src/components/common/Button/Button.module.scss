@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: $color-success;
+    color: $color-blue;
     transition: $transition;
   }
 }
@@ -31,7 +31,7 @@
 }
 
 .button:hover a {
-  color: $color-yellow;
+  color: $color-success;
 }
 
 .button:active {
@@ -96,4 +96,10 @@
     height: calc($base-size * 4);
     font-size: calc($base-size * 2.6);
   }
+
+  .setup {
+    width: min-content;
+    font-size: calc($base-size);
+  }
+
 }
