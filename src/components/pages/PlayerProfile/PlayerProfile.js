@@ -65,15 +65,17 @@ const PlayerProfile = ({ user }) => {
       <div key={activePlayer.id} className={styles.profile}>
 
         <div className={styles.profile__icon} onDoubleClick={ () => setColorModal(true) }>
-          <PlayerIcon
+          <img src={`${process.env.PUBLIC_URL}/images/characters/${activePlayer.icon}`} alt={`${activePlayer.icon} icon`} />
+          {/* <PlayerIcon
             icon={activePlayer.icon} 
             name={activePlayer.name} 
             color={activePlayer.color} 
             level={activePlayer.level} 
             size='120'
-          />
-          <ProgressBar user={user} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
-
+          /> */}
+          <div className={styles.profile__bar} >
+            <ProgressBar user={user} levelUp={playerLevel.nextLevel} content={`${activePlayer.xp}/${playerLevel.nextLevel}`} />
+          </div>
         </div>
 
         <div className={styles.profile__box}>

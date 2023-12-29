@@ -6,24 +6,22 @@
 }
 
 .prog {
-  
 
   &__container {
     background-image: linear-gradient(white, $color-light 20%, $color-light 80%, lightgray);
-    //width: calc($base-size * 20);
+    width: 100%;
     border-radius: $radius;
     overflow: hidden;
     position: relative;
     display: flex;
     align-items: center;
-    //justify-content: center;
-
   }
   
   &__bar {
     width: var(--player-xp);
     height: calc($base-size * 2);
     background-image: linear-gradient(white, var(--player-color) 20%, var(--player-color) 80%, lightgray);
+
   }
 
   &__points {
@@ -46,7 +44,6 @@
       width: 100%;
       border-radius: $radius;
       overflow: hidden;
-      position: relative;
       margin-bottom: $base-size;
       position: relative;
     }

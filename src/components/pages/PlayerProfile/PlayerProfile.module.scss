@@ -8,10 +8,11 @@
   grid-template-rows: auto auto;
   justify-content: center;
   justify-items: center;
-
   align-content: center;
   align-items: center;
+  gap: $base-size;
   padding: calc($base-size * 2);
+  overflow: scroll;
   position: relative;
   background-color: rgba(21, 169, 238, 0.5);
   border: 2px solid $color-light;
@@ -31,16 +32,9 @@
 
     border-radius: $radius;
     justify-self: stretch;
-  }
 
+    border: .5px solid black;
 
-  // ikona i pasek postępu
-  &__icon {
-    width: fit-content;
-    padding: $base-size;
-    display: flex;
-    flex-direction: column;
-    gap: calc($base-size * 2);
   }
 
   &__info {
@@ -71,6 +65,31 @@
     animation: rainbowShake 6s ease-in-out infinite;
   }
 
+
+
+  &__icon {
+    padding: $base-size;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    border: .5px solid black;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__bar {
+    width: 100%;
+  }
+
+  &__play {
+    border: .5px solid black;
+
+  }
+
+
   &__delete {
     opacity: .5;
     position: absolute;
@@ -95,8 +114,22 @@
 @media (max-width: 576px) {
   .profile {
     grid-template-columns: 100%;
+    grid-template-rows: 30% 60% 10%;
     font-size: $font-content;
     padding: 0 $base-size;
+
+    &__box {
+
+    }
+
+    &__icon {
+      grid-row: 1 / 2;
+      //height: 40%;
+
+      img {
+        height: 100%;
+      }
+    }
   }
 }
 
@@ -113,7 +146,6 @@
 
     }
   
-
     &__box {
       margin: $base-size;
       padding: $base-size;

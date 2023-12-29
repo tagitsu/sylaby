@@ -1,18 +1,18 @@
 import clsx from 'clsx';
 import styles from '../Button/Button.module.scss';
 
-const Button = (props) => {
+const Button = ({ name, type, onClick, hidden, content }) => {
 
-  if (!props.hidden) {
+  if (!hidden) {
   return(
     <button 
-      className={clsx(styles.button, props.name === 'gamesBtn' && styles.games, props.name === 'tipBtn' && styles.tip, props.name === 'setupBtn' && styles.setup, props.type === 'submit' && styles.setup)} 
-      onClick={props.onClick}
-      name={props.name}
-      type={props.type}
-      hidden={props.hidden}
+      className={clsx(styles.button, name === 'gamesBtn' && styles.games, name === 'tipBtn' && styles.tip, name === 'setupBtn' && styles.setup, type === 'submit' && styles.setup)} 
+      onClick={onClick}
+      name={name}
+      type={type}
+      hidden={hidden}
     >
-    {props.content}
+    {content}
     </button>
   )}
 }
