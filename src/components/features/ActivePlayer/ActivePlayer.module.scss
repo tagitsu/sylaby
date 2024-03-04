@@ -1,6 +1,7 @@
 @import '/src/styles/settings.scss';
 
 .active {
+  border: 2px solid fuchsia;
   width: calc($base-size * 27.3);
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;

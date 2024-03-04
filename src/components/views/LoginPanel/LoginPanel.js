@@ -18,17 +18,8 @@ import PlayerIcon from "../PlayerIcon/PlayerIcon";
 const LoginPanel = ({ user, player }) => {
 
   const [ loginData, setLoginData ] = useState({ email: '', password: ''});
-  //const [ user, setUser ] = useState();
 
   const navigate = useNavigate();
-
-  // useEffect( () => {
-  //   onAuthStateChanged( auth, (currentUser) => {
-  //     setUser(currentUser);
-  //   })
-  // }, [user]);
-
-  console.log(user, player);
 
   const signIn = async(e) => {
     try {
@@ -97,7 +88,6 @@ const LoginPanel = ({ user, player }) => {
         : 
         authForm
       }
-      
     </div>
   )
 };

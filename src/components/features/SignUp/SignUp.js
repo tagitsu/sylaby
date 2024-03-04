@@ -16,7 +16,7 @@ const SignUp = () => {
       password: '', 
       password2: '', 
       icon: '',
-      level: 0,
+      level: 1,
       badges: [
         { 
           name: '',

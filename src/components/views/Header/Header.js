@@ -13,7 +13,7 @@ const Header = ({ user, player }) => {
       <Link to='/'>
         <Logo />
       </Link>
-      {/* { player ? <ActivePlayer user={user} player={player} /> : <LoginPanel user={user} player={player} /> } */}
+      { player && <ActivePlayer user={user} player={player} /> }
       <LoginPanel user={user} player={player} />
     </div>
   );

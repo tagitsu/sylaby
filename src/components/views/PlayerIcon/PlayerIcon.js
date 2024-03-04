@@ -3,9 +3,6 @@ import styles from './PlayerIcon.module.scss';
 
 const PlayerIcon = ({ user, player }) => {
 
-  console.log(user.uid, player);
-
-
   return(
     <div key={user.id} className={styles.icon}>
       <div className={styles.icon__background}>

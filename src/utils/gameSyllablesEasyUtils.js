@@ -1,3 +1,4 @@
+import appUtils from './appUtils';
 import playerUtils from './playerUtils';
 
 const utils = {};
@@ -37,24 +38,17 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
 
 utils.submitSolution = (syllable1Words, answer, setAnswer, syllable1, solutionSyllable, setShowResult) => {
   setAnswer(`${syllable1}${solutionSyllable}`);
-  console.log(answer);
+  console.log(answer, `${syllable1}${solutionSyllable}`);
   if (syllable1Words.includes(`${syllable1}${solutionSyllable}`)) {
-    //playerUtils.addPointToPlayer(userId, activePlayerId);
     setShowResult('correct');
   } else {
     setShowResult('incorrect');
   }
-  // setSyllable1('');
-  // setSyllable1Words([]);
-  // setSyllables2([]);
-  // setWord('');
-  // setAnswer('')
 };
 
 utils.endGameTurn = (userId, setSyllable1, setSyllable1Words, setSyllables2, setAnswer, setWord, showResult, setShowResult) => {
   if (showResult === 'correct') {
     playerUtils.addPointToPlayer(userId);
-    console.log('dobra odpowiedź, dostajesz punkt', userId);
   } else {
     console.log('nie znam takiego słowa, spróbuj jeszcze raz');
   }

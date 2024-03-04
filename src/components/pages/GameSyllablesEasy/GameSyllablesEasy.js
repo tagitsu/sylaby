@@ -15,15 +15,12 @@ const GameSyllablesEasy = ({ user, player }) => {
   
   let playerLevel, nextLevel;
   if (player && levelsOK) {
-    [ playerLevel ] = (levels.filter( level => player.level === level.id));
-    [ nextLevel ] = (levels.filter( level => player.level + 1 === level.id));
+    [ playerLevel ] = (levels.filter( level => toString(player.level) === toString(level.id)));
+    [ nextLevel ] = (levels.filter( level => toString(player.level + 1) === toString(level.id)));  
   }
 
-  if (player?.points >= playerLevel?.nextLevel) { 
-    playerUtils.levelUp(user, nextLevel);
-  }
+  console.log(player?.points, player?.level, playerLevel);
 
-  console.log(player?.points, player?.level, playerLevel, player?.id);
 
   const [ syllable1, setSyllable1 ] = useState('');
   const [ syllable1Words, setSyllable1Words ] = useState([]);

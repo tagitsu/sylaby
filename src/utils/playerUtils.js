@@ -4,7 +4,6 @@ import { db } from "../firebase-config";
 const playerUtils = {};
 
 playerUtils.addPointToPlayer = async (userId) => {
-  console.log(userId);
   const playerDocRef = doc(db, 'users', `${userId}`);
   await updateDoc(playerDocRef, {
     points: increment(1)
@@ -21,7 +20,8 @@ playerUtils.levelUp = async (userId, nextLevel) => {
     badges: arrayUnion(badge),
     level: nextLevel.id,
     points: 0
-  })
+  });
+
 };
 
 

@@ -17,21 +17,12 @@ const App = () => {
   const [ player, setPlayer ] = useState();
   const [ user, setUser ] = useState();
 
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       appUtils.getPlayerFromUser(user.uid, setPlayer);
       setUser(user.uid);
     });
   }, [user]);
-
-  useEffect(() => {
-      appUtils.getPlayerFromUser(user, setPlayer);
-    }, [player?.points]);
-
-
-
-  console.log(user, player?.points);
 
   return (
     <div className={styles.app}>
