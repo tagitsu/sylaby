@@ -1,58 +1,20 @@
 @import '/src/styles/settings.scss';
 
 .logo {
-  border: 1px solid yellow;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 
-  img {
-  border-radius: 50%;
-  width: calc($base-size * 5);
+  &__name {
+    border-radius: 50%;
+    width: calc($base-size * 5);
+    height: calc($base-size * 5);
+    background-color: $dark-accent;
+    color: $light-shades;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
-  
-//   &__icon {
-//     width: calc($base-size * 5);
-//     height: calc($base-size * 5);
-//     border: 2px solid $color-light;
-//     border-radius: 50%;
-//     background-image: conic-gradient($color-warning, $color-orange, $color-yellow, $color-success, $color-blue, $color-indigo, $color-purple, $color-warning);
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-
-//   &__inter {
-//     width: calc($base-size * 4);
-//     height: calc($base-size * 4);
-//     border-radius: 50%;    
-//     background-color: $color-light;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-
-//   }
-
-
-//   &__name {
-//     padding: 0;
-//     font-size: calc($base-size * 1);
-//     color: $color-indigo;
-//     font-weight: 900;
-//     letter-spacing: 2px;
-//   }
-}
-
-// @media (max-width: 576px) {
-//   .logo {
-//     margin: 0;
-//   }
-// }
-
-// @media (max-width: 780px) and (orientation: landscape) {
-//   .logo {
-//     margin: 0;
-//   }
-// }

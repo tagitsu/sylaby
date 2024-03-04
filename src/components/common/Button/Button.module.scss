@@ -3,11 +3,11 @@
 .button {
   margin: $base-size;
   border: none;
-  filter: drop-shadow(2px 2px 1px $color-dark);
+  filter: drop-shadow(2px 2px 1px $dark-shades);
   border-radius: $radius;
   padding: calc($base-size * 2);
-  background-color: $color-light;
-  color: $color-indigo;
+  background-color: white;
+  color: $dark-shades;
   transition: $transition;
   font-size: calc($base-size * 3.6);
   max-height: calc($base-size * 5);
@@ -21,8 +21,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: $color-blue;
-    transition: $transition;
+    color: $dark-shades;
   }
 }
 
@@ -30,76 +29,6 @@
   cursor: pointer
 }
 
-.button:hover a {
-  color: $color-success;
-}
-
-.button:active {
-  background-color: $color-success;
-
-  & a {
-    color: $color-light;
-  }
-}
-
 .button:disabled {
-  background-color: lightgrey;
-}
-
-.setup {
-  width: max-content;
-  font-size: calc($base-size * 2);
-}
-
-.games {
-  width: calc($base-size * 2.5);
-  height: calc($base-size * 2.5);
-  padding: 0;
-  margin: 0;
-  font-size: calc($base-size * 1.5);
-  border-radius: 50%;
-}
-
-@media (max-width: 576px) {
-  .button {
-    width: calc($base-size * 6);
-    height: calc($base-size * 4);
-    font-size: calc($base-size * 2.6);
-  }
-
-  .setup {
-    width: min-content;
-    font-size: calc($base-size * 1.2);
-  }
-
-  .tip {
-    width: calc($base-size * 4);
-    height: calc($base-size * 4);
-    color: $color-orange;
-    border-radius: 50%;
-    place-self: end;
-  }
-  
-  .games {
-    width: calc($base-size * 2.5);
-    height: calc($base-size * 2.5);
-    padding: 0;
-    margin: 0;
-    font-size: calc($base-size * 1.5);
-    border-radius: 50%;
-  }
-}
-
-@media (max-width: 780px) and (orientation: landscape) {
-  .button {
-    width: calc($base-size * 6);
-    height: calc($base-size * 4);
-    font-size: calc($base-size * 2.6);
-  }
-
-  .setup {
-    width: min-content;
-    font-size: calc($base-size);
-  }
-
+  background-color: $dark-accent;
 }

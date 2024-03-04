@@ -1,53 +1,43 @@
 import styles from '../ActivePlayer/ActivePlayer.module.scss';
-import { useState, useEffect } from 'react';
-import { getDocs, collection,  } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
-import { useGetPlayersQuery, useGetLevelsQuery } from "../../../api/apiSlice";
+import { useGetLevelsQuery } from "../../../api/apiSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import ProgressBar from "../ProgressBar/ProgressBar";
-import Spinner from '../../common/Spinner/Spinner';
-import Button from '../../common/Button/Button';
 import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 
-const ActivePlayer = ({ user, activePlayer }) => {
+const ActivePlayer = ({ user, player }) => {
 
   const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery(); 
-
+  console.log(user, player);
   let playerLevel;
-  if (levelsOK && activePlayer) {
-    [ playerLevel ] = levels.filter( level => activePlayer.level === level.id);
+  if (levelsOK) {
+    [ playerLevel ] = levels.filter( level => player.level === level.id);
   }
 
-  if (activePlayer && playerLevel) {
+  if (playerLevel) {
     return(
     <div className={styles.active}>
       <div className={styles.active__icon}>
-        <Link to={`/player/${activePlayer.id}`} className={styles.list__link}>
-          <PlayerIcon 
-            id={activePlayer.id} 
-            icon={activePlayer.icon} 
-            name={activePlayer.name}
-            level={activePlayer.level}
-            color={activePlayer.color}
-            size='60'
-            hover={true}
-          />
+        <Link to={`/player/${user.id}`} >
+          <PlayerIcon activePlayer={user} player={player} />
         </Link>
       </div>
-      <div className={styles.active__name}> {activePlayer.name} </div>
+      <div className={styles.active__name}> {user.name} </div>
       <div className={styles.active__btn}>
-        <Link to={`/game/${activePlayer.id}`}>
+        <Link to={`/game/${user.id}`}>
           <FontAwesomeIcon icon={faGamepad}></FontAwesomeIcon>
         </Link>
       </div>
       <div className={styles.active__bar}>
-        <ProgressBar user={user} xp={activePlayer.xp} levelUp={playerLevel.nextLevel} content={activePlayer.xp} />
+        <ProgressBar 
+          user={user}
+          player={player}
+          levelUp={playerLevel.nextLevel} 
+        />
       </div>
     </div>
     );
-  } else {
-    return(<Spinner content='...wczytywanie aktywnego gracza' />)
   }
 };
 

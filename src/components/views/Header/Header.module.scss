@@ -1,25 +1,16 @@
 @import '/src/styles/settings.scss';
 
 .header {
-  max-height: fit-content;
-  padding: $base-size 0;
+  border: 2px solid red;
   display: grid;
   grid-template-columns: minmax(min-content, 1fr) 3fr;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-
-@media (max-width: 576px) {
-  .header {
-    //grid-template-columns: 100%;
-  }
-}
-
-@media (max-width: 780px) and (orientation: landscape) {
-  .header {
-    //grid-template-columns: 100%;
-
-  }
+  align-items: start;
+  grid-row: 1 / 2;
+  width: 100%;
+  padding: $base-size 0;
+  background-image: url('../../../../public/images/others/wave_top.svg'), url('../../../../public/images/others/wave_top_op.svg'), url('../../../../public/images/others/wave_top_light.svg');
+  background-size: cover;
+  background-color: $light-shades;
+  background-repeat: no-repeat;
 }
 

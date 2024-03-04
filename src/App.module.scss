@@ -3,49 +3,19 @@
 .app {
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% auto 15%;
 
   &__main {
-    height: 100vh;
+    border: 2px solid yellow;
+    grid-row: 2 / 3;
     padding: $base-size;
     overflow: auto;
     position: relative;
   }
 }
 
-@media (max-width: 576px) {
-  .app {
-    //background-color: red;
-  }
-}
-
-@media (max-width: 780px) and (orientation: landscape) {
-  .app {
-
-    &__main {
-      padding: 0;
-    }
-  }
-}
-
-@media (min-width: 768px) {
-  .app {
-    //background-color: orangered;
-  }
-}
-
-@media (min-width: 992px) {
-  .app {
-    //background-color: orange;
-  }
-}
-
-@media (min-width: 1200px) {
-  .app {
-    //background-color: yellowgreen;
-  }
-}
 
 // 576px for portrait phones.
 // 768px for tablets.

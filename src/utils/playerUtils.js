@@ -3,58 +3,40 @@ import { db } from "../firebase-config";
 
 const playerUtils = {};
 
-playerUtils.addPointToPlayer = async (userId, playerId) => {
-  const activePlayerDocRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
-  await updateDoc(activePlayerDocRef, {
-    xp: increment(1)
+playerUtils.addPointToPlayer = async (userId) => {
+  console.log(userId);
+  const playerDocRef = doc(db, 'users', `${userId}`);
+  await updateDoc(playerDocRef, {
+    points: increment(1)
   });
 };
 
-playerUtils.levelUp = async (userId, playerId, nextLevel) => {
-  const activePlayerDocRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
+playerUtils.levelUp = async (userId, nextLevel) => {
+  const playerDocRef = doc(db, 'users', `${userId}`);
   const badge = {
     name: nextLevel.badge,
     text: nextLevel.title
   };
-  await updateDoc(activePlayerDocRef, {
+  await updateDoc(playerDocRef, {
     badges: arrayUnion(badge),
     level: nextLevel.id,
-    xp: 0
+    points: 0
   })
 };
 
-playerUtils.changeActiveStatus = async (userId, playerId) => {
-    const playerRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
-    await updateDoc(playerRef, { isActive: true });
-}
 
-playerUtils.changeColor = async (userId, playerId, color) => {
-  const playerRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
-  await updateDoc(playerRef, { color: color });
-};
-
-playerUtils.deletePlayerProfile = async (userId, playerId) => {
-  const playerRef = doc(db, 'users', `${userId}`, 'players', `${playerId}`);
+playerUtils.deletePlayerProfile = async (userId) => {
+  const playerRef = doc(db, 'users', `${userId}`);
   await deleteDoc(playerRef);
 }
 
 playerUtils.characters = [
-  { id: 1, name: 'Pikachu', icon: 'pikachu.png' },
-  { id: 2, name: 'Curious George', icon: 'curious_george.png' },
-  { id: 3, name: 'Sponge Bob', icon: 'spongebob.png' },
-  { id: 4, name: 'Elsa', icon: 'elsa.png' },
-  { id: 5, name: 'George the Pig', icon: 'george_pig.png' },
-  { id: 6, name: 'C3PO and R2D2', icon: 'r2d2_c3po.png' },
-  { id: 7, name: '341B', icon: 'storybots.png' },
-  { id: 8, name: 'Lemmings', icon: 'lemmings.png'},
-  { id: 9, name: 'Vaiana', icon: 'vaiana.png'},
-  { id: 10, name: 'Maui', icon: 'maui.png'},
-  { id: 11, name: 'Hei Hei', icon: 'heihei.png'},
-  { id: 12, name: 'Rapunzel', icon: 'rapunzel.png'},
-  { id: 14, name: 'Dipper and Mabel', icon: 'gravity_falls.png'},
-  { id: 15, name: 'AJ and Blaze', icon: 'blaze.png'},
-  { id: 16, name: 'Grizzly', icon: 'grizzly.png'},
-  { id: 17, name: 'Mavis and Dracula', icon: 'transylvania.png'}
+  { id: 1, name: 'Bu', icon: 'mon_01.png' },
+  { id: 2, name: 'Uo', icon: 'mon_02.png' },
+  { id: 3, name: 'Bo', icon: 'mon_03.png' },
+  { id: 4, name: 'Io', icon: 'mon_04.png' },
+  { id: 5, name: 'Grr', icon: 'mon_05.png' },
+  { id: 6, name: 'Pi', icon: 'mon_06.png' },
 ]
 
 export default playerUtils;

@@ -1,0 +1,106 @@
+@import '../../../styles/settings.scss';
+
+.auth {
+  grid-column: 3 / 4;
+  display: flex;
+  justify-content: end;
+
+  &__input {
+    background-color: $light-shades;
+    color: $dark-shades;
+    text-align: center;
+    line-height: 2;
+    border-radius: 4px;
+    border: none;
+  }
+
+  &__info {
+    padding: $base-size;
+    display: flex;
+    gap: $base-size;
+    align-items: center;
+    width: max-content;
+  }
+
+  &__form {
+    padding: 0 $base-size;
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+
+  &__inputs {
+    display: flex;
+    gap: $base-size;
+  }
+
+  &__signup {
+    display: flex;
+    gap: 2px;
+    color: $dark-accent;
+    font-size: $base-size;
+  }
+
+  &__btn {
+    border: none;
+    background-color: transparent;
+    color: $dark-accent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-size: $base-size;
+    transition: $transition;
+  }
+
+  &__error {
+    font-size: $base-size;
+  }
+
+  &__icon {
+    background-color: $light-shades;
+    border-radius: 50%;
+    color: $dark-shades;
+    height: calc($base-size * 3);
+    width: calc($base-size * 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name {
+    color: $dark-accent;
+    font-weight: 700;
+    font-size: $base-size;
+  }
+
+  &__btn:hover, &__icon:hover {
+    color: $dark-shades;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth {
+
+    &__form{
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto;
+      gap: 5px;
+      }
+    
+    &__inputs {
+      flex-direction: column;
+    }
+
+    &__input {
+      grid-column: span 3;
+    }
+  }
+}
+
+@media (max-width: 780px) and (orientation: landscape) {
+  .auth {
+    //justify-content: center;
+  }
+}

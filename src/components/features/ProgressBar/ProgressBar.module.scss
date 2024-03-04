@@ -2,13 +2,12 @@
 
 :root {
   --player-xp: 0;
-  --player-color: green;
 }
 
 .prog {
 
   &__container {
-    background-image: linear-gradient(white, $color-light 20%, $color-light 80%, lightgray);
+    background-image: linear-gradient(white, $light-shades 20%, $light-shades 80%, lightgray);
     width: 100%;
     border-radius: $radius;
     overflow: hidden;
@@ -20,7 +19,7 @@
   &__bar {
     width: var(--player-xp);
     height: calc($base-size * 2);
-    background-image: linear-gradient(white, var(--player-color) 20%, var(--player-color) 80%, lightgray);
+    background-image: linear-gradient(white, $dark-accent 20%, $dark-accent 80%, lightgray);
 
   }
 
@@ -32,20 +31,5 @@
     font-size: $font-content;
     font-weight: 700;
     text-shadow: $text-shadow;
-  }
-}
-
-@media (max-width: 568px) {
-  .prog {
-    padding: 0 $base-size;
-    width: 100%;
-
-    &__container {
-      width: 100%;
-      border-radius: $radius;
-      overflow: hidden;
-      margin-bottom: $base-size;
-      position: relative;
-    }
   }
 }

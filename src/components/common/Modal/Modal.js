@@ -3,37 +3,37 @@ import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 
-const Modal = (props) => {
+const Modal = ({ title, content, accept, acceptArg, acceptText, close }) => {
 
-  const root = document.querySelector(':root');
-  root.style.setProperty('--color', props.color);
 
   const handleAccept = () => {
-    if (props.acceptArg) {
-      props.accept(props.acceptArg)
+    if (acceptArg) {
+      accept(acceptArg)
     } else {
-      props.accept();
+      accept();
     }
-  }
+  };
 
   return(
     <dialog className={styles.modal}>
       <div className={styles.modal__info}>
-        <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => props.cancel(false)}><FontAwesomeIcon icon={faXmarkCircle} /></button>
-        <div className={styles.modal__text}>{props.text}</div>
-        <button 
-          className={clsx(styles.modal__accept, styles.modal__button)}
-          
-          onClick={handleAccept}
-        >
-          {props.acceptBtn}
-        </button>
-        <button
+        <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => close(false)}><FontAwesomeIcon icon={faXmarkCircle} /></button>
+        <div className={styles.modal__text}>{title}</div>
+        <div className={styles.modal__text}>{content}</div>
+        { accept &&
+          <button 
+            className={clsx(styles.modal__accept, styles.modal__button)}
+            onClick={handleAccept}
+          >
+            { acceptText ? acceptText : 'OK' }
+          </button>
+        }
+        {/* <button
           className={clsx(styles.modal__cancel, styles.modal__button)}
-          onClick={() => props.cancel(false)} 
+          onClick={() => close(false)} 
         >
-        Anuluj
-        </button>
+          Anuluj
+        </button> */}
       </div>
     </dialog>
   )

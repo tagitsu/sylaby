@@ -1,22 +1,15 @@
 import clsx from 'clsx';
 import styles from './PlayerIcon.module.scss';
 
-const PlayerIcon = (props) => {
+const PlayerIcon = ({ user, player }) => {
 
-  const root = document.querySelector(':root');
-  root.style.setProperty('--player-color', props.color);
-  root.style.setProperty('--size', `${props.size}px`);
+  console.log(user.uid, player);
 
 
   return(
-    <div key={props.id} className={styles.icon}>
-      <div className={styles.icon__background} style={{ backgroundColor: props.color }}>
-        <img className={clsx(styles.icon__image, props.hover && styles.hover)} src={`${process.env.PUBLIC_URL}/images/characters/${props.icon}`} alt={`${props.name} icon`} />
-      </div>
-      <div className={styles.icon__level} style={{ backgroundColor: props.color }}>
-        <div className={styles.icon__levelValue}>
-          {props.level}
-        </div>
+    <div key={user.id} className={styles.icon}>
+      <div className={styles.icon__background}>
+        <img className={clsx(styles.icon__image)} src={`${process.env.PUBLIC_URL}/images/characters/${player.icon}`} alt={`cartoon monster ${user.icon} icon`} />
       </div>
     </div>
   );
