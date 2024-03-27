@@ -8,7 +8,6 @@
   grid-template-rows: 20% auto 15%;
 
   &__main {
-    border: 2px solid yellow;
     grid-row: 2 / 3;
     padding: $base-size;
     overflow: auto;

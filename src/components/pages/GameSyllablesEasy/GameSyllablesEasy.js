@@ -1,27 +1,16 @@
 import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import utils from '../../../utils/gameSyllablesEasyUtils';
-import playerUtils from '../../../utils/playerUtils';
 import { useGetSyllablesQuery, useGetLevelsQuery } from "../../../api/apiSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
-import appUtils from '../../../utils/appUtils';
+import Button from '../../common/Button/Button';
 
 const GameSyllablesEasy = ({ user, player }) => {
 
   const { data: syllables, isSuccess: syllablesOK } = useGetSyllablesQuery();
-  const { data: levels, isSuccess: levelsOK } = useGetLevelsQuery();
   
-  let playerLevel, nextLevel;
-  if (player && levelsOK) {
-    [ playerLevel ] = (levels.filter( level => toString(player.level) === toString(level.id)));
-    [ nextLevel ] = (levels.filter( level => toString(player.level + 1) === toString(level.id)));  
-  }
-
-  console.log(player?.points, player?.level, playerLevel);
-
-
   const [ syllable1, setSyllable1 ] = useState('');
   const [ syllable1Words, setSyllable1Words ] = useState([]);
   const [ syllables2, setSyllables2 ] = useState([]);
@@ -51,9 +40,11 @@ const GameSyllablesEasy = ({ user, player }) => {
             </div>
           </section>
           :
-          <button onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words)} >
-            <FontAwesomeIcon icon={faPlay} />
-          </button>
+          <Button 
+            onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words)} 
+            content={<FontAwesomeIcon icon={faPlay} />}
+          />
+            
         }
         {
           answer && 

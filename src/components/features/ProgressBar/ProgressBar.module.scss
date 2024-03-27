@@ -7,7 +7,7 @@
 .prog {
 
   &__container {
-    background-image: linear-gradient(white, $light-shades 20%, $light-shades 80%, lightgray);
+    background-image: linear-gradient(white, white 20%, white 80%, lightgray);
     width: 100%;
     border-radius: $radius;
     overflow: hidden;
@@ -19,17 +19,16 @@
   &__bar {
     width: var(--player-xp);
     height: calc($base-size * 2);
-    background-image: linear-gradient(white, $dark-accent 20%, $dark-accent 80%, lightgray);
-
+    background-image: linear-gradient(white, $light-accent 20%, $light-accent 80%, lightgray);
   }
 
   &__points {
     position: absolute;
     left: 50%;
     top: 50%;
+    color: $dark-shades;
     transform: translate(-50%, -50%);
-    font-size: $font-content;
+    //font-size: $font-content;
     font-weight: 700;
-    text-shadow: $text-shadow;
   }
 }

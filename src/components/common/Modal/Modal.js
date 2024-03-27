@@ -1,7 +1,7 @@
 import styles from '../Modal/Modal.module.scss';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
+import { faXmarkCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Modal = ({ title, content, accept, acceptArg, acceptText, close }) => {
 
@@ -16,11 +16,15 @@ const Modal = ({ title, content, accept, acceptArg, acceptText, close }) => {
 
   return(
     <dialog className={styles.modal}>
-      <div className={styles.modal__info}>
-        <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => close(false)}><FontAwesomeIcon icon={faXmarkCircle} /></button>
-        <div className={styles.modal__text}>{title}</div>
-        <div className={styles.modal__text}>{content}</div>
-        { accept &&
+      <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => close(false)}><FontAwesomeIcon icon={faXmark} /></button>
+      <div className={styles.modal__container}>
+        <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => close(false)}><FontAwesomeIcon icon={faXmark} /></button>
+        <header className={styles.modal__header}>
+          <h1 className={styles.modal__text}>{title}</h1>
+        </header>
+        <article className={styles.modal__content}>
+          <p className={styles.modal__text}>{content}</p>
+          { accept &&
           <button 
             className={clsx(styles.modal__accept, styles.modal__button)}
             onClick={handleAccept}
@@ -28,6 +32,7 @@ const Modal = ({ title, content, accept, acceptArg, acceptText, close }) => {
             { acceptText ? acceptText : 'OK' }
           </button>
         }
+        </article>
         {/* <button
           className={clsx(styles.modal__cancel, styles.modal__button)}
           onClick={() => close(false)} 

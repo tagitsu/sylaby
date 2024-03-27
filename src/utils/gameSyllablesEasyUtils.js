@@ -3,6 +3,7 @@ import playerUtils from './playerUtils';
 
 const utils = {};
 
+
 utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words) => {
   const randomSyllableId = Math.floor(Math.random() * syllables.length);
   const [ randomSyllableObj ] = syllables.filter( syllable => syllable.id == randomSyllableId);

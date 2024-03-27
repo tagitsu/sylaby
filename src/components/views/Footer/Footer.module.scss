@@ -1,23 +1,28 @@
 @import '/src/styles/settings.scss';
 
 .footer {
-  border: 2px solid green;
-  display: grid;
-  grid-template-columns: 30% auto;
-
-  
+  display: flex;
+  justify-content: space-between;
   grid-row: 3 / 4;
-  //max-height: fit-content;
-  width: 100%;
-  padding: $base-size 0;
+  padding: $base-size 10%;
   background-image: url('../../../../public/images/others/wave_bottom.svg'), url('../../../../public/images/others/wave_bottom_op.svg'), url('../../../../public/images/others/wave_bottom_light.svg');
-  background-size: cover;
+  background-size: 100%;
   background-color: $light-shades;
+  background-position-y: center;
+
+  font-size: calc($base-size * 1.2);
+
 
   &__menu {
-    border: 1px solid blue;
+    list-style-type: none;
     display: grid;
+    gap: $base-size;
     grid-template-columns: repeat(3, 1fr);
+
+    & li:hover {
+      cursor: pointer;
+      color: $dark-accent;
+    }
   }
 
 }

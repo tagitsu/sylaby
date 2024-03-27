@@ -19,8 +19,8 @@ const SignUp = () => {
       level: 1,
       badges: [
         { 
-          name: '',
-          text: ''
+          name: 'mouse',
+          text: 'głoskująca myszka'
         },
       ],
       points: 0
@@ -39,7 +39,6 @@ const SignUp = () => {
         formData.email,
         formData.password
       );
-      console.log(user.user.email);
       navigate('/');
       const player = { 
         id: user.user.uid,

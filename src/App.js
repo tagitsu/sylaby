@@ -19,8 +19,8 @@ const App = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      appUtils.getPlayerFromUser(user.uid, setPlayer);
-      setUser(user.uid);
+      appUtils.getPlayerFromUser(user?.uid, setPlayer);
+      setUser(user?.uid);
     });
   }, [user]);
 

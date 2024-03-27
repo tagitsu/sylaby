@@ -17,11 +17,11 @@ const ProgressBar = ({ player }) => {
   let playerLevel, nextLevel;
 
   if (levelsOK) {
-    [ playerLevel ] = levels.filter( level => toString(player.level) === toString(level.id));
+    [ playerLevel ] = levels.filter( level => player.level === level.id);
     [ nextLevel ] = levels.filter( level => (player.level + 1) === (level.id));
   }
 
-  const barWidth = (((points) / (playerLevel.nextLevel)) * 100) + '%';
+  const barWidth = (((points) / (playerLevel?.nextLevel)) * 100) + '%';
   const root = document.querySelector(':root');
   root.style.setProperty('--player-xp', barWidth);
 
@@ -29,15 +29,12 @@ const ProgressBar = ({ player }) => {
     playerUtils.levelUp(player.id, nextLevel);
   }
 
-  console.log('lvl + 1', player.level + 1);
-  console.log(player.points, points);
-  console.log('current lvl', playerLevel);
-  console.log('next lvl', nextLevel);
-
   return(
     <div className={styles.prog}>
-      <div className={styles.prog__bar}>
-        <span className={styles.prog__points}>{points}</span>
+      <div className={styles.prog__container}>
+        <div className={styles.prog__bar}>
+          <span className={styles.prog__points}>{points}</span>
+        </div>
       </div>
     </div>
   );

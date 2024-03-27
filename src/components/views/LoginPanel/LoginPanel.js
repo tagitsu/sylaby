@@ -39,8 +39,8 @@ const LoginPanel = ({ user, player }) => {
     e.preventDefault();
     try {
       await signInAnonymously(auth);
-      const guestsRef = collection(db, 'guests');
-      await setDoc(doc(guestsRef, `${auth.currentUser.uid}`), { 
+      const usersRef = collection(db, 'users');
+      await setDoc(doc(usersRef, `${auth.currentUser.uid}`), { 
         id: auth.currentUser.uid,
         name: 'gość',
         level: 1,
@@ -75,7 +75,7 @@ const LoginPanel = ({ user, player }) => {
 
   const userInfo = 
     <div className={styles.auth__info}>
-      { player ? <PlayerIcon user={user} player={player} /> : <FontAwesomeIcon icon={faUser} />}
+      { !(player?.name === 'gość') ? <PlayerIcon user={user} player={player} /> : <FontAwesomeIcon icon={faUser} />}
       <p className={styles.auth__name}> {player?.name} </p>
       <button className={styles.auth__btn} onClick={signout} > Wyloguj <FontAwesomeIcon icon={faPowerOff}/></button>
     </div>
