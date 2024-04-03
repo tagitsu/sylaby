@@ -2,14 +2,17 @@
 
 .button {
   margin: $base-size;
-  border: none;
-  filter: drop-shadow(2px 2px 1px $dark-shades);
+  //width: calc($base-size * 5);
+  //height: calc($base-size * 5);
+  border: 3px solid $dark-accent;
+  //filter: drop-shadow(2px 2px 1px $dark-shades);
+  //border-radius: 50%;
   border-radius: $radius;
   padding: calc($base-size * 2);
-  background-color: white;
-  color: $dark-shades;
+  background-color: transparent;
+  color: $dark-accent;
   transition: $transition;
-  font-size: calc($base-size * 3.6);
+  font-size: calc($base-size * 3);
   max-height: calc($base-size * 5);
   display: flex;
   justify-content: center;
