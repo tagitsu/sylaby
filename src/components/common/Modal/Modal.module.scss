@@ -2,7 +2,6 @@
 
 .modal {
   display: flex;
-  //position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -17,32 +16,49 @@
   &__container {
     width: 50vw;
     min-height: 30vh;
-    height: fit-content;
-    padding: $base-size;
+    max-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background-color: $light-shades;
-    background-image: url('../../../../public/images/others/wave_top.svg'), url('../../../../public/images/others/wave_top_op.svg'), url('../../../../public/images/others/wave_top_light.svg');
+    background-image: url('../../../../public/images/others/wave_top_op.svg'), url('../../../../public/images/others/wave_top_light.svg');
     background-position: top;
     background-repeat: no-repeat;
     position: relative;
-    //border: 1px solid yellow;
+    z-index: 0;
+    overflow: scroll;
+  }
+
+  &__wave {
+    width: 50vw;
+    min-height: 10vw;
+    background-image: url('../../../../public/images/others/wave_top.svg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: sticky;
+    top: 0;
+    z-index: 2;
   }
 
   &__header {
-    //border: 1px solid white;
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
     color: $light-shades;
-    align-self: flex-start;
-    padding: 0 $base-size;
+    padding: $base-size;
+    position: fixed;
+    z-index: 3;
   }
 
   &__content {
-    margin-top: calc($base-size * 3);
     width: 100%;
     transition: all 2s;
-
+    position: relative;
+    z-index: 1;
+    padding: $base-size;
 
     form {
       display: flex;
@@ -69,8 +85,7 @@
       input, textarea, button {
         border: none;
         padding: $base-size;
-        background-color: rgba($color: $dark-shades, $alpha: 0.5);
-        color: $light-shades;
+        color: $light-accent;
         width: 50%;
         outline: none;
         overflow: visible;
@@ -81,19 +96,15 @@
         color: $dark-accent;
         font-size: calc($base-size * 3);
 
-
         :hover {
           color: $light-accent;
         }
       }
-
     }
   }
 
   &__button {
     border: none;
-    //padding: $base-size;
-    //margin-bottom: $base-size;
 
     :hover {
       cursor: pointer;
@@ -103,17 +114,14 @@
   &__close {
     background-color: transparent;
     color: $dark-accent;
-    align-self: flex-end;
-    position: absolute;
-    right: $base-size;
-    top: $base-size;
+    position: sticky;
+    z-index: 3;
+    right: calc($base-size * 1.3);
+    top: calc($base-size * 1.3);
   }
 
   &__accept {
     background-color: $light-accent;
     color: $light-shades;
   }
-
-  
-
 }

@@ -9,7 +9,6 @@
   background-size: 100%;
   background-color: $light-shades;
   background-position-y: center;
-
   font-size: calc($base-size * 1.2);
 
 
@@ -22,6 +21,14 @@
     & li:hover {
       cursor: pointer;
       color: $dark-accent;
+    }
+  }
+
+  &__article {
+    text-align: justify;
+
+    & * {
+      padding: $base-size;
     }
   }
 
