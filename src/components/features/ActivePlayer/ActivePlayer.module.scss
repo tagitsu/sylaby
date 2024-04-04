@@ -1,7 +1,9 @@
 @import '/src/styles/settings.scss';
 
 .active {
-  width: calc($base-size * 27.3);
+  //width: calc($base-size * 27.3);
+  max-width: 50vw;
+  min-width: 100px;
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -11,33 +13,35 @@
   gap: $base-size;
 
   &__level {
-    width: 30px;
-    height: 30px;
+    width: 6vw;
+    height: 6vw;
+    max-width: 9vh;
+    max-height: 9vh;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 46px;
     background-color: $light-accent;
     color: $dark-shades;
     position: relative;
-
   }
 
-  &__lvl {
+  &__levelNumber {
+    width: 100%;
+    text-align: center;
+    font-size: 6vw;
+  }
+
+  &__lvlText {
     width: calc($base-size * 4);
     text-align: end;
     position: absolute;
     text-transform: uppercase;
     font-size: $base-size;
-
-    
   }
-
 
   &__bar {
     width: 100%;
-    //text-shadow: $text-shadow;
     grid-column: span 3;
   }
 

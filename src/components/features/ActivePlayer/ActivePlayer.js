@@ -19,9 +19,9 @@ const ActivePlayer = ({ player }) => {
     return(
     <div className={styles.active}>
       <div className={styles.active__level}>
-        {player?.level}
+        <span className={styles.active__levelNumber}>{player?.level}</span>
       </div>
-      <span className={styles.active__lvl}>lvl</span>
+      <span className={styles.active__lvlText}>lvl</span>
       <div className={styles.active__bar}>
         <ProgressBar 
           player={player}

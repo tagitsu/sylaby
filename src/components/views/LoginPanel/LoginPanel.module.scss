@@ -1,9 +1,11 @@
 @import '../../../styles/settings.scss';
 
 .auth {
-  grid-column: 3 / 4;
+  //grid-column: 3 / 4;
   display: flex;
-  justify-content: end;
+  //justify-content: end;
+  width: fit-content;
+  height: 30px;
 
   &__input {
     background-color: $light-shades;

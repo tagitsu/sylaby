@@ -77,7 +77,7 @@ const LoginPanel = ({ user, player }) => {
     <div className={styles.auth__info}>
       { !(player?.name === 'gość') ? <PlayerIcon user={user} player={player} /> : <FontAwesomeIcon icon={faUser} />}
       <p className={styles.auth__name}> {player?.name} </p>
-      <button className={styles.auth__btn} onClick={signout} > Wyloguj <FontAwesomeIcon icon={faPowerOff}/></button>
+      <button className={styles.auth__btn} onClick={signout} > <FontAwesomeIcon icon={faPowerOff}/></button>
     </div>
 
   return(
