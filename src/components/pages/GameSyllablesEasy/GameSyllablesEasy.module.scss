@@ -1,13 +1,9 @@
 @import '/src/styles/settings.scss';
 .easy {
   height: 100%;
-  // padding: $base-size;
-  // display: grid;
-  // grid-template-rows: calc($base-size * 7.3) auto calc($base-size * 4);
   display: flex;
   justify-content: center;
   align-items: center;
-  // overflow: scroll;
 
   &__board {
     width: 100%;
@@ -42,14 +38,12 @@
   }
 
   &__first {
-    border: 3px solid $light-shades;
-    background-color: $dark-accent;
+    background-color: $light-accent;
   }
 
   &__answer {
     width: calc($base-size * 11);
     background-color: $dark-accent;
-    border: 3px solid $light-shades;
   }
 
   &__last {
@@ -74,22 +68,20 @@
     font-size: calc($base-size * 5);
     background-color: $light-shades;
     border: none;
-    color: $dark-shades;
-
+    color: $dark-accent;
 
     & p {
-      transition: all .5s;
+      transition: all .6s;
     }
 
     & p:hover {
-      text-align: center;
-      color: $dark-accent;
+      color: $dark-shades;
       cursor: pointer;
     }
 
     & p:active {
       transform: translateX(100%);
-      color: $dark-shades;
+      color: $light-accent;
     }
   }
 
@@ -104,33 +96,33 @@
   }
 }
 
-@media (max-width: 576px) {
-  .easy {
-    &__first, &__task, &__answer {
-      font-size: $font-title;
-      width: calc($base-size * 6);
-      height: calc($base-size * 4);
-      margin: $base-size;
-    }
-  }
-}
+// @media (max-width: 576px) {
+//   .easy {
+//     &__first, &__task, &__answer {
+//       font-size: $font-title;
+//       width: calc($base-size * 6);
+//       height: calc($base-size * 4);
+//       margin: $base-size;
+//     }
+//   }
+// }
 
-@media (max-width: 780px) and (orientation: landscape) {
-  .easy {
+// @media (max-width: 780px) and (orientation: landscape) {
+//   .easy {
 
-    &__board {
-      flex-direction: row;
-    }
+//     &__board {
+//       flex-direction: row;
+//     }
 
-    &__first, &__task, &__answer {
-      font-size: $font-title;
-      width: calc($base-size * 6);
-      height: calc($base-size * 4);
-      margin: $base-size;
-    }
+//     &__first, &__task, &__answer {
+//       font-size: $font-title;
+//       width: calc($base-size * 6);
+//       height: calc($base-size * 4);
+//       margin: $base-size;
+//     }
 
-    &__last {
-      padding: 0;
-    }
-  }
-}
+//     &__last {
+//       padding: 0;
+//     }
+//   }
+// }
