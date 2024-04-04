@@ -3,7 +3,7 @@ import styles from './GameSyllablesEasy.module.scss';
 import utils from '../../../utils/gameSyllablesEasyUtils';
 import { useGetSyllablesQuery, useGetLevelsQuery } from "../../../api/apiSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 import Button from '../../common/Button/Button';
 
@@ -38,6 +38,26 @@ const GameSyllablesEasy = ({ user, player }) => {
             <div className={clsx(styles.easy__answer, (showResult === 'correct') && styles.easy__correct, (showResult === 'incorrect') && styles.easy__incorrect)}>
               {answer}
             </div>
+            { answer && 
+              <button 
+                onClick={() => 
+                  utils.endGameTurn(
+                    player.id, 
+                    setSyllable1, 
+                    setSyllable1Words, 
+                    setSyllables2, 
+                    setAnswer, 
+                    setWord, 
+                    showResult, 
+                    setShowResult
+                  )
+                } 
+                className={styles.easy__next} 
+              >
+              <p><FontAwesomeIcon icon={faArrowRight} /></p>
+              </button>
+            }
+
           </section>
           :
           <Button 
@@ -46,26 +66,7 @@ const GameSyllablesEasy = ({ user, player }) => {
           />
             
         }
-        {
-          answer && 
-          <button 
-            onClick={() => 
-              utils.endGameTurn(
-                player.id, 
-                setSyllable1, 
-                setSyllable1Words, 
-                setSyllables2, 
-                setAnswer, 
-                setWord, 
-                showResult, 
-                setShowResult
-              )
-            } 
-            className={styles.easy__btn} 
-          >
-          OK
-          </button>
-        }
+
       </div>
   );
 };

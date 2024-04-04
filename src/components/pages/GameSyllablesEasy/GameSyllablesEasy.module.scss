@@ -64,6 +64,35 @@
     grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 8), 1fr));
   }
 
+  &__next {
+    width: 100%;
+    height: calc($base-size * 6.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: calc($base-size * 5);
+    background-color: $light-shades;
+    border: none;
+    color: $dark-shades;
+
+
+    & p {
+      transition: all .5s;
+    }
+
+    & p:hover {
+      text-align: center;
+      color: $dark-accent;
+      cursor: pointer;
+    }
+
+    & p:active {
+      transform: translateX(100%);
+      color: $dark-shades;
+    }
+  }
+
   &__correct {
     color: green;
     background-color: yellowgreen;
