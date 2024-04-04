@@ -8,8 +8,11 @@
   background-image: url('../../../../public/images/others/wave_bottom.svg'), url('../../../../public/images/others/wave_bottom_op.svg'), url('../../../../public/images/others/wave_bottom_light.svg');
   background-size: 100%;
   background-color: $light-shades;
-  background-position-y: center;
+  background-repeat: no-repeat;
+  background-position-y: 30%;
   font-size: calc($base-size * 1.2);
+
+  border: 2px solid lightseagreen;
 
 
   &__menu {

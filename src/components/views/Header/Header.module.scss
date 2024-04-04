@@ -2,19 +2,15 @@
 
 .header {
   display: grid;
-  grid-template-columns: minmax(min-content, 1fr) 2fr 1fr;
-  //grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  //grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   grid-row: 1 / 2;
   width: 100%;
   padding: $base-size;
   background-image: url('../../../../public/images/others/wave_top.svg'), url('../../../../public/images/others/wave_top_op.svg'), url('../../../../public/images/others/wave_top_light.svg');
   background-size: 100%;
-  background-color: $light-shades;
   background-repeat: no-repeat;
-  background-position-y: center;
-
+  background-position-y: 70%;
+  overflow: visible;
 }
 
