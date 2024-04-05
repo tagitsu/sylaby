@@ -25,7 +25,6 @@
     width: calc($base-size * 9);
     height: calc($base-size * 6);
     text-align: center;
-    margin: $base-size;
     background-color: $light-shades;
     border: none;
     border-radius: $radius;
@@ -41,10 +40,6 @@
     background-color: $light-accent;
   }
 
-  &__answer {
-    width: calc($base-size * 11);
-    background-color: $dark-accent;
-  }
 
   &__last {
     border: 3px solid $light-shades;
@@ -57,6 +52,12 @@
     gap: $base-size;
     grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 8), 1fr));
   }
+
+  &__answer {
+    width: calc($base-size * 11);
+    background-color: $dark-accent;
+  }
+
 
   &__next {
     width: 100%;
@@ -86,43 +87,22 @@
   }
 
   &__correct {
-    color: green;
-    background-color: yellowgreen;
+    color: darken($color: $color-correct, $amount: 30);
+    background-color: $color-correct;
   }
 
   &__incorrect {
-    color: red;
-    background-color: orangered;
+    color: darken($color: $color-incorrect, $amount: 30);
+    background-color: $color-incorrect;
   }
 }
 
-// @media (max-width: 576px) {
-//   .easy {
-//     &__first, &__task, &__answer {
-//       font-size: $font-title;
-//       width: calc($base-size * 6);
-//       height: calc($base-size * 4);
-//       margin: $base-size;
-//     }
-//   }
-// }
-
-// @media (max-width: 780px) and (orientation: landscape) {
-//   .easy {
-
-//     &__board {
-//       flex-direction: row;
-//     }
-
-//     &__first, &__task, &__answer {
-//       font-size: $font-title;
-//       width: calc($base-size * 6);
-//       height: calc($base-size * 4);
-//       margin: $base-size;
-//     }
-
-//     &__last {
-//       padding: 0;
-//     }
-//   }
-// }
+@media (max-width: 1000px) and (orientation: landscape) {
+  .easy {
+    &__first, &__task, &__answer {
+      font-size: 7vh;
+      height: 12vh;
+      margin: 2vh;
+    }
+  }
+}
