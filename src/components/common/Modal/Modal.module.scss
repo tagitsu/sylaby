@@ -3,9 +3,6 @@
 .modal {
   display: flex;
   top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -14,7 +11,7 @@
   background-size: 100%;
 
   &__container {
-    width: 50vw;
+    width: 70vw;
     min-height: 30vh;
     max-height: 60vh;
     display: flex;
@@ -31,8 +28,9 @@
   }
 
   &__wave {
-    width: 50vw;
-    min-height: 10vw;
+    width: 100%;
+    min-height: 15vw;
+    height: 20vh;
     background-image: url('../../../../public/images/others/wave_top.svg');
     background-position: top;
     background-repeat: no-repeat;
@@ -43,14 +41,20 @@
   }
 
   &__header {
-    width: 50vw;
+    width: 70vw;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: start;
     color: $light-shades;
-    padding: $base-size;
+    padding: 2vw;
     position: fixed;
     z-index: 3;
+  }
+
+  &__title {
+    padding: 0;
+    font-size: 3vw;
   }
 
   &__content {
@@ -58,7 +62,6 @@
     transition: all 2s;
     position: relative;
     z-index: 1;
-    padding: $base-size;
 
     form {
       display: flex;
@@ -94,7 +97,7 @@
       button {
         background-color: transparent;
         color: $dark-accent;
-        font-size: calc($base-size * 3);
+        font-size: calc($base-size * 4);
 
         :hover {
           color: $light-accent;
@@ -118,6 +121,7 @@
     z-index: 3;
     right: calc($base-size * 1.3);
     top: calc($base-size * 1.3);
+    font-size: 3vw;
   }
 
   &__accept {

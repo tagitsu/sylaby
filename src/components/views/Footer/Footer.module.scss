@@ -12,9 +12,6 @@
   background-position-y: 30%;
   font-size: calc($base-size * 1.2);
 
-  border: 2px solid lightseagreen;
-
-
   &__menu {
     list-style-type: none;
     display: grid;
@@ -29,10 +26,17 @@
 
   &__article {
     text-align: justify;
+    padding: 3vw;
 
-    & * {
-      padding: $base-size;
+    header {
+      font-weight: 600;
+      font-size: calc($base-size * 2);
+      margin: 2vh 0;
+    }
+
+    h3 {
+      font-weight: 600;
+      margin: 2vh 0;
     }
   }
-
 }

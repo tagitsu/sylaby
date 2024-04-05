@@ -16,22 +16,22 @@ const Modal = ({ title, content, accept, acceptArg, acceptText, close }) => {
   return(
     <dialog className={styles.modal}>
       <div className={styles.modal__container}>
-      <div className={styles.modal__wave}></div>
-          <header className={styles.modal__header}>
-            <h1 className={styles.modal__text}>{title}</h1>
-            <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => close(false)}><FontAwesomeIcon icon={faXmark} /></button>
-          </header>
-          <article className={styles.modal__content}>
-            <p className={styles.modal__text}>{content}</p>
-            { accept &&
-            <button 
-              className={clsx(styles.modal__accept, styles.modal__button)}
-              onClick={handleAccept}
-            >
-              { acceptText ? acceptText : 'OK' }
-            </button>
-          }
-          </article>
+        <div className={styles.modal__wave}></div>
+        <header className={styles.modal__header}>
+          <h1 className={styles.modal__title}>{title}</h1>
+          <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => close(false)}><FontAwesomeIcon icon={faXmark} /></button>
+        </header>
+        <article className={styles.modal__content}>
+          <p className={styles.modal__text}>{content}</p>
+          { accept &&
+          <button 
+            className={clsx(styles.modal__accept, styles.modal__button)}
+            onClick={handleAccept}
+          >
+            { acceptText ? acceptText : 'OK' }
+          </button>
+        }
+        </article>
       </div>
     </dialog>
   )

@@ -35,9 +35,10 @@ appUtils.getAboutContent = () => {
 appUtils.getInstructions = () => {
   return(
     <div>
-        <h2>Dopasuj sylabę</h2>
+      <header>Młodsze dzieci będą potrzebowały do zabawy pomocy kogoś dorosłego a starszaki, które już zaczynają czytać mogą grać samodzielnie.</header>
+        <h3>Dopasuj sylabę</h3>
         <p>Po naciśnięciu przycisku start pojawia się sylaba do której należy dopasować drugą tak, aby stworzyły istniejące słowo. Jeśli słowo istnieje w słowniku zaznaczone jest na zielono, a jeśli nie wyświetli się czerwone tło.</p>
-        <h2>Stwórz pary</h2>
+        <h3>Stwórz pary</h3>
         <p>Przeciągaj sylaby z pudełka na półki tworząc jak najwięcej wyrazów.</p>
     </div>
   )
