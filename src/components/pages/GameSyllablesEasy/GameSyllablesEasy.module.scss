@@ -21,9 +21,9 @@
     padding: $base-size;
     text-decoration: none;
     color: $dark-shades;
-    font-size: calc($base-size * 3);
-    width: calc($base-size * 9);
-    height: calc($base-size * 6);
+    font-size: 5vw;
+    max-width: 17vw;
+    height: 10vw;
     text-align: center;
     background-color: $light-shades;
     border: none;
@@ -31,42 +31,46 @@
     transition: $transition;
   }
 
-  &__task:hover {
-    background-color: $light-accent;
-    cursor: pointer;
+
+  &__task {
+  
+    &:hover {
+      background-color: $light-accent;
+      cursor: pointer;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
   }
 
   &__first {
-    background-color: $light-accent;
+    background-color: $dark-accent;
+    width: calc($base-size * 9);
   }
 
 
   &__last {
-    border: 3px solid $light-shades;
-    border-radius: $radius;
     padding: $base-size;
-    width: 100%;
     display: grid;
-    justify-content: center;
-    place-items: center;
     gap: $base-size;
-    grid-template-columns: repeat(auto-fit, minmax(calc($base-size * 8), 1fr));
+    grid-template-columns: repeat(5, 17vw);
   }
 
   &__answer {
-    width: calc($base-size * 11);
-    background-color: $dark-accent;
+    width: calc($base-size * 13);
+    background-color: $light-accent;
   }
 
 
   &__next {
     width: 100%;
-    height: calc($base-size * 6.4);
+    height: 10vw;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: calc($base-size * 5);
+    font-size: 7vw;
     background-color: $light-shades;
     border: none;
     color: $dark-accent;
@@ -87,12 +91,12 @@
   }
 
   &__correct {
-    color: darken($color: $color-correct, $amount: 30);
+    color: darken($color: $color-correct, $amount: 40);
     background-color: $color-correct;
   }
 
   &__incorrect {
-    color: darken($color: $color-incorrect, $amount: 30);
+    color: darken($color: $color-incorrect, $amount: 40);
     background-color: $color-incorrect;
   }
 }

@@ -25,14 +25,13 @@ const GameSyllablesEasy = ({ user, player }) => {
             <div className={styles.easy__first}> {syllable1} </div>
             <form className={styles.easy__last}>
               {syllables2.map( syllable2 => 
-                <div className={styles.easy__task} key={syllable2}>
                   <input 
+                  key={syllable2}
                   value={syllable2}
                   readOnly
                   className={styles.easy__task}
                   onClick={(e) => utils.submitSolution(syllable1Words, answer, setAnswer, syllable1, e.target.value, setShowResult)}
                   />
-                </div>
               )}
             </form>
             <div className={clsx(styles.easy__answer, (showResult === 'correct') && styles.easy__correct, (showResult === 'incorrect') && styles.easy__incorrect)}>
