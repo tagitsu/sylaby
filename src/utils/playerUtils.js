@@ -21,7 +21,7 @@ playerUtils.levelUp = async (userId, nextLevel) => {
     level: nextLevel.id,
     points: 0
   });
-
+  console.log(`level UP!`)
 };
 
 

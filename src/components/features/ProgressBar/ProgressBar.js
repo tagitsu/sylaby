@@ -3,10 +3,12 @@ import { useGetLevelsQuery } from "../../../api/apiSlice";
 import { useEffect, useState } from 'react';
 import appUtils from '../../../utils/appUtils';
 import playerUtils from '../../../utils/playerUtils';
+import Modal from '../../common/Modal/Modal';
 
 const ProgressBar = ({ player }) => {
 
-  const [points, setPoints ] = useState();
+  const [ points, setPoints ] = useState();
+  const [ levelUp, setLevelUp ] = useState(true);
 
   useEffect(() => {
     appUtils.getPointsFromUser(player.id, setPoints);
@@ -27,17 +29,32 @@ const ProgressBar = ({ player }) => {
 
   if (points >= playerLevel?.nextLevel) { 
     playerUtils.levelUp(player.id, nextLevel);
+    setLevelUp(true);
   }
 
-  return(
-    <div className={styles.prog}>
-      <div className={styles.prog__container}>
-        <div className={styles.prog__bar}>
-          <span className={styles.prog__points}>{points}</span>
+  const levelUpModal = 
+  <article className={styles.levelup}>
+    <p className={styles.levelup__text}> Awansujesz na poziom {nextLevel.id}.</p>
+    <p className={styles.levelup__text}> Twoja nowa odznaka </p>
+    <div className={styles.levelup__badge}>
+      <img src={`${process.env.PUBLIC_URL}/images/badges/${nextLevel.badge}.png`} alt={`${nextLevel.badge} icon`} />
+    </div>
+  </article>
+
+  if (!levelUp) {
+    return(
+      <div className={styles.prog}>
+        <div className={styles.prog__container}>
+          <div className={styles.prog__bar}>
+            <span className={styles.prog__points}>{points}</span>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else if (levelUp) {
+    return (<Modal title={`Gartulacje!`} content={levelUpModal} close={() => setLevelUp(false)} />)
+  }
+  
 };
 
 export default ProgressBar;

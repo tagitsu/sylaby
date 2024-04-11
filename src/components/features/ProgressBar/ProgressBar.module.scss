@@ -32,3 +32,27 @@
     font-weight: 700;
   }
 }
+
+.levelup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    color: $dark-shades;
+    padding-bottom: $base-size;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient($dark-shades 10%, transparent 60%);
+    margin: $base-size;
+    padding: $base-size;
+
+  }
+}

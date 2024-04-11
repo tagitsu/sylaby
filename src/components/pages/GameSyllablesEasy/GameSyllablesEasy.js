@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import styles from './GameSyllablesEasy.module.scss';
 import utils from '../../../utils/gameSyllablesEasyUtils';
-import { useGetSyllablesQuery, useGetLevelsQuery } from "../../../api/apiSlice";
+import { useGetSyllablesQuery } from "../../../api/apiSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 import Button from '../../common/Button/Button';
 
-const GameSyllablesEasy = ({ user, player }) => {
+const GameSyllablesEasy = ({ player }) => {
 
-  const { data: syllables, isSuccess: syllablesOK } = useGetSyllablesQuery();
-  
+  const { data: syllables } = useGetSyllablesQuery();
   const [ syllable1, setSyllable1 ] = useState('');
   const [ syllable1Words, setSyllable1Words ] = useState([]);
   const [ syllables2, setSyllables2 ] = useState([]);
@@ -56,16 +55,13 @@ const GameSyllablesEasy = ({ user, player }) => {
               <p><FontAwesomeIcon icon={faArrowRight} /></p>
               </button>
             }
-
           </section>
           :
           <Button 
             onClick={(e) => utils.setGameTurn(e, syllables, syllables2, setWord, setSyllable1, setSyllable1Words)} 
             content={<FontAwesomeIcon icon={faPlay} />}
           />
-            
         }
-
       </div>
   );
 };

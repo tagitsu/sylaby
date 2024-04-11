@@ -1,10 +1,6 @@
 import styles from '../ActivePlayer/ActivePlayer.module.scss';
-import { Link } from 'react-router-dom';
 import { useGetLevelsQuery } from "../../../api/apiSlice";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import ProgressBar from "../ProgressBar/ProgressBar";
-import PlayerIcon from '../../views/PlayerIcon/PlayerIcon';
 
 const ActivePlayer = ({ player }) => {
 
@@ -14,6 +10,7 @@ const ActivePlayer = ({ player }) => {
     [ playerLevel ] = levels.filter( level => toString(player.level) === toString(level.id));
   }
 
+  console.log(`activePlayer comp ${player.level}`);
 
   if (playerLevel) {
     return(

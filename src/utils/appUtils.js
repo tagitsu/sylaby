@@ -1,18 +1,7 @@
 import { db } from '../firebase-config';
-import { query, onSnapshot, collection, doc, getDoc, updateDoc, where } from 'firebase/firestore';
+import { onSnapshot, doc, getDoc } from 'firebase/firestore';
 
 const appUtils = {};
-
-// appUtils.getPlayersFromUser = (userId, setPlayers) => {
-//   const q = query(collection(db, 'users', `${userId}`, 'players'));
-//   onSnapshot(q, (querySnapshot) => {
-//     const players = [];
-//     querySnapshot.forEach((doc) => {
-//       players.push(doc.data())
-//     });
-//     setPlayers(players);
-//   })
-// };
 
 appUtils.aboutText = 'Czym jest sylaba wie każdy, ale czy tak łatwo jest to wytłumaczyć przedszkolakowi? Okazuje się, że nie do końca. Niektórzy badacze próbują badać powstawanie sylab i opisują jako fizjologiczne zjawisko towarzyszące mówieniu i odbierane przez nas jako zmiany intensywności i donośności głosu. Inni definiują sylabę jako najmniejszą samodzielną jednostkę fonetyczną i zastanawiają się nad tym czemu sylaby mają w ogóle służyć. Sylaby dzielą wyrazy na części, sprawiają że wypowiadane słowa i zdania, całe wypowiedzi, nie są nużące ani dla mówiącego, ani dla jego słuchaczy. Dzieci rozpoznają sylaby globalnie i już w przedszkolu większość z nich potrafi dzielić wyrazy na sylaby. Nauka sylabizowania nastawiona głównie na słuchanie przez dzieci wolno wymawianych wyrazów, często połączona jest z zabawami ruchowymi, jak klaskanie, skakanie czy dotykanie podbródkiem swojej rączki przy każdej sylabie wymawianego słowa.Umiejętność sylabizowania jest wstępem do wielu umiejętności potrzebnych w późniejszych etapach edukacji takich jak nauka czytania, poprawne literowanie wyrazów, nauka pisania (rozdzielanie wyrazu przy przenoszeniu do następnego wiersza). Ułatwia też wymawianie nowych, trudnych lub bardzo długich słów.Zachęcamy do pobawienia się z dziećmi sylabami, czytajcie, dopasowujcie sylaby do siebie, układajcie słowa, tłumaczcie ich znaczenie. Możecie razem spędzić czas na nauce nawet tego nie zauważając i dobrze się bawiąc.';
 
@@ -73,25 +62,6 @@ appUtils.getPointsFromUser = async (userId, setPoints) => {
   //   console.log("No such document!");
   // }
 };
-
-
-// appUtils.getActivePlayer = (userId, setActivePlayer) => {
-//   const q = query(collection(db, 'users', `${userId}`, 'players'), where( 'isActive', '==', true ));
-//   onSnapshot(q, (querySnapshot) => {
-//     let activePlayer;
-//     querySnapshot.forEach( (doc) => {
-//       activePlayer = doc.data();
-//       setActivePlayer(activePlayer);
-//     });
-//   })
-// }
-
-// appUtils.inactiveAllPlayers = (players, userId) => {
-//   players?.map( (player) => {
-//     const playerRef = doc(db, 'users', `${userId}`, 'players', `${player.id}`);
-//     updateDoc(playerRef, { isActive: false })
-//   })
-// };
 
 appUtils.refreshPage = () => {
   window.location.reload(false);
