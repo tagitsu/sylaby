@@ -64,11 +64,11 @@
 
 @keyframes fly {
   0% {
-    transform: translate(600%, -800%);
+    transform: perspective(200px) translate3d(1600%, -1600%, -200px);
     visibility: visible;
   }
   100% {
-    transform: translate(0%, 0%) scale(1.3);
+    transform: perspective(200px) translate3d(0%, 0%, 60px);
     visibility: visible;
   }
 }
