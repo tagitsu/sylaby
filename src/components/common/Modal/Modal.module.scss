@@ -55,7 +55,7 @@
 
   &__title {
     padding: 0;
-    font-size: 3vw;
+    font-size: calc(2vw + 2vh);
   }
 
   &__content {
@@ -98,7 +98,7 @@
       button {
         background-color: transparent;
         color: $dark-accent;
-        font-size: calc($base-size * 4);
+        font-size: calc(2vw + 2vh);
 
         :hover {
           color: $light-accent;
