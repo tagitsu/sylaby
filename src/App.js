@@ -35,7 +35,7 @@ const App = () => {
           <Route path='*' element={<NonFound />} />
         </Routes>
       </main>
-      <Footer />
+      <Footer playerEmail={player?.email} />
     </div>
   );
 };

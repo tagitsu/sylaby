@@ -7,7 +7,7 @@ import appUtils from '../../../utils/appUtils';
 
 
 
-const Footer = () => {
+const Footer = ({ playerEmail }) => {
 
   const [ openModal, setOpenModal ] = useState({ isOpen: false, signal: '' });
   const [ email, setEmail ] = useState('');
@@ -18,12 +18,16 @@ const Footer = () => {
     <form onSubmit={() => setOpenModal({isOpen: true, signal: 'sent'})}>
       <p> Jeśli masz jakiekolwiek pytania odnośnie gry, opisz je w wiadomości. Z chęcią na wszytkie odpowiemy.</p>
       <label>
-        <p>Twoja wiadomość</p>
+        <p>Temat</p>
+        <input type='text' />
+      </label>
+      <label>
+        <p>Treść wiadomości</p>
         <textarea />
       </label>
       <label>
         <p>Twój adres e-mail</p>
-        <input type='email' required onChange={(e) => setEmail(e.target.value) } />
+        <input type='email' value={playerEmail} required onChange={(e) => setEmail(e.target.value) } />
       </label>
       <button type='submit' aria-label='wyślij wiadomość'>
         <FontAwesomeIcon icon={faPaperPlane} />
