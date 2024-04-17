@@ -22,7 +22,7 @@ const Modal = ({ title, content, accept, acceptArg, acceptText, close }) => {
           <button className={clsx(styles.modal__close, styles.modal__button)} onClick={() => close(false)}><FontAwesomeIcon icon={faXmark} /></button>
         </header>
         <article className={styles.modal__content}>
-          <p className={styles.modal__text}>{content}</p>
+          { content }
           { accept &&
           <button 
             className={clsx(styles.modal__accept, styles.modal__button)}

@@ -60,9 +60,9 @@
 
   &__content {
     width: 100%;
-    transition: all 2s;
     position: relative;
     z-index: 1;
+    transition: all .3s;
 
     form {
       display: flex;
@@ -99,9 +99,11 @@
         background-color: transparent;
         color: $dark-accent;
         font-size: calc(2vw + 2vh);
-
-        :hover {
-          color: $light-accent;
+        transition: all .3s;
+        
+        &:hover {
+          color: $dark-accent;
+          cursor: pointer;
         }
       }
     }
