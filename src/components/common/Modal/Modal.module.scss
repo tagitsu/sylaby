@@ -49,7 +49,7 @@
     align-items: start;
     color: $light-shades;
     padding: 2vw;
-    position: absolute;
+    position: fixed;
     z-index: 3;
   }
 
@@ -100,7 +100,7 @@
         color: $dark-accent;
         font-size: calc(2vw + 2vh);
         transition: all .3s;
-        
+
         &:hover {
           color: $dark-accent;
           cursor: pointer;
