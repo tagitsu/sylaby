@@ -2,11 +2,17 @@ import styles from './Logo.module.scss';
 
 const Logo = () => {
   return(
-      <div className={styles.logo}>
-        <p className={styles.logo__name}>sy</p>
-        <p className={styles.logo__name}>la</p>
-        <p className={styles.logo__name}>ba</p>
-      </div>
+      <ul className={styles.logo}>
+        <li className={styles.logo__bubble}>
+          <span className={styles.logo__syllable}>sy</span>
+        </li>
+        <li className={styles.logo__bubble}>
+          <span className={styles.logo__syllable}>la</span>
+        </li>
+        <li className={styles.logo__bubble}>
+          <span className={styles.logo__syllable}>ba</span>
+        </li>
+      </ul>
   );
 };
 

@@ -3,30 +3,27 @@
 .logo {
   height: 11vw;
   width: 11vw;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  overflow: hidden;
   position: relative;
 
-  & :first-child {
+  &__bubble:first-of-type {
     position: absolute;
     top: 0;
+    left: 10%;
   }
 
-  & :nth-child(2) {
+  &__bubble:nth-of-type(2) {
     position: absolute;
-    left: 0;
-    bottom: 15%;
+    left: 50%;
+    bottom: 35%;
   }
 
-  & :last-child {
+  &__bubble:last-of-type {
     position: absolute;
-    right: 0;
+    left: 20%;
     bottom: 5%;
   }
 
-  &__name {
+  &__bubble {
     border-radius: 50%;
     width: 5vw;
     height: 5vw;
@@ -36,5 +33,29 @@
     justify-content: center;
     align-items: center;
     font-size: 5vw;
+    font-weight: 400;
+    overflow: hidden;
+  }
+
+  &__syllable {
+    letter-spacing: -2px;
+
+    &::first-letter {
+      color: $light-accent;
+      font-size: 130%;
+      font-weight: 600;
+      text-shadow: 1px 1px $dark-shades;
+    }
+  }
+}
+
+@keyframes bubbles {
+  0% {
+    transform: scale(1.1) translate(30%, 45%);
+    z-index: 3;
+  }
+  100% {
+    transform: scale(.9) translate( 0 0);
+    z-index: auto;
   }
 }
