@@ -25,16 +25,15 @@ const Footer = () => {
         <p>Twój adres e-mail</p>
         <input type='email' required onChange={(e) => setEmail(e.target.value) } />
       </label>
-      <button type='submit' aria-label='wyslij wiadomość'>
+      <button type='submit' aria-label='wyślij wiadomość'>
         <FontAwesomeIcon icon={faPaperPlane} />
       </button>
     </form>
-  // Modal = ({ title, content, accept, acceptArg, acceptText, close })
+
   const sent = 
-    <div>
-      <p>Twoja wiadomość została poprawnie przesłana. W nabliższym czasie wyślę odpowiedź na podany przez Ciebie adres e-mail: {email}</p>
-      <button onClick={() => setOpenModal(false)}>ok</button>
-    </div>;
+    <div className={styles.footer__article}>
+      <p>Twoja wiadomość została poprawnie przesłana. W nabliższym czasie wyślemy odpowiedź na podany przez Ciebie adres e-mail.</p>
+    </div>
   
   return(
     <footer className={styles.footer}>

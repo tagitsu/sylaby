@@ -59,9 +59,9 @@
 
   &__content {
     width: 100%;
-    transition: all 2s;
     position: relative;
     z-index: 1;
+    transition: all .3s;
 
     form {
       display: flex;
@@ -96,11 +96,13 @@
 
       button {
         background-color: transparent;
-        color: $dark-accent;
+        color: $light-accent;
         font-size: calc($base-size * 4);
+        transition: all .3s;
 
-        :hover {
-          color: $light-accent;
+        &:hover {
+          color: $dark-accent;
+          cursor: pointer;
         }
       }
     }
