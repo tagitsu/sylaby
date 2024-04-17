@@ -3,8 +3,11 @@
 .auth {
   grid-column: 3 / 4;
   display: flex;
-  width: fit-content;
-  height: 30px;
+  //width: fit-content;
+  height: 100%;
+  justify-content: end;
+
+  border: 1px solid;
 
   &__form {
     margin: 0 0 $base-size 0;
@@ -37,11 +40,13 @@
   }
 
   &__button {
+    padding: 5px;
     border: none;
     background-color: $dark-accent;
     color: $light-shades;
     font-size: 120%;
     transition: $transition;
+    height: fit-content;
 
     &:hover {
       background-color: $light-accent;
@@ -67,27 +72,53 @@
     font-size: $base-size;
   }
 
+  &__info {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $base-size;
+
+  }
+
   &__icon {
-    background-color: $light-shades;
-    border-radius: 50%;
-    color: $dark-shades;
-    height: calc($base-size * 3);
-    width: calc($base-size * 3);
+     //background-color: $light-shades;
+     border-radius: 50%;
+    // color: $dark-shades;
+    // height: calc($base-size * 3);
+    // width: calc($base-size * 3);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    position: relative;
+    border: 1px solid;
+
   }
 
   &__name {
     color: $dark-accent;
     font-weight: 700;
-    font-size: $base-size;
+    font-size: 120%;
+    position: absolute;
+    top: 20%;
+    right: 10%;
+
+
   }
 
-  &__btn:hover, &__icon:hover {
-    color: $dark-shades;
-    cursor: pointer;
+  &__signout {
+    border: none;
+    background-color: transparent;
+    color: $light-accent;
+
+    &:hover {
+      color: $dark-accent;
+      cursor: pointer;
+    }
+
   }
+
+  
 }
 
 @media (max-width: 576px) {

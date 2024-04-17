@@ -19,7 +19,7 @@ import Modal from "../../common/Modal/Modal";
 const LoginPanel = ({ user, player }) => {
 
   const [ loginData, setLoginData ] = useState({ email: '', password: ''});
-  const [ openLoginModal, setOpenLoginModal ] = useState(false)
+  const [ openLoginModal, setOpenLoginModal ] = useState(false);
   const navigate = useNavigate();
 
   const signIn = async(e) => {
@@ -30,7 +30,8 @@ const LoginPanel = ({ user, player }) => {
         loginData.email, 
         loginData.password
       );
-      navigate('/')
+      navigate('/');
+      setOpenLoginModal(false);
     } catch (error) {
       console.error(error.code);
     }
@@ -48,6 +49,7 @@ const LoginPanel = ({ user, player }) => {
         icon: 'guest',
         points: 0
       });
+      setOpenLoginModal(false);
     } catch (error) {
       console.error(error);
     }
@@ -79,20 +81,25 @@ const LoginPanel = ({ user, player }) => {
 
   const userInfo = 
     <div className={styles.auth__info}>
-      { !(player?.name === 'gość') ? <PlayerIcon user={user} player={player} /> : <FontAwesomeIcon icon={faUser} />}
-      <p className={styles.auth__name}> {player?.name} </p>
-      <button className={styles.auth__btn} onClick={signout} > <FontAwesomeIcon icon={faPowerOff}/></button>
+      <div className={styles.auth__icon}>
+        { !(player?.name === 'gość') ? <PlayerIcon user={user} player={player} /> : <FontAwesomeIcon icon={faUser} />}
+        <p className={styles.auth__name}> {player?.name} </p>
+      </div>
+      <button className={styles.auth__signout} onClick={signout} > <FontAwesomeIcon icon={faPowerOff}/></button>
     </div>
 
   return(
     <div className={styles.auth}>
-      { user && userInfo }
-      { openLoginModal 
-        ?
+      { (openLoginModal && !user)
+        &&
         <Modal title='Logowanie' content={authForm} close={() => setOpenLoginModal(false)} />
-        :
-        <button onClick={() => setOpenLoginModal(true)}>Zaloguj</button>
       }
+      { (!openLoginModal && !user) 
+        &&
+        <button className={styles.auth__button} onClick={() => setOpenLoginModal(true)}>Zaloguj</button>
+      }
+      { user && userInfo }
+      
     </div>
   )
 };
