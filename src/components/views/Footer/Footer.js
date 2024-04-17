@@ -12,8 +12,8 @@ const Footer = () => {
   const [ openModal, setOpenModal ] = useState({ isOpen: false, signal: '' });
   const [ email, setEmail ] = useState('');
 
-  const aboutGame = <article className={styles.footer__article}>{appUtils.getAboutContent()}</article>
-  const rules = <article className={styles.footer__article}> {appUtils.getInstructions()} </article>;
+  const aboutGame = <div className={styles.footer__article}>{appUtils.getAboutContent()}</div>
+  const rules = <div className={styles.footer__article}> {appUtils.getInstructions()} </div>;
   const contact = 
     <form onSubmit={() => setOpenModal({isOpen: true, signal: 'sent'})}>
       <p> Jeśli masz jakiekolwiek pytania odnośnie gry, opisz je w wiadomości. Z chęcią na wszytkie odpowiemy.</p>
