@@ -1,57 +1,66 @@
 @import '../../../styles/settings.scss';
 
 .auth {
-  //grid-column: 3 / 4;
+  grid-column: 3 / 4;
   display: flex;
-  //justify-content: end;
   width: fit-content;
   height: 30px;
 
-  &__input {
-    background-color: $light-shades;
-    color: $dark-shades;
-    text-align: center;
-    line-height: 2;
-    border-radius: 4px;
-    border: none;
-  }
-
-  &__info {
-    padding: $base-size;
-    display: flex;
-    gap: $base-size;
-    align-items: center;
-    width: max-content;
-  }
-
   &__form {
-    padding: 0 $base-size;
-    display: grid;
-    grid-template-rows: auto auto;
-  }
-
-  &__inputs {
+    margin: 0 0 $base-size 0;
     display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
     gap: $base-size;
+    font-size: calc($base-size * 1.2);
+    color: $dark-shades;
   }
 
-  &__signup {
+  &__label {
     display: flex;
-    gap: 2px;
-    color: $dark-accent;
-    font-size: $base-size;
+    flex-direction: column;
   }
 
-  &__btn {
+  &__textarea {
+    height: 100px;
+    resize: none;
+  }
+
+  &__input, &__textarea, &__button {
+    border: none;
+    border-radius: $radius;
+    padding: $base-size;
+    color: $dark-shades;
+    outline: none;
+    overflow: visible;
+  }
+
+  &__button {
+    border: none;
+    background-color: $dark-accent;
+    color: $light-shades;
+    font-size: 120%;
+    transition: $transition;
+
+    &:hover {
+      background-color: $light-accent;
+      cursor: pointer;
+    }
+  }
+
+  &__text {
     border: none;
     background-color: transparent;
-    color: $dark-accent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3px;
-    font-size: $base-size;
+    color: $dark-shades;
     transition: $transition;
+    font-size: calc($base-size * 1.2);
+
+
+    &:hover {
+      color: $light-accent;
+      cursor: pointer;
+    }
   }
 
   &__error {

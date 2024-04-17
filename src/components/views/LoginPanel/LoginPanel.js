@@ -14,11 +14,12 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from './LoginPanel.module.scss';
 import appUtils from "../../../utils/appUtils";
 import PlayerIcon from "../PlayerIcon/PlayerIcon";
+import Modal from "../../common/Modal/Modal";
 
 const LoginPanel = ({ user, player }) => {
 
   const [ loginData, setLoginData ] = useState({ email: '', password: ''});
-
+  const [ openLoginModal, setOpenLoginModal ] = useState(false)
   const navigate = useNavigate();
 
   const signIn = async(e) => {
@@ -64,13 +65,16 @@ const LoginPanel = ({ user, player }) => {
 
   const authForm = 
     <form onSubmit={signIn} className={styles.auth__form}>
-      <div className={styles.auth__inputs}>
-        <input className={styles.auth__input} type='email' placeholder='e-mail' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}/>
-        <input className={styles.auth__input} type='password' placeholder='hasło' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
-        <button className={styles.auth__btn} type='submit'>Zaloguj</button>
-        <button className={styles.auth__btn} type='button' onClick={signInGuest}>Zaloguj jako gość</button>
-      </div>
-      <p className={styles.auth__signup} > Jeśli nie masz konta, <Link to='/signup' ><button className={styles.auth__btn}>zarejestruj się</button></Link></p>
+      <label className={styles.auth__label}>
+        E-mail
+        <input className={styles.auth__input} type='email' value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}/>
+      </label>
+      <label className={styles.auth__label}>
+        Hasło
+        <input className={styles.auth__input} type='password' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
+      </label>
+      <button className={styles.auth__button} type='submit'>Zaloguj</button>
+      <p className={styles.auth__signup} > Jeśli nie masz konta, <Link to='/signup' ><button className={styles.auth__text}>zarejestruj się</button></Link> lub <button className={styles.auth__text} type='button' onClick={signInGuest}>zaloguj jako gość</button>.</p>
     </form>;
 
   const userInfo = 
@@ -82,11 +86,12 @@ const LoginPanel = ({ user, player }) => {
 
   return(
     <div className={styles.auth}>
-      { user
-        ? 
-        userInfo 
-        : 
-        authForm
+      { user && userInfo }
+      { openLoginModal 
+        ?
+        <Modal title='Logowanie' content={authForm} close={() => setOpenLoginModal(false)} />
+        :
+        <button onClick={() => setOpenLoginModal(true)}>Zaloguj</button>
       }
     </div>
   )

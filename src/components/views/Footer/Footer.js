@@ -15,21 +15,21 @@ const Footer = ({ playerEmail }) => {
   const aboutGame = <div className={styles.footer__article}>{appUtils.getAboutContent()}</div>
   const rules = <div className={styles.footer__article}> {appUtils.getInstructions()} </div>;
   const contact = 
-    <form onSubmit={() => setOpenModal({isOpen: true, signal: 'sent'})}>
-      <p> Jeśli masz jakiekolwiek pytania odnośnie gry, opisz je w wiadomości. Z chęcią na wszytkie odpowiemy.</p>
-      <label>
+    <form className={styles.footer__form} onSubmit={() => setOpenModal({isOpen: true, signal: 'sent'})}>
+      <p className={styles.footer__text}> Jeśli masz jakiekolwiek pytania odnośnie gry, opisz je w wiadomości. Z chęcią na wszytkie odpowiemy.</p>
+      <label className={styles.footer__label}>
         <p>Temat</p>
-        <input type='text' />
+        <input className={styles.footer__input} type='text' />
       </label>
-      <label>
+      <label className={styles.footer__label}>
         <p>Treść wiadomości</p>
-        <textarea />
+        <textarea  className={styles.footer__textarea}/>
       </label>
-      <label>
+      <label className={styles.footer__label}>
         <p>Twój adres e-mail</p>
-        <input type='email' value={playerEmail} required onChange={(e) => setEmail(e.target.value) } />
+        <input  className={styles.footer__input} type='email' value={playerEmail} required onChange={(e) => setEmail(e.target.value) } />
       </label>
-      <button type='submit' aria-label='wyślij wiadomość'>
+      <button  className={styles.footer__button} type='submit' aria-label='wyślij wiadomość'>
         <FontAwesomeIcon icon={faPaperPlane} />
       </button>
     </form>
