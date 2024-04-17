@@ -20,14 +20,14 @@ utils.setGameTurn = (e, syllables, syllables2, setWord, setSyllable1, setSyllabl
       const randomSyllableId = Math.floor(Math.random() * syllables.length);
       // WYBIERA SYLABĘ O WYLOSOWANYM ID
       const [ randomSyllableObj ] = syllables.filter( syllable => syllable.id == randomSyllableId);
-      if (randomSyllableObj.name === syllables2[i]) {
-        // JEŚLI TAK TO ZMIENIAM ID LOSUJĄC JESZCZE RAZ
+      if (randomSyllableObj?.name === syllables2[i]) {
+        // JEŚLI TAK TO ZMIENIA ID LOSUJĄC JESZCZE RAZ
         const changeSyllableId = Math.floor(Math.random() * syllables.length);
         const [ changeSyllableObj ] = syllables.filter( syllable => syllable.id == changeSyllableId);
         syllables2.push(changeSyllableObj.name);
       } else {
         // DODAJE NAZWĘ SYLABY DO TABLICY ZADANIA
-        syllables2.push(randomSyllableObj.name);
+        syllables2.push(randomSyllableObj?.name);
       }
     }
   } else if(randomSyllableObj.words.length === 0){ 
