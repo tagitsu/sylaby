@@ -1,10 +1,9 @@
 @import '/src/styles/settings.scss';
 
 .active {
-  min-width: 100px;
   display: flex;
-  flex-direction: column-reverse;
-  align-items: end;
+  align-items: center;
+  justify-content: center;
   gap: $base-size;
 
   &__level {
@@ -102,6 +101,19 @@
 
     &__number {
       font-size: 10vh;
+    }
+
+    &__bar {
+      width: 100%;
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  .active {
+    
+    &__bar {
+      width: 60%;
     }
   }
 }
