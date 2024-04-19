@@ -83,8 +83,9 @@ const LoginPanel = ({ user, player }) => {
     <div className={styles.auth__info}>
       <div className={styles.auth__icon}>
         { !(player?.name === 'gość') ? <PlayerIcon user={user} player={player} /> : <FontAwesomeIcon icon={faUser} />}
-        <p className={styles.auth__name}> {player?.name} </p>
+        <p className={styles.auth__name}> maciejka </p>
       </div>
+
       <button className={styles.auth__signout} onClick={signout} > <FontAwesomeIcon icon={faPowerOff}/></button>
     </div>
 

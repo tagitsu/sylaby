@@ -3,11 +3,8 @@
 .auth {
   grid-column: 3 / 4;
   display: flex;
-  //width: fit-content;
   height: 100%;
   justify-content: end;
-
-  border: 1px solid;
 
   &__form {
     margin: 0 0 $base-size 0;
@@ -76,34 +73,22 @@
     width: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: $base-size;
-
   }
 
   &__icon {
-     //background-color: $light-shades;
-     border-radius: 50%;
-    // color: $dark-shades;
-    // height: calc($base-size * 3);
-    // width: calc($base-size * 3);
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    border: 1px solid;
-
+    align-items: center;
   }
 
   &__name {
-    color: $dark-accent;
+    padding: 4px;
     font-weight: 700;
     font-size: 120%;
-    position: absolute;
-    top: 20%;
-    right: 10%;
-
-
   }
 
   &__signout {
@@ -115,10 +100,7 @@
       color: $dark-accent;
       cursor: pointer;
     }
-
   }
-
-  
 }
 
 @media (max-width: 576px) {

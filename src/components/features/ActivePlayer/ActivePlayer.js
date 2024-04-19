@@ -28,12 +28,6 @@ const ActivePlayer = ({ player }) => {
     appUtils.getPointsFromUser(player.id, setPoints);
   }, []);
 
-  // if (player?.points === playerLevel?.nextLevel) { 
-  //   console.log('czas na level up!');
-  // }
-  console.log(playerLevel, nextLevel);
-  //console.log(`user points props ${player?.points} vs firebase update points ${points}`);
-
   const levelUpModal = 
   <div className={styles.levelup}>
     <p className={styles.levelup__text}> Awansujesz na poziom {nextLevel?.id}.</p>
@@ -42,10 +36,6 @@ const ActivePlayer = ({ player }) => {
       <img src={`${process.env.PUBLIC_URL}/images/badges/${nextLevel?.badge}.png`} alt={`${nextLevel?.badge} icon`} />
     </div>
   </div>
-
-
-  //console.log(playerLevel, player.level, levels);
-  //console.log(`activePlayer is on ${playerLevel?.id} level, has ${points} points and ${playerLevel?.nextLevel} points to get to level-up `);
 
   if (points !== playerLevel?.nextLevel) {
     return(
