@@ -20,31 +20,28 @@
     border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: $light-accent;
     color: $dark-shades;
     position: relative;
+    overflow: hidden;
   }
 
-  &__levelNumber {
-    width: 100%;
-    text-align: center;
-    font-size: 6vw;
+  &__number {
+    font-size: 7vw;
+    padding: 0;
   }
 
-  &__lvlText {
-    width: calc($base-size * 4);
-    text-align: end;
-    position: absolute;
+  &__text {
     text-transform: uppercase;
     font-size: $base-size;
+    font-weight: 100;
+    opacity: .5;
   }
 
   &__bar {
     width: 100%;
     grid-column: span 3;
   }
-
 }
 
 .levelup {

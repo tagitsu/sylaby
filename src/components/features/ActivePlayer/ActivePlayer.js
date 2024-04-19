@@ -16,13 +16,11 @@ const ActivePlayer = ({ player }) => {
     [ nextLevel ] = levels.filter( level => (player.level + 1) === (level.id));
   }
   const [ points, setPoints ] = useState();
-  const [ levelUp, setLevelUp ] = useState(false);
 
   const handleLevelUp = () => {
     playerUtils.levelUp(player.id, nextLevel);
     appUtils.refreshPage();
   };
-
 
   useEffect(() => {
     appUtils.getPointsFromUser(player.id, setPoints);
@@ -41,9 +39,9 @@ const ActivePlayer = ({ player }) => {
     return(
     <div className={styles.active}>
       <div className={styles.active__level}>
-        <span className={styles.active__levelNumber}>{playerLevel?.id}</span>
+        <span className={styles.active__number}>{playerLevel?.id}</span>
+        <span className={styles.active__text}>lvl</span>
       </div>
-      <span className={styles.active__lvlText}>lvl</span>
       <div className={styles.active__bar}>
         <ProgressBar 
           points={points}
