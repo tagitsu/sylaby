@@ -1,15 +1,10 @@
 @import '/src/styles/settings.scss';
 
 .active {
-  //width: calc($base-size * 27.3);
-  max-width: 50vw;
   min-width: 100px;
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  //justify-items: stretch;
-  //justify-content: center;
-  align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: end;
   gap: $base-size;
 
   &__level {
@@ -33,14 +28,14 @@
 
   &__text {
     text-transform: uppercase;
-    font-size: $base-size;
+    font-size: 1vw;
     font-weight: 100;
     opacity: .5;
   }
 
   &__bar {
-    width: 100%;
     grid-column: span 3;
+    width: 100%;
   }
 }
 
@@ -91,5 +86,22 @@
   100% {
     background: $light-accent;
     border-radius: 50%;
+  }
+}
+
+
+@media (max-width: 1000px) and (orientation: landscape) {
+  .active {
+    flex-direction: row;
+    align-items: center;
+
+    &__level {
+      width: 16vh;
+      height: 16vh;
+    }
+
+    &__number {
+      font-size: 10vh;
+    }
   }
 }

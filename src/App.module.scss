@@ -7,8 +7,6 @@
   grid-template-columns: 100%;
   grid-template-rows: 10% 80vh 10%;
 
-  border: 2px solid green;
-
   &__main {
     grid-row: 2 / 3;
     padding: $base-size;
@@ -20,8 +18,6 @@
 @media (orientation: landscape) {
   .app {
     grid-template-rows: 20% auto 12%;
-    border: 2px solid blueviolet;
-
   }
 }
 

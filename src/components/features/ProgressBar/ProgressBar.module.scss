@@ -5,17 +5,14 @@
 }
 
 .prog {
+  background-image: linear-gradient(white, white 20%, white 80%, lightgray);
+  width: 100%;
+  border-radius: $base-size;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
 
-  &__container {
-    background-image: linear-gradient(white, white 20%, white 80%, lightgray);
-    width: 100%;
-    border-radius: $radius;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
   &__bar {
     width: var(--player-xp);
     height: calc($base-size * 2);
@@ -32,4 +29,3 @@
     font-weight: 700;
   }
 }
-
