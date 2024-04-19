@@ -1,29 +1,36 @@
 @import '/src/styles/settings.scss';
 
 .logo {
-  height: 11vw;
-  width: 11vw;
-  position: relative;
+  //height: 11vw;
+  //width: 11vw;
+  //position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
-  &__bubble:first-of-type {
-    position: absolute;
-    top: 0;
-    left: 10%;
-  }
+  // &__bubble:first-of-type {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 10%;
+  //   //color: $light-accent;
+  //     //font-size: 130%;
+  //     font-weight: 400;
+  //     //text-shadow: 1px 1px $dark-shades;
+  // }
 
-  &__bubble:nth-of-type(2) {
-    position: absolute;
-    left: 50%;
-    bottom: 35%;
-  }
+  // &__bubble:nth-of-type(2) {
+  //   position: absolute;
+  //   left: 50%;
+  //   bottom: 35%;
+  // }
 
-  &__bubble:last-of-type {
-    position: absolute;
-    left: 20%;
-    bottom: 5%;
-  }
+  // &__bubble:last-of-type {
+  //   position: absolute;
+  //   left: 20%;
+  //   bottom: 5%;
+  // }
 
-  &__bubble {
+  &__bubble, &__mini {
     border-radius: 50%;
     width: 5vw;
     height: 5vw;
@@ -32,20 +39,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5vw;
-    font-weight: 400;
+    font-size: 4vw;
     overflow: hidden;
   }
 
-  &__syllable {
-    letter-spacing: -2px;
+  &__mini {
+    width: 1vw;
+    height: 1vw;
+  }
 
-    &::first-letter {
-      color: $light-accent;
-      font-size: 130%;
-      font-weight: 600;
-      text-shadow: 1px 1px $dark-shades;
-    }
+  &__syllable {
+    letter-spacing: 0px;
+    line-height: 1;
+
+
+    // &::first-letter {
+    //   color: $light-accent;
+    //   font-size: 130%;
+    //   font-weight: 400;
+    //   text-shadow: 1px 1px $dark-shades;
+    // }
   }
 }
 
