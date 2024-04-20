@@ -2,8 +2,9 @@
 
 .header {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: min-content 50% max-content;
   align-items: center;
+  justify-content:space-between;
   grid-row: 1 / 2;
   width: 100%;
   padding: $base-size;
@@ -14,4 +15,3 @@
   font-size: $base-size;
   overflow: visible;
 }
-

@@ -39,8 +39,8 @@ const ActivePlayer = ({ player }) => {
     return(
     <div className={styles.active}>
       <div className={styles.active__level}>
-        <span className={styles.active__number}>{playerLevel?.id}</span>
-        <span className={styles.active__text}>lvl</span>
+        <p className={styles.active__number}>{playerLevel?.id}</p>
+        <p className={styles.active__text}>lvl</p>
       </div>
       <div className={styles.active__bar}>
         <ProgressBar 
