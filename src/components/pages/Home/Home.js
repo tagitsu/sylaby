@@ -7,7 +7,9 @@ const Home = ({ user, player }) => {
   if (user) {
     return(
       <div className={styles.home}>
-        <Link to={`/game/${player?.id}`}><Button content='zaczynam grę' /></Link>
+        <Link to={`/game/${player?.id}`}><Button content='do pary' /></Link>
+        <Link to={`/game1/${player?.id}`}><Button content='słowa' /></Link>
+
       </div>
     );
     }

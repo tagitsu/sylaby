@@ -1,6 +1,7 @@
 import Home from './components/pages/Home/Home';
 import { Routes, Route, Link } from 'react-router-dom';
 import GameSyllablesEasy from './components/pages/GameSyllablesEasy/GameSyllablesEasy';
+import GameWords from './components/pages/GameWords/GameWords';
 import NonFound from './components/pages/NonFound/NonFound';
 import Header from './components/views/Header/Header';
 import SignUp from './components/features/SignUp/SignUp';
@@ -32,6 +33,7 @@ const App = () => {
           <Route path='/' element={<Home user={user} player={player} />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/game/:id' element={<GameSyllablesEasy user={user} player={player} />} />
+          <Route path='/game1/:id' element={<GameWords user={user} player={player} />} />
           <Route path='*' element={<NonFound />} />
         </Routes>
       </main>

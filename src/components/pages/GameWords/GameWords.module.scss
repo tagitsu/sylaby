@@ -1,0 +1,112 @@
+@import '/src/styles/settings.scss';
+.easy {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__board {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    transition: $transition;
+  }
+  
+  &__first, &__task, &__answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $base-size;
+    text-decoration: none;
+    color: $dark-shades;
+    font-size: 5vw;
+    max-width: 17vw;
+    height: 10vw;
+    text-align: center;
+    background-color: $light-shades;
+    border: none;
+    border-radius: $radius;
+    transition: $transition;
+  }
+
+
+  &__task {
+  
+    &:hover {
+      background-color: $light-accent;
+      cursor: pointer;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &__first {
+    background-color: $dark-accent;
+    width: calc($base-size * 9);
+  }
+
+
+  &__last {
+    padding: $base-size;
+    display: grid;
+    gap: $base-size;
+    grid-template-columns: repeat(5, 17vw);
+  }
+
+  &__answer {
+    width: calc($base-size * 13);
+    background-color: $light-accent;
+  }
+
+
+  &__next {
+    width: 100%;
+    height: 10vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7vw;
+    background-color: $light-shades;
+    border: none;
+    color: $dark-accent;
+
+    & p {
+      transition: all .6s;
+    }
+
+    & p:hover {
+      color: $dark-shades;
+      cursor: pointer;
+    }
+
+    & p:active {
+      transform: translateX(100%);
+      color: $light-accent;
+    }
+  }
+
+  &__correct {
+    color: darken($color: $color-correct, $amount: 40);
+    background-color: $color-correct;
+  }
+
+  &__incorrect {
+    color: darken($color: $color-incorrect, $amount: 40);
+    background-color: $color-incorrect;
+  }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+  .easy {
+    &__first, &__task, &__answer {
+      font-size: 7vh;
+      height: 12vh;
+      margin: 2vh;
+    }
+  }
+}
