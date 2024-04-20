@@ -38,6 +38,9 @@ const ActivePlayer = ({ player }) => {
   if (points !== playerLevel?.nextLevel) {
     return(
     <div className={styles.active}>
+      <div className={styles.active__badges}>
+        { player.badges.map( badge => <img className={styles.active__badge} key={badge.name} src={`${process.env.PUBLIC_URL}/images/badges/${badge.name}.png`} alt={`${badge.name} icon`} />)}
+      </div>
       <div className={styles.active__level}>
         <p className={styles.active__number}>{playerLevel?.id}</p>
         <p className={styles.active__text}>lvl</p>

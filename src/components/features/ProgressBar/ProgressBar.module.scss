@@ -6,12 +6,14 @@
 
 .prog {
   background-image: linear-gradient(white, white 20%, white 80%, lightgray);
-  //width: 70%;
+  width: 100%;
   border-radius: $base-size;
   overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
+
+  border: 1px solid;
 
   &__bar {
     width: var(--player-xp);
